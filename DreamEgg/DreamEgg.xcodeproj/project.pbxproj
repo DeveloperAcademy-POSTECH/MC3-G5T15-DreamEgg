@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */; };
+		7E1B06C12A5BE6F40072ED3F /* UserSleepTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06C02A5BE6F40072ED3F /* UserSleepTime.swift */; };
 		7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE622A5BCE3D00718C17 /* DreamEggApp.swift */; };
 		7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE642A5BCE3D00718C17 /* ContentView.swift */; };
 		7E29DE672A5BCE3E00718C17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E29DE662A5BCE3E00718C17 /* Assets.xcassets */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewStore.swift; sourceTree = "<group>"; };
+		7E1B06C02A5BE6F40072ED3F /* UserSleepTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSleepTime.swift; sourceTree = "<group>"; };
 		7E29DE5F2A5BCE3D00718C17 /* DreamEgg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamEgg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E29DE622A5BCE3D00718C17 /* DreamEggApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamEggApp.swift; sourceTree = "<group>"; };
 		7E29DE642A5BCE3D00718C17 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,6 +38,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E1B06BB2A5BE6CD0072ED3F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E29DE642A5BCE3D00718C17 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7E1B06BC2A5BE6D20072ED3F /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		7E1B06BF2A5BE6E90072ED3F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7E1B06C02A5BE6F40072ED3F /* UserSleepTime.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		7E29DE562A5BCE3D00718C17 = {
 			isa = PBXGroup;
 			children = (
@@ -54,7 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				7E29DE622A5BCE3D00718C17 /* DreamEggApp.swift */,
-				7E29DE642A5BCE3D00718C17 /* ContentView.swift */,
+				7E1B06BF2A5BE6E90072ED3F /* Models */,
+				7E1B06BC2A5BE6D20072ED3F /* Stores */,
+				7E1B06BB2A5BE6CD0072ED3F /* Views */,
 				7E29DE662A5BCE3E00718C17 /* Assets.xcassets */,
 				7E29DE6D2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld */,
 				7E29DE682A5BCE3E00718C17 /* Preview Content */,
@@ -140,9 +170,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */,
 				7E29DE6F2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld in Sources */,
 				7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */,
 				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
+				7E1B06C12A5BE6F40072ED3F /* UserSleepTime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
