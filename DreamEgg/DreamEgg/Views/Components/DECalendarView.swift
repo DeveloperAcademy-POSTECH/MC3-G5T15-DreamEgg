@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct DECalendarView: View {
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+           DatePicker("", selection: <#T##Binding<Date>#>)
+        }
     }
 }
 
