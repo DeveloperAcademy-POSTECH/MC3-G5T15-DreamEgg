@@ -41,12 +41,8 @@ struct LocalNotificationView: View {
                 let calendar = Calendar.current
                 let selectedDate = calendar.date(bySettingHour: calendar.component(.hour, from: currentDate), minute: calendar.component(.minute, from: currentDate), second: 0, of: calendar.startOfDay(for: currentDate))
                 
-                var dateComponents = calendar.dateComponents([.hour, .minute], from: selectedDate!)
-                dateComponents.calendar = calendar
-                
-                
                 let trigger = UNCalendarNotificationTrigger(
-                    dateMatching: dateComponents,
+                    dateMatching: calendar.dateComponents([.hour, .minute], from: selectedDate!),
                     repeats: true
                 )
 
