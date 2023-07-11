@@ -10,6 +10,8 @@ import UserNotifications
 
 struct LocalNotificationView: View {
     @State private var currentDate = Date()
+    @State private var userNotificationMessage = ""
+    
     var body: some View {
         VStack {
             Button("Request Permission") {
@@ -25,14 +27,18 @@ struct LocalNotificationView: View {
             DatePicker("", selection: $currentDate, displayedComponents: .hourAndMinute)
                         .labelsHidden()
                         .datePickerStyle(WheelDatePickerStyle())
+            
+            TextField("미래의 나에게 할 말", text: $userNotificationMessage)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
 
             Button("Schedule Notification") {
                 let content = UNMutableNotificationContent()
-                content.title = "Feed the cat"
+                content.title = userNotificationMessage
                 content.subtitle = "It looks hungry"
                 content.sound = UNNotificationSound.default
                 
-                var calendar = Calendar.current
+                let calendar = Calendar.current
                 let selectedDate = calendar.date(bySettingHour: calendar.component(.hour, from: currentDate), minute: calendar.component(.minute, from: currentDate), second: 0, of: calendar.startOfDay(for: currentDate))
                 
                 var dateComponents = calendar.dateComponents([.hour, .minute], from: selectedDate!)
