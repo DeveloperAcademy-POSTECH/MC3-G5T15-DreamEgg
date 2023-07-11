@@ -9,6 +9,7 @@ import SwiftUI
 import UserNotifications
 
 struct LocalNotificationView: View {
+    @State private var currentDate = Date()
     var body: some View {
         VStack {
             Button("Request Permission") {
@@ -20,18 +21,33 @@ struct LocalNotificationView: View {
                     }
                 }
             }
+            
+            DatePicker("", selection: $currentDate, displayedComponents: .hourAndMinute)
+                        .labelsHidden()
+                        .datePickerStyle(WheelDatePickerStyle())
 
             Button("Schedule Notification") {
                 let content = UNMutableNotificationContent()
                 content.title = "Feed the cat"
                 content.subtitle = "It looks hungry"
                 content.sound = UNNotificationSound.default
-
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                
+                var calendar = Calendar.current
+                let selectedDate = calendar.date(bySettingHour: calendar.component(.hour, from: currentDate), minute: calendar.component(.minute, from: currentDate), second: 0, of: calendar.startOfDay(for: currentDate))
+                
+                var dateComponents = calendar.dateComponents([.hour, .minute], from: selectedDate!)
+                dateComponents.calendar = calendar
+                
+                
+                let trigger = UNCalendarNotificationTrigger(
+                    dateMatching: dateComponents,
+                    repeats: true
+                )
 
                 let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 
                 UNUserNotificationCenter.current().add(request)
+                
             }
         }
     }
