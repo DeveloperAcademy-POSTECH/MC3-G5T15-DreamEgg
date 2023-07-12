@@ -14,6 +14,7 @@
 		7E29DE672A5BCE3E00718C17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E29DE662A5BCE3E00718C17 /* Assets.xcassets */; };
 		7E29DE6A2A5BCE3E00718C17 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E29DE692A5BCE3E00718C17 /* Preview Assets.xcassets */; };
 		7E29DE6F2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE6D2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld */; };
+		AE30B5CA2A5E8EA100F9250C /* LocalNotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30B5C92A5E8EA100F9250C /* LocalNotificationStore.swift */; };
 		AEE9E2F32A5BE9BD00D24A71 /* LocalNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		7E29DE662A5BCE3E00718C17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E29DE692A5BCE3E00718C17 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7E29DE6E2A5BCE3E00718C17 /* DreamEgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamEgg.xcdatamodel; sourceTree = "<group>"; };
+		AE30B5C92A5E8EA100F9250C /* LocalNotificationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationStore.swift; sourceTree = "<group>"; };
 		AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -43,6 +45,7 @@
 		7E1B06BB2A5BE6CD0072ED3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */,
 				7E29DE642A5BCE3D00718C17 /* ContentView.swift */,
 			);
 			path = Views;
@@ -52,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */,
-				AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */,
+				AE30B5C92A5E8EA100F9250C /* LocalNotificationStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				7E29DE6F2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld in Sources */,
 				7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */,
 				AEE9E2F32A5BE9BD00D24A71 /* LocalNotificationView.swift in Sources */,
+				AE30B5CA2A5E8EA100F9250C /* LocalNotificationStore.swift in Sources */,
 				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
 				7E1B06C12A5BE6F40072ED3F /* UserSleepTime.swift in Sources */,
 			);
