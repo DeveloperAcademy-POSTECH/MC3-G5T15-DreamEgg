@@ -71,6 +71,7 @@
 				7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */,
 				7E1B06CD2A5BF5C20072ED3F /* CoreDataStore.swift */,
 				7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */,
+				AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */,
 				AE30B5C92A5E8EA100F9250C /* LocalNotificationStore.swift */,
 				93ADAC812A5C2CE1000E27AD /* MapViewStore.swift */,
 			);
@@ -207,6 +208,10 @@
 				7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */,
 				7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */,
 				7E1B06D12A5BF9BC0072ED3F /* CoreDataTestView.swift in Sources */,
+				AEE9E2F32A5BE9BD00D24A71 /* LocalNotificationView.swift in Sources */,
+				AE30B5CA2A5E8EA100F9250C /* LocalNotificationStore.swift in Sources */,
+				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
+				7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */,
 				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
 				7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */,
 				AEE9E2F32A5BE9BD00D24A71 /* LocalNotificationView.swift in Sources */,
