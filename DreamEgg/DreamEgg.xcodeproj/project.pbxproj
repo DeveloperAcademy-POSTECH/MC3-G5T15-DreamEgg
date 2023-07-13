@@ -14,6 +14,7 @@
 		7E29DE672A5BCE3E00718C17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E29DE662A5BCE3E00718C17 /* Assets.xcassets */; };
 		7E29DE6A2A5BCE3E00718C17 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E29DE692A5BCE3E00718C17 /* Preview Assets.xcassets */; };
 		7E29DE6F2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE6D2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld */; };
+		AE30B5CC2A5EB8F700F9250C /* EggInteractionStores.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30B5CB2A5EB8F700F9250C /* EggInteractionStores.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		7E29DE662A5BCE3E00718C17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E29DE692A5BCE3E00718C17 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7E29DE6E2A5BCE3E00718C17 /* DreamEgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamEgg.xcdatamodel; sourceTree = "<group>"; };
+		AE30B5CB2A5EB8F700F9250C /* EggInteractionStores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EggInteractionStores.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */,
+				AE30B5CB2A5EB8F700F9250C /* EggInteractionStores.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			files = (
 				7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */,
 				7E29DE6F2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld in Sources */,
+				AE30B5CC2A5EB8F700F9250C /* EggInteractionStores.swift in Sources */,
 				7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */,
 				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
 				7E1B06C12A5BE6F40072ED3F /* UserSleepTime.swift in Sources */,
