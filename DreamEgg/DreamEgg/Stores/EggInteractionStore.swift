@@ -26,7 +26,7 @@ struct PendulumAnimation: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .rotationEffect(rotationAngle, anchor: .bottom)
-            .animation(Animation.easeInOut(duration: animationDuration).repeatForever(autoreverses: true), value: rotationAngle)
+            .animation(Animation.easeInOut(duration: animationDuration), value: rotationAngle)
             .gesture(DragGesture()
                 .onChanged { value in
                     let dragAngle = Angle(radians: Double(value.translation.width) * 0.01)
@@ -35,6 +35,7 @@ struct PendulumAnimation: View {
                 }
                 .onEnded { value in
                     rotationAngle = .degrees(0)
+                    startPendulumAnimation()
                 }
             )
             .onLongPressGesture {
@@ -48,11 +49,11 @@ struct PendulumAnimation: View {
 
     private func startPendulumAnimation() {
         withAnimation(Animation.easeInOut(duration: animationDuration).repeatForever(autoreverses: true)) {
+            isLongPress = false
             rotationAngle = .degrees(amplitude * direction)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
             direction *= -1
-            rotationAngle = .degrees(0)
             if !isLongPress {
                 startPendulumAnimation()
             }
