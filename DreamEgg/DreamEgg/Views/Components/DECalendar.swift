@@ -17,7 +17,7 @@ struct DECalendar<DayLabel: View, Header: View, WeekSwitcher: View>: View {
     let style: DECalendarStyle
     private var calendar: Calendar
     private let content: (Date) -> DayLabel
-    private let monthHeader: () -> Header
+    private let monthHeader: ([Date]) -> Header
     private let weekSwitcher: () -> WeekSwitcher
     @Binding var date: Date
     
@@ -29,7 +29,7 @@ struct DECalendar<DayLabel: View, Header: View, WeekSwitcher: View>: View {
             VStack {
                 HStack {
                     // Header
-                    self.monthHeader()
+                    self.monthHeader(days)
                     
                     // Chevron
                     self.weekSwitcher()
@@ -60,7 +60,7 @@ struct DECalendar<DayLabel: View, Header: View, WeekSwitcher: View>: View {
         calendar: Calendar,
         date: Binding<Date>,
         @ViewBuilder content: @escaping (Date) -> DayLabel,
-        @ViewBuilder monthHeader: @escaping () -> Header,
+        @ViewBuilder monthHeader: @escaping ([Date]) -> Header,
         @ViewBuilder weekSwitcher: @escaping () -> WeekSwitcher
     ) {
         self.style = style
@@ -76,8 +76,7 @@ struct DECalendar<DayLabel: View, Header: View, WeekSwitcher: View>: View {
      이 배열을 바탕으로 가로 스크롤 컴포넌트를 렌더링합니다.
      */
     func makeDays() -> [Date] {
-        guard let firstWeek = calendar.dateInterval(
-            of: .weekOfMonth, for: date),
+        guard let firstWeek = calendar.dateInterval(of: .weekOfMonth, for: date),
               let lastWeek = calendar.dateInterval(of: .weekOfMonth, for: firstWeek.end - 1)
         else {
             return []
@@ -96,12 +95,4 @@ struct DECalendar_Previews: PreviewProvider {
     static var previews: some View {
         DECalendarTestView()
     }
-}
-
-struct DECalendarComponents {
-    let calendar: Calendar
-    let monthDayFormatter: DateFormatter
-    let dayFormatter: DateFormatter
-    let weekDayFormatter: DateFormatter
-    let timeFormatter: DateFormatter
 }
