@@ -9,10 +9,16 @@ import SwiftUI
 
 @main
 struct DreamEggApp: App {
+    let testing = true
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if testing {
+//                CoreDataTestView()
+                FontTestView()
+            } else {
+                ContentView()
+            }
         }
     }
 }
