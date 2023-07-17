@@ -29,19 +29,17 @@ struct PendulumAnimation: View {
             .animation(Animation.easeInOut(duration: animationDuration), value: rotationAngle)
             .gesture(DragGesture()
                 .onChanged { value in
+                    isLongPress = true
                     let dragAngle = Angle(radians: Double(value.translation.width) * 0.01)
                     let newRotationAngle = Angle.degrees(amplitude * Double(direction)) + dragAngle
                                         rotationAngle = clampRotationAngle(newRotationAngle)
                 }
                 .onEnded { value in
                     rotationAngle = .degrees(0)
+                    isLongPress = false
                     startPendulumAnimation()
                 }
             )
-            .onLongPressGesture {
-                isLongPress = true
-                rotationAngle = .degrees(0)
-            }
             .onAppear {
                 startPendulumAnimation()
             }
