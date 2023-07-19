@@ -8,25 +8,44 @@
 
 /* Begin PBXBuildFile section */
 		7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */; };
-		7E1B06C12A5BE6F40072ED3F /* UserSleepTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06C02A5BE6F40072ED3F /* UserSleepTime.swift */; };
-		7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE622A5BCE3D00718C17 /* DreamEggApp.swift */; };
+		7E1B06CE2A5BF5C20072ED3F /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06CD2A5BF5C20072ED3F /* CoreDataStore.swift */; };
+		7E1B06D12A5BF9BC0072ED3F /* CoreDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06D02A5BF9BC0072ED3F /* CoreDataTestView.swift */; };
 		7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE642A5BCE3D00718C17 /* ContentView.swift */; };
 		7E29DE672A5BCE3E00718C17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E29DE662A5BCE3E00718C17 /* Assets.xcassets */; };
 		7E29DE6A2A5BCE3E00718C17 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E29DE692A5BCE3E00718C17 /* Preview Assets.xcassets */; };
-		7E29DE6F2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE6D2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld */; };
-		AE30B5CC2A5EB8F700F9250C /* EggInteractionStores.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30B5CB2A5EB8F700F9250C /* EggInteractionStores.swift */; };
+		7E29DE6F2A5BCE3E00718C17 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */; };
+		7EA424282A5D382700D0709B /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424262A5D382700D0709B /* DreamEgg.xcdatamodeld */; };
+		7EE3F5472A61269300764E86 /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3F5462A61269300764E86 /* Color+Palette.swift */; };
+		93ADAC822A5C2CE1000E27AD /* MapViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ADAC812A5C2CE1000E27AD /* MapViewStore.swift */; };
+		AE30B5CE2A6014FF00F9250C /* EggInteractionTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30B5CD2A6014FF00F9250C /* EggInteractionTestView.swift */; };
+		AE30B5D02A6017D000F9250C /* EggInteractionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30B5CF2A6017D000F9250C /* EggInteractionStore.swift */; };
+		AE806B0E2A65178700664612 /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06C02A5BE6F40072ED3F /* CoreDataContainer.swift */; };
+		AE806B0F2A6518AE00664612 /* DreamEggApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE622A5BCE3D00718C17 /* DreamEggApp.swift */; };
+		AE806B102A67B6C000664612 /* MapTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AF35552A5EBC8F000063ED /* MapTestView.swift */; };
+		AE806B112A67B6DA00664612 /* LocalNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */; };
+		AE806B122A67B6E100664612 /* LocalNotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30B5C92A5E8EA100F9250C /* LocalNotificationStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewStore.swift; sourceTree = "<group>"; };
-		7E1B06C02A5BE6F40072ED3F /* UserSleepTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSleepTime.swift; sourceTree = "<group>"; };
+		7E1B06C02A5BE6F40072ED3F /* CoreDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContainer.swift; sourceTree = "<group>"; };
+		7E1B06CD2A5BF5C20072ED3F /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		7E1B06D02A5BF9BC0072ED3F /* CoreDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTestView.swift; sourceTree = "<group>"; };
 		7E29DE5F2A5BCE3D00718C17 /* DreamEgg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamEgg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E29DE622A5BCE3D00718C17 /* DreamEggApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamEggApp.swift; sourceTree = "<group>"; };
 		7E29DE642A5BCE3D00718C17 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E29DE662A5BCE3E00718C17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E29DE692A5BCE3E00718C17 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7E29DE6E2A5BCE3E00718C17 /* DreamEgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamEgg.xcdatamodel; sourceTree = "<group>"; };
-		AE30B5CB2A5EB8F700F9250C /* EggInteractionStores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EggInteractionStores.swift; sourceTree = "<group>"; };
+		7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySleepTimeStore.swift; sourceTree = "<group>"; };
+		7EA424272A5D382700D0709B /* DreamEgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamEgg.xcdatamodel; sourceTree = "<group>"; };
+		7EE3F5462A61269300764E86 /* Color+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Palette.swift"; sourceTree = "<group>"; };
+		93ADAC812A5C2CE1000E27AD /* MapViewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewStore.swift; sourceTree = "<group>"; };
+		93AF35552A5EBC8F000063ED /* MapTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTestView.swift; sourceTree = "<group>"; };
+		AE30B5C92A5E8EA100F9250C /* LocalNotificationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationStore.swift; sourceTree = "<group>"; };
+		AE30B5CD2A6014FF00F9250C /* EggInteractionTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EggInteractionTestView.swift; sourceTree = "<group>"; };
+		AE30B5CF2A6017D000F9250C /* EggInteractionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EggInteractionStore.swift; sourceTree = "<group>"; };
+		AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +62,11 @@
 		7E1B06BB2A5BE6CD0072ED3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E1B06CF2A5BF9B20072ED3F /* TestViews */,
+				AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */,
 				7E29DE642A5BCE3D00718C17 /* ContentView.swift */,
+				93AF35552A5EBC8F000063ED /* MapTestView.swift */,
+				AE30B5CD2A6014FF00F9250C /* EggInteractionTestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -52,7 +75,11 @@
 			isa = PBXGroup;
 			children = (
 				7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */,
-				AE30B5CB2A5EB8F700F9250C /* EggInteractionStores.swift */,
+				AE30B5CF2A6017D000F9250C /* EggInteractionStore.swift */,
+				7E1B06CD2A5BF5C20072ED3F /* CoreDataStore.swift */,
+				7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */,
+				AE30B5C92A5E8EA100F9250C /* LocalNotificationStore.swift */,
+				93ADAC812A5C2CE1000E27AD /* MapViewStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -60,9 +87,17 @@
 		7E1B06BF2A5BE6E90072ED3F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7E1B06C02A5BE6F40072ED3F /* UserSleepTime.swift */,
+				7E1B06C02A5BE6F40072ED3F /* CoreDataContainer.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		7E1B06CF2A5BF9B20072ED3F /* TestViews */ = {
+			isa = PBXGroup;
+			children = (
+				7E1B06D02A5BF9BC0072ED3F /* CoreDataTestView.swift */,
+			);
+			path = TestViews;
 			sourceTree = "<group>";
 		};
 		7E29DE562A5BCE3D00718C17 = {
@@ -85,11 +120,12 @@
 			isa = PBXGroup;
 			children = (
 				7E29DE622A5BCE3D00718C17 /* DreamEggApp.swift */,
+				7EE3F5452A61268A00764E86 /* Extensions */,
 				7E1B06BF2A5BE6E90072ED3F /* Models */,
 				7E1B06BC2A5BE6D20072ED3F /* Stores */,
 				7E1B06BB2A5BE6CD0072ED3F /* Views */,
 				7E29DE662A5BCE3E00718C17 /* Assets.xcassets */,
-				7E29DE6D2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld */,
+				7EA424262A5D382700D0709B /* DreamEgg.xcdatamodeld */,
 				7E29DE682A5BCE3E00718C17 /* Preview Content */,
 			);
 			path = DreamEgg;
@@ -101,6 +137,14 @@
 				7E29DE692A5BCE3E00718C17 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7EE3F5452A61268A00764E86 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7EE3F5462A61269300764E86 /* Color+Palette.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,12 +217,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE806B122A67B6E100664612 /* LocalNotificationStore.swift in Sources */,
+				AE806B112A67B6DA00664612 /* LocalNotificationView.swift in Sources */,
+				AE806B102A67B6C000664612 /* MapTestView.swift in Sources */,
+				AE806B0F2A6518AE00664612 /* DreamEggApp.swift in Sources */,
+				AE806B0E2A65178700664612 /* CoreDataContainer.swift in Sources */,
+				7E1B06CE2A5BF5C20072ED3F /* CoreDataStore.swift in Sources */,
+				7EA424282A5D382700D0709B /* DreamEgg.xcdatamodeld in Sources */,
 				7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */,
-				7E29DE6F2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld in Sources */,
-				AE30B5CC2A5EB8F700F9250C /* EggInteractionStores.swift in Sources */,
+				7E29DE6F2A5BCE3E00718C17 /* (null) in Sources */,
+				AE30B5CE2A6014FF00F9250C /* EggInteractionTestView.swift in Sources */,
 				7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */,
-				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
-				7E1B06C12A5BE6F40072ED3F /* UserSleepTime.swift in Sources */,
+				7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */,
+				7E1B06D12A5BF9BC0072ED3F /* CoreDataTestView.swift in Sources */,
+				AE30B5D02A6017D000F9250C /* EggInteractionStore.swift in Sources */,
+				7EE3F5472A61269300764E86 /* Color+Palette.swift in Sources */,
+				93ADAC822A5C2CE1000E27AD /* MapViewStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,7 +361,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
-				DEVELOPMENT_TEAM = 67M6ZS7KS6;
+				DEVELOPMENT_TEAM = HFR7W36699;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -336,7 +390,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
-				DEVELOPMENT_TEAM = 67M6ZS7KS6;
+				DEVELOPMENT_TEAM = HFR7W36699;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -381,12 +435,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		7E29DE6D2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld */ = {
+		7EA424262A5D382700D0709B /* DreamEgg.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				7E29DE6E2A5BCE3E00718C17 /* DreamEgg.xcdatamodel */,
+				7EA424272A5D382700D0709B /* DreamEgg.xcdatamodel */,
 			);
-			currentVersion = 7E29DE6E2A5BCE3E00718C17 /* DreamEgg.xcdatamodel */;
+			currentVersion = 7EA424272A5D382700D0709B /* DreamEgg.xcdatamodel */;
 			path = DreamEgg.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
