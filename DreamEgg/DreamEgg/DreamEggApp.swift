@@ -15,6 +15,7 @@ struct DreamEggApp: App {
         WindowGroup {
             if testing {
 //                CoreDataTestView()
+//                SleepTimeSettingView()
                 FontTestView()
             } else {
                 ContentView()

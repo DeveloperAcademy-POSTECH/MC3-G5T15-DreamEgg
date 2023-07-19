@@ -49,6 +49,10 @@ extension Color {
         .init(hex: "#FFCB45")
     }
     
+    static var characterFaceBackground: Self {
+        .init(hex: "#FFEBB7")
+    }
+    
     // MARK: Buttons
     static var primaryButtonYellow: Self {
         .init(hex: "#F7D25C")
@@ -88,6 +92,8 @@ struct Color_Previews: PreviewProvider {
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
+            
+            Color.characterFaceBackground
             
             Color.primaryButtonBrown
             Color.primaryButtonYellow
