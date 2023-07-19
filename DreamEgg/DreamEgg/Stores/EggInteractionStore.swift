@@ -59,7 +59,7 @@ struct PendulumAnimation: View {
     }
     
     private func clampRotationAngle(_ angle: Angle) -> Angle {
-            let clampedAngle = min(max(angle.degrees, -90.0), 90.0)
+            let clampedAngle = min(max(angle.degrees, -30.0), 30.0)
             return .degrees(clampedAngle)
         }
 }
