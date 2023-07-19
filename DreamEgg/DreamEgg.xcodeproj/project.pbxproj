@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E0369332A6520D80032DB8F /* DECalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369322A6520D80032DB8F /* DECalendar.swift */; };
+		7E0369352A6521E30032DB8F /* Calendar+Weekdays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369342A6521E30032DB8F /* Calendar+Weekdays.swift */; };
+		7E0369372A6522820032DB8F /* DECalendarTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369362A6522820032DB8F /* DECalendarTestView.swift */; };
+		7E0369392A6529D00032DB8F /* Date+StartDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369382A6529D00032DB8F /* Date+StartDates.swift */; };
+		7E03693B2A657F430032DB8F /* DateFormatter+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E03693A2A657F430032DB8F /* DateFormatter+init.swift */; };
 		20472BF42A5F13BC00E50841 /* SleepTimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20472BF32A5F13BC00E50841 /* SleepTimeSettingView.swift */; };
 		20472BF62A5F197500E50841 /* MainEggsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20472BF52A5F197500E50841 /* MainEggsView.swift */; };
 		7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */; };
@@ -18,6 +23,7 @@
 		7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE642A5BCE3D00718C17 /* ContentView.swift */; };
 		7E29DE672A5BCE3E00718C17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E29DE662A5BCE3E00718C17 /* Assets.xcassets */; };
 		7E29DE6A2A5BCE3E00718C17 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E29DE692A5BCE3E00718C17 /* Preview Assets.xcassets */; };
+		7E706BE52A66CF7100E1737F /* Date+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E706BE42A66CF7100E1737F /* Date+Utilities.swift */; };
 		7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */; };
 		7EA424282A5D382700D0709B /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424262A5D382700D0709B /* DreamEgg.xcdatamodeld */; };
 		7EE3F5472A61269300764E86 /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3F5462A61269300764E86 /* Color+Palette.swift */; };
@@ -36,6 +42,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E0369322A6520D80032DB8F /* DECalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DECalendar.swift; sourceTree = "<group>"; };
+		7E0369342A6521E30032DB8F /* Calendar+Weekdays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Weekdays.swift"; sourceTree = "<group>"; };
+		7E0369362A6522820032DB8F /* DECalendarTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DECalendarTestView.swift; sourceTree = "<group>"; };
+		7E0369382A6529D00032DB8F /* Date+StartDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartDates.swift"; sourceTree = "<group>"; };
+		7E03693A2A657F430032DB8F /* DateFormatter+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+init.swift"; sourceTree = "<group>"; };
 		20472BF32A5F13BC00E50841 /* SleepTimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeSettingView.swift; sourceTree = "<group>"; };
 		20472BF52A5F197500E50841 /* MainEggsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEggsView.swift; sourceTree = "<group>"; };
 		7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewStore.swift; sourceTree = "<group>"; };
@@ -48,6 +59,7 @@
 		7E29DE642A5BCE3D00718C17 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E29DE662A5BCE3E00718C17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E29DE692A5BCE3E00718C17 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7E706BE42A66CF7100E1737F /* Date+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utilities.swift"; sourceTree = "<group>"; };
 		7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySleepTimeStore.swift; sourceTree = "<group>"; };
 		7EA424272A5D382700D0709B /* DreamEgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamEgg.xcdatamodel; sourceTree = "<group>"; };
 		7EE3F5462A61269300764E86 /* Color+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Palette.swift"; sourceTree = "<group>"; };
@@ -77,9 +89,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E0369312A6520D00032DB8F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				7E0369322A6520D80032DB8F /* DECalendar.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		7E1B06BB2A5BE6CD0072ED3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E0369312A6520D00032DB8F /* Components */,
 				7E1B06CF2A5BF9B20072ED3F /* TestViews */,
 				AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */,
 				7E29DE642A5BCE3D00718C17 /* ContentView.swift */,
@@ -115,6 +136,7 @@
 			children = (
 				7E1B06D02A5BF9BC0072ED3F /* CoreDataTestView.swift */,
 				7EE3F5592A61389500764E86 /* FontTestView.swift */,
+				7E0369362A6522820032DB8F /* DECalendarTestView.swift */,
 			);
 			path = TestViews;
 			sourceTree = "<group>";
@@ -165,6 +187,10 @@
 			children = (
 				7EE3F5462A61269300764E86 /* Color+Palette.swift */,
 				7E2214742A65077A0087F520 /* Font+DosIyagi.swift */,
+				7E0369342A6521E30032DB8F /* Calendar+Weekdays.swift */,
+				7E0369382A6529D00032DB8F /* Date+StartDates.swift */,
+				7E706BE42A66CF7100E1737F /* Date+Utilities.swift */,
+				7E03693A2A657F430032DB8F /* DateFormatter+init.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -272,6 +298,7 @@
 				7EA424282A5D382700D0709B /* DreamEgg.xcdatamodeld in Sources */,
 				7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */,
 				7EE3F55A2A61389500764E86 /* FontTestView.swift in Sources */,
+				7E03693B2A657F430032DB8F /* DateFormatter+init.swift in Sources */,
 				7E29DE6F2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld in Sources */,
 				20472BF42A5F13BC00E50841 /* SleepTimeSettingView.swift in Sources */,
 				20472BF62A5F197500E50841 /* MainEggsView.swift in Sources */,
@@ -280,17 +307,22 @@
 				7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */,
 				7E1B06D12A5BF9BC0072ED3F /* CoreDataTestView.swift in Sources */,
 				AEE9E2F32A5BE9BD00D24A71 /* LocalNotificationView.swift in Sources */,
+				7E0369372A6522820032DB8F /* DECalendarTestView.swift in Sources */,
 				AE30B5CA2A5E8EA100F9250C /* LocalNotificationStore.swift in Sources */,
 				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
 				7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */,
+				7E706BE52A66CF7100E1737F /* Date+Utilities.swift in Sources */,
+				7E0369352A6521E30032DB8F /* Calendar+Weekdays.swift in Sources */,
 				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
 				7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */,
 				7EE3F5472A61269300764E86 /* Color+Palette.swift in Sources */,
 				AEE9E2F32A5BE9BD00D24A71 /* LocalNotificationView.swift in Sources */,
+				7E0369332A6520D80032DB8F /* DECalendar.swift in Sources */,
 				AE30B5CA2A5E8EA100F9250C /* LocalNotificationStore.swift in Sources */,
 				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
 				93AF35562A5EBC8F000063ED /* MapTestView.swift in Sources */,
 				7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */,
+				7E0369392A6529D00032DB8F /* Date+StartDates.swift in Sources */,
 				93ADAC822A5C2CE1000E27AD /* MapViewStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,7 +452,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 67M6ZS7KS6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DreamEgg/Info.plist;
@@ -450,7 +482,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 67M6ZS7KS6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DreamEgg/Info.plist;
