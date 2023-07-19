@@ -26,6 +26,8 @@
 		7E706BE52A66CF7100E1737F /* Date+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E706BE42A66CF7100E1737F /* Date+Utilities.swift */; };
 		7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */; };
 		7EA424282A5D382700D0709B /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424262A5D382700D0709B /* DreamEgg.xcdatamodeld */; };
+		932D59C32A600E190011F896 /* HapticFeedbackTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932D59C22A600E190011F896 /* HapticFeedbackTestView.swift */; };
+		932D59C52A600F270011F896 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932D59C42A600F270011F896 /* HapticManager.swift */; };
 		7EE3F5472A61269300764E86 /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3F5462A61269300764E86 /* Color+Palette.swift */; };
 		7EE3F5512A6137D700764E86 /* DOSPilgi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EE3F54A2A6137D600764E86 /* DOSPilgi.ttf */; };
 		7EE3F5522A6137D700764E86 /* DOSSaemmul.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EE3F54B2A6137D600764E86 /* DOSSaemmul.ttf */; };
@@ -62,6 +64,8 @@
 		7E706BE42A66CF7100E1737F /* Date+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utilities.swift"; sourceTree = "<group>"; };
 		7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySleepTimeStore.swift; sourceTree = "<group>"; };
 		7EA424272A5D382700D0709B /* DreamEgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamEgg.xcdatamodel; sourceTree = "<group>"; };
+		932D59C22A600E190011F896 /* HapticFeedbackTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackTestView.swift; sourceTree = "<group>"; };
+		932D59C42A600F270011F896 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		7EE3F5462A61269300764E86 /* Color+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Palette.swift"; sourceTree = "<group>"; };
 		7EE3F54A2A6137D600764E86 /* DOSPilgi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DOSPilgi.ttf; sourceTree = "<group>"; };
 		7EE3F54B2A6137D600764E86 /* DOSSaemmul.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DOSSaemmul.ttf; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				7E1B06C02A5BE6F40072ED3F /* CoreDataContainer.swift */,
+				932D59C42A600F270011F896 /* HapticManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				7E1B06D02A5BF9BC0072ED3F /* CoreDataTestView.swift */,
+				932D59C22A600E190011F896 /* HapticFeedbackTestView.swift */,
 				7EE3F5592A61389500764E86 /* FontTestView.swift */,
 				7E0369362A6522820032DB8F /* DECalendarTestView.swift */,
 			);
@@ -306,10 +312,12 @@
 				7E2214752A65077A0087F520 /* Font+DosIyagi.swift in Sources */,
 				7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */,
 				7E1B06D12A5BF9BC0072ED3F /* CoreDataTestView.swift in Sources */,
+				932D59C52A600F270011F896 /* HapticManager.swift in Sources */,
 				AEE9E2F32A5BE9BD00D24A71 /* LocalNotificationView.swift in Sources */,
 				7E0369372A6522820032DB8F /* DECalendarTestView.swift in Sources */,
 				AE30B5CA2A5E8EA100F9250C /* LocalNotificationStore.swift in Sources */,
 				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
+				932D59C32A600E190011F896 /* HapticFeedbackTestView.swift in Sources */,
 				7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */,
 				7E706BE52A66CF7100E1737F /* Date+Utilities.swift in Sources */,
 				7E0369352A6521E30032DB8F /* Calendar+Weekdays.swift in Sources */,
@@ -452,6 +460,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
+				DEVELOPMENT_TEAM = 834B9VMHHG;
 				DEVELOPMENT_TEAM = 67M6ZS7KS6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -482,6 +491,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
+				DEVELOPMENT_TEAM = 834B9VMHHG;
 				DEVELOPMENT_TEAM = 67M6ZS7KS6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
