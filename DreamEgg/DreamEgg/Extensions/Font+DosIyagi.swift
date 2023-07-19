@@ -20,7 +20,7 @@ extension Font {
         case caption2 = 11
     }
     
-    @available(*, unavailable, message: "DosPilgi is only in Images")
+//    @available(*, unavailable, message: "DosPilgi is only in Images")
     static func dosPilgi(_ size: DEFontSize) -> Font {
         custom("DOSPilgi", size: size.rawValue)
     }
