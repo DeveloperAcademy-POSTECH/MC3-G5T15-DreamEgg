@@ -12,6 +12,8 @@
 		7E0369372A6522820032DB8F /* DECalendarTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369362A6522820032DB8F /* DECalendarTestView.swift */; };
 		7E0369392A6529D00032DB8F /* Date+StartDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369382A6529D00032DB8F /* Date+StartDates.swift */; };
 		7E03693B2A657F430032DB8F /* DateFormatter+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E03693A2A657F430032DB8F /* DateFormatter+init.swift */; };
+		20472BF42A5F13BC00E50841 /* SleepTimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20472BF32A5F13BC00E50841 /* SleepTimeSettingView.swift */; };
+		20472BF62A5F197500E50841 /* MainEggsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20472BF52A5F197500E50841 /* MainEggsView.swift */; };
 		7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */; };
 		7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06C02A5BE6F40072ED3F /* CoreDataContainer.swift */; };
 		7E1B06CE2A5BF5C20072ED3F /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06CD2A5BF5C20072ED3F /* CoreDataStore.swift */; };
@@ -45,6 +47,8 @@
 		7E0369362A6522820032DB8F /* DECalendarTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DECalendarTestView.swift; sourceTree = "<group>"; };
 		7E0369382A6529D00032DB8F /* Date+StartDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartDates.swift"; sourceTree = "<group>"; };
 		7E03693A2A657F430032DB8F /* DateFormatter+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+init.swift"; sourceTree = "<group>"; };
+		20472BF32A5F13BC00E50841 /* SleepTimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeSettingView.swift; sourceTree = "<group>"; };
+		20472BF52A5F197500E50841 /* MainEggsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEggsView.swift; sourceTree = "<group>"; };
 		7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewStore.swift; sourceTree = "<group>"; };
 		7E1B06C02A5BE6F40072ED3F /* CoreDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContainer.swift; sourceTree = "<group>"; };
 		7E1B06CD2A5BF5C20072ED3F /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				7E1B06CF2A5BF9B20072ED3F /* TestViews */,
 				AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */,
 				7E29DE642A5BCE3D00718C17 /* ContentView.swift */,
+				20472BF32A5F13BC00E50841 /* SleepTimeSettingView.swift */,
+				20472BF52A5F197500E50841 /* MainEggsView.swift */,
 				93AF35552A5EBC8F000063ED /* MapTestView.swift */,
 			);
 			path = Views;
@@ -293,6 +299,9 @@
 				7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */,
 				7EE3F55A2A61389500764E86 /* FontTestView.swift in Sources */,
 				7E03693B2A657F430032DB8F /* DateFormatter+init.swift in Sources */,
+				7E29DE6F2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld in Sources */,
+				20472BF42A5F13BC00E50841 /* SleepTimeSettingView.swift in Sources */,
+				20472BF62A5F197500E50841 /* MainEggsView.swift in Sources */,
 				7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */,
 				7E2214752A65077A0087F520 /* Font+DosIyagi.swift in Sources */,
 				7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */,
