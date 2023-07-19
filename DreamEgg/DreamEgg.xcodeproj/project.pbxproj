@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20472BF42A5F13BC00E50841 /* SleepTimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20472BF32A5F13BC00E50841 /* SleepTimeSettingView.swift */; };
+		20472BF62A5F197500E50841 /* MainEggsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20472BF52A5F197500E50841 /* MainEggsView.swift */; };
 		7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */; };
 		7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06C02A5BE6F40072ED3F /* CoreDataContainer.swift */; };
 		7E1B06CE2A5BF5C20072ED3F /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06CD2A5BF5C20072ED3F /* CoreDataStore.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20472BF32A5F13BC00E50841 /* SleepTimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeSettingView.swift; sourceTree = "<group>"; };
+		20472BF52A5F197500E50841 /* MainEggsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEggsView.swift; sourceTree = "<group>"; };
 		7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewStore.swift; sourceTree = "<group>"; };
 		7E1B06C02A5BE6F40072ED3F /* CoreDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContainer.swift; sourceTree = "<group>"; };
 		7E1B06CD2A5BF5C20072ED3F /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 				7E1B06CF2A5BF9B20072ED3F /* TestViews */,
 				AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */,
 				7E29DE642A5BCE3D00718C17 /* ContentView.swift */,
+				20472BF32A5F13BC00E50841 /* SleepTimeSettingView.swift */,
+				20472BF52A5F197500E50841 /* MainEggsView.swift */,
 				93AF35552A5EBC8F000063ED /* MapTestView.swift */,
 			);
 			path = Views;
@@ -213,6 +219,9 @@
 				7E1B06CE2A5BF5C20072ED3F /* CoreDataStore.swift in Sources */,
 				7EA424282A5D382700D0709B /* DreamEgg.xcdatamodeld in Sources */,
 				7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */,
+				7E29DE6F2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld in Sources */,
+				20472BF42A5F13BC00E50841 /* SleepTimeSettingView.swift in Sources */,
+				20472BF62A5F197500E50841 /* MainEggsView.swift in Sources */,
 				7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */,
 				7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */,
 				7E1B06D12A5BF9BC0072ED3F /* CoreDataTestView.swift in Sources */,

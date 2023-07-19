@@ -12,7 +12,7 @@ struct DreamEggApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SleepTimeSettingView()
         }
     }
 }
