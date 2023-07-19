@@ -40,7 +40,7 @@ struct SleepTimeSettingView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Spacer()
                 
@@ -64,7 +64,10 @@ struct SleepTimeSettingView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: MainEggsView(countDown: timeRemaining)) {
+                NavigationLink {
+//                    MainEggsView(countDown: timeRemaining)
+                    LofiTextCustomView()
+                } label: {
                     Text("이 시간에 잘래요.")
                         .frame(width: 260, height: 40)
                 }
