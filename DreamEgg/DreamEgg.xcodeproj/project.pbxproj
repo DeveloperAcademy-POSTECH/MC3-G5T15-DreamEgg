@@ -7,19 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E0369332A6520D80032DB8F /* DECalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369322A6520D80032DB8F /* DECalendar.swift */; };
+		7E0369352A6521E30032DB8F /* Calendar+Weekdays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369342A6521E30032DB8F /* Calendar+Weekdays.swift */; };
+		7E0369372A6522820032DB8F /* DECalendarTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369362A6522820032DB8F /* DECalendarTestView.swift */; };
+		7E0369392A6529D00032DB8F /* Date+StartDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369382A6529D00032DB8F /* Date+StartDates.swift */; };
+		7E03693B2A657F430032DB8F /* DateFormatter+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E03693A2A657F430032DB8F /* DateFormatter+init.swift */; };
+		20472BF42A5F13BC00E50841 /* SleepTimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20472BF32A5F13BC00E50841 /* SleepTimeSettingView.swift */; };
+		20472BF62A5F197500E50841 /* MainEggsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20472BF52A5F197500E50841 /* MainEggsView.swift */; };
 		7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */; };
-		7E1B06C12A5BE6F40072ED3F /* UserSleepTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06C02A5BE6F40072ED3F /* UserSleepTime.swift */; };
+		7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06C02A5BE6F40072ED3F /* CoreDataContainer.swift */; };
+		7E1B06CE2A5BF5C20072ED3F /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06CD2A5BF5C20072ED3F /* CoreDataStore.swift */; };
+		7E1B06D12A5BF9BC0072ED3F /* CoreDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06D02A5BF9BC0072ED3F /* CoreDataTestView.swift */; };
+		7E2214752A65077A0087F520 /* Font+DosIyagi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2214742A65077A0087F520 /* Font+DosIyagi.swift */; };
 		7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE622A5BCE3D00718C17 /* DreamEggApp.swift */; };
 		7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE642A5BCE3D00718C17 /* ContentView.swift */; };
 		7E29DE672A5BCE3E00718C17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E29DE662A5BCE3E00718C17 /* Assets.xcassets */; };
 		7E29DE6A2A5BCE3E00718C17 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E29DE692A5BCE3E00718C17 /* Preview Assets.xcassets */; };
 		7E29DE6F2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE6D2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld */; };
 		C26CC4D22A5BED3D00E3F881 /* GradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26CC4D12A5BED3D00E3F881 /* GradientBackgroundView.swift */; };
+		7E706BE52A66CF7100E1737F /* Date+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E706BE42A66CF7100E1737F /* Date+Utilities.swift */; };
+		7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */; };
+		7EA424282A5D382700D0709B /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424262A5D382700D0709B /* DreamEgg.xcdatamodeld */; };
+		932D59C32A600E190011F896 /* HapticFeedbackTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932D59C22A600E190011F896 /* HapticFeedbackTestView.swift */; };
+		932D59C52A600F270011F896 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932D59C42A600F270011F896 /* HapticManager.swift */; };
+		7EE3F5472A61269300764E86 /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3F5462A61269300764E86 /* Color+Palette.swift */; };
+		7EE3F5512A6137D700764E86 /* DOSPilgi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EE3F54A2A6137D600764E86 /* DOSPilgi.ttf */; };
+		7EE3F5522A6137D700764E86 /* DOSSaemmul.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EE3F54B2A6137D600764E86 /* DOSSaemmul.ttf */; };
+		7EE3F5532A6137D700764E86 /* Sam3KRFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EE3F54C2A6137D600764E86 /* Sam3KRFont.ttf */; };
+		7EE3F5542A6137D700764E86 /* DOSMyungjo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EE3F54D2A6137D600764E86 /* DOSMyungjo.ttf */; };
+		7EE3F5552A6137D700764E86 /* DOSGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EE3F54E2A6137D700764E86 /* DOSGothic.ttf */; };
+		7EE3F5562A6137D700764E86 /* DOSIyagiBoldface.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EE3F54F2A6137D700764E86 /* DOSIyagiBoldface.ttf */; };
+		7EE3F5572A6137D700764E86 /* MiraeroNormal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EE3F5502A6137D700764E86 /* MiraeroNormal.ttf */; };
+		7EE3F55A2A61389500764E86 /* FontTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3F5592A61389500764E86 /* FontTestView.swift */; };
+		93ADAC822A5C2CE1000E27AD /* MapViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ADAC812A5C2CE1000E27AD /* MapViewStore.swift */; };
+		93AF35562A5EBC8F000063ED /* MapTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AF35552A5EBC8F000063ED /* MapTestView.swift */; };
+		AE30B5CA2A5E8EA100F9250C /* LocalNotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30B5C92A5E8EA100F9250C /* LocalNotificationStore.swift */; };
+		AEE9E2F32A5BE9BD00D24A71 /* LocalNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E0369322A6520D80032DB8F /* DECalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DECalendar.swift; sourceTree = "<group>"; };
+		7E0369342A6521E30032DB8F /* Calendar+Weekdays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Weekdays.swift"; sourceTree = "<group>"; };
+		7E0369362A6522820032DB8F /* DECalendarTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DECalendarTestView.swift; sourceTree = "<group>"; };
+		7E0369382A6529D00032DB8F /* Date+StartDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartDates.swift"; sourceTree = "<group>"; };
+		7E03693A2A657F430032DB8F /* DateFormatter+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+init.swift"; sourceTree = "<group>"; };
+		20472BF32A5F13BC00E50841 /* SleepTimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeSettingView.swift; sourceTree = "<group>"; };
+		20472BF52A5F197500E50841 /* MainEggsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEggsView.swift; sourceTree = "<group>"; };
 		7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewStore.swift; sourceTree = "<group>"; };
-		7E1B06C02A5BE6F40072ED3F /* UserSleepTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSleepTime.swift; sourceTree = "<group>"; };
+		7E1B06C02A5BE6F40072ED3F /* CoreDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContainer.swift; sourceTree = "<group>"; };
+		7E1B06CD2A5BF5C20072ED3F /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		7E1B06D02A5BF9BC0072ED3F /* CoreDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTestView.swift; sourceTree = "<group>"; };
+		7E2214742A65077A0087F520 /* Font+DosIyagi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+DosIyagi.swift"; sourceTree = "<group>"; };
 		7E29DE5F2A5BCE3D00718C17 /* DreamEgg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamEgg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E29DE622A5BCE3D00718C17 /* DreamEggApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamEggApp.swift; sourceTree = "<group>"; };
 		7E29DE642A5BCE3D00718C17 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -27,6 +65,25 @@
 		7E29DE692A5BCE3E00718C17 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7E29DE6E2A5BCE3E00718C17 /* DreamEgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamEgg.xcdatamodel; sourceTree = "<group>"; };
 		C26CC4D12A5BED3D00E3F881 /* GradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackgroundView.swift; sourceTree = "<group>"; };
+		7E706BE42A66CF7100E1737F /* Date+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utilities.swift"; sourceTree = "<group>"; };
+		7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySleepTimeStore.swift; sourceTree = "<group>"; };
+		7EA424272A5D382700D0709B /* DreamEgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamEgg.xcdatamodel; sourceTree = "<group>"; };
+		932D59C22A600E190011F896 /* HapticFeedbackTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackTestView.swift; sourceTree = "<group>"; };
+		932D59C42A600F270011F896 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		7EE3F5462A61269300764E86 /* Color+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Palette.swift"; sourceTree = "<group>"; };
+		7EE3F54A2A6137D600764E86 /* DOSPilgi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DOSPilgi.ttf; sourceTree = "<group>"; };
+		7EE3F54B2A6137D600764E86 /* DOSSaemmul.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DOSSaemmul.ttf; sourceTree = "<group>"; };
+		7EE3F54C2A6137D600764E86 /* Sam3KRFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sam3KRFont.ttf; sourceTree = "<group>"; };
+		7EE3F54D2A6137D600764E86 /* DOSMyungjo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DOSMyungjo.ttf; sourceTree = "<group>"; };
+		7EE3F54E2A6137D700764E86 /* DOSGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DOSGothic.ttf; sourceTree = "<group>"; };
+		7EE3F54F2A6137D700764E86 /* DOSIyagiBoldface.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DOSIyagiBoldface.ttf; sourceTree = "<group>"; };
+		7EE3F5502A6137D700764E86 /* MiraeroNormal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MiraeroNormal.ttf; sourceTree = "<group>"; };
+		7EE3F5582A61384000764E86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7EE3F5592A61389500764E86 /* FontTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTestView.swift; sourceTree = "<group>"; };
+		93ADAC812A5C2CE1000E27AD /* MapViewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewStore.swift; sourceTree = "<group>"; };
+		93AF35552A5EBC8F000063ED /* MapTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTestView.swift; sourceTree = "<group>"; };
+		AE30B5C92A5E8EA100F9250C /* LocalNotificationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationStore.swift; sourceTree = "<group>"; };
+		AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,11 +97,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E0369312A6520D00032DB8F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				7E0369322A6520D80032DB8F /* DECalendar.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		7E1B06BB2A5BE6CD0072ED3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E0369312A6520D00032DB8F /* Components */,
+				7E1B06CF2A5BF9B20072ED3F /* TestViews */,
+				AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */,
 				7E29DE642A5BCE3D00718C17 /* ContentView.swift */,
 				C26CC4D12A5BED3D00E3F881 /* GradientBackgroundView.swift */,
+				20472BF32A5F13BC00E50841 /* SleepTimeSettingView.swift */,
+				20472BF52A5F197500E50841 /* MainEggsView.swift */,
+				93AF35552A5EBC8F000063ED /* MapTestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -53,6 +124,10 @@
 			isa = PBXGroup;
 			children = (
 				7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */,
+				7E1B06CD2A5BF5C20072ED3F /* CoreDataStore.swift */,
+				7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */,
+				AE30B5C92A5E8EA100F9250C /* LocalNotificationStore.swift */,
+				93ADAC812A5C2CE1000E27AD /* MapViewStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -60,9 +135,21 @@
 		7E1B06BF2A5BE6E90072ED3F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7E1B06C02A5BE6F40072ED3F /* UserSleepTime.swift */,
+				7E1B06C02A5BE6F40072ED3F /* CoreDataContainer.swift */,
+				932D59C42A600F270011F896 /* HapticManager.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		7E1B06CF2A5BF9B20072ED3F /* TestViews */ = {
+			isa = PBXGroup;
+			children = (
+				7E1B06D02A5BF9BC0072ED3F /* CoreDataTestView.swift */,
+				932D59C22A600E190011F896 /* HapticFeedbackTestView.swift */,
+				7EE3F5592A61389500764E86 /* FontTestView.swift */,
+				7E0369362A6522820032DB8F /* DECalendarTestView.swift */,
+			);
+			path = TestViews;
 			sourceTree = "<group>";
 		};
 		7E29DE562A5BCE3D00718C17 = {
@@ -84,12 +171,15 @@
 		7E29DE612A5BCE3D00718C17 /* DreamEgg */ = {
 			isa = PBXGroup;
 			children = (
+				7EE3F5582A61384000764E86 /* Info.plist */,
 				7E29DE622A5BCE3D00718C17 /* DreamEggApp.swift */,
+				7EE3F5482A61378700764E86 /* Resources */,
+				7EE3F5452A61268A00764E86 /* Extensions */,
 				7E1B06BF2A5BE6E90072ED3F /* Models */,
 				7E1B06BC2A5BE6D20072ED3F /* Stores */,
 				7E1B06BB2A5BE6CD0072ED3F /* Views */,
 				7E29DE662A5BCE3E00718C17 /* Assets.xcassets */,
-				7E29DE6D2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld */,
+				7EA424262A5D382700D0709B /* DreamEgg.xcdatamodeld */,
 				7E29DE682A5BCE3E00718C17 /* Preview Content */,
 			);
 			path = DreamEgg;
@@ -101,6 +191,41 @@
 				7E29DE692A5BCE3E00718C17 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7EE3F5452A61268A00764E86 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7EE3F5462A61269300764E86 /* Color+Palette.swift */,
+				7E2214742A65077A0087F520 /* Font+DosIyagi.swift */,
+				7E0369342A6521E30032DB8F /* Calendar+Weekdays.swift */,
+				7E0369382A6529D00032DB8F /* Date+StartDates.swift */,
+				7E706BE42A66CF7100E1737F /* Date+Utilities.swift */,
+				7E03693A2A657F430032DB8F /* DateFormatter+init.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7EE3F5482A61378700764E86 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7EE3F5492A61378B00764E86 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7EE3F5492A61378B00764E86 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7EE3F54E2A6137D700764E86 /* DOSGothic.ttf */,
+				7EE3F54F2A6137D700764E86 /* DOSIyagiBoldface.ttf */,
+				7EE3F54D2A6137D600764E86 /* DOSMyungjo.ttf */,
+				7EE3F54A2A6137D600764E86 /* DOSPilgi.ttf */,
+				7EE3F54B2A6137D600764E86 /* DOSSaemmul.ttf */,
+				7EE3F5502A6137D700764E86 /* MiraeroNormal.ttf */,
+				7EE3F54C2A6137D600764E86 /* Sam3KRFont.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,8 +286,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EE3F5532A6137D700764E86 /* Sam3KRFont.ttf in Resources */,
+				7EE3F5562A6137D700764E86 /* DOSIyagiBoldface.ttf in Resources */,
+				7EE3F5542A6137D700764E86 /* DOSMyungjo.ttf in Resources */,
+				7EE3F5522A6137D700764E86 /* DOSSaemmul.ttf in Resources */,
 				7E29DE6A2A5BCE3E00718C17 /* Preview Assets.xcassets in Resources */,
+				7EE3F5512A6137D700764E86 /* DOSPilgi.ttf in Resources */,
+				7EE3F5572A6137D700764E86 /* MiraeroNormal.ttf in Resources */,
 				7E29DE672A5BCE3E00718C17 /* Assets.xcassets in Resources */,
+				7EE3F5552A6137D700764E86 /* DOSGothic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,11 +306,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				C26CC4D22A5BED3D00E3F881 /* GradientBackgroundView.swift in Sources */,
+				7E1B06CE2A5BF5C20072ED3F /* CoreDataStore.swift in Sources */,
+				7EA424282A5D382700D0709B /* DreamEgg.xcdatamodeld in Sources */,
 				7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */,
+				7EE3F55A2A61389500764E86 /* FontTestView.swift in Sources */,
+				7E03693B2A657F430032DB8F /* DateFormatter+init.swift in Sources */,
 				7E29DE6F2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld in Sources */,
+				20472BF42A5F13BC00E50841 /* SleepTimeSettingView.swift in Sources */,
+				20472BF62A5F197500E50841 /* MainEggsView.swift in Sources */,
 				7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */,
+				7E2214752A65077A0087F520 /* Font+DosIyagi.swift in Sources */,
+				7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */,
+				7E1B06D12A5BF9BC0072ED3F /* CoreDataTestView.swift in Sources */,
+				932D59C52A600F270011F896 /* HapticManager.swift in Sources */,
+				AEE9E2F32A5BE9BD00D24A71 /* LocalNotificationView.swift in Sources */,
+				7E0369372A6522820032DB8F /* DECalendarTestView.swift in Sources */,
+				AE30B5CA2A5E8EA100F9250C /* LocalNotificationStore.swift in Sources */,
 				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
-				7E1B06C12A5BE6F40072ED3F /* UserSleepTime.swift in Sources */,
+				932D59C32A600E190011F896 /* HapticFeedbackTestView.swift in Sources */,
+				7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */,
+				7E706BE52A66CF7100E1737F /* Date+Utilities.swift in Sources */,
+				7E0369352A6521E30032DB8F /* Calendar+Weekdays.swift in Sources */,
+				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
+				7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */,
+				7EE3F5472A61269300764E86 /* Color+Palette.swift in Sources */,
+				AEE9E2F32A5BE9BD00D24A71 /* LocalNotificationView.swift in Sources */,
+				7E0369332A6520D80032DB8F /* DECalendar.swift in Sources */,
+				AE30B5CA2A5E8EA100F9250C /* LocalNotificationStore.swift in Sources */,
+				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
+				93AF35562A5EBC8F000063ED /* MapTestView.swift in Sources */,
+				7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */,
+				7E0369392A6529D00032DB8F /* Date+StartDates.swift in Sources */,
+				93ADAC822A5C2CE1000E27AD /* MapViewStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,9 +466,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
+				DEVELOPMENT_TEAM = 834B9VMHHG;
 				DEVELOPMENT_TEAM = 67M6ZS7KS6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DreamEgg/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -336,9 +497,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
+				DEVELOPMENT_TEAM = 834B9VMHHG;
 				DEVELOPMENT_TEAM = 67M6ZS7KS6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DreamEgg/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -381,12 +544,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		7E29DE6D2A5BCE3E00718C17 /* DreamEgg.xcdatamodeld */ = {
+		7EA424262A5D382700D0709B /* DreamEgg.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				7E29DE6E2A5BCE3E00718C17 /* DreamEgg.xcdatamodel */,
+				7EA424272A5D382700D0709B /* DreamEgg.xcdatamodel */,
 			);
-			currentVersion = 7E29DE6E2A5BCE3E00718C17 /* DreamEgg.xcdatamodel */;
+			currentVersion = 7EA424272A5D382700D0709B /* DreamEgg.xcdatamodel */;
 			path = DreamEgg.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
