@@ -9,16 +9,21 @@ import SwiftUI
 
 struct EggInteractionTestView: View {
     @State var points: [CGPoint] = []
+    @State var isDrawEgg = false
     var body: some View {
         ZStack {
             GradientBackgroundView()
-            EggDrawGesture()
-//                .frame(width: 300, height: 300)
+            if isDrawEgg {
+                PendulumAnimation(imageName: "BinyEgg", amplitude: 10.0, animationDuration: 1.0)
+                    .frame(width: 300, height: 300)
+                Button("reset") {
+                    isDrawEgg = false
+                }
+            } else {
+                EggDrawGesture(isDrawEgg: $isDrawEgg)
+                
+            }
         }
-            
-            //            PendulumAnimation(imageName: "BinyEgg", amplitude: 10.0, animationDuration: 1.0)
-            //                .frame(width: 300, height: 300)
-        
     }
 }
 

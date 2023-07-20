@@ -7,27 +7,34 @@
 
 import SwiftUI
 
-//MARK: 달걀 그림 그리는 제스처
+//MARK: 달걀 그림 그리는 뷰
 struct EggDrawGesture: View {
     @State var points: [CGPoint] = []
-
+    @Binding var isDrawEgg: Bool
+    
+    let includeEllipsePath = Ellipse()
+        .path(in: CGRect(x: UIScreen.main.bounds.width/2 - 280/2, y: UIScreen.main.bounds.height/2 - 360/2 - 40, width: 280, height: 360))
+    let exceptEllipsePath = Ellipse()
+        .path(in: CGRect(x: UIScreen.main.bounds.width/2 - 150/2, y: UIScreen.main.bounds.height/2 - 220/2 - 40, width: 160, height: 230))
     var body: some View {
         ZStack {
             Image("emptyEgg")
-//            Ellipse()
-//                .stroke(style: StrokeStyle(lineWidth: 70, lineCap: .round))
-//                .foregroundColor(.green)
-//                .frame(width: 200, height: 300)
-//                .opacity(0.5)
             DrawShape(points: points)
                 .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round))
                 .foregroundColor(.white)
-                .opacity(0.7)
+                .opacity(0.7)    
         }
         .gesture(DragGesture().onChanged( { value in
-            self.addNewPoint(value)
+            if isPointInsideEllipse(value.location) {
+                self.addNewPoint(value)
+                print("count: \(points.count)")
+            }
         })
             .onEnded( { value in
+                if points.count >= 30 {
+                    isDrawEgg = true
+                    print("success")
+                }
                 points = []
             }))
         
@@ -35,6 +42,10 @@ struct EggDrawGesture: View {
     
     private func addNewPoint(_ value: DragGesture.Value) {
         points.append(value.location)
+    }
+    
+    private func isPointInsideEllipse(_ point: CGPoint) -> Bool {
+        return includeEllipsePath.contains(point) && !exceptEllipsePath.contains(point)
     }
 }
 
@@ -55,7 +66,7 @@ struct DrawShape: Shape {
         }
 }
 
-//MARK: 달걀 애니메이션
+//MARK: 달걀 애니메이션 뷰
 struct PendulumAnimation: View {
     @State private var rotationAngle: Angle = .degrees(0.0)
     @State private var direction: CGFloat = 1.0
