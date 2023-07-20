@@ -9,7 +9,27 @@ import SwiftUI
 
 struct LofiDreamWorldView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            GradientBackgroundView()
+            
+            VStack {
+                Image("DreamWorldMap")
+                    .resizable()
+                    .frame(
+                        maxHeight: UIScreen.main.bounds.height * 0.75,
+                        alignment: .bottom
+                    )
+                    .aspectRatio(contentMode: .fit)
+                    .padding()
+            }
+            .frame(
+                maxHeight: .infinity,
+                alignment: .bottom
+            )
+            
+        }
+        .navigationTitle("Dream World")
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 

@@ -68,7 +68,8 @@ struct LofiSleepGuideView: View {
                                     
                                     RoundedRectangle(cornerRadius: 10)
                                         .fill(Color.white)
-                                        .frame(width: 8, height: 54)
+                                        .frame(width: 8, height: 88)
+                                        .padding(.trailing, 4)
                                 }
                             }
                         }

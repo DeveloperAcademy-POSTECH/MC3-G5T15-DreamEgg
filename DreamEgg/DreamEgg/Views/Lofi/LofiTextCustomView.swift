@@ -57,7 +57,8 @@ struct LofiTextCustomView: View {
                 Spacer()
                 
                 NavigationLink {
-                    MainEggsView(countDown: 1000)
+//                    MainEggsView(countDown: 1000)
+                    LofiMainEggView()
                 } label: {
                     Text("이렇게 알림을 보내주세요")
                         .frame(maxWidth: .infinity)
@@ -74,7 +75,8 @@ struct LofiTextCustomView: View {
                 .padding()
                 
                 NavigationLink {
-                    MainEggsView(countDown: 1000)
+//                    MainEggsView(countDown: 1000)
+                    LofiMainEggView()
                 } label: {
                     Text("건너뛰기")
                         .foregroundColor(.subButtonSky)
@@ -82,7 +84,7 @@ struct LofiTextCustomView: View {
                 }
             }
         }
-        
+        .navigationBarBackButtonHidden()
     }
 }
 

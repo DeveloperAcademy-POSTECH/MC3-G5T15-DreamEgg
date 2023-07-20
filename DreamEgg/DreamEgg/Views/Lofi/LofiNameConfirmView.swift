@@ -9,7 +9,43 @@ import SwiftUI
 
 struct LofiNameConfirmView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            GradientBackgroundView()
+            
+            VStack {
+                Spacer()
+                    .frame(maxHeight: 100)
+                
+                Text("토순이(가)\n드림월드로\n뛰어들어갔다!")
+                    .font(.dosIyagiBold(.title))
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
+                VStack {
+                    NavigationLink {
+                        LofiDreamWorldView()
+                    } label: {
+                        Text("드림월드 둘러보기")
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
+                            .foregroundColor(.primaryButtonBrown)
+                            .font(.dosIyagiBold(.body))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.primaryButtonBrown, lineWidth: 5)
+                            }
+                    }
+                    .background { Color.primaryButtonYellow }
+                    .cornerRadius(8)
+                    .padding()
+                }
+                .frame(
+                    maxHeight: .infinity,
+                    alignment: .bottom
+                )
+            }
+            .frame(maxHeight: .infinity, alignment: .top)
+        }
     }
 }
 
