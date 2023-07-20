@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct EggInteractionTestView: View {
+    @State var points: [CGPoint] = []
     var body: some View {
-        VStack {
-//            Image("BinyEgg")
-//                .resizable()
+        ZStack {
+            GradientBackgroundView()
+            EggDrawGesture()
 //                .frame(width: 300, height: 300)
-            PendulumAnimation(imageName: "BinyEgg", amplitude: 10.0, animationDuration: 1.0)
-                .frame(width: 300, height: 300)
         }
+            
+            //            PendulumAnimation(imageName: "BinyEgg", amplitude: 10.0, animationDuration: 1.0)
+            //                .frame(width: 300, height: 300)
+        
     }
 }
 

@@ -7,10 +7,55 @@
 
 import SwiftUI
 
-class EggInteraction: ObservableObject {
+//MARK: 달걀 그림 그리는 제스처
+struct EggDrawGesture: View {
+    @State var points: [CGPoint] = []
+
+    var body: some View {
+        ZStack {
+            Image("emptyEgg")
+//            Ellipse()
+//                .stroke(style: StrokeStyle(lineWidth: 70, lineCap: .round))
+//                .foregroundColor(.green)
+//                .frame(width: 200, height: 300)
+//                .opacity(0.5)
+            DrawShape(points: points)
+                .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                .foregroundColor(.white)
+                .opacity(0.7)
+        }
+        .gesture(DragGesture().onChanged( { value in
+            self.addNewPoint(value)
+        })
+            .onEnded( { value in
+                points = []
+            }))
+        
+    }
     
+    private func addNewPoint(_ value: DragGesture.Value) {
+        points.append(value.location)
+    }
 }
 
+//MARK: 달걀 그림 선
+struct DrawShape: Shape {
+    var points: [CGPoint]
+
+        func path(in rect: CGRect) -> Path {
+            var path = Path()
+            guard let firstPoint = points.first else { return path }
+
+            path.move(to: firstPoint)
+            for pointIndex in 1..<points.count {
+                path.addLine(to: points[pointIndex])
+
+            }
+            return path
+        }
+}
+
+//MARK: 달걀 애니메이션
 struct PendulumAnimation: View {
     @State private var rotationAngle: Angle = .degrees(0.0)
     @State private var direction: CGFloat = 1.0
@@ -19,8 +64,7 @@ struct PendulumAnimation: View {
     let imageName: String
     let amplitude: CGFloat
     let animationDuration: Double
-    let width = UIScreen.main.bounds.size.width
-
+    
     var body: some View {
         Image(imageName)
             .resizable()
