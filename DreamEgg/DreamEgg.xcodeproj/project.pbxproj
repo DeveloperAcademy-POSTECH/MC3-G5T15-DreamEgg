@@ -28,6 +28,11 @@
 		7E7E4CD12A68182500638A5D /* LofiTextCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E4CD02A68182500638A5D /* LofiTextCustomView.swift */; };
 		7E7E4CD42A681FB800638A5D /* LofiSleepGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E4CD32A681FB800638A5D /* LofiSleepGuideView.swift */; };
 		7E7E4CD62A6831DB00638A5D /* LofiAwakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E4CD52A6831DB00638A5D /* LofiAwakeView.swift */; };
+		7E97BADF2A68E5070095A58E /* LofiCurtainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97BADE2A68E5070095A58E /* LofiCurtainView.swift */; };
+		7EA000CD2A6920F800D86BE8 /* LofiCreatureNamingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA000CC2A6920F800D86BE8 /* LofiCreatureNamingView.swift */; };
+		7EA000CF2A69234100D86BE8 /* LofiNameConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA000CE2A69234100D86BE8 /* LofiNameConfirmView.swift */; };
+		7EA000D12A692C4E00D86BE8 /* LofiDreamWorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA000D02A692C4E00D86BE8 /* LofiDreamWorldView.swift */; };
+		7EA000D32A692D4500D86BE8 /* LofiMainEggView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA000D22A692D4500D86BE8 /* LofiMainEggView.swift */; };
 		7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */; };
 		7EA424282A5D382700D0709B /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424262A5D382700D0709B /* DreamEgg.xcdatamodeld */; };
 		7EE3F5472A61269300764E86 /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3F5462A61269300764E86 /* Color+Palette.swift */; };
@@ -70,6 +75,11 @@
 		7E7E4CD02A68182500638A5D /* LofiTextCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiTextCustomView.swift; sourceTree = "<group>"; };
 		7E7E4CD32A681FB800638A5D /* LofiSleepGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiSleepGuideView.swift; sourceTree = "<group>"; };
 		7E7E4CD52A6831DB00638A5D /* LofiAwakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiAwakeView.swift; sourceTree = "<group>"; };
+		7E97BADE2A68E5070095A58E /* LofiCurtainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiCurtainView.swift; sourceTree = "<group>"; };
+		7EA000CC2A6920F800D86BE8 /* LofiCreatureNamingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiCreatureNamingView.swift; sourceTree = "<group>"; };
+		7EA000CE2A69234100D86BE8 /* LofiNameConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiNameConfirmView.swift; sourceTree = "<group>"; };
+		7EA000D02A692C4E00D86BE8 /* LofiDreamWorldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiDreamWorldView.swift; sourceTree = "<group>"; };
+		7EA000D22A692D4500D86BE8 /* LofiMainEggView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiMainEggView.swift; sourceTree = "<group>"; };
 		7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySleepTimeStore.swift; sourceTree = "<group>"; };
 		7EA424272A5D382700D0709B /* DreamEgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamEgg.xcdatamodel; sourceTree = "<group>"; };
 		7EE3F5462A61269300764E86 /* Color+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Palette.swift"; sourceTree = "<group>"; };
@@ -203,8 +213,13 @@
 			isa = PBXGroup;
 			children = (
 				7E7E4CD02A68182500638A5D /* LofiTextCustomView.swift */,
+				7EA000D22A692D4500D86BE8 /* LofiMainEggView.swift */,
 				7E7E4CD32A681FB800638A5D /* LofiSleepGuideView.swift */,
 				7E7E4CD52A6831DB00638A5D /* LofiAwakeView.swift */,
+				7E97BADE2A68E5070095A58E /* LofiCurtainView.swift */,
+				7EA000CC2A6920F800D86BE8 /* LofiCreatureNamingView.swift */,
+				7EA000CE2A69234100D86BE8 /* LofiNameConfirmView.swift */,
+				7EA000D02A692C4E00D86BE8 /* LofiDreamWorldView.swift */,
 			);
 			path = Lofi;
 			sourceTree = "<group>";
@@ -330,6 +345,8 @@
 				7E03693B2A657F430032DB8F /* DateFormatter+init.swift in Sources */,
 				7E29DE6F2A5BCE3E00718C17 /* (null) in Sources */,
 				20472BF42A5F13BC00E50841 /* SleepTimeSettingView.swift in Sources */,
+				7EA000D32A692D4500D86BE8 /* LofiMainEggView.swift in Sources */,
+				7EA000D12A692C4E00D86BE8 /* LofiDreamWorldView.swift in Sources */,
 				20472BF62A5F197500E50841 /* MainEggsView.swift in Sources */,
 				7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */,
 				7E2214752A65077A0087F520 /* Font+DosIyagi.swift in Sources */,
@@ -341,14 +358,17 @@
 				7E0369372A6522820032DB8F /* DECalendarTestView.swift in Sources */,
 				AE30B5CA2A5E8EA100F9250C /* LocalNotificationStore.swift in Sources */,
 				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
+				7E97BADF2A68E5070095A58E /* LofiCurtainView.swift in Sources */,
 				932D59C32A600E190011F896 /* HapticFeedbackTestView.swift in Sources */,
 				7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */,
+				7EA000CF2A69234100D86BE8 /* LofiNameConfirmView.swift in Sources */,
 				7E7E4CD62A6831DB00638A5D /* LofiAwakeView.swift in Sources */,
 				7E706BE52A66CF7100E1737F /* Date+Utilities.swift in Sources */,
 				7E0369352A6521E30032DB8F /* Calendar+Weekdays.swift in Sources */,
 				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
 				7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */,
 				7EE3F5472A61269300764E86 /* Color+Palette.swift in Sources */,
+				7EA000CD2A6920F800D86BE8 /* LofiCreatureNamingView.swift in Sources */,
 				AEE9E2F32A5BE9BD00D24A71 /* LocalNotificationView.swift in Sources */,
 				7E0369332A6520D80032DB8F /* DECalendar.swift in Sources */,
 				AE30B5CA2A5E8EA100F9250C /* LocalNotificationStore.swift in Sources */,
