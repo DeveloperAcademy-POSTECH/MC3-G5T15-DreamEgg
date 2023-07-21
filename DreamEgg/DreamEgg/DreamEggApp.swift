@@ -9,7 +9,11 @@ import SwiftUI
 
 @main
 struct DreamEggApp: App {
-    let testing = true
+    @StateObject private var coreDataStore = DailySleepTimeStore(
+        coreDataStore: .debugShared
+    )
+    
+    let testing = false
 
     var body: some Scene {
         WindowGroup {
@@ -18,7 +22,8 @@ struct DreamEggApp: App {
 //                FontTestView()
 //                SleepTimeSettingView()
 //                DECalendarTestView()
-                LofiSleepGuideView()
+//                LofiSleepGuideView()
+                LofiCurtainView()
             } else {
                 ContentView()
             }
