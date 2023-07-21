@@ -9,21 +9,39 @@ import SwiftUI
 
 struct EggInteractionTestView: View {
     @State var points: [CGPoint] = []
-    @State var isDrawEgg = false
+    @StateObject private var eggDrawStore = EggDrawStore()
+    @StateObject private var eggAnimation = EggAnimation.shared
     var body: some View {
         ZStack {
             GradientBackgroundView()
-            if isDrawEgg {
-                PendulumAnimation(imageName: "BinyEgg", amplitude: 10.0, animationDuration: 1.0)
-                    .frame(width: 300, height: 300)
-                Button("reset") {
-                    isDrawEgg = false
+            if eggDrawStore.isDrawEgg {
+                VStack {
+                    Image("BinyEgg")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 300, height: 300)
+                        .rotationEffect(eggAnimation.rotationAngle, anchor: .bottom)
+                        .gesture(eggAnimation.dragGesture())
+                        .animation(Animation.easeInOut(duration: 1.0), value: eggAnimation.rotationAngle)
+                        .onAppear {
+                            eggAnimation.startPendulumAnimation()
+                        }
+                    Button("reset") {
+                        eggDrawStore.isDrawEgg = false
+                        eggAnimation.reset()
+                    }
                 }
             } else {
-                EggDrawGesture(isDrawEgg: $isDrawEgg)
-                
+                Image("emptyEgg")
+                DrawShape(points: eggDrawStore.points)
+                    .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                    .foregroundColor(.white)
+                    .opacity(0.7)
             }
+            
         }
+        .animation(eggDrawStore.isDrawEgg ? Animation.easeInOut : nil)
+        .gesture(eggDrawStore.gesture())
     }
 }
 
