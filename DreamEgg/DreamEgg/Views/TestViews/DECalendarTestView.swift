@@ -54,11 +54,13 @@ struct DECalendarTestView: View {
                     let lastDayInWeek = eachNthWeekLastDay(eachWeeksDays)
                     
                     VStack(alignment: .leading, spacing: 5) {
-                        Text("\(monthDayFormatter.string(from: selectedDate))월")
+//                        Text("\(monthDayFormatter.string(from: selectedDate))월")
+                        Text("Month: \(monthDayFormatter.string(from: selectedDate))")
                             .font(.dosIyagiBold(.title))
                         
                         HStack(spacing: -4) {
-                            Text("\(selectedDate.weekOfMonth(using: calendar))주차")
+//                            Text("\(selectedDate.weekOfMonth(using: calendar))주차")
+                            Text("\(selectedDate.weekOfMonth(using: calendar))th week")
                             
                             Text(" (\(monthDayFormatter.string(from: selectedDate)).\(dayFormatter.string(from: firstDayInWeek)).")
                                 .kerning(-0.75)
@@ -122,12 +124,15 @@ struct DECalendarTestView: View {
                     LazyVStack(pinnedViews: .sectionHeaders) {
                         Section {
                             HStack {
-                                Text("이 날은")
+//                                Text("이 날은")
+                                Text("You don't have a")
                                 
-                                Text("드림펫")
+//                                Text("드림펫")
+                                Text("Dreampet")
                                     .foregroundColor(.subButtonBlue)
                                     
-                                + Text("이 태어나지 않았어요.")
+//                                + Text("이 태어나지 않았어요.")
+                                Text("born on this day.")
                             }
                             .font(.dosIyagiBold(.footnote))
                             .frame(maxWidth: .infinity)
@@ -172,10 +177,12 @@ struct DECalendarTestView: View {
                                     alignment: .leading,
                                     spacing: 8
                                 ) {
-                                    Text("꿔까")
+//                                    Text("꿔까")
+                                    Text("Sammy")
                                         .font(.dosIyagiBold(.callout))
                                     
-                                    Text("\(Date.now.description) 출생")
+//                                    Text("\(Date.now.description) 출생")
+                                    Text("Born on: \(Date.now.description)")
                                         .font(.dosIyagiBold(.footnote))
                                 }
                                 
@@ -206,6 +213,8 @@ struct DECalendarTestView: View {
                 }
             }
         }
+        .navigationTitle("Sleep Calendar")
+        .navigationBarTitleDisplayMode(.large)
     }
     
     // MARK: LifeCycle
