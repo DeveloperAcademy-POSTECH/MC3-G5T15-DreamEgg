@@ -8,87 +8,93 @@
 import SwiftUI
 
 struct LofiMainEggView: View {
+    @State private var tabSelection: Int = 1
+    
     var body: some View {
         ZStack {
             GradientBackgroundView()
             
-            VStack {
-                Spacer()
-                    .frame(maxHeight: 36)
-                
-                VStack {
-//                    Text("잠들기까지\n1시간 19분\n남았어요.")
-                    Text("1:19 left until\nfalling asleep")
-                        .font(.dosIyagiBold(.title))
-                        .foregroundColor(.white)
-                        .multilineTextAlignment(.center)
-                        .lineSpacing(12)
-                    
-                    NavigationLink {
-                        SleepTimeSettingView()
-                    } label: {
-//                        Text("시간 및 알림 수정하기")
-                        Text("Change \nsleep time / notification")
-                            .font(.dosIyagiBold(.body))
-                            .foregroundColor(.white)
-                            .overlay {
-                                VStack {
-                                    Divider()
-                                        .frame(minHeight: 2)
-                                        .overlay(Color.white)
-//                                        .offset(y: 12)
-                                        .offset(y: 20)
-                                }
-                            }
-                            .padding()
+            TabView(selection: $tabSelection) {
+                DECalendarTestView()
+                    .tag(0)
+                    .tabItem {
+                        Image("CalendarTabIcon")
                     }
-
-                }
-                .frame(maxWidth: .infinity)
-                .overlay(alignment: .topTrailing) {
-                    VStack(spacing: 16) {
-                        NavigationLink {
-                            DECalendarTestView()
-                        } label: {
-                            Image("CalendarIcon")
-                        }
+                
+                // MARK: Main Egg
+                VStack {
+                    Spacer()
+                        .frame(maxHeight: 36)
+                    
+                    VStack {
+    //                    Text("잠들기까지\n1시간 19분\n남았어요.")
+                        Text("1:19 left until\nfalling asleep")
+                            .font(.dosIyagiBold(.title))
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(12)
                         
                         NavigationLink {
-                            LofiDreamWorldView()
+                            SleepTimeSettingView()
                         } label: {
-                            Image("DreamWorldIcon")
-                        }
-                    }
-                    .padding(.horizontal, 22)
-                }
-                
-                Spacer()
-                    .frame(maxHeight: 80)
-                
-                NavigationLink {
-                    LofiSleepGuideView()
-                        .navigationBarBackButtonHidden()
-                } label: {
-                    Ellipse()
-                        .stroke(
-                            Color.white,
-                            style: StrokeStyle(
-                                lineWidth: 10,
-                                dash: [8],
-                                dashPhase: 6
-                            )
-                        )
-                        .frame(maxWidth: 200, maxHeight: 270)
-                        .overlay {
-//                            Text("탭해서 \n알그리기")
-                            Text("Tap to\nDraw an egg")
+    //                        Text("시간 및 알림 수정하기")
+                            Text("Change \nsleep time / notification")
                                 .font(.dosIyagiBold(.body))
                                 .foregroundColor(.white)
+                                .overlay {
+                                    VStack {
+                                        Divider()
+                                            .frame(minHeight: 2)
+                                            .overlay(Color.white)
+    //                                        .offset(y: 12)
+                                            .offset(y: 20)
+                                    }
+                                }
+                                .padding()
                         }
+
+                    }
+                    .frame(maxWidth: .infinity)
                     
+                    Spacer()
+                        .frame(maxHeight: 80)
+                    
+                    NavigationLink {
+                        LofiSleepGuideView()
+                            .navigationBarBackButtonHidden()
+                    } label: {
+                        Ellipse()
+                            .stroke(
+                                Color.white,
+                                style: StrokeStyle(
+                                    lineWidth: 10,
+                                    dash: [8],
+                                    dashPhase: 6
+                                )
+                            )
+                            .frame(maxWidth: 200, maxHeight: 270)
+                            .overlay {
+    //                            Text("탭해서 \n알그리기")
+                                Text("Tap to\nDraw an egg")
+                                    .font(.dosIyagiBold(.body))
+                                    .foregroundColor(.white)
+                            }
+                        
+                    }
                 }
+                .frame(maxHeight: .infinity, alignment: .top)
+                .tag(1)
+                .tabItem {
+                    Image("DreamEggTabIcon")
+                }
+                
+                LofiDreamWorldView()
+                    .tag(2)
+                    .tabItem {
+                        Image("DreamWorldTabIcon")
+                    }
             }
-            .frame(maxHeight: .infinity, alignment: .top)
+            .tabViewStyle(.page)
             
         }
         .navigationBarBackButtonHidden()
@@ -97,6 +103,8 @@ struct LofiMainEggView: View {
 
 struct LofiMainEggView_Previews: PreviewProvider {
     static var previews: some View {
-        LofiMainEggView()
+        NavigationStack {
+            LofiMainEggView()
+        }
     }
 }

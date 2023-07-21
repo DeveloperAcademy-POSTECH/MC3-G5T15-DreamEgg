@@ -9,32 +9,37 @@ import SwiftUI
 
 struct LofiDreamWorldView: View {
     var body: some View {
-        ZStack {
-            GradientBackgroundView()
-            
-            VStack {
-                Image("DreamWorldMap")
-                    .resizable()
-                    .frame(
-                        maxHeight: UIScreen.main.bounds.height * 0.75,
-                        alignment: .bottom
-                    )
-                    .aspectRatio(contentMode: .fit)
-                    .padding()
+        VStack {
+            HStack {
+                Text("Dream World")
+                    .font(.dosIyagiBold(.largeTitle))
+                    .bold()
+                
+                Spacer()
             }
-            .frame(
-                maxHeight: .infinity,
-                alignment: .bottom
-            )
+            .padding(.horizontal, 20)
             
+            Spacer()
+                .frame(maxHeight: 24)
+            
+            Image("DreamWorldMap")
+                .resizable()
+                .frame(
+                    maxHeight: .infinity
+                )
+                .aspectRatio(contentMode: .fit)
+                .padding()
         }
-        .navigationTitle("Dream World")
-        .navigationBarTitleDisplayMode(.large)
+        .frame(
+            maxHeight: .infinity
+        )
+        .padding(.bottom, 12)
     }
 }
 
 struct LofiDreamWorldView_Previews: PreviewProvider {
     static var previews: some View {
-        LofiDreamWorldView()
+//        LofiDreamWorldView()
+        LofiMainEggView()
     }
 }

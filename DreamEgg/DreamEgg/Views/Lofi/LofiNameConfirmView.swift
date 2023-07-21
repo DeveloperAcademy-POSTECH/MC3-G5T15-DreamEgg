@@ -24,7 +24,11 @@ struct LofiNameConfirmView: View {
                 
                 VStack {
                     NavigationLink {
-                        LofiDreamWorldView()
+                        ZStack {
+                            GradientBackgroundView()
+                            
+                            LofiDreamWorldView()
+                        }
                     } label: {
 //                        Text("드림월드 둘러보기")
                         Text("Explore the Dream World")
