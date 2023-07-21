@@ -44,8 +44,7 @@ struct DECalendar<DayLabel: View, Header: View, WeekSwitcher: View>: View {
                             
                     }
                 }
-                
-                Divider()
+                .padding(.bottom)
             }
             .frame(
                 maxWidth: .infinity,
