@@ -17,7 +17,8 @@ struct LofiMainEggView: View {
                     .frame(maxHeight: 36)
                 
                 VStack {
-                    Text("잠들기까지\n1시간 19분\n남았어요.")
+//                    Text("잠들기까지\n1시간 19분\n남았어요.")
+                    Text("1:19 left until\nfalling asleep")
                         .font(.dosIyagiBold(.title))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
@@ -26,7 +27,8 @@ struct LofiMainEggView: View {
                     NavigationLink {
                         SleepTimeSettingView()
                     } label: {
-                        Text("시간 및 알림 수정하기")
+//                        Text("시간 및 알림 수정하기")
+                        Text("Change \nsleep time / notification")
                             .font(.dosIyagiBold(.body))
                             .foregroundColor(.white)
                             .overlay {
@@ -34,7 +36,8 @@ struct LofiMainEggView: View {
                                     Divider()
                                         .frame(minHeight: 2)
                                         .overlay(Color.white)
-                                        .offset(y: 12)
+//                                        .offset(y: 12)
+                                        .offset(y: 20)
                                 }
                             }
                             .padding()
@@ -77,7 +80,8 @@ struct LofiMainEggView: View {
                         )
                         .frame(maxWidth: 200, maxHeight: 270)
                         .overlay {
-                            Text("탭해서\n알그리기")
+//                            Text("탭해서 \n알그리기")
+                            Text("Tap to\nDraw an egg")
                                 .font(.dosIyagiBold(.body))
                                 .foregroundColor(.white)
                         }

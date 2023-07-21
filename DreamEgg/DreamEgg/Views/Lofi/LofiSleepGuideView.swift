@@ -116,7 +116,8 @@ struct LofiSleepGuideView: View {
                             sleepGuideSteps = .start
                         }
                     } label: {
-                        Text("다시 하기")
+//                        Text("다시 하기")
+                        Text("Repeat Again")
                             .foregroundColor(.subButtonSky)
                             .font(.dosIyagiBold(.callout))
                     }
@@ -142,30 +143,39 @@ struct LofiSleepGuideView: View {
     private func guideHeaderText() -> some View {
         switch sleepGuideSteps {
         case .start:
-            return Text("저희가 오늘 수면을 도와드릴게요.")
+//            return Text("저희가 오늘 수면을 도와드릴게요.")
+            return Text("We will help you fall asleep.")
         case .breath:
-            return Text("먼저,\n심호흡을 해보세요.")
+//            return Text("먼저,\n심호흡을 해보세요.")
+            return Text("First, \nTake a deep breath.")
         case .release:
-            return Text("천천히, 그리고 오래동안\n온 몸에 힘을 빼세요.")
+//            return Text("천천히, 그리고 오래동안\n온 몸에 힘을 빼세요.")
+            return Text("Slowly relax your whole body.")
         case .hug:
-            return Text("끝까지 몸을 이완시키는\n느낌에 집중하면서\n오늘의 알을 품어주세요.")
+//            return Text("끝까지 몸을 이완시키는\n느낌에 집중하면서\n오늘의 알을 품어주세요.")
+            return Text("Feel your body relaxing and focus.")
         case .darkening:
-            return Text("홀드 버튼을 눌러서\n알이 잘 수 있도록 불을 꺼주세요.")
+//            return Text("홀드 버튼을 눌러서\n알이 잘 수 있도록 불을 꺼주세요.")
+            return Text("Push the Lock button\nTo incubate the egg.")
         }
     }
     
     private func sleepStepButtonLabel() -> some View {
         switch sleepGuideSteps {
         case .start:
-            return Text("네!")
+//            return Text("네!")
+            return Text("Yes!")
         case .breath:
-            return Text("후- 하-")
+//            return Text("후- 하-")
+            return Text("Inhale- Exhale-")
         case .release:
             return Text("...")
         case .hug:
-            return Text("알을 품자")
+//            return Text("알을 품자")
+            return Text("I'll go to sleep now.")
         case .darkening:
-            return Text("베개 밑에 알을 품고\n아침에 살피러 와주세요.")
+//            return Text("베개 밑에 알을 품고\n아침에 살피러 와주세요.")
+            return Text("Incubate the egg below the Pillow\nAnd comeback tomorrow morning.")
         }
     }
     

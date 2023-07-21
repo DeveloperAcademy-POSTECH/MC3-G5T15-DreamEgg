@@ -24,7 +24,8 @@ struct LofiCurtainView: View {
                 Spacer()
                     .frame(maxHeight: 100)
                 
-                Text(isCurtainDragComplete ? "품은 알에서 \n드림펫이 태어났어요!": "\n")
+//                Text(isCurtainDragComplete ? "품은 알에서 \n드림펫이 태어났어요!": "\n")
+                Text(isCurtainDragComplete ? "Dreampet has born \nfrom the Egg!" : "\n")
                     .font(.dosIyagiBold(.title))
                     .multilineTextAlignment(.center)
                     .frame(maxHeight: 200)
@@ -50,7 +51,8 @@ struct LofiCurtainView: View {
                     NavigationLink {
                         LofiCreatureNamingView()
                     } label: {
-                        Text("이름을 지어주자")
+//                        Text("이름을 지어주자")
+                        Text("Will You name the pet?")
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
                             .foregroundColor(.primaryButtonBrown)
@@ -67,7 +69,8 @@ struct LofiCurtainView: View {
                     Button {
                         print()
                     } label: {
-                        Text("건너뛰기")
+//                        Text("건너뛰기")
+                        Text("Skip")
                             .foregroundColor(.subButtonSky)
                             .font(.dosIyagiBold(.callout))
                     }
