@@ -10,14 +10,7 @@ import SwiftUI
 struct LofiDreamWorldView: View {
     var body: some View {
         VStack {
-            HStack {
-                Text("Dream World")
-                    .font(.dosIyagiBold(.largeTitle))
-                    .bold()
-                
-                Spacer()
-            }
-            .padding(.horizontal, 20)
+            DETitleHeader(title: "Dream World")
             
             Spacer()
                 .frame(maxHeight: 24)

@@ -21,14 +21,7 @@ struct DECalendarTestView: View {
             Spacer()
                 .frame(maxHeight: 30)
             
-            HStack {
-                Text("Calendar")
-                    .font(.dosIyagiBold(.largeTitle))
-                    .bold()
-                
-                Spacer()
-            }
-            .padding(.horizontal, 20)
+            DETitleHeader(title: "Calendar")
             
             DECalendar(
                 style: .week,
@@ -63,13 +56,13 @@ struct DECalendarTestView: View {
                 let lastDayInWeek = eachNthWeekLastDay(eachWeeksDays)
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    //                        Text("\(monthDayFormatter.string(from: selectedDate))월")
-                    Text("Month: \(monthDayFormatter.string(from: selectedDate))")
+                    Text("\(monthDayFormatter.string(from: selectedDate))월")
+
                         .font(.dosIyagiBold(.title))
                     
                     HStack(spacing: -4) {
-                        //                            Text("\(selectedDate.weekOfMonth(using: calendar))주차")
-                        Text("\(selectedDate.weekOfMonth(using: calendar))th week")
+                        Text("\(selectedDate.weekOfMonth(using: calendar))주차")
+
                         
                         Text(" (\(monthDayFormatter.string(from: selectedDate)).\(dayFormatter.string(from: firstDayInWeek)).")
                             .kerning(-0.75)
@@ -132,15 +125,12 @@ struct DECalendarTestView: View {
                 LazyVStack(pinnedViews: .sectionHeaders) {
                     Section {
                         HStack {
-                            //                                Text("이 날은")
-                            Text("You don't have a")
-                            
-                            //                                Text("드림펫")
-                            Text("Dreampet")
+                            Text("이 날은")
+
+                            Text("드림펫")
                                 .foregroundColor(.subButtonBlue)
                             
-                            //                                + Text("이 태어나지 않았어요.")
-                            Text("born on this day.")
+                            + Text("이 태어나지 않았어요.")
                         }
                         .font(.dosIyagiBold(.footnote))
                         .frame(maxWidth: .infinity)
@@ -185,12 +175,10 @@ struct DECalendarTestView: View {
                                 alignment: .leading,
                                 spacing: 8
                             ) {
-                                //                                    Text("꿔까")
-                                Text("Sammy")
+                                Text("꿔까")
                                     .font(.dosIyagiBold(.callout))
                                 
-                                //                                    Text("\(Date.now.description) 출생")
-                                Text("Born on: \(Date.now.description)")
+                                Text("\(timeFormatter.string(from: Date.now)) 출생")
                                     .font(.dosIyagiBold(.footnote))
                             }
                             
@@ -253,6 +241,10 @@ struct DECalendarTestView: View {
 
 struct DECalendarTestView_Previews: PreviewProvider {
     static var previews: some View {
-        DECalendarTestView()
+        ZStack {
+            GradientBackgroundView()
+            
+            DECalendarTestView()
+        }
     }
 }

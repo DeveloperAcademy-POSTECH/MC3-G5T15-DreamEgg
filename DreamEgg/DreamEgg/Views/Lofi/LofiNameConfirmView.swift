@@ -16,8 +16,7 @@ struct LofiNameConfirmView: View {
                 Spacer()
                     .frame(maxHeight: 100)
                 
-//                Text("토순이(가)\n드림월드로\n뛰어들어갔다!")
-                Text("Sammy has run into Dream World!")
+                Text("토순이(가)\n드림월드로\n뛰어들어갔다!")
                     .font(.dosIyagiBold(.title))
                     .multilineTextAlignment(.center)
                     .padding()
@@ -30,8 +29,7 @@ struct LofiNameConfirmView: View {
                             LofiDreamWorldView()
                         }
                     } label: {
-//                        Text("드림월드 둘러보기")
-                        Text("Explore the Dream World")
+                        Text("드림월드 둘러보기")
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
                             .foregroundColor(.primaryButtonBrown)

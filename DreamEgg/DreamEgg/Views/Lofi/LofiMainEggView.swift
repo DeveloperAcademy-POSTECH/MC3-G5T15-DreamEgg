@@ -26,9 +26,13 @@ struct LofiMainEggView: View {
                     Spacer()
                         .frame(maxHeight: 36)
                     
+                    DETitleHeader(title: "Dream Egg")
+                    
+                    Spacer()
+                        .frame(maxHeight: 36)
+                    
                     VStack {
-    //                    Text("잠들기까지\n1시간 19분\n남았어요.")
-                        Text("1:19 left until\nfalling asleep")
+                        Text("잠들기까지\n1시간 19분\n남았어요.")
                             .font(.dosIyagiBold(.title))
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
@@ -37,8 +41,7 @@ struct LofiMainEggView: View {
                         NavigationLink {
                             SleepTimeSettingView()
                         } label: {
-    //                        Text("시간 및 알림 수정하기")
-                            Text("Change \nsleep time / notification")
+                            Text("시간 및 알림 수정하기")
                                 .font(.dosIyagiBold(.body))
                                 .foregroundColor(.white)
                                 .overlay {
@@ -46,8 +49,7 @@ struct LofiMainEggView: View {
                                         Divider()
                                             .frame(minHeight: 2)
                                             .overlay(Color.white)
-    //                                        .offset(y: 12)
-                                            .offset(y: 20)
+                                            .offset(y: 12)
                                     }
                                 }
                                 .padding()
@@ -74,8 +76,7 @@ struct LofiMainEggView: View {
                             )
                             .frame(maxWidth: 200, maxHeight: 270)
                             .overlay {
-    //                            Text("탭해서 \n알그리기")
-                                Text("Tap to\nDraw an egg")
+                                Text("탭해서 \n알그리기")
                                     .font(.dosIyagiBold(.body))
                                     .foregroundColor(.white)
                             }
