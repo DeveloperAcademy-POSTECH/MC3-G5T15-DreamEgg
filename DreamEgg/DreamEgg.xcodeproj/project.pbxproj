@@ -7,55 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		20472BF42A5F13BC00E50841 /* SleepTimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20472BF32A5F13BC00E50841 /* SleepTimeSettingView.swift */; };
-		20472BF62A5F197500E50841 /* MainEggsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20472BF52A5F197500E50841 /* MainEggsView.swift */; };
-		7E0369332A6520D80032DB8F /* DECalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369322A6520D80032DB8F /* DECalendar.swift */; };
-		7E0369352A6521E30032DB8F /* Calendar+Weekdays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369342A6521E30032DB8F /* Calendar+Weekdays.swift */; };
-		7E0369372A6522820032DB8F /* DECalendarTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369362A6522820032DB8F /* DECalendarTestView.swift */; };
-		7E0369392A6529D00032DB8F /* Date+StartDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369382A6529D00032DB8F /* Date+StartDates.swift */; };
-		7E03693B2A657F430032DB8F /* DateFormatter+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E03693A2A657F430032DB8F /* DateFormatter+init.swift */; };
-		7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */; };
-		7E1B06CE2A5BF5C20072ED3F /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06CD2A5BF5C20072ED3F /* CoreDataStore.swift */; };
-		7E1B06D12A5BF9BC0072ED3F /* CoreDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06D02A5BF9BC0072ED3F /* CoreDataTestView.swift */; };
-		7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE642A5BCE3D00718C17 /* ContentView.swift */; };
+		7E0CB4D62A6C1ED100A74108 /* DreamEggApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE622A5BCE3D00718C17 /* DreamEggApp.swift */; };
+		7E0CB4D72A6C1ED100A74108 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC9C95A2A6BCCC800A23EAC /* Constants.swift */; };
+		7E0CB4D82A6C1ED100A74108 /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3F5462A61269300764E86 /* Color+Palette.swift */; };
+		7E0CB4D92A6C1ED100A74108 /* Font+DosIyagi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2214742A65077A0087F520 /* Font+DosIyagi.swift */; };
+		7E0CB4DA2A6C1ED100A74108 /* Calendar+Weekdays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369342A6521E30032DB8F /* Calendar+Weekdays.swift */; };
+		7E0CB4DB2A6C1ED100A74108 /* Date+StartDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369382A6529D00032DB8F /* Date+StartDates.swift */; };
+		7E0CB4DC2A6C1ED100A74108 /* Date+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E706BE42A66CF7100E1737F /* Date+Utilities.swift */; };
+		7E0CB4DD2A6C1ED100A74108 /* DateFormatter+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E03693A2A657F430032DB8F /* DateFormatter+init.swift */; };
+		7E0CB4DE2A6C1ED100A74108 /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06C02A5BE6F40072ED3F /* CoreDataContainer.swift */; };
+		7E0CB4DF2A6C1ED100A74108 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932D59C42A600F270011F896 /* HapticManager.swift */; };
+		7E0CB4E02A6C1ED100A74108 /* TimePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93284E7B2A680DDF00CCCDAE /* TimePickerModel.swift */; };
+		7E0CB4E12A6C1ED100A74108 /* ContentViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06BD2A5BE6E00072ED3F /* ContentViewStore.swift */; };
+		7E0CB4E22A6C1ED100A74108 /* EggInteractionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30B5CF2A6017D000F9250C /* EggInteractionStore.swift */; };
+		7E0CB4E32A6C1ED100A74108 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06CD2A5BF5C20072ED3F /* CoreDataStore.swift */; };
+		7E0CB4E42A6C1ED100A74108 /* DailySleepTimeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */; };
+		7E0CB4E52A6C1ED100A74108 /* UserSleepConfigStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC9C9582A6BBDC000A23EAC /* UserSleepConfigStore.swift */; };
+		7E0CB4E62A6C1ED100A74108 /* LocalNotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30B5C92A5E8EA100F9250C /* LocalNotificationStore.swift */; };
+		7E0CB4E72A6C1ED100A74108 /* MapViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ADAC812A5C2CE1000E27AD /* MapViewStore.swift */; };
+		7E0CB4E82A6C1ED100A74108 /* LofiSleepTimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8814492A6C1D0F00F29567 /* LofiSleepTimeSettingView.swift */; };
+		7E0CB4E92A6C1ED100A74108 /* LofiTextCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E4CD02A68182500638A5D /* LofiTextCustomView.swift */; };
+		7E0CB4EA2A6C1ED100A74108 /* LofiMainEggView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA000D22A692D4500D86BE8 /* LofiMainEggView.swift */; };
+		7E0CB4EB2A6C1ED100A74108 /* LofiSleepGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E4CD32A681FB800638A5D /* LofiSleepGuideView.swift */; };
+		7E0CB4EC2A6C1ED100A74108 /* LofiAwakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E4CD52A6831DB00638A5D /* LofiAwakeView.swift */; };
+		7E0CB4ED2A6C1ED100A74108 /* LofiCurtainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97BADE2A68E5070095A58E /* LofiCurtainView.swift */; };
+		7E0CB4EE2A6C1ED100A74108 /* LofiCreatureNamingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA000CC2A6920F800D86BE8 /* LofiCreatureNamingView.swift */; };
+		7E0CB4EF2A6C1ED100A74108 /* LofiNameConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA000CE2A69234100D86BE8 /* LofiNameConfirmView.swift */; };
+		7E0CB4F02A6C1ED100A74108 /* LofiDreamWorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA000D02A692C4E00D86BE8 /* LofiDreamWorldView.swift */; };
+		7E0CB4F12A6C1ED100A74108 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE642A5BCE3D00718C17 /* ContentView.swift */; };
+		7E0CB4F22A6C1ED100A74108 /* LocalNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8814472A6C1CF200F29567 /* LocalNotificationView.swift */; };
+		7E0CB4F32A6C1ED100A74108 /* MapTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8814452A6C1CE200F29567 /* MapTestView.swift */; };
+		7E0CB4F42A6C1ED100A74108 /* EggInteractionTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30B5CD2A6014FF00F9250C /* EggInteractionTestView.swift */; };
+		7E0CB4F52A6C1ED100A74108 /* DECalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369322A6520D80032DB8F /* DECalendar.swift */; };
+		7E0CB4F62A6C1ED100A74108 /* DETitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9208E2A6A6A78005DA817 /* DETitleHeader.swift */; };
+		7E0CB4F72A6C1ED100A74108 /* GradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26CC4D12A5BED3D00E3F881 /* GradientBackgroundView.swift */; };
+		7E0CB4F82A6C1ED100A74108 /* DETimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93284E7D2A68106200CCCDAE /* DETimePicker.swift */; };
+		7E0CB4F92A6C1ED100A74108 /* SleepTimeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20472BF32A5F13BC00E50841 /* SleepTimeSettingView.swift */; };
+		7E0CB4FA2A6C1ED100A74108 /* MainEggsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20472BF52A5F197500E50841 /* MainEggsView.swift */; };
+		7E0CB4FB2A6C1ED100A74108 /* CoreDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06D02A5BF9BC0072ED3F /* CoreDataTestView.swift */; };
+		7E0CB4FC2A6C1ED100A74108 /* TimePickerTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E4C8882A612B4E00E5408E /* TimePickerTestView.swift */; };
+		7E0CB4FD2A6C1ED100A74108 /* HapticFeedbackTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932D59C22A600E190011F896 /* HapticFeedbackTestView.swift */; };
+		7E0CB4FE2A6C1ED100A74108 /* FontTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3F5592A61389500764E86 /* FontTestView.swift */; };
+		7E0CB4FF2A6C1ED100A74108 /* DECalendarTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0369362A6522820032DB8F /* DECalendarTestView.swift */; };
+		7E0CB5002A6C1ED100A74108 /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424262A5D382700D0709B /* DreamEgg.xcdatamodeld */; };
 		7E29DE672A5BCE3E00718C17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E29DE662A5BCE3E00718C17 /* Assets.xcassets */; };
 		7E29DE6A2A5BCE3E00718C17 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E29DE692A5BCE3E00718C17 /* Preview Assets.xcassets */; };
-		7E29DE6F2A5BCE3E00718C17 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */; };
-		7EA424282A5D382700D0709B /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424262A5D382700D0709B /* DreamEgg.xcdatamodeld */; };
-		7EE3F5472A61269300764E86 /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3F5462A61269300764E86 /* Color+Palette.swift */; };
-		93ADAC822A5C2CE1000E27AD /* MapViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ADAC812A5C2CE1000E27AD /* MapViewStore.swift */; };
-		AE30B5CE2A6014FF00F9250C /* EggInteractionTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30B5CD2A6014FF00F9250C /* EggInteractionTestView.swift */; };
-		AE30B5D02A6017D000F9250C /* EggInteractionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30B5CF2A6017D000F9250C /* EggInteractionStore.swift */; };
-		AE806B0E2A65178700664612 /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06C02A5BE6F40072ED3F /* CoreDataContainer.swift */; };
-		AE806B0F2A6518AE00664612 /* DreamEggApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE622A5BCE3D00718C17 /* DreamEggApp.swift */; };
-		AE806B102A67B6C000664612 /* MapTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AF35552A5EBC8F000063ED /* MapTestView.swift */; };
-		AE806B112A67B6DA00664612 /* LocalNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */; };
-		AE806B122A67B6E100664612 /* LocalNotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30B5C92A5E8EA100F9250C /* LocalNotificationStore.swift */; };
-		7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06C02A5BE6F40072ED3F /* CoreDataContainer.swift */; };
-		7E1B06CE2A5BF5C20072ED3F /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06CD2A5BF5C20072ED3F /* CoreDataStore.swift */; };
-		7E1B06D12A5BF9BC0072ED3F /* CoreDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B06D02A5BF9BC0072ED3F /* CoreDataTestView.swift */; };
-		7E2214752A65077A0087F520 /* Font+DosIyagi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2214742A65077A0087F520 /* Font+DosIyagi.swift */; };
-		7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE622A5BCE3D00718C17 /* DreamEggApp.swift */; };
-		7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29DE642A5BCE3D00718C17 /* ContentView.swift */; };
-		7E29DE672A5BCE3E00718C17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E29DE662A5BCE3E00718C17 /* Assets.xcassets */; };
-		7E29DE6A2A5BCE3E00718C17 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E29DE692A5BCE3E00718C17 /* Preview Assets.xcassets */; };
-		7E29DE6F2A5BCE3E00718C17 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7E706BE52A66CF7100E1737F /* Date+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E706BE42A66CF7100E1737F /* Date+Utilities.swift */; };
-		7E7E4CD12A68182500638A5D /* LofiTextCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E4CD02A68182500638A5D /* LofiTextCustomView.swift */; };
-		7E7E4CD42A681FB800638A5D /* LofiSleepGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E4CD32A681FB800638A5D /* LofiSleepGuideView.swift */; };
-		7E7E4CD62A6831DB00638A5D /* LofiAwakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E4CD52A6831DB00638A5D /* LofiAwakeView.swift */; };
-		7E97BADF2A68E5070095A58E /* LofiCurtainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97BADE2A68E5070095A58E /* LofiCurtainView.swift */; };
-		7EA000CD2A6920F800D86BE8 /* LofiCreatureNamingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA000CC2A6920F800D86BE8 /* LofiCreatureNamingView.swift */; };
-		7EA000CF2A69234100D86BE8 /* LofiNameConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA000CE2A69234100D86BE8 /* LofiNameConfirmView.swift */; };
-		7EA000D12A692C4E00D86BE8 /* LofiDreamWorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA000D02A692C4E00D86BE8 /* LofiDreamWorldView.swift */; };
-		7EA000D32A692D4500D86BE8 /* LofiMainEggView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA000D22A692D4500D86BE8 /* LofiMainEggView.swift */; };
-		7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */; };
-		7EA424282A5D382700D0709B /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EA424262A5D382700D0709B /* DreamEgg.xcdatamodeld */; };
-		7EB9208F2A6A6A78005DA817 /* DETitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9208E2A6A6A78005DA817 /* DETitleHeader.swift */; };
-		7EC9C9592A6BBDC000A23EAC /* UserSleepConfigStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC9C9582A6BBDC000A23EAC /* UserSleepConfigStore.swift */; };
-		7EC9C95B2A6BCCC800A23EAC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC9C95A2A6BCCC800A23EAC /* Constants.swift */; };
-		7EE3F5472A61269300764E86 /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3F5462A61269300764E86 /* Color+Palette.swift */; };
 		7EE3F5512A6137D700764E86 /* DOSPilgi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EE3F54A2A6137D600764E86 /* DOSPilgi.ttf */; };
 		7EE3F5522A6137D700764E86 /* DOSSaemmul.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EE3F54B2A6137D600764E86 /* DOSSaemmul.ttf */; };
 		7EE3F5532A6137D700764E86 /* Sam3KRFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EE3F54C2A6137D600764E86 /* Sam3KRFont.ttf */; };
@@ -63,17 +59,6 @@
 		7EE3F5552A6137D700764E86 /* DOSGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EE3F54E2A6137D700764E86 /* DOSGothic.ttf */; };
 		7EE3F5562A6137D700764E86 /* DOSIyagiBoldface.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EE3F54F2A6137D700764E86 /* DOSIyagiBoldface.ttf */; };
 		7EE3F5572A6137D700764E86 /* MiraeroNormal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7EE3F5502A6137D700764E86 /* MiraeroNormal.ttf */; };
-		7EE3F55A2A61389500764E86 /* FontTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3F5592A61389500764E86 /* FontTestView.swift */; };
-		93284E7C2A680DDF00CCCDAE /* TimePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93284E7B2A680DDF00CCCDAE /* TimePickerModel.swift */; };
-		93284E7E2A68106200CCCDAE /* DETimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93284E7D2A68106200CCCDAE /* DETimePicker.swift */; };
-		932D59C32A600E190011F896 /* HapticFeedbackTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932D59C22A600E190011F896 /* HapticFeedbackTestView.swift */; };
-		932D59C52A600F270011F896 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932D59C42A600F270011F896 /* HapticManager.swift */; };
-		93ADAC822A5C2CE1000E27AD /* MapViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ADAC812A5C2CE1000E27AD /* MapViewStore.swift */; };
-		93AF35562A5EBC8F000063ED /* MapTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AF35552A5EBC8F000063ED /* MapTestView.swift */; };
-		93E4C8892A612B4E00E5408E /* TimePickerTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E4C8882A612B4E00E5408E /* TimePickerTestView.swift */; };
-		AE30B5CA2A5E8EA100F9250C /* LocalNotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE30B5C92A5E8EA100F9250C /* LocalNotificationStore.swift */; };
-		AEE9E2F32A5BE9BD00D24A71 /* LocalNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */; };
-		C26CC4D22A5BED3D00E3F881 /* GradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26CC4D12A5BED3D00E3F881 /* GradientBackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,20 +79,13 @@
 		7E29DE642A5BCE3D00718C17 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E29DE662A5BCE3E00718C17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E29DE692A5BCE3E00718C17 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7EA424242A5D32E900D0709B /* DailySleepTimeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySleepTimeStore.swift; sourceTree = "<group>"; };
-		7EA424272A5D382700D0709B /* DreamEgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamEgg.xcdatamodel; sourceTree = "<group>"; };
-		7EE3F5462A61269300764E86 /* Color+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Palette.swift"; sourceTree = "<group>"; };
-		93ADAC812A5C2CE1000E27AD /* MapViewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewStore.swift; sourceTree = "<group>"; };
-		93AF35552A5EBC8F000063ED /* MapTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTestView.swift; sourceTree = "<group>"; };
-		AE30B5C92A5E8EA100F9250C /* LocalNotificationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationStore.swift; sourceTree = "<group>"; };
-		AE30B5CD2A6014FF00F9250C /* EggInteractionTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EggInteractionTestView.swift; sourceTree = "<group>"; };
-		AE30B5CF2A6017D000F9250C /* EggInteractionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EggInteractionStore.swift; sourceTree = "<group>"; };
-		7E29DE6E2A5BCE3E00718C17 /* DreamEgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamEgg.xcdatamodel; sourceTree = "<group>"; };
-		C26CC4D12A5BED3D00E3F881 /* GradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackgroundView.swift; sourceTree = "<group>"; };
 		7E706BE42A66CF7100E1737F /* Date+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utilities.swift"; sourceTree = "<group>"; };
 		7E7E4CD02A68182500638A5D /* LofiTextCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiTextCustomView.swift; sourceTree = "<group>"; };
 		7E7E4CD32A681FB800638A5D /* LofiSleepGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiSleepGuideView.swift; sourceTree = "<group>"; };
 		7E7E4CD52A6831DB00638A5D /* LofiAwakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiAwakeView.swift; sourceTree = "<group>"; };
+		7E8814452A6C1CE200F29567 /* MapTestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapTestView.swift; path = TestViews/MapTestView.swift; sourceTree = "<group>"; };
+		7E8814472A6C1CF200F29567 /* LocalNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalNotificationView.swift; path = TestViews/LocalNotificationView.swift; sourceTree = "<group>"; };
+		7E8814492A6C1D0F00F29567 /* LofiSleepTimeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiSleepTimeSettingView.swift; sourceTree = "<group>"; };
 		7E97BADE2A68E5070095A58E /* LofiCurtainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiCurtainView.swift; sourceTree = "<group>"; };
 		7EA000CC2A6920F800D86BE8 /* LofiCreatureNamingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiCreatureNamingView.swift; sourceTree = "<group>"; };
 		7EA000CE2A69234100D86BE8 /* LofiNameConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiNameConfirmView.swift; sourceTree = "<group>"; };
@@ -133,10 +111,10 @@
 		932D59C22A600E190011F896 /* HapticFeedbackTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackTestView.swift; sourceTree = "<group>"; };
 		932D59C42A600F270011F896 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		93ADAC812A5C2CE1000E27AD /* MapViewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewStore.swift; sourceTree = "<group>"; };
-		93AF35552A5EBC8F000063ED /* MapTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTestView.swift; sourceTree = "<group>"; };
 		93E4C8882A612B4E00E5408E /* TimePickerTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerTestView.swift; sourceTree = "<group>"; };
 		AE30B5C92A5E8EA100F9250C /* LocalNotificationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationStore.swift; sourceTree = "<group>"; };
-		AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationView.swift; sourceTree = "<group>"; };
+		AE30B5CD2A6014FF00F9250C /* EggInteractionTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EggInteractionTestView.swift; sourceTree = "<group>"; };
+		AE30B5CF2A6017D000F9250C /* EggInteractionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EggInteractionStore.swift; sourceTree = "<group>"; };
 		C26CC4D12A5BED3D00E3F881 /* GradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,12 +143,10 @@
 		7E1B06BB2A5BE6CD0072ED3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7E29DE642A5BCE3D00718C17 /* ContentView.swift */,
 				7E7E4CD22A68182800638A5D /* Lofi */,
-				7E1B06CF2A5BF9B20072ED3F /* TestViews */,
-				AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */,
 				7E29DE642A5BCE3D00718C17 /* ContentView.swift */,
-				93AF35552A5EBC8F000063ED /* MapTestView.swift */,
+				7E8814472A6C1CF200F29567 /* LocalNotificationView.swift */,
+				7E8814452A6C1CE200F29567 /* MapTestView.swift */,
 				AE30B5CD2A6014FF00F9250C /* EggInteractionTestView.swift */,
 				7E0369312A6520D00032DB8F /* Components */,
 				7E1B06CF2A5BF9B20072ED3F /* TestViews */,
@@ -207,13 +183,11 @@
 			children = (
 				20472BF32A5F13BC00E50841 /* SleepTimeSettingView.swift */,
 				20472BF52A5F197500E50841 /* MainEggsView.swift */,
-				93AF35552A5EBC8F000063ED /* MapTestView.swift */,
 				7E1B06D02A5BF9BC0072ED3F /* CoreDataTestView.swift */,
 				93E4C8882A612B4E00E5408E /* TimePickerTestView.swift */,
 				932D59C22A600E190011F896 /* HapticFeedbackTestView.swift */,
 				7EE3F5592A61389500764E86 /* FontTestView.swift */,
 				7E0369362A6522820032DB8F /* DECalendarTestView.swift */,
-				AEE9E2F22A5BE9BD00D24A71 /* LocalNotificationView.swift */,
 			);
 			path = TestViews;
 			sourceTree = "<group>";
@@ -262,6 +236,7 @@
 		7E7E4CD22A68182800638A5D /* Lofi */ = {
 			isa = PBXGroup;
 			children = (
+				7E8814492A6C1D0F00F29567 /* LofiSleepTimeSettingView.swift */,
 				7E7E4CD02A68182500638A5D /* LofiTextCustomView.swift */,
 				7EA000D22A692D4500D86BE8 /* LofiMainEggView.swift */,
 				7E7E4CD32A681FB800638A5D /* LofiSleepGuideView.swift */,
@@ -387,68 +362,49 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE806B122A67B6E100664612 /* LocalNotificationStore.swift in Sources */,
-				AE806B112A67B6DA00664612 /* LocalNotificationView.swift in Sources */,
-				AE806B102A67B6C000664612 /* MapTestView.swift in Sources */,
-				AE806B0F2A6518AE00664612 /* DreamEggApp.swift in Sources */,
-				AE806B0E2A65178700664612 /* CoreDataContainer.swift in Sources */,
-				7E1B06CE2A5BF5C20072ED3F /* CoreDataStore.swift in Sources */,
-				7EA424282A5D382700D0709B /* DreamEgg.xcdatamodeld in Sources */,
-				7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */,
-				7E29DE6F2A5BCE3E00718C17 /* (null) in Sources */,
-				AE30B5CE2A6014FF00F9250C /* EggInteractionTestView.swift in Sources */,
-				7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */,
-				7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */,
-				7E1B06D12A5BF9BC0072ED3F /* CoreDataTestView.swift in Sources */,
-				AE30B5D02A6017D000F9250C /* EggInteractionStore.swift in Sources */,
-				7EE3F5472A61269300764E86 /* Color+Palette.swift in Sources */,
-				C26CC4D22A5BED3D00E3F881 /* GradientBackgroundView.swift in Sources */,
-				7E1B06CE2A5BF5C20072ED3F /* CoreDataStore.swift in Sources */,
-				7EA424282A5D382700D0709B /* DreamEgg.xcdatamodeld in Sources */,
-				7E7E4CD42A681FB800638A5D /* LofiSleepGuideView.swift in Sources */,
-				7E1B06BE2A5BE6E00072ED3F /* ContentViewStore.swift in Sources */,
-				7EE3F55A2A61389500764E86 /* FontTestView.swift in Sources */,
-				7EB9208F2A6A6A78005DA817 /* DETitleHeader.swift in Sources */,
-				7E03693B2A657F430032DB8F /* DateFormatter+init.swift in Sources */,
-				7E29DE6F2A5BCE3E00718C17 /* (null) in Sources */,
-				20472BF42A5F13BC00E50841 /* SleepTimeSettingView.swift in Sources */,
-				7EA000D32A692D4500D86BE8 /* LofiMainEggView.swift in Sources */,
-				7EA000D12A692C4E00D86BE8 /* LofiDreamWorldView.swift in Sources */,
-				20472BF62A5F197500E50841 /* MainEggsView.swift in Sources */,
-				7E29DE652A5BCE3D00718C17 /* ContentView.swift in Sources */,
-				7E2214752A65077A0087F520 /* Font+DosIyagi.swift in Sources */,
-				7EA424252A5D32E900D0709B /* DailySleepTimeStore.swift in Sources */,
-				7E1B06D12A5BF9BC0072ED3F /* CoreDataTestView.swift in Sources */,
-				932D59C52A600F270011F896 /* HapticManager.swift in Sources */,
-				7E7E4CD12A68182500638A5D /* LofiTextCustomView.swift in Sources */,
-				AEE9E2F32A5BE9BD00D24A71 /* LocalNotificationView.swift in Sources */,
-				7E0369372A6522820032DB8F /* DECalendarTestView.swift in Sources */,
-				AE30B5CA2A5E8EA100F9250C /* LocalNotificationStore.swift in Sources */,
-				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
-				7EC9C95B2A6BCCC800A23EAC /* Constants.swift in Sources */,
-				7E97BADF2A68E5070095A58E /* LofiCurtainView.swift in Sources */,
-				932D59C32A600E190011F896 /* HapticFeedbackTestView.swift in Sources */,
-				7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */,
-				7EC9C9592A6BBDC000A23EAC /* UserSleepConfigStore.swift in Sources */,
-				7EA000CF2A69234100D86BE8 /* LofiNameConfirmView.swift in Sources */,
-				7E7E4CD62A6831DB00638A5D /* LofiAwakeView.swift in Sources */,
-				7E706BE52A66CF7100E1737F /* Date+Utilities.swift in Sources */,
-				93284E7E2A68106200CCCDAE /* DETimePicker.swift in Sources */,
-				7E0369352A6521E30032DB8F /* Calendar+Weekdays.swift in Sources */,
-				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
-				7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */,
-				7EE3F5472A61269300764E86 /* Color+Palette.swift in Sources */,
-				7EA000CD2A6920F800D86BE8 /* LofiCreatureNamingView.swift in Sources */,
-				AEE9E2F32A5BE9BD00D24A71 /* LocalNotificationView.swift in Sources */,
-				7E0369332A6520D80032DB8F /* DECalendar.swift in Sources */,
-				93284E7C2A680DDF00CCCDAE /* TimePickerModel.swift in Sources */,
-				AE30B5CA2A5E8EA100F9250C /* LocalNotificationStore.swift in Sources */,
-				93E4C8892A612B4E00E5408E /* TimePickerTestView.swift in Sources */,
-				7E29DE632A5BCE3D00718C17 /* DreamEggApp.swift in Sources */,
-				93AF35562A5EBC8F000063ED /* MapTestView.swift in Sources */,
-				7E1B06C12A5BE6F40072ED3F /* CoreDataContainer.swift in Sources */,
-				7E0369392A6529D00032DB8F /* Date+StartDates.swift in Sources */,
-				93ADAC822A5C2CE1000E27AD /* MapViewStore.swift in Sources */,
+				7E0CB4D62A6C1ED100A74108 /* DreamEggApp.swift in Sources */,
+				7E0CB4D72A6C1ED100A74108 /* Constants.swift in Sources */,
+				7E0CB4D82A6C1ED100A74108 /* Color+Palette.swift in Sources */,
+				7E0CB4D92A6C1ED100A74108 /* Font+DosIyagi.swift in Sources */,
+				7E0CB4DA2A6C1ED100A74108 /* Calendar+Weekdays.swift in Sources */,
+				7E0CB4DB2A6C1ED100A74108 /* Date+StartDates.swift in Sources */,
+				7E0CB4DC2A6C1ED100A74108 /* Date+Utilities.swift in Sources */,
+				7E0CB4DD2A6C1ED100A74108 /* DateFormatter+init.swift in Sources */,
+				7E0CB4DE2A6C1ED100A74108 /* CoreDataContainer.swift in Sources */,
+				7E0CB4DF2A6C1ED100A74108 /* HapticManager.swift in Sources */,
+				7E0CB4E02A6C1ED100A74108 /* TimePickerModel.swift in Sources */,
+				7E0CB4E12A6C1ED100A74108 /* ContentViewStore.swift in Sources */,
+				7E0CB4E22A6C1ED100A74108 /* EggInteractionStore.swift in Sources */,
+				7E0CB4E32A6C1ED100A74108 /* CoreDataStore.swift in Sources */,
+				7E0CB4E42A6C1ED100A74108 /* DailySleepTimeStore.swift in Sources */,
+				7E0CB4E52A6C1ED100A74108 /* UserSleepConfigStore.swift in Sources */,
+				7E0CB4E62A6C1ED100A74108 /* LocalNotificationStore.swift in Sources */,
+				7E0CB4E72A6C1ED100A74108 /* MapViewStore.swift in Sources */,
+				7E0CB4E82A6C1ED100A74108 /* LofiSleepTimeSettingView.swift in Sources */,
+				7E0CB4E92A6C1ED100A74108 /* LofiTextCustomView.swift in Sources */,
+				7E0CB4EA2A6C1ED100A74108 /* LofiMainEggView.swift in Sources */,
+				7E0CB4EB2A6C1ED100A74108 /* LofiSleepGuideView.swift in Sources */,
+				7E0CB4EC2A6C1ED100A74108 /* LofiAwakeView.swift in Sources */,
+				7E0CB4ED2A6C1ED100A74108 /* LofiCurtainView.swift in Sources */,
+				7E0CB4EE2A6C1ED100A74108 /* LofiCreatureNamingView.swift in Sources */,
+				7E0CB4EF2A6C1ED100A74108 /* LofiNameConfirmView.swift in Sources */,
+				7E0CB4F02A6C1ED100A74108 /* LofiDreamWorldView.swift in Sources */,
+				7E0CB4F12A6C1ED100A74108 /* ContentView.swift in Sources */,
+				7E0CB4F22A6C1ED100A74108 /* LocalNotificationView.swift in Sources */,
+				7E0CB4F32A6C1ED100A74108 /* MapTestView.swift in Sources */,
+				7E0CB4F42A6C1ED100A74108 /* EggInteractionTestView.swift in Sources */,
+				7E0CB4F52A6C1ED100A74108 /* DECalendar.swift in Sources */,
+				7E0CB4F62A6C1ED100A74108 /* DETitleHeader.swift in Sources */,
+				7E0CB4F72A6C1ED100A74108 /* GradientBackgroundView.swift in Sources */,
+				7E0CB4F82A6C1ED100A74108 /* DETimePicker.swift in Sources */,
+				7E0CB4F92A6C1ED100A74108 /* SleepTimeSettingView.swift in Sources */,
+				7E0CB4FA2A6C1ED100A74108 /* MainEggsView.swift in Sources */,
+				7E0CB4FB2A6C1ED100A74108 /* CoreDataTestView.swift in Sources */,
+				7E0CB4FC2A6C1ED100A74108 /* TimePickerTestView.swift in Sources */,
+				7E0CB4FD2A6C1ED100A74108 /* HapticFeedbackTestView.swift in Sources */,
+				7E0CB4FE2A6C1ED100A74108 /* FontTestView.swift in Sources */,
+				7E0CB4FF2A6C1ED100A74108 /* DECalendarTestView.swift in Sources */,
+				7E0CB5002A6C1ED100A74108 /* DreamEgg.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,8 +533,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
-				DEVELOPMENT_TEAM = 67M6ZS7KS6;
-				DEVELOPMENT_TEAM = HFR7W36699;
 				DEVELOPMENT_TEAM = 834B9VMHHG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -609,8 +563,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
-				DEVELOPMENT_TEAM = 67M6ZS7KS6;
-				DEVELOPMENT_TEAM = HFR7W36699;
 				DEVELOPMENT_TEAM = 834B9VMHHG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
