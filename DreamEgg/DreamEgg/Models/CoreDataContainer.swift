@@ -72,3 +72,9 @@ struct DailySleepInfo {
     var date: Date
     var sleepTime: String
 }
+
+struct UserSleepConfigurationInfo {
+    var id: UUID
+    var targetSleepTime: Date
+    var notificationMessage: String
+}

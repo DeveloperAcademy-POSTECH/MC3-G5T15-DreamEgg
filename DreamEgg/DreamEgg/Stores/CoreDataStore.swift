@@ -20,7 +20,14 @@ final class CoreDataStore: NSObject, ObservableObject {
     fileprivate var managedObjectContext: NSManagedObjectContext
     
     private let dailySleepController: NSFetchedResultsController<DailySleep>
-    @Published public var dailySleep: Dictionary<UUID, DailySleep> = [:]
+    private let userSleepConfigController: NSFetchedResultsController<UserSleepConfiguration>
+    
+    @Published
+    public var dailySleep: Dictionary<UUID, DailySleep> = [:]
+    
+    @Published
+    public var userSleepConfig: Dictionary<UUID, UserSleepConfiguration> = [:]
+    
     
     // MARK: LIFECYCLE
     /**
@@ -30,8 +37,14 @@ final class CoreDataStore: NSObject, ObservableObject {
         let coreDataContainer = CoreDataContainer.getSharedInstance(with: storeType)
         self.managedObjectContext = coreDataContainer.context
         
+        // MARK: Daily Sleep Infos
         let dailySleepFetchRequest: NSFetchRequest<DailySleep> = DailySleep.fetchRequest()
-        dailySleepFetchRequest.sortDescriptors = [.init(key: "date", ascending: true)]
+        dailySleepFetchRequest.sortDescriptors = [
+            .init(
+                key: "date",
+                ascending: true
+            )
+        ]
         
         self.dailySleepController = NSFetchedResultsController(
             fetchRequest: dailySleepFetchRequest,
@@ -40,11 +53,29 @@ final class CoreDataStore: NSObject, ObservableObject {
             cacheName: nil
         )
         
+        // MARK: User's Sleep Time Config
+        let userSleepConfigFetchReqeust: NSFetchRequest<UserSleepConfiguration> = UserSleepConfiguration.fetchRequest()
+        userSleepConfigFetchReqeust.sortDescriptors = [
+            .init(
+                key: "id",
+                ascending: true
+            )
+        ]
+        
+        self.userSleepConfigController = NSFetchedResultsController(
+            fetchRequest: userSleepConfigFetchReqeust,
+            managedObjectContext: self.managedObjectContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+        
         super.init()
         dailySleepController.delegate = self
+        userSleepConfigController.delegate = self
         
-        // GET USERINFO CORE DATA
+        // GET USERINFOS FROM CORE DATA
         getDailySleepData(dailySleepController)
+        getUserSleepConfig(userSleepConfigController)
     }
     
     // MARK: Methods
@@ -58,14 +89,30 @@ final class CoreDataStore: NSObject, ObservableObject {
         try? dailySleepController.performFetch()
         if let newDailySleep = dailySleepController.fetchedObjects {
             print(">>>>>> FETCHED DailySleep FROM COREDATA <<<<<<")
-            dump(newDailySleep)
-            self.dailySleep = Dictionary(uniqueKeysWithValues: newDailySleep.map { ($0.id!, $0) })
+            self.dailySleep = Dictionary(
+                uniqueKeysWithValues: newDailySleep.map { ($0.id!, $0) }
+            )
         } else {
             print("NO DailySleep in CORE DATA")
         }
     }
     
-    public func updateAndSave(with model: DailySleepInfo) {
+    private func getUserSleepConfig(
+        _ userSleepConfig: NSFetchedResultsController<UserSleepConfiguration>
+    ) {
+        try? userSleepConfigController.performFetch()
+        if let newUserSleepConfig = userSleepConfig.fetchedObjects {
+            print(">>>>>> FETCHED UserSleepConfig FROM COREDATA <<<<<<")
+            self.userSleepConfig = Dictionary(
+                uniqueKeysWithValues: newUserSleepConfig.map { ($0.id!, $0) }
+            )
+        } else {
+            print("NO UserSleepConfig >> Navigate To Starter")
+        }
+        
+    }
+    
+    public func updateAndSaveDailySleep(with model: DailySleepInfo) {
         do {
             let dailySleep = DailySleep(context: managedObjectContext)
             dailySleep.sleepTime = model.sleepTime
@@ -77,6 +124,18 @@ final class CoreDataStore: NSObject, ObservableObject {
             print(#function, #line, "\(error): CONTEXT SAVE FAILED.")
         }
     }
+    
+    public func updateAndSaveUserSleepConfig(with model: UserSleepConfigurationInfo) {
+        do {
+            let sleepConfig = UserSleepConfiguration(context: managedObjectContext)
+            sleepConfig.id = .init()
+            sleepConfig.notificationMessage = model.notificationMessage
+            sleepConfig.targetSleepTime = model.targetSleepTime
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print(#function, #line, "\(error): CONTEXT SAVE FAILED")
+        }
+    }
 }
 
 extension CoreDataStore: NSFetchedResultsControllerDelegate {
@@ -84,6 +143,10 @@ extension CoreDataStore: NSFetchedResultsControllerDelegate {
         if let newDailySleeps = controller.fetchedObjects as? [DailySleep] {
             self.dailySleep = Dictionary(
                 uniqueKeysWithValues: newDailySleeps.map { ($0.id!, $0) }
+            )
+        } else if let newUserSleepConfig = controller.fetchedObjects as? [UserSleepConfiguration] {
+            self.userSleepConfig = Dictionary(
+                uniqueKeysWithValues: newUserSleepConfig.map { ($0.id!, $0) }
             )
         }
     }

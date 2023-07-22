@@ -10,6 +10,7 @@ import SwiftUI
 final class DailySleepTimeStore: ObservableObject {
     @Published private var coreDataStore: CoreDataStore = .debugShared
     @Published public var dailySleepDict: Dictionary<UUID, DailySleep> = [:]
+    
     public var dailySleepArr: [DailySleep] {
         Array(dailySleepDict.values)
     }
@@ -25,7 +26,7 @@ final class DailySleepTimeStore: ObservableObject {
      coreDataStore에 model을 전달하여 update, save를 진행합니다.
      */
     public func updateAndSave(with model: DailySleepInfo) {
-        coreDataStore.updateAndSave(with: model)
+        coreDataStore.updateAndSaveDailySleep(with: model)
         assignDailySleepDict()
     }
     
