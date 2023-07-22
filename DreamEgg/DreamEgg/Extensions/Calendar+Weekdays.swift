@@ -48,4 +48,10 @@ extension Calendar {
             )
         )
     }
+    
+    public static func gmtCalendar() -> Self {
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = .gmt
+        return cal
+    }
 }
