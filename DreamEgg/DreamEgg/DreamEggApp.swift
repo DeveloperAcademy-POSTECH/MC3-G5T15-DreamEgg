@@ -17,8 +17,7 @@ struct DreamEggApp: App {
 //                CoreDataTestView()
 //                FontTestView()
 //                SleepTimeSettingView()
-//                DECalendarTestView()
-                EggInteractionTestView()
+                DECalendarTestView()
             } else {
                 ContentView()
             }
