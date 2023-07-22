@@ -8,13 +8,23 @@
 import SwiftUI
 
 struct DETitleHeader: View {
+    let title: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Spacer()
+            
+            Text("-<( \(title) )>-")
+                .font(.dosIyagiBold(.title2))
+                .bold()
+            
+            Spacer()
+        }
     }
 }
 
 struct DETitleHeader_Previews: PreviewProvider {
     static var previews: some View {
-        DETitleHeader()
+        DETitleHeader(title: "제목임")
     }
 }
