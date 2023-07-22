@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LofiTextCustomView: View {
+    @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
     @State private var notificationMessage: String = ""
     
     var body: some View {
@@ -82,6 +83,12 @@ struct LofiTextCustomView: View {
                         .foregroundColor(.subButtonSky)
                         .font(.dosIyagiBold(.callout))
                 }
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded {
+                            userSleepConfigStore.userSleepConfig.notificationMessage = notificationMessage
+                        }
+                )
             }
         }
         .navigationBarBackButtonHidden()
