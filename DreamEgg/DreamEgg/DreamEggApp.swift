@@ -9,7 +9,11 @@ import SwiftUI
 
 @main
 struct DreamEggApp: App {
-    @StateObject private var coreDataStore = DailySleepTimeStore(
+    @StateObject private var dailySleepTimeStore = DailySleepTimeStore(
+        coreDataStore: .debugShared
+    )
+    
+    @StateObject private var userSleepConfigStore = UserSleepConfigStore(
         coreDataStore: .debugShared
     )
     
@@ -26,6 +30,8 @@ struct DreamEggApp: App {
                 LofiCurtainView()
             } else {
                 ContentView()
+                    .environmentObject(dailySleepTimeStore)
+                    .environmentObject(userSleepConfigStore)
             }
         }
     }
