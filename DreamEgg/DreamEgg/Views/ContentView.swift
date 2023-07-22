@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
     enum DEViewCycle: String {
@@ -14,7 +15,12 @@ struct ContentView: View {
         case general
     }
     
+    @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
     @State private var viewCycle: DEViewCycle = .splash
+    private var targetSleepTime: Date {
+        userSleepConfigStore.userSleepConfig.targetSleepTime
+        ?? Constant.BASE_TARGET_SLEEP_TIME
+    }
     
     var body: some View {
         switch viewCycle {
@@ -23,8 +29,13 @@ struct ContentView: View {
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         withAnimation {
-                            // MARK: 추후 조건분기 필요
-                            viewCycle = .starter
+                            if targetSleepTime != Constant.BASE_TARGET_SLEEP_TIME {
+                                // 수면시간을 설정한 유저 == general
+                                viewCycle = .general
+                            } else {
+                                // 아직 아무 설정을 하지 않은 유저 == 스타터
+                                viewCycle = .starter
+                            }
                         }
                     }
                 }
