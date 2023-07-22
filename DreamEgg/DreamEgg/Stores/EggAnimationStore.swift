@@ -13,6 +13,7 @@ class EggAnimation: ObservableObject {
     @Published private var direction: CGFloat = 1.0
     @Published private var dragOffset: CGSize = .zero
     @Published private var isLongPress = false
+    @Published private var isStartAnimation = false
     
     private init() {}
 
@@ -36,10 +37,12 @@ class EggAnimation: ObservableObject {
         withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
             self.isLongPress = false
             self.rotationAngle = .degrees(10.0 * self.direction)
+            self.isStartAnimation = true
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.direction *= -1
-            if !self.isLongPress {
+            if !self.isLongPress && self.isStartAnimation {
+                self.rotationAngle = .degrees(10.0 * self.direction)
                 self.startPendulumAnimation()
             }
         }
@@ -54,6 +57,6 @@ class EggAnimation: ObservableObject {
         self.rotationAngle = .degrees(0.0)
         self.direction = 1.0
         self.dragOffset = .zero
-        self.isLongPress = false
+        self.isStartAnimation = false
     }
 }
