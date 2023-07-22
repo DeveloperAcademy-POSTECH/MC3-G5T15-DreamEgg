@@ -13,50 +13,52 @@ class EggAnimation: ObservableObject {
     @Published private var direction: CGFloat = 1.0
     @Published private var dragOffset: CGSize = .zero
     @Published private var isLongPress = false
-    @Published private var isStartAnimation = false
+    @Published private var isAnimationRunning = false
     
     private init() {}
-
+    
     func dragGesture() -> some Gesture {
         DragGesture()
             .onChanged { value in
-                self.isLongPress = true
+                if !self.isLongPress {
+                    self.isLongPress = true
+                }
                 let dragAngle = Angle(radians: Double(value.translation.width) * 0.01)
-                let newRotationAngle = Angle.degrees(10.0 * Double(self.direction)) + dragAngle
+                let newRotationAngle = Angle.degrees(10.0) + dragAngle
                 self.rotationAngle = self.clampRotationAngle(newRotationAngle)
             }
             .onEnded { value in
-                self.rotationAngle = .degrees(0)
                 self.isLongPress = false
-                self.startPendulumAnimation()
+                self.direction = self.rotationAngle.degrees >= 0 ? -1 : 1
+                if !self.isAnimationRunning {
+                    self.startPendulumAnimation()
+                }
             }
-        
     }
     
     func startPendulumAnimation() {
-        withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
-            self.isLongPress = false
-            self.rotationAngle = .degrees(10.0 * self.direction)
-            self.isStartAnimation = true
-        }
+        self.rotationAngle = .degrees(10.0 * self.direction)
+        self.isAnimationRunning = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.direction *= -1
-            if !self.isLongPress && self.isStartAnimation {
+            self.direction = self.rotationAngle.degrees >= 0 ? -1 : 1
+            if !self.isLongPress && self.isAnimationRunning {
                 self.rotationAngle = .degrees(10.0 * self.direction)
                 self.startPendulumAnimation()
+            } else {
+                self.isAnimationRunning = false
             }
         }
     }
     
     private func clampRotationAngle(_ angle: Angle) -> Angle {
-            let clampedAngle = min(max(angle.degrees, -30.0), 30.0)
-            return .degrees(clampedAngle)
-        }
+        let clampedAngle = min(max(angle.degrees, -30.0), 30.0)
+        return .degrees(clampedAngle)
+    }
     
     func reset() {
-        self.rotationAngle = .degrees(0.0)
-        self.direction = 1.0
-        self.dragOffset = .zero
-        self.isStartAnimation = false
+        rotationAngle = .degrees(0.0)
+        direction = 1.0
+        dragOffset = .zero
+        isAnimationRunning = false
     }
 }
