@@ -8,11 +8,26 @@
 import Foundation
 
 final class TimePickerModel: ObservableObject {
-    @Published var selectedHour = 1
-    @Published var selectedMinute = 0
+    @Published var selectedHour = 10
+    @Published var selectedMinute = 30
     @Published var selectedAMPM = 0
-    let hoursRange = 1 ... 12 * 20
-    let minutesRange = 0 ... (59 + 1) * 20
+    
+    let hourArr = Array(
+        repeating: (1...12).map { $0 },
+        count: 30
+    )
+        .flatMap({ array in
+            return array
+        })
+    
+    let minuteArr = Array(
+        repeating: (0...59).map { $0 },
+        count: 30
+    )
+        .flatMap({ array in
+            return array
+        })
+    
     let AMPMRange = 0 ... 1
     
     init() {
@@ -33,8 +48,7 @@ final class TimePickerModel: ObservableObject {
         }
         
         strings = strings[1].components(separatedBy: ":")
-        selectedHour = (Int(strings[0]) ?? 1) + 12 * 10
-        selectedMinute = (Int(strings[1]) ?? 0) + 60 * 10
-        
+//        selectedHour = (Int(strings[0]) ?? 1) + 12 * 10
+//        selectedMinute = (Int(strings[1]) ?? 0) + 60 * 10
     }
 }

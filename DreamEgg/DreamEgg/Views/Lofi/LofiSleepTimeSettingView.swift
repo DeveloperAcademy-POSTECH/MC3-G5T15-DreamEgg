@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct LofiSleepTimeSettingView: View {
+    @StateObject private var sleepTimeStore: TimePickerModel = TimePickerModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            TimePickers(model: sleepTimeStore)
+            
+            Text("\(sleepTimeStore.selectedHour)")
+        }
     }
 }
 
