@@ -33,6 +33,6 @@ struct LofiDreamWorldView: View {
 struct LofiDreamWorldView_Previews: PreviewProvider {
     static var previews: some View {
 //        LofiDreamWorldView()
-        LofiMainEggView()
+        LofiMainTabView()
     }
 }
