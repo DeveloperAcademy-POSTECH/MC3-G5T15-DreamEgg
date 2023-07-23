@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct DreamEggApp: App {
+    @StateObject private var navigationManager = DENavigationManager()
     @StateObject private var dailySleepTimeStore = DailySleepTimeStore(
         coreDataStore: .debugShared
     )
@@ -30,6 +31,7 @@ struct DreamEggApp: App {
                 LofiCurtainView()
             } else {
                 ContentView()
+                    .environmentObject(navigationManager)
                     .environmentObject(dailySleepTimeStore)
                     .environmentObject(userSleepConfigStore)
             }
