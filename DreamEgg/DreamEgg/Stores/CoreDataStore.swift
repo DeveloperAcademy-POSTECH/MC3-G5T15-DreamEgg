@@ -17,7 +17,7 @@ final class CoreDataStore: NSObject, ObservableObject {
     static public let debugShared = CoreDataStore(storeType: .debug)
     static public let releaseShared = CoreDataStore(storeType: .release)
     
-    fileprivate var managedObjectContext: NSManagedObjectContext
+    private(set) var managedObjectContext: NSManagedObjectContext
     
     private let dailySleepController: NSFetchedResultsController<DailySleep>
     private let userSleepConfigController: NSFetchedResultsController<UserSleepConfiguration>
@@ -112,7 +112,9 @@ final class CoreDataStore: NSObject, ObservableObject {
         
     }
     
-    public func updateAndSaveDailySleep(with model: DailySleepInfo) {
+    public func updateAndSaveDailySleep(
+        with model: DailySleepInfo
+    ) {
         do {
             let dailySleep = DailySleep(context: managedObjectContext)
             dailySleep.sleepTime = model.sleepTime
@@ -125,7 +127,10 @@ final class CoreDataStore: NSObject, ObservableObject {
         }
     }
     
-    public func updateAndSaveUserSleepConfig(with model: UserSleepConfigurationInfo) {
+    // MARK: User Sleep Config
+    public func updateAndSaveUserSleepConfig(
+        with model: UserSleepConfigurationInfo
+    ) {
         do {
             let sleepConfig = UserSleepConfiguration(context: managedObjectContext)
             sleepConfig.id = .init()

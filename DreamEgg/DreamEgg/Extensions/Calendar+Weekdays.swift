@@ -49,9 +49,9 @@ extension Calendar {
         )
     }
     
-    public static func gmtCalendar() -> Self {
+    public static func getCurrentCalendar() -> Self {
         var cal = Calendar(identifier: .gregorian)
-        cal.timeZone = .gmt
+        cal.timeZone = .autoupdatingCurrent
         return cal
     }
 }

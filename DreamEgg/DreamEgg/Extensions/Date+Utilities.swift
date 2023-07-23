@@ -21,18 +21,18 @@ extension Date {
     
     // MARK: YMD
     /// Returns instance's year component
-    public var year: Int { return Calendar.gmtCalendar().component(.year, from: self) }
+    public var year: Int { return Calendar.getCurrentCalendar().component(.year, from: self) }
     /// Returns instance's month component
-    public var month: Int { return Calendar.gmtCalendar().component(.month, from: self) }
+    public var month: Int { return Calendar.getCurrentCalendar().component(.month, from: self) }
     /// Returns instance's day component
-    public var day: Int { return Calendar.gmtCalendar().component(.day, from: self) }
+    public var day: Int { return Calendar.getCurrentCalendar().component(.day, from: self) }
     /// Returns instance's hour component
     
     
     // MARK: HMS
-    public var hour: Int { return Calendar.gmtCalendar().component(.hour, from: self) }
+    public var hour: Int { return Calendar.getCurrentCalendar().component(.hour, from: self) }
     /// Returns instance's minute component
-    public var minute: Int { return Calendar.gmtCalendar().component(.minute, from: self) }
+    public var minute: Int { return Calendar.getCurrentCalendar().component(.minute, from: self) }
     /// Returns instance's second component
-    public var second: Int { return Calendar.gmtCalendar().component(.second, from: self) }
+    public var second: Int { return Calendar.getCurrentCalendar().component(.second, from: self) }
 }
