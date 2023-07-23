@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct TimePickerTestView: View {
-    @State private var isPressed = false
+    @StateObject var timePickerStore: TimePickerStore = TimePickerStore()
     
     var body: some View {
         VStack(spacing: 50) {
-            TimePickerView(flag: $isPressed)
+            TimePickerView(timePickerStore: timePickerStore)
                 .foregroundColor(Color.dreamPurple)
             
             Button(action: {
-                    isPressed = true
+                
             }) {
                 Text("시간 설정")
                     .font(.dosIyagiBold(.title))
@@ -24,9 +24,9 @@ struct TimePickerTestView: View {
             }
             .buttonStyle(.borderedProminent)
             
-            Text("\(timePickerModel.selectedHour)")
             
-            Text("\(timePickerModel.selectedMinute)")
+            Text((timePickerStore.selectedElements[0] % 12).description)
+            Text((timePickerStore.selectedElements[1] % 60).description)
         }
         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         .background(Color.dreamPurple)

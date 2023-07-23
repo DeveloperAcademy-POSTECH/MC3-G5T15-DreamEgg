@@ -82,7 +82,7 @@ struct SleepTimeSettingView: View {
                 .simultaneousGesture(
                     TapGesture()
                         .onEnded {
-                            userSleepConfigStore.userSleepConfig.targetSleepTime = sleepTime
+                            userSleepConfigStore.existingUserSleepConfig.targetSleepTime = sleepTime
                         }
                 )
             }
