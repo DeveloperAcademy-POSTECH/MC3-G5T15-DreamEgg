@@ -40,12 +40,14 @@ struct SleepTimeSettingView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Spacer()
                 
-                Text("매일 잠들 시간을 정해주세요.")
-                    .font(.title2)
+//                Text("매일 잠들 시간을 정해주세요.")
+                Text("Choose the time you want to go to sleep each day")
+                    .font(.dosIyagiBold(.title2))
+                    .multilineTextAlignment(.center)
                     .bold()
                 
                 ZStack {
@@ -59,13 +61,17 @@ struct SleepTimeSettingView: View {
                         .padding()
                 }
                 
-                Text("이후에도 잠들 시간을 수정할 수 있습니다.")
-                    .font(.footnote)
+                Text("You can change the time you go to sleep")
+                    .font(.dosIyagiBold(.footnote))
                 
                 Spacer()
                 
-                NavigationLink(destination: MainEggsView(countDown: timeRemaining)) {
-                    Text("이 시간에 잘래요.")
+                NavigationLink {
+//                    MainEggsView(countDown: timeRemaining)
+                    LofiTextCustomView()
+                } label: {
+                    Text("I'll sleep at this time")
+                        .font(.dosIyagiBold(.body))
                         .frame(width: 260, height: 40)
                 }
                 .buttonStyle(.borderedProminent)

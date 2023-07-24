@@ -37,17 +37,17 @@ struct DECalendar<DayLabel: View, Header: View, WeekSwitcher: View>: View {
                 
                 Divider()
                 
-                HStack {
+                HStack(spacing: 6) {
                     ForEach(days, id: \.self) { eachDay in
                         content(eachDay)
+                            .font(.dosIyagiBold(.body))
+                            
                     }
                 }
-                
-                Divider()
+                .padding(.bottom)
             }
             .frame(
                 maxWidth: .infinity,
-                maxHeight: .infinity,
                 alignment: .top
             )
         case .month:
