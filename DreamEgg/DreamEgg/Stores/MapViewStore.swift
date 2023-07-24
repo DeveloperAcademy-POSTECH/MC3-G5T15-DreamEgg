@@ -8,12 +8,12 @@
 import Foundation
 import SwiftUI
 
-class MapViewStore : ObservableObject {
+final class MapViewStore : ObservableObject {
     let mapWidth = UIScreen.main.bounds.width * 0.8
     let mapHeight = UIScreen.main.bounds.height * 0.7
     let objSize : CGFloat = 50
     let timers = [Timer.publish(every: 3, on: .main, in: .common).autoconnect(), Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()]
-    var num = 0
+    var num : Int = 0
     @ObservedObject var dailySleepTimeStore = DailySleepTimeStore()
     @Published var positions = [CGPoint]()
     @Published var names = [[String]]()
