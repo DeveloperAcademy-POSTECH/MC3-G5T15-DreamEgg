@@ -18,4 +18,21 @@ extension Date {
         return (date1.allComponents(in: calendar).year == date2.allComponents(in: calendar).year) &&
         (date1.allComponents(in: calendar).month == date2.allComponents(in: calendar).month)
     }
+    
+    // MARK: YMD
+    /// Returns instance's year component
+    public var year: Int { return Calendar.getCurrentCalendar().component(.year, from: self) }
+    /// Returns instance's month component
+    public var month: Int { return Calendar.getCurrentCalendar().component(.month, from: self) }
+    /// Returns instance's day component
+    public var day: Int { return Calendar.getCurrentCalendar().component(.day, from: self) }
+    /// Returns instance's hour component
+    
+    
+    // MARK: HMS
+    public var hour: Int { return Calendar.getCurrentCalendar().component(.hour, from: self) }
+    /// Returns instance's minute component
+    public var minute: Int { return Calendar.getCurrentCalendar().component(.minute, from: self) }
+    /// Returns instance's second component
+    public var second: Int { return Calendar.getCurrentCalendar().component(.second, from: self) }
 }

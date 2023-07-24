@@ -6,36 +6,42 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
-    enum DEViewCycle: String {
-        case splash
-        case starter
-        case general
-    }
-    
-    @State private var viewCycle: DEViewCycle = .splash
+    @EnvironmentObject var navigationManager: DENavigationManager
+    @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
     
     var body: some View {
-        switch viewCycle {
+        switch navigationManager.viewCycle {
         case .splash:
             splashMock
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         withAnimation {
-                            // MARK: 추후 조건분기 필요
-                            viewCycle = .starter
+                            if userSleepConfigStore.targetSleepTime == Constant.BASE_TARGET_SLEEP_TIME {
+                                // 수면시간을 설정한 유저 == general
+                                navigationManager.viewCycle = .general
+                            } else {
+                                // 아직 아무 설정을 하지 않은 유저 == 스타터
+                                navigationManager.viewCycle = .starter
+                            }
                         }
                     }
                 }
             
         case .starter:
-            SleepTimeSettingView()
-                .frame(maxWidth: .infinity)
+            NavigationStack(path: $navigationManager.starterPath) {
+                LofiSleepTimeSettingView()
+                    .frame(maxWidth: .infinity)
+            }
+            
+        case .timeSetting:
+            LofiSleepTimeSettingView()
             
         case .general:
             NavigationStack {
-                MainEggsView(countDown: 5)
+                LofiMainTabView()
             }
         }
     }

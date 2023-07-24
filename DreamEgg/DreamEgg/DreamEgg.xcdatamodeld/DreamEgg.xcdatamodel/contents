@@ -6,4 +6,9 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="sleepTime" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="UserSleepConfiguration" representedClassName="UserSleepConfiguration" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="notificationMessage" optional="YES" attributeType="String"/>
+        <attribute name="targetSleepTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
 </model>

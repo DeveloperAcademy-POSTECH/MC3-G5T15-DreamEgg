@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct TimePickerView: View {
-    @ObservedObject private var timePickerStore = TimePickerStore()
-    @Binding var flag : Bool
+    @ObservedObject var timePickerStore: TimePickerStore
     
-    var body : some View {
+    var body: some View {
         ZStack {
             Ellipse()
                 .foregroundColor(.white)
@@ -34,8 +33,10 @@ struct TimePickerView: View {
                 .opacity(0.1)
             
             HStack(spacing: 10) {
-                Picker("", selection: $timePickerStore.selectedElements[0]) {
-                    ForEach(timePickerStore.ranges[0], id: \.self) { timeIncrement in
+//                Picker("", selection: $timePickerStore.selectedElements[0]) {
+                Picker("", selection: $timePickerStore.timePickerElements.hours.at) {
+//                    ForEach(timePickerStore.ranges[0], id: \.self) { timeIncrement in
+                    ForEach(timePickerStore.timePickerElements.hours.range, id: \.self) { timeIncrement in
                         Text(timePickerStore.transformToString(num: timeIncrement, pickerType: "hour"))
                             .font(.dosIyagiBold(.largeTitle))
                             .foregroundColor(.white)
@@ -51,8 +52,10 @@ struct TimePickerView: View {
                     .foregroundColor(Color.white)
                     .fontWeight(.bold)
                 
-                Picker("", selection: $timePickerStore.selectedElements[1]) {
-                    ForEach(timePickerStore.ranges[1], id: \.self) { timeIncrement in
+//                Picker("", selection: $timePickerStore.selectedElements[1]) {
+                Picker("", selection: $timePickerStore.timePickerElements.minutes.at) {
+//                    ForEach(timePickerStore.ranges[1], id: \.self) { timeIncrement in
+                    ForEach(timePickerStore.timePickerElements.minutes.range, id: \.self) { timeIncrement in
                         Text(timePickerStore.transformToString(num: timeIncrement, pickerType: "minute"))
                             .font(.dosIyagiBold(.largeTitle))
                             .foregroundColor(.white)
@@ -63,8 +66,10 @@ struct TimePickerView: View {
                 .pickerStyle(.wheel)
                 .labelsHidden()
                 
-                Picker("", selection: $timePickerStore.selectedElements[2]) {
-                    ForEach(timePickerStore.ranges[2], id: \.self) { timeIncrement in
+//                Picker("", selection: $timePickerStore.selectedElements[2]) {
+                Picker("", selection: $timePickerStore.timePickerElements.ampm.is) {
+//                    ForEach(timePickerStore.ranges[2], id: \.self) { timeIncrement in
+                    ForEach(timePickerStore.timePickerElements.ampm.range, id: \.self) { timeIncrement in
                         Text(timePickerStore.transformToString(num: timeIncrement, pickerType: "ampm"))
                             .font(.dosIyagiBold(.largeTitle))
                             .foregroundColor(.white)

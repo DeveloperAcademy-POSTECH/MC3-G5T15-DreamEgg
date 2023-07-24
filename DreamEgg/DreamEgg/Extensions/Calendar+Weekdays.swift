@@ -48,4 +48,10 @@ extension Calendar {
             )
         )
     }
+    
+    public static func getCurrentCalendar() -> Self {
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = .autoupdatingCurrent
+        return cal
+    }
 }

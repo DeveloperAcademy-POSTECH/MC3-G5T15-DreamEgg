@@ -66,9 +66,19 @@ struct CoreDataContainer {
     }
 }
 
-struct DailySleepInfo {
+struct DailySleepInfo: CoreDataIdentifiable {
     var id: UUID
     var animalName: String
     var date: Date
     var sleepTime: String
+}
+
+struct UserSleepConfigurationInfo: CoreDataIdentifiable {
+    var id: UUID
+    var targetSleepTime: Date
+    var notificationMessage: String
+}
+
+protocol CoreDataIdentifiable: Identifiable {
+    var id: UUID { get set }
 }

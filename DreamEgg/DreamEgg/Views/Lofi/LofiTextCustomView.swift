@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LofiTextCustomView: View {
+    @EnvironmentObject var navigationManager: DENavigationManager
+    @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
     @State private var notificationMessage: String = ""
     
     var body: some View {
@@ -56,9 +58,10 @@ struct LofiTextCustomView: View {
                 
                 Spacer()
                 
-                NavigationLink {
-//                    MainEggsView(countDown: 1000)
-                    LofiMainEggView()
+                Button {
+                    withAnimation {
+                        navigationManager.authenticateUserIntoGeneralState()
+                    }
                 } label: {
                     Text("이렇게 알림을 보내주세요")
                         .frame(maxWidth: .infinity)
@@ -73,10 +76,20 @@ struct LofiTextCustomView: View {
                 .background { Color.primaryButtonYellow }
                 .cornerRadius(8)
                 .padding()
+                .disabled(notificationMessage.isEmpty)
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded {
+                            if !notificationMessage.isEmpty {
+                                updateNotificationMessage()
+                            }
+                        }
+                )
                 
-                NavigationLink {
-//                    MainEggsView(countDown: 1000)
-                    LofiMainEggView()
+                Button {
+                    withAnimation {
+                        navigationManager.authenticateUserIntoGeneralState()
+                    }
                 } label: {
                     Text("건너뛰기")
                         .foregroundColor(.subButtonSky)
@@ -85,6 +98,18 @@ struct LofiTextCustomView: View {
             }
         }
         .navigationBarBackButtonHidden()
+    }
+    
+    private func updateNotificationMessage() {
+        let existingConfig = userSleepConfigStore.existingUserSleepConfig
+        
+        userSleepConfigStore.updateAndSaveUserSleepConfig(
+            with: UserSleepConfigurationInfo(
+                id: existingConfig.id ?? .init(),
+                targetSleepTime: existingConfig.targetSleepTime!,
+                notificationMessage: notificationMessage
+            )
+        )
     }
 }
 

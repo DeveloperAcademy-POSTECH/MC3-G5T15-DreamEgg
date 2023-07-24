@@ -211,10 +211,8 @@ struct DECalendarTestView: View {
     }
     
     // MARK: LifeCycle
-    init(calendar: Calendar = .init(identifier: .gregorian)) {
-        var temp = calendar
-        temp.timeZone = .gmt
-        self.calendar = temp
+    init() {
+        self.calendar = Calendar.getCurrentCalendar()
         self.monthDayFormatter = DateFormatter(dateFormat: "M", calendar: calendar)
         self.dayFormatter = DateFormatter(dateFormat: "d", calendar: calendar)
         self.weekDayFormatter = DateFormatter(dateFormat: "EEE", calendar: calendar)

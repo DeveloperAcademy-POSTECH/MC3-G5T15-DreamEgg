@@ -35,7 +35,7 @@ struct GradientBackgroundView: View {
             }
         }
         // GradientColor가 부드럽게 바뀌는 Animation
-        .animation(.spring(response: 3,  blendDuration: 10))
+//        .animation(.spring(response: 3,  blendDuration: 10))
     }
 }
 

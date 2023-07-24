@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SleepTimeSettingView: View {
+    @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
     
     // 취침시간
     @State private var sleepTime = Date()
@@ -44,8 +45,7 @@ struct SleepTimeSettingView: View {
             VStack {
                 Spacer()
                 
-//                Text("매일 잠들 시간을 정해주세요.")
-                Text("Choose the time you want to go to sleep each day")
+                Text("매일 잠들 시간을 정해주세요.")
                     .font(.dosIyagiBold(.title2))
                     .multilineTextAlignment(.center)
                     .bold()
@@ -61,7 +61,11 @@ struct SleepTimeSettingView: View {
                         .padding()
                 }
                 
-                Text("You can change the time you go to sleep")
+                VStack {
+                    Text("이후에 시간을 수정할 수 있습니다.")
+                    
+                    Text("이 시간이 되기 1시간 전에 알람을 보내드릴게요!")
+                }
                     .font(.dosIyagiBold(.footnote))
                 
                 Spacer()
@@ -70,12 +74,21 @@ struct SleepTimeSettingView: View {
 //                    MainEggsView(countDown: timeRemaining)
                     LofiTextCustomView()
                 } label: {
-                    Text("I'll sleep at this time")
+                    Text("이 시간에 잠에 들래요")
                         .font(.dosIyagiBold(.body))
                         .frame(width: 260, height: 40)
                 }
                 .buttonStyle(.borderedProminent)
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded {
+                            userSleepConfigStore.existingUserSleepConfig.targetSleepTime = sleepTime
+                        }
+                )
             }
+        }
+        .onChange(of: sleepTime) { newValue in
+            print(newValue.formatted())
         }
     }
 }
