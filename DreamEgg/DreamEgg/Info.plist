@@ -4,8 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>DOSIyagiBoldface.ttf</string>
 		<string>DOSPilgi.ttf</string>
+		<string>DOSIyagiBoldface.ttf</string>
 	</array>
 </dict>
 </plist>

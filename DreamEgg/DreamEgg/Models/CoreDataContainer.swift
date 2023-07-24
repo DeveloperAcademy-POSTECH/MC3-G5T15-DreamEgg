@@ -8,7 +8,6 @@
 import CoreData
 import UIKit
 
-
 /**
  CoreData App을 이어주는 역할을 수행하는 Container 입니다.
  App 내에서 발생하는 데이터를 저장할 container의 context를 지정하고, CoreData Container를 "DreamEgg"로 초기화 합니다.
