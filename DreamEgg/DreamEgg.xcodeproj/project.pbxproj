@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2049DF532A6F0F7000966DDA /* CreatureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049DF522A6F0F7000966DDA /* CreatureDetailView.swift */; };
 		7EE701A62A6E4C2200DEEFA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EE701A52A6E4C2200DEEFA6 /* Assets.xcassets */; };
 		7EE701A92A6E4C2200DEEFA6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EE701A82A6E4C2200DEEFA6 /* Preview Assets.xcassets */; };
 		7EE701B62A6E4C5400DEEFA6 /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701B42A6E4C5400DEEFA6 /* DreamEgg.xcdatamodeld */; };
@@ -68,6 +69,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2049DF522A6F0F7000966DDA /* CreatureDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureDetailView.swift; sourceTree = "<group>"; };
 		7EB70D1B2A6E4DCB003512ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7EE7019E2A6E4C2100DEEFA6 /* DreamEgg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamEgg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE701A52A6E4C2200DEEFA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				7EE701EF2A6E4C7E00DEEFA6 /* TimePickerTestView.swift */,
 				7EE701F02A6E4C7E00DEEFA6 /* HapticFeedbackTestView.swift */,
 				7EE701F12A6E4C7E00DEEFA6 /* LocalNotificationView.swift */,
+				2049DF522A6F0F7000966DDA /* CreatureDetailView.swift */,
 			);
 			path = TestViews;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				7EE7022D2A6E4C7E00DEEFA6 /* DETitleHeader.swift in Sources */,
 				7EE702032A6E4C7E00DEEFA6 /* TimePickerStore.swift in Sources */,
 				7EE7022A2A6E4C7E00DEEFA6 /* DETimePicker.swift in Sources */,
+				2049DF532A6F0F7000966DDA /* CreatureDetailView.swift in Sources */,
 				7EE701FA2A6E4C7E00DEEFA6 /* EggAnimationStore.swift in Sources */,
 				7EE702112A6E4C7E00DEEFA6 /* Date+StartDates.swift in Sources */,
 				7EE702242A6E4C7E00DEEFA6 /* MapTestView.swift in Sources */,
