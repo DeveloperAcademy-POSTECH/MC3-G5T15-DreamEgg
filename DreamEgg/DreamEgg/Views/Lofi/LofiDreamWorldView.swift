@@ -28,7 +28,7 @@ struct LofiDreamWorldView: View {
                     .aspectRatio(contentMode: .fit)
                     .padding()
 
-                ForEach((0...mapViewStore.num - 1), id: \.self) { i in
+                ForEach((0 ..< mapViewStore.num), id: \.self) { i in
                     Button(action:{
 
                     }) {
