@@ -18,6 +18,8 @@ struct DreamEggApp: App {
         coreDataStore: .debugShared
     )
     
+    @StateObject private var localNotificationManager = LocalNotificationManager()
+    
     let testing = false
 
     var body: some Scene {
@@ -33,6 +35,7 @@ struct DreamEggApp: App {
                     .environmentObject(navigationManager)
                     .environmentObject(dailySleepTimeStore)
                     .environmentObject(userSleepConfigStore)
+                    .environmentObject(localNotificationManager)
             }
         }
     }
