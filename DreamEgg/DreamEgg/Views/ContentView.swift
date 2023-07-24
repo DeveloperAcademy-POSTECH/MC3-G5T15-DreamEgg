@@ -11,12 +11,17 @@ import CoreData
 struct ContentView: View {
     @EnvironmentObject var navigationManager: DENavigationManager
     @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
+    @EnvironmentObject var localNotificationManager: LocalNotificationManager
+    @State private var starterPath: [Date] = []
     
     var body: some View {
         switch navigationManager.viewCycle {
         case .splash:
             splashMock
                 .onAppear {
+                    localNotificationManager.requestNotificationPermission()
+                }
+                .onChange(of: localNotificationManager.hasNotificationStatusAuthorized) { _ in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         withAnimation {
                             if userSleepConfigStore.targetSleepTime == Constant.BASE_TARGET_SLEEP_TIME {
@@ -24,20 +29,30 @@ struct ContentView: View {
                                 navigationManager.viewCycle = .general
                             } else {
                                 // 아직 아무 설정을 하지 않은 유저 == 스타터
-                                navigationManager.viewCycle = .starter
+                                navigationManager.viewCycle = .timeSetting
                             }
                         }
                     }
                 }
             
-        case .starter:
-            NavigationStack(path: $navigationManager.starterPath) {
-                LofiSleepTimeSettingView()
-                    .frame(maxWidth: .infinity)
-            }
-            
         case .timeSetting:
             LofiSleepTimeSettingView()
+                .frame(maxWidth: .infinity)
+                .transition(
+                    .asymmetric(
+                        insertion: .push(from: .trailing),
+                        removal: .move(edge: .leading)
+                    )
+                )
+            
+        case .notificationMessageSetting:
+            LofiTextCustomView()
+                .transition(
+                    .asymmetric(
+                        insertion: .move(edge: .trailing),
+                        removal: .move(edge: .bottom)
+                    )
+                )
             
         case .general:
             NavigationStack {

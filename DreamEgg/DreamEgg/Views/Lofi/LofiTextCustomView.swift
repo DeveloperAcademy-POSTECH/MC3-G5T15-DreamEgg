@@ -10,6 +10,7 @@ import SwiftUI
 struct LofiTextCustomView: View {
     @EnvironmentObject var navigationManager: DENavigationManager
     @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
+    @EnvironmentObject var localNotificationManager: LocalNotificationManager
     @State private var notificationMessage: String = ""
     
     var body: some View {
@@ -96,6 +97,9 @@ struct LofiTextCustomView: View {
                         .font(.dosIyagiBold(.callout))
                 }
             }
+            .onDisappear {
+                queueNotification()
+            }
         }
         .navigationBarBackButtonHidden()
     }
@@ -109,6 +113,16 @@ struct LofiTextCustomView: View {
                 targetSleepTime: existingConfig.targetSleepTime!,
                 notificationMessage: notificationMessage
             )
+        )
+    }
+    
+    private func queueNotification() {
+        print("config MESSAGE: ", userSleepConfigStore.notificationMessage)
+        print("config SLEEP: ", userSleepConfigStore.targetSleepTime)
+        
+        localNotificationManager.sleepNotification(
+            userNotificationMessage: userSleepConfigStore.notificationMessage,
+            selectedDate: userSleepConfigStore.targetSleepTime
         )
     }
 }
