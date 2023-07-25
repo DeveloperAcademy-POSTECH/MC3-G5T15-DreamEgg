@@ -98,7 +98,10 @@ struct LofiTextCustomView: View {
                 }
             }
             .onDisappear {
-                queueNotification()
+                localNotificationManager.scheduleSleepNotification(
+                    userNotificationMessage: userSleepConfigStore.notificationMessage,
+                    selectedDate: userSleepConfigStore.targetSleepTime
+                )
             }
         }
         .navigationBarBackButtonHidden()
@@ -113,16 +116,6 @@ struct LofiTextCustomView: View {
                 targetSleepTime: existingConfig.targetSleepTime!,
                 notificationMessage: notificationMessage
             )
-        )
-    }
-    
-    private func queueNotification() {
-        print("config MESSAGE: ", userSleepConfigStore.notificationMessage)
-        print("config SLEEP: ", userSleepConfigStore.targetSleepTime)
-        
-        localNotificationManager.sleepNotification(
-            userNotificationMessage: userSleepConfigStore.notificationMessage,
-            selectedDate: userSleepConfigStore.targetSleepTime
         )
     }
 }
