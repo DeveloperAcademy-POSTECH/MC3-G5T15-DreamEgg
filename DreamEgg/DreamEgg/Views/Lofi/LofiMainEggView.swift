@@ -14,7 +14,7 @@ struct LofiMainEggView: View {
     
     @State private var currentTime: Date = .now
     @State private var timer: Timer.TimerPublisher = Timer
-        .publish(every: 30, on: .main, in: .common)
+        .publish(every: 15, on: .main, in: .common)
     @State private var cancellable: Cancellable?
         
     var body: some View {
@@ -68,7 +68,7 @@ struct LofiMainEggView: View {
             cancellable = self.timer.connect()
         }
         .onReceive(timer) { _ in
-            // 30초마다 currentTime 갱신
+            // 15초마다 currentTime 갱신
             withAnimation {
                 currentTime = Date.now
             }
