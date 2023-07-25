@@ -38,6 +38,9 @@ struct ContentView: View {
         case .timeSetting:
             LofiSleepTimeSettingView()
                 .frame(maxWidth: .infinity)
+                .onAppear {
+                    localNotificationManager.getNotificationstatus()
+                }
                 .onChange(of: self.scene) { newScene in
                     if isChangingFromInactiveScene(into: newScene) {
                         localNotificationManager.getNotificationstatus()
