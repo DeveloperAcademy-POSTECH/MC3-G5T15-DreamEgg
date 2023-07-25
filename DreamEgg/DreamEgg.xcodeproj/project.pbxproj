@@ -65,6 +65,7 @@
 		7EE7022C2A6E4C7E00DEEFA6 /* DECalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701F62A6E4C7E00DEEFA6 /* DECalendar.swift */; };
 		7EE7022D2A6E4C7E00DEEFA6 /* DETitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701F72A6E4C7E00DEEFA6 /* DETitleHeader.swift */; };
 		7EE7022E2A6E4C7E00DEEFA6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701F82A6E4C7E00DEEFA6 /* ContentView.swift */; };
+		93E97B392A6FA56B0000DB2B /* LofiBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E97B382A6FA56B0000DB2B /* LofiBirthView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +129,7 @@
 		7EE701F62A6E4C7E00DEEFA6 /* DECalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DECalendar.swift; sourceTree = "<group>"; };
 		7EE701F72A6E4C7E00DEEFA6 /* DETitleHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DETitleHeader.swift; sourceTree = "<group>"; };
 		7EE701F82A6E4C7E00DEEFA6 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		93E97B382A6FA56B0000DB2B /* LofiBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiBirthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +280,7 @@
 				7EE701E42A6E4C7E00DEEFA6 /* LofiAwakeView.swift */,
 				7EE701E52A6E4C7E00DEEFA6 /* LofiDreamWorldView.swift */,
 				7EE701E62A6E4C7E00DEEFA6 /* LofiMainEggView.swift */,
+				93E97B382A6FA56B0000DB2B /* LofiBirthView.swift */,
 			);
 			path = Lofi;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				7EE702212A6E4C7E00DEEFA6 /* FontTestView.swift in Sources */,
 				7EE701B62A6E4C5400DEEFA6 /* DreamEgg.xcdatamodeld in Sources */,
 				7EE702252A6E4C7E00DEEFA6 /* EggInteractionTestView.swift in Sources */,
+				93E97B392A6FA56B0000DB2B /* LofiBirthView.swift in Sources */,
 				7EE701B82A6E4C7000DEEFA6 /* DreamEggApp.swift in Sources */,
 				7EE702102A6E4C7E00DEEFA6 /* Date+Utilities.swift in Sources */,
 				7EE7022C2A6E4C7E00DEEFA6 /* DECalendar.swift in Sources */,
