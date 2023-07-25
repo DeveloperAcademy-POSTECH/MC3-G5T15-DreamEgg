@@ -10,6 +10,7 @@ import SwiftUI
 struct LofiTextCustomView: View {
     @EnvironmentObject var navigationManager: DENavigationManager
     @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
+    @EnvironmentObject var localNotificationManager: LocalNotificationManager
     @State private var notificationMessage: String = ""
     
     var body: some View {
@@ -95,6 +96,12 @@ struct LofiTextCustomView: View {
                         .foregroundColor(.subButtonSky)
                         .font(.dosIyagiBold(.callout))
                 }
+            }
+            .onDisappear {
+                localNotificationManager.scheduleSleepNotification(
+                    userNotificationMessage: userSleepConfigStore.notificationMessage,
+                    selectedDate: userSleepConfigStore.targetSleepTime
+                )
             }
         }
         .navigationBarBackButtonHidden()

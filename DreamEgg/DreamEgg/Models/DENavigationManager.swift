@@ -10,24 +10,21 @@ import SwiftUI
 final class DENavigationManager: ObservableObject {
     enum DEViewCycle: String {
         case splash
-        case starter
+        case notificationMessageSetting
         case timeSetting
         case general
     }
     
     @Published var starterPath = [Date]()
+    @Published var isFromMainTab: Bool = false
     @Published var viewCycle: DEViewCycle = .splash
     
-    // MARK: Methods
-    public func resetSleepTime() {
-        self.viewCycle = .timeSetting
-    }
-    
+    // MARK: Methods    
     public func authenticateUserIntoGeneralState() {
         self.viewCycle = .general
     }
     
-    public func repeatStarterProcess() {
-        self.viewCycle = .starter
+    public func navigateToTimeSettingView() {
+        self.viewCycle = .timeSetting
     }
 }
