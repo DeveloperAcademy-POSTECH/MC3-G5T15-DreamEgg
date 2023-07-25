@@ -163,8 +163,8 @@ struct LofiSleepTimeSettingView: View {
             )
         
         comps.hour = isPm
-            ? timePickerStore.timePickerElements.hours.at % 20 + 12
-            : timePickerStore.timePickerElements.hours.at % 20
+            ? timePickerStore.timePickerElements.hours.at % 12 + 12
+            : timePickerStore.timePickerElements.hours.at % 12
         
         comps.minute = timePickerStore.timePickerElements.minutes.at % 60
         

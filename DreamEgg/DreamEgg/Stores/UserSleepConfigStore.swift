@@ -71,6 +71,9 @@ final class UserSleepConfigStore: ObservableObject {
     
     // MARK: HELPERS
     public func hourAndMinuteString(currentTime: Date) -> String {
+        /// a. 어제했다 : "오늘도 목표 시간에 잘 자볼까요?"
+        /// b. 어제안했다 : "다람쥐 헛둘헛둘"
+        
         // + 목표시간: 00시 15분 | 00시 15분 | 00시 15분 | 00시 15분 | 00시 15분  | 00시 15분
         // - 현재시간: 23시 30분 | 00시 00분 | 00시 34분 | 05시 30분 | 11시 00분  | 12시 15분
         // ------------------------------------------------------------------------
