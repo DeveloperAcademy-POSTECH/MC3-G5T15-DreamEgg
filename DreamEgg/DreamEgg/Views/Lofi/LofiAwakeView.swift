@@ -9,9 +9,8 @@ import SwiftUI
 
 struct LofiAwakeView: View {
     @State private var currentTime: Date = .now
-    @State var maskColor = Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8))
-    @State private var eggTab = false
-    @State private var isButtonDisabled = false
+    @State private var maskColor = Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8))
+    @State private var isEggButtonTapped = false
 
     private let hourFormatter = DateFormatter(
         dateFormat: "H",
@@ -38,18 +37,9 @@ struct LofiAwakeView: View {
                 // 추후 수면시간 대비 분기처리를 위한 if 구조.
                 if currentTime == currentTime {
                     ZStack {
-                        /** egg를 탭하면 eggtab의 값이 toggle되어 confetti가 적용 된 sparkle 이미지가 나타나고, 3초간 버튼 기능을 비활성합니다. 3초 후에는 각 토글을 다시 false로 전환합니다. */
-                        Button(action: {
-                            if !isButtonDisabled {
-                                eggTab = true
-                                isButtonDisabled = true
-
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                    isButtonDisabled = false
-                                    eggTab = false
-                                }
-                            }
-                        }) {
+                        Button {
+                            disableEggButtonToActiveConfetti()
+                        } label: {
                             Image("EggPillow")
                                 .resizable()
                                 .frame(width: 160, height: 160)
@@ -61,11 +51,11 @@ struct LofiAwakeView: View {
                             )
 
                         }
-                            .disabled(isButtonDisabled)
+                            .disabled(isEggButtonTapped)
 
-                        if eggTab {
+                        if isEggButtonTapped {
                             Image("ShinyMiddle")
-                                .modifier(ParticlesModifier())
+                                .activateConfetti()
                         }
                     }
 
@@ -169,50 +159,16 @@ struct LofiAwakeView: View {
             }
                 .multilineTextAlignment(.center)
                 .foregroundColor(.white)
-
         }
     }
-}
-
-/** confetti 애니메이션에 대한 설정 1 */
-struct FireworkParticlesGeometryEffect: GeometryEffect {
-    var time: Double
-    var speed = Double.random(in: 20 ... 200)
-    var direction = Double.random(in: -Double.pi ... Double.pi)
-
-    var animatableData: Double {
-        get { time }
-        set { time = newValue }
-    }
-    func effectValue(size: CGSize) -> ProjectionTransform {
-        let xTranslation = speed * cos(direction) * time
-        let yTranslation = speed * sin(direction) * time
-        let affineTranslation = CGAffineTransform(translationX: xTranslation, y: yTranslation)
-        return ProjectionTransform(affineTranslation)
-    }
-}
-
-/** confetti에 애니메이션에 대한 설정 2 */
-struct ParticlesModifier: ViewModifier {
-    @State var time = 0.0
-    @State var scale = 0.1
-    let duration = 5.0
-
-    func body(content: Content) -> some View {
-        ZStack {
-            ForEach(0..<80, id: \.self) { index in
-                content
-                    .hueRotation(Angle(degrees: time * 80))
-                    .scaleEffect(scale)
-                    .modifier(FireworkParticlesGeometryEffect(time: time))
-                    .opacity(((duration - time) / duration))
-            }
-        }
-            .onAppear {
-            withAnimation (.easeOut(duration: duration)) {
-                self.time = duration
-                self.scale = 1.0
-            }
+    
+    /// egg를 탭하면 eggtab의 값이 toggle되어 confetti가 적용 된 sparkle 이미지가 나타나고,
+    /// 3초간 버튼 기능을 비활성합니다. 3초 후에는 각 토글을 다시 false로 전환합니다.
+    private func disableEggButtonToActiveConfetti() {
+        isEggButtonTapped = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            isEggButtonTapped = false
         }
     }
 }
