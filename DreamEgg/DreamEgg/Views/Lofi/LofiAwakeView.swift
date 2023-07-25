@@ -36,7 +36,7 @@ struct LofiAwakeView: View {
                 .font(.dosIyagiBold(.largeTitle))
 
                 // 추후 수면시간 대비 분기처리를 위한 if 구조.
-                if currentTime != currentTime {
+                if currentTime == currentTime {
                     ZStack {
                         /** egg를 탭하면 eggtab의 값이 toggle되어 confetti가 적용 된 sparkle 이미지가 나타나고, 3초간 버튼 기능을 비활성합니다. 3초 후에는 각 토글을 다시 false로 전환합니다. */
                         Button(action: {
