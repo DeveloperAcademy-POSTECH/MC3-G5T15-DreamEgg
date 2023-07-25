@@ -20,15 +20,17 @@ final class LocalNotificationManager: NSObject, ObservableObject {
     public func requestNotificationPermission() {
         notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
+                print("reqeust")
                 // MARK: Notification Request
                 self.getNotificationstatus()
             } else if let error {
                 print(error.localizedDescription)
             }
         }
+        if hasNotificationStatusAuthorized == nil { hasNotificationStatusAuthorized = .denied }
     }
     
-    private func getNotificationstatus() {
+    public func getNotificationstatus() {
         notificationCenter.getNotificationSettings { settings in
             DispatchQueue.main.async {
                 self.hasNotificationStatusAuthorized = settings.authorizationStatus

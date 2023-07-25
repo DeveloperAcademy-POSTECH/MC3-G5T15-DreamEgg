@@ -12,8 +12,8 @@ struct ContentView: View {
     @EnvironmentObject var navigationManager: DENavigationManager
     @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
     @EnvironmentObject var localNotificationManager: LocalNotificationManager
-    @State private var starterPath: [Date] = []
-    
+    @Environment(\.scenePhase) var scene
+        
     var body: some View {
         switch navigationManager.viewCycle {
         case .splash:
@@ -38,10 +38,23 @@ struct ContentView: View {
         case .timeSetting:
             LofiSleepTimeSettingView()
                 .frame(maxWidth: .infinity)
+                .onChange(of: self.scene) { newScene in
+                    if isChangingFromInactiveScene(into: newScene) {
+                        localNotificationManager.getNotificationstatus()
+                    }
+                }
                 .transition(
                     .asymmetric(
-                        insertion: .push(from: .trailing),
-                        removal: .move(edge: .leading)
+                        insertion: .move(
+                            edge:
+                                isUserNotificationAuthorized()
+                            ? .trailing
+                            : .bottom
+                        )
+                        .animation(.easeInOut(duration: 1)),
+                        removal: .move(
+                            edge: .leading
+                        ).animation(.easeInOut(duration: 1))
                     )
                 )
             
@@ -86,6 +99,16 @@ struct ContentView: View {
             }
             .padding()
         }
+    }
+    
+    private func isUserNotificationAuthorized() -> Bool {
+        localNotificationManager.hasNotificationStatusAuthorized != nil
+        && localNotificationManager.hasNotificationStatusAuthorized! == .authorized
+    }
+    
+    private func isChangingFromInactiveScene(into newScene: ScenePhase) -> Bool {
+        scene == .inactive && newScene == .active ||
+        scene == .background && newScene == .active
     }
 }
 

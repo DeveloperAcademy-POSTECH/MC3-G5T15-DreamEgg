@@ -146,6 +146,7 @@ struct LofiSleepTimeSettingView: View {
             }
             .onChange(of: localNotificationManager.hasNotificationStatusAuthorized) { status in
                 if status == .authorized { self.isNotificationAuthorized = true }
+                else { self.isNotificationAuthorized = false }
             }
         }
     }
