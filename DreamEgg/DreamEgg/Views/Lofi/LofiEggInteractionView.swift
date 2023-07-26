@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct LofiEggInteractionView: View {
-    @StateObject private var eggAnimation = EggAnimation.shared
+    @StateObject private var eggAnimation = EggAnimation()
     @State private var interactionTitle = "알이 생겼어요!\n한 번 쓰다듬어볼까요?"
     @State private var isShowButton = false
-
+    @State private var isSkip = false
+    
     var body: some View {
         ZStack {
             GradientBackgroundView()
@@ -44,7 +45,7 @@ struct LofiEggInteractionView: View {
                 }
                 Spacer()
                 
-                NavigationLink(destination: LofiSleepGuideView()) {
+                NavigationLink(destination: LofiSleepGuideView( isSkippedFromInteractionView:$isSkip).navigationBarBackButtonHidden(true)) {
                     Text("저 좀 재워주세요!")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
@@ -55,23 +56,24 @@ struct LofiEggInteractionView: View {
                                 .stroke(Color.primaryButtonBrown, lineWidth: 5)
                         }
                 }
-                .navigationBarBackButtonHidden()
                 .background { Color.primaryButtonYellow }
                 .cornerRadius(8)
                 .padding(.horizontal)
                 .opacity(isShowButton ? 1.0 : 0)
-                NavigationLink(destination: LofiSleepGuideView()) {
+                NavigationLink(destination: LofiSleepGuideView( isSkippedFromInteractionView:$isSkip).navigationBarBackButtonHidden(true)) {
                     Text("네, 바로 잘래요.")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
                         .foregroundColor(.subButtonBlue)
                         .font(.dosIyagiBold(.body))
                 }
+                .simultaneousGesture(TapGesture().onEnded{
+                    isSkip = true
+                })
                 .background { Color.subButtonSky }
                 .cornerRadius(8)
                 .padding(.horizontal)
                 .opacity(isShowButton ? 1.0 : 0)
-                .navigationBarBackButtonHidden()
             }
         }
     }
