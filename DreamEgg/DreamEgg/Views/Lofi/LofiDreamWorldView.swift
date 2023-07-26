@@ -8,20 +8,44 @@
 import SwiftUI
 
 struct LofiDreamWorldView: View {
+    @ObservedObject var mapViewStore = MapViewStore()
+
+
     var body: some View {
         VStack {
             DETitleHeader(title: "Dream World")
-            
+
             Spacer()
                 .frame(maxHeight: 24)
-            
-            Image("DreamWorldMap")
-                .resizable()
-                .frame(
-                    maxHeight: .infinity
-                )
-                .aspectRatio(contentMode: .fit)
-                .padding()
+
+            ZStack {
+                Image("DreamWorldMap")
+                    .resizable()
+                    .frame(
+                        width: mapViewStore.mapWidth,
+                        height: mapViewStore.mapHeight
+                    )
+                    .aspectRatio(contentMode: .fit)
+                    .padding()
+
+                ForEach((0 ..< mapViewStore.num), id: \.self) { i in
+                    Button(action:{
+
+                    }) {
+                        Image("\(mapViewStore.names[i][0])"+"\(mapViewStore.names[i][1])")
+                    }
+                    .position(mapViewStore.positions[i])
+                }
+            }
+            .frame(width: mapViewStore.mapWidth, height: mapViewStore.mapHeight)
+//            .onReceive(mapViewStore.timers[0]) { _ in
+//                withAnimation {
+//                    mapViewStore.changePosition()
+//                }
+//            }
+            .onReceive(mapViewStore.timers[1]) { _ in
+                mapViewStore.changeImage()
+            }
         }
         .frame(
             maxHeight: .infinity
@@ -32,7 +56,7 @@ struct LofiDreamWorldView: View {
 
 struct LofiDreamWorldView_Previews: PreviewProvider {
     static var previews: some View {
-//        LofiDreamWorldView()
-        LofiMainTabView()
+        LofiDreamWorldView()
+//        LofiMainTabView()
     }
 }

@@ -8,14 +8,11 @@
 import SwiftUI
 
 class EggAnimation: ObservableObject {
-    static let shared = EggAnimation()
     @Published var rotationAngle: Angle = .degrees(0.0)
     @Published private var direction: CGFloat = 1.0
     @Published private var dragOffset: CGSize = .zero
     @Published private var isLongPress = false
     @Published private var isAnimationRunning = false
-    
-    private init() {}
     
     func dragGesture() -> some Gesture {
         DragGesture()
