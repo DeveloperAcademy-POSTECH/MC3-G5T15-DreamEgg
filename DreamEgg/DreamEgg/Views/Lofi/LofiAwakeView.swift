@@ -68,15 +68,16 @@ struct LofiAwakeView: View {
                     Text("이제 알의 변화를 살필 수 있어요.")
                     //                Text("If you lock the screen again\nYou can incubte the egg more.")
                     .font(.dosIyagiBold(.body))
-                        .foregroundColor(.secondary)
-                        .colorInvert()
-
-                    Spacer()
-
-                    NavigationLink {
-                        LofiCurtainView()
-                    } label: {
-                        Text("잘 잤어요!")
+                    .foregroundColor(.secondary)
+                    .colorInvert()
+                
+                Spacer()
+                
+                NavigationLink {
+//                    LofiCurtainView()
+                    LofiBirthView()
+                } label: {
+                    Text("잘 잤어요!")
 //                    Text("I slept well!")
                         .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
