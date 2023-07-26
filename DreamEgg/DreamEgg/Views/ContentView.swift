@@ -12,6 +12,8 @@ struct ContentView: View {
     @EnvironmentObject var navigationManager: DENavigationManager
     @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
     @EnvironmentObject var localNotificationManager: LocalNotificationManager
+    @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
+    
     @Environment(\.scenePhase) var scene
         
     var body: some View {
@@ -24,7 +26,9 @@ struct ContentView: View {
                 .onChange(of: localNotificationManager.hasNotificationStatusAuthorized) { _ in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         withAnimation {
-                            if userSleepConfigStore.targetSleepTime == Constant.BASE_TARGET_SLEEP_TIME {
+                            if isSleepingProcessing() {
+                                navigationManager.viewCycle = .awake
+                            } else if userSleepConfigStore.targetSleepTime == Constant.BASE_TARGET_SLEEP_TIME {
                                 // 수면시간을 설정한 유저 == general
                                 navigationManager.viewCycle = .general
                             } else {
@@ -57,7 +61,8 @@ struct ContentView: View {
                         .animation(.easeInOut(duration: 1)),
                         removal: .move(
                             edge: .leading
-                        ).animation(.easeInOut(duration: 1))
+                        )
+                        .animation(.easeInOut(duration: 1))
                     )
                 )
             
@@ -74,9 +79,19 @@ struct ContentView: View {
             NavigationStack {
                 LofiMainTabView()
             }
+            
+        case .awake:
+            LofiAwakeView()
+                .transition(
+                    .asymmetric(
+                        insertion: .opacity,
+                        removal: .opacity
+                    )
+                )
         }
     }
     
+    // MARK: Methods
     private var splashMock: some View {
         ZStack {
             GradientBackgroundView()
@@ -112,6 +127,15 @@ struct ContentView: View {
     private func isChangingFromInactiveScene(into newScene: ScenePhase) -> Bool {
         scene == .inactive && newScene == .active ||
         scene == .background && newScene == .active
+    }
+    
+    private func isSleepingProcessing() -> Bool {
+        if let processingSleep = dailySleepTimeStore.currentDailySleep,
+           processingSleep.processStatus == Constant.SLEEP_PROCESS_PROCESSING {
+            return true
+        } else {
+            return false
+        }
     }
 }
 
