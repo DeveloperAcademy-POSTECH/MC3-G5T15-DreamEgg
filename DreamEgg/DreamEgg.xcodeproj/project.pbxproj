@@ -65,6 +65,8 @@
 		7EE7022C2A6E4C7E00DEEFA6 /* DECalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701F62A6E4C7E00DEEFA6 /* DECalendar.swift */; };
 		7EE7022D2A6E4C7E00DEEFA6 /* DETitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701F72A6E4C7E00DEEFA6 /* DETitleHeader.swift */; };
 		7EE7022E2A6E4C7E00DEEFA6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701F82A6E4C7E00DEEFA6 /* ContentView.swift */; };
+		AE05EE112A6E634A0006F40D /* LofiEggDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE05EE102A6E634A0006F40D /* LofiEggDrawView.swift */; };
+		AE05EE132A6E65D30006F40D /* LofiEggInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE05EE122A6E65D30006F40D /* LofiEggInteractionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +130,8 @@
 		7EE701F62A6E4C7E00DEEFA6 /* DECalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DECalendar.swift; sourceTree = "<group>"; };
 		7EE701F72A6E4C7E00DEEFA6 /* DETitleHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DETitleHeader.swift; sourceTree = "<group>"; };
 		7EE701F82A6E4C7E00DEEFA6 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AE05EE102A6E634A0006F40D /* LofiEggDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiEggDrawView.swift; sourceTree = "<group>"; };
+		AE05EE122A6E65D30006F40D /* LofiEggInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiEggInteractionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +282,8 @@
 				7EE701E42A6E4C7E00DEEFA6 /* LofiAwakeView.swift */,
 				7EE701E52A6E4C7E00DEEFA6 /* LofiDreamWorldView.swift */,
 				7EE701E62A6E4C7E00DEEFA6 /* LofiMainEggView.swift */,
+				AE05EE102A6E634A0006F40D /* LofiEggDrawView.swift */,
+				AE05EE122A6E65D30006F40D /* LofiEggInteractionView.swift */,
 			);
 			path = Lofi;
 			sourceTree = "<group>";
@@ -431,9 +437,11 @@
 				7EE7021B2A6E4C7E00DEEFA6 /* LofiSleepGuideView.swift in Sources */,
 				7EE702162A6E4C7E00DEEFA6 /* LofiMainTabView.swift in Sources */,
 				7EE701F92A6E4C7E00DEEFA6 /* EggDrawStore.swift in Sources */,
+				AE05EE112A6E634A0006F40D /* LofiEggDrawView.swift in Sources */,
 				7EE7021E2A6E4C7E00DEEFA6 /* LofiMainEggView.swift in Sources */,
 				7EE702172A6E4C7E00DEEFA6 /* LofiTextCustomView.swift in Sources */,
 				7EE702262A6E4C7E00DEEFA6 /* TimePickerTestView.swift in Sources */,
+				AE05EE132A6E65D30006F40D /* LofiEggInteractionView.swift in Sources */,
 				7EE701FB2A6E4C7E00DEEFA6 /* CoreDataRepresentable.swift in Sources */,
 				7EE7020E2A6E4C7E00DEEFA6 /* DateFormatter+init.swift in Sources */,
 				7EE7020F2A6E4C7E00DEEFA6 /* Font+DosIyagi.swift in Sources */,
@@ -567,7 +575,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
-				DEVELOPMENT_TEAM = 67M6ZS7KS6;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DreamEgg/Info.plist;
@@ -599,7 +607,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
-				DEVELOPMENT_TEAM = 67M6ZS7KS6;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DreamEgg/Info.plist;
