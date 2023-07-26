@@ -47,7 +47,8 @@ struct LofiAwakeView: View {
                 Spacer()
                 
                 NavigationLink {
-                    LofiCurtainView()
+//                    LofiCurtainView()
+                    LofiBirthView()
                 } label: {
                     Text("잘 잤어요!")
 //                    Text("I slept well!")
