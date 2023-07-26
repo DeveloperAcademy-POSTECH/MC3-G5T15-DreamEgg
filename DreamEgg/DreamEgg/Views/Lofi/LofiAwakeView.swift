@@ -11,6 +11,7 @@ struct LofiAwakeView: View {
     @State private var currentTime: Date = .now
     @State private var maskColor = Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8))
     @State private var isEggButtonTapped = false
+    @State private var isActiveSpringAnimation = false
 
     private let hourFormatter = DateFormatter(
         dateFormat: "H",
@@ -49,7 +50,24 @@ struct LofiAwakeView: View {
                                     .resizable()
                                     .frame(width: 160, height: 160)
                             )
-
+                                .overlay(
+                                Image("ShinyMiddle")
+                                    .resizable()
+                                    .rotationEffect(.degrees(80))
+                                    .frame(width: isActiveSpringAnimation ? 25 : 60, height: isActiveSpringAnimation ? 25 : 60)
+                                    .padding(.bottom, 140)
+                                    .padding(.trailing, 50)
+                                    .animation(.spring(response: 1.5, dampingFraction: 0.45, blendDuration: 0.2))
+                            )
+                                .overlay(
+                                Image("ShinySmall")
+                                    .resizable()
+                                    .rotationEffect(.degrees(40))
+                                    .frame(width: isActiveSpringAnimation ? 15 : 20, height: isActiveSpringAnimation ? 15 : 20)
+                                    .padding(.bottom, 90)
+                                    .padding(.trailing, 90)
+                                    .animation(.spring(response: 1.5, dampingFraction: 0.5, blendDuration: 0.2))
+                            )
                         }
                             .disabled(isEggButtonTapped)
 
@@ -121,6 +139,8 @@ struct LofiAwakeView: View {
                         .overlay(
                         Text("Zzz...")
                             .font(.dosIyagiBold(.callout))
+                            .scaleEffect(isActiveSpringAnimation ? 1 : 1.3)
+                            .animation(.spring(response: 1.5, dampingFraction: 0.5, blendDuration: 0.2))
                             .padding(.top, 70)
                             .padding(.leading, 110)
                     )
@@ -156,9 +176,15 @@ struct LofiAwakeView: View {
                         .cornerRadius(8)
                         .padding(.horizontal)
                 }
+                
             }
                 .multilineTextAlignment(.center)
                 .foregroundColor(.white)
+                .onAppear {
+                    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+                        self.isActiveSpringAnimation.toggle()
+                    }
+                }
         }
     }
     
