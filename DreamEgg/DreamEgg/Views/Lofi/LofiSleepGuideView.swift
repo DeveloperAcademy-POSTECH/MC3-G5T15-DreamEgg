@@ -17,13 +17,16 @@ struct LofiSleepGuideView: View {
     }
     
     @Environment(\.scenePhase) var scenePhase
+    @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
+    @EnvironmentObject var navigationManager: DENavigationManager
+    
     @State private var sleepGuideSteps: SleepGuideSteps = .start
     @State private var afterHold: Bool = false
     
     var body: some View {
-        if afterHold {
-            LofiAwakeView()
-        } else {
+//        if afterHold {
+//            LofiAwakeView()
+//        } else {
             ZStack {
                 GradientBackgroundView()
                     .overlay {
@@ -43,7 +46,7 @@ struct LofiSleepGuideView: View {
                             .foregroundColor(.primary)
                             .colorInvert()
                             .frame(maxHeight: 200)
-                    } else {
+                    } else if sleepGuideSteps == .darkening {
                         Text("")
                             .frame(maxHeight: 200)
                     }
@@ -52,6 +55,7 @@ struct LofiSleepGuideView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: 300, maxHeight: 300)
+                    // MARK: Position은 추후 수정 예정!
                         .position(
                             x: UIScreen.main.bounds.width / 2,
                             y: UIScreen.main.bounds.height / 3.5
@@ -117,7 +121,6 @@ struct LofiSleepGuideView: View {
                         }
                     } label: {
                         Text("다시 하기")
-//                        Text("Repeat Again")
                             .foregroundColor(.subButtonSky)
                             .font(.dosIyagiBold(.callout))
                     }
@@ -131,12 +134,10 @@ struct LofiSleepGuideView: View {
                 
             }
             .onChange(of: scenePhase) { newValue in
-                print("Scene", newValue, afterHold)
-                if newValue == .background {
-                    afterHold = true
+                if isChangingFromInactiveScene(into: newValue) {
+                    navigationManager.viewCycle = .awake
                 }
             }
-        }
     }
     
     // MARK: Methods
@@ -197,14 +198,29 @@ struct LofiSleepGuideView: View {
             withAnimation {
                 sleepGuideSteps = .darkening
             }
+            
+            // MARK: 오늘자 새로운 수면 데이터를 생성!
+            dailySleepTimeStore.updateAndSaveNewDailySleepInfo()
+
         case .darkening:
             print()
         }
+    }
+    
+    private func isChangingFromInactiveScene(into newScene: ScenePhase) -> Bool {
+        scenePhase == .inactive && newScene == .active ||
+        scenePhase == .background && newScene == .active
+    }
+    
+    private func isChangingFromActiveScene(into newScene: ScenePhase) -> Bool {
+        scenePhase == .active && newScene == .background ||
+        scenePhase == .active && newScene == .inactive
     }
 }
 
 struct LofiSleepGuideView_Previews: PreviewProvider {
     static var previews: some View {
         LofiSleepGuideView()
+            .environmentObject(DailySleepTimeStore())
     }
 }
