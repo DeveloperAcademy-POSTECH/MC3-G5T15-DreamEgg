@@ -38,11 +38,11 @@ struct LofiDreamWorldView: View {
                 }
             }
             .frame(width: mapViewStore.mapWidth, height: mapViewStore.mapHeight)
-            .onReceive(mapViewStore.timers[0]) { _ in
-                withAnimation {
-                    mapViewStore.changePosition()
-                }
-            }
+//            .onReceive(mapViewStore.timers[0]) { _ in
+//                withAnimation {
+//                    mapViewStore.changePosition()
+//                }
+//            }
             .onReceive(mapViewStore.timers[1]) { _ in
                 mapViewStore.changeImage()
             }
@@ -56,7 +56,7 @@ struct LofiDreamWorldView: View {
 
 struct LofiDreamWorldView_Previews: PreviewProvider {
     static var previews: some View {
-//        LofiDreamWorldView()
-        LofiMainTabView()
+        LofiDreamWorldView()
+//        LofiMainTabView()
     }
 }

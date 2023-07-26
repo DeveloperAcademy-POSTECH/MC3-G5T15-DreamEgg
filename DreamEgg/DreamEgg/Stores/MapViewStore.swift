@@ -12,7 +12,10 @@ final class MapViewStore : ObservableObject {
     let mapWidth = UIScreen.main.bounds.width * 0.8
     let mapHeight = UIScreen.main.bounds.height * 0.7
     let objSize : CGFloat = 50
-    let timers = [Timer.publish(every: 3, on: .main, in: .common).autoconnect(), Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()]
+    let timers = [
+        Timer.publish(every: 3.0, on: .main, in: .common).autoconnect(),
+        Timer.publish(every: 0.5, on: .main, in: .common).autoconnect(),
+    ]
     var num : Int = 0
     @ObservedObject var dailySleepTimeStore = DailySleepTimeStore()
     @Published var positions = [CGPoint]()
@@ -75,7 +78,6 @@ final class MapViewStore : ObservableObject {
         
         for i in 0 ..< num {
             n = 0
-            
             while true {
                 isDuplicated = false
                 j = 0
