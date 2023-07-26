@@ -9,10 +9,11 @@ import SwiftUI
 
 struct CreatureDetailView: View {
     @State private var dreamPetName: String = "꼬까"
-    @State private var animalName: String = "쿼카"
+    @State private var animalSpecies: String = "쿼카"
     @State private var birthDate = Date()
     @State private var incubateTime = Date()
-    @State private var isFix: Bool = false
+    @State private var isFixedDreamWorld: Bool = false
+    @State private var isEditedName: Bool = false
     
     /// birthDate.year를 하면 Int값 2,023이 나와서 타입 바꿨습니다
     var getStrYear: String {
@@ -38,7 +39,7 @@ struct CreatureDetailView: View {
                         Image("DreamWorldIcon")
                     }
                     .overlay {
-                        Image(isFix ? "" : "BadgeDot")
+                        Image(isFixedDreamWorld ? "" : "BadgeDot")
                             .position(x: 40, y: 10)
                     }
                 }
@@ -67,14 +68,53 @@ struct CreatureDetailView: View {
                         
                         Spacer()
                         
-                        Text(dreamPetName)
-                            .foregroundColor(Color.secondary)
-                        
-                        Button {
-                        } label: {
-                            Image(systemName: "pencil.line")
-                                .foregroundColor(Color.secondary)
+                        HStack {
+                            if isEditedName == false {
+                                Text(dreamPetName)
+                                    .foregroundColor(Color.secondary)
+                            } else if isEditedName == true {
+                                TextField("\(dreamPetName)", text: $dreamPetName)
+                                    .multilineTextAlignment(.trailing)
+                            }
+                            
+                            /// true, false에 따라 수정 버튼이 바뀝니다.
+                            Button {
+                                isEditedName.toggle()
+                            } label: {
+                                isEditedName
+                                ? Image(systemName: "checkmark")
+                                    .foregroundColor(Color.subButtonBlue)
+                                : Image(systemName: "pencil.line")
+                                    .foregroundColor(Color.secondary)
+                            }
                         }
+                        
+                        //                        if isEditedName == false {
+                        
+                        //
+                        //                        } else if isEditedName == true {
+                        //                            HStack {
+                        ////                                DETextField(content: $editedName, placeholder: editedName)
+                        //                                TextField(text: $editedName) {
+                        //                                    Text(editedName)
+                        //                                }
+                        //                                .multilineTextAlignment(.trailing)
+                        //                                .frame(maxWidth: 100, maxHeight: 42)
+                        //                                .border(.red)
+                        //                                .background {
+                        //                                    Rectangle()
+                        //                                        .fill(Color.blue)
+                        //                                }
+                        //                            }
+                        //                        }
+                        //                        Button {
+                        //                            isEditedName.toggle()
+                        //                        } label: {
+                        //                            Image(systemName: isEditedName ? "check" : "checkmark")
+                        //                                .resizable()
+                        //                                .frame(maxWidth: 44, maxHeight: 44)
+                        //                        }
+                        
                     }
                     .padding(.vertical)
                     
@@ -83,7 +123,7 @@ struct CreatureDetailView: View {
                         
                         Spacer()
                         
-                        Text("\(animalName)")
+                        Text("\(animalSpecies)")
                             .foregroundColor(Color.secondary)
                     }
                     .padding(.vertical)
@@ -121,18 +161,18 @@ struct CreatureDetailView: View {
                 
                 /// UI toggle을 구현했습니다.
                 Button {
-                    isFix.toggle()
+                    isFixedDreamWorld.toggle()
                 } label: {
-                    Text(isFix ? "드림월드에 고정하기" : "드림월드에서 고정 해제하기")
+                    Text(isFixedDreamWorld ? "드림월드에 고정하기" : "드림월드에서 고정 해제하기")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
-                        .foregroundColor(isFix ? .primaryButtonBrown : .subButtonBlue)
+                        .foregroundColor(isFixedDreamWorld ? .primaryButtonBrown : .subButtonBlue)
                         .font(.dosIyagiBold(.body))
                         .overlay {
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(isFix ? Color.primaryButtonBrown : Color.subButtonBlue, lineWidth: 5)
+                                .stroke(isFixedDreamWorld ? Color.primaryButtonBrown : Color.subButtonBlue, lineWidth: 5)
                         }
-                        .background {isFix ? Color.primaryButtonYellow : Color.subButtonSky}
+                        .background {isFixedDreamWorld ? Color.primaryButtonYellow : Color.subButtonSky}
                         .cornerRadius(8)
                         .padding()
                 }

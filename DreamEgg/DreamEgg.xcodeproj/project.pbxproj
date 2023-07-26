@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2049DF532A6F0F7000966DDA /* CreatureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049DF522A6F0F7000966DDA /* CreatureDetailView.swift */; };
+		20A9A5D92A6FA82E008513D7 /* DETextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5D82A6FA82E008513D7 /* DETextField.swift */; };
+		20A9A5DB2A6FC3A5008513D7 /* NameEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5DA2A6FC3A5008513D7 /* NameEditingView.swift */; };
 		7EE701A62A6E4C2200DEEFA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EE701A52A6E4C2200DEEFA6 /* Assets.xcassets */; };
 		7EE701A92A6E4C2200DEEFA6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EE701A82A6E4C2200DEEFA6 /* Preview Assets.xcassets */; };
 		7EE701B62A6E4C5400DEEFA6 /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701B42A6E4C5400DEEFA6 /* DreamEgg.xcdatamodeld */; };
@@ -70,6 +72,8 @@
 
 /* Begin PBXFileReference section */
 		2049DF522A6F0F7000966DDA /* CreatureDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureDetailView.swift; sourceTree = "<group>"; };
+		20A9A5D82A6FA82E008513D7 /* DETextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DETextField.swift; sourceTree = "<group>"; };
+		20A9A5DA2A6FC3A5008513D7 /* NameEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEditingView.swift; sourceTree = "<group>"; };
 		7EB70D1B2A6E4DCB003512ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7EE7019E2A6E4C2100DEEFA6 /* DreamEgg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamEgg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE701A52A6E4C2200DEEFA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -298,6 +302,7 @@
 				7EE701F02A6E4C7E00DEEFA6 /* HapticFeedbackTestView.swift */,
 				7EE701F12A6E4C7E00DEEFA6 /* LocalNotificationView.swift */,
 				2049DF522A6F0F7000966DDA /* CreatureDetailView.swift */,
+				20A9A5DA2A6FC3A5008513D7 /* NameEditingView.swift */,
 			);
 			path = TestViews;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 				7EE701F52A6E4C7E00DEEFA6 /* TimePickerView.swift */,
 				7EE701F62A6E4C7E00DEEFA6 /* DECalendar.swift */,
 				7EE701F72A6E4C7E00DEEFA6 /* DETitleHeader.swift */,
+				20A9A5D82A6FA82E008513D7 /* DETextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -400,6 +406,7 @@
 				7EE702252A6E4C7E00DEEFA6 /* EggInteractionTestView.swift in Sources */,
 				7EE701B82A6E4C7000DEEFA6 /* DreamEggApp.swift in Sources */,
 				7EE702102A6E4C7E00DEEFA6 /* Date+Utilities.swift in Sources */,
+				20A9A5DB2A6FC3A5008513D7 /* NameEditingView.swift in Sources */,
 				7EE7022C2A6E4C7E00DEEFA6 /* DECalendar.swift in Sources */,
 				7EE7022E2A6E4C7E00DEEFA6 /* ContentView.swift in Sources */,
 				7EE702292A6E4C7E00DEEFA6 /* GradientBackgroundView.swift in Sources */,
@@ -426,6 +433,7 @@
 				7EE702132A6E4C7E00DEEFA6 /* DENavigationManager.swift in Sources */,
 				7EE702012A6E4C7E00DEEFA6 /* CoreDataStore+CRUD.swift in Sources */,
 				7EE702142A6E4C7E00DEEFA6 /* CoreDataContainer.swift in Sources */,
+				20A9A5D92A6FA82E008513D7 /* DETextField.swift in Sources */,
 				7EE702232A6E4C7E00DEEFA6 /* MainEggsView.swift in Sources */,
 				7EE702042A6E4C7E00DEEFA6 /* Constants.swift in Sources */,
 				7EE702122A6E4C7E00DEEFA6 /* HapticManager.swift in Sources */,

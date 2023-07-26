@@ -93,6 +93,7 @@ struct DECalendar<DayLabel: View, Header: View, WeekSwitcher: View>: View {
 
 struct DECalendar_Previews: PreviewProvider {
     static var previews: some View {
-        DECalendarTestView()
+//        DECalendarTestView()
+        Text("?")
     }
 }
