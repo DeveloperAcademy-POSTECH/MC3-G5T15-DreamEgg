@@ -14,6 +14,7 @@ struct LofiAwakeView: View {
     @State private var currentTime: Date = .now
     @State private var maskColor = Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8))
     @State private var isEggButtonTapped = false
+    @State private var isActiveSpringAnimation = false
 
     private let hourFormatter = DateFormatter(
         dateFormat: "H",
@@ -47,11 +48,28 @@ struct LofiAwakeView: View {
                                 .frame(width: 160, height: 160)
                                 .padding(.top, 170)
                                 .overlay {
-                                    Image("FerretEgg")
-                                        .resizable()
-                                        .frame(width: 160, height: 160)
+                                Image("FerretEgg")
+                                    .resizable()
+                                    .frame(width: 160, height: 160)
                                 }
-
+                                .overlay {
+                                Image("ShinyMiddle")
+                                    .resizable()
+                                    .rotationEffect(.degrees(80))
+                                    .frame(width: isActiveSpringAnimation ? 25 : 60, height: isActiveSpringAnimation ? 25 : 60)
+                                    .padding(.bottom, 140)
+                                    .padding(.trailing, 50)
+                                    .animation(.spring(response: 1.5, dampingFraction: 0.45, blendDuration: 0.2))
+                                }
+                                .overlay { 
+                                Image("ShinySmall")
+                                    .resizable()
+                                    .rotationEffect(.degrees(40))
+                                    .frame(width: isActiveSpringAnimation ? 15 : 20, height: isActiveSpringAnimation ? 15 : 20)
+                                    .padding(.bottom, 90)
+                                    .padding(.trailing, 90)
+                                    .animation(.spring(response: 1.5, dampingFraction: 0.5, blendDuration: 0.2))
+                                }
                         }
                             .disabled(isEggButtonTapped)
 
@@ -70,18 +88,18 @@ struct LofiAwakeView: View {
                     Text("이제 알의 변화를 살필 수 있어요.")
                     //                Text("If you lock the screen again\nYou can incubte the egg more.")
                     .font(.dosIyagiBold(.body))
-                        .foregroundColor(.secondary)
-                        .colorInvert()
-
-                    Spacer()
-
-                    Button {
-//                        LofiCurtainView()
-                        navigationManager.viewCycle = .general
-                        
-                        dailySleepTimeStore.completeDailySleepTime()
-                    } label: {
-                        Text("잘 잤어요!")
+                    .foregroundColor(.secondary)
+                    .colorInvert()
+                
+                Spacer()
+                
+                NavigationLink {
+                    LofiBirthView()
+                        .onAppear {
+                            dailySleepTimeStore.completeDailySleepTime()
+                        }
+                } label: {
+                    Text("잘 잤어요!")
 //                    Text("I slept well!")
                         .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
@@ -159,18 +177,22 @@ struct LofiAwakeView: View {
                         .cornerRadius(8)
                         .padding(.horizontal)
                 }
+                
             }
-                .multilineTextAlignment(.center)
-                .foregroundColor(.white)
-                .onAppear {
+            .multilineTextAlignment(.center)
+            .foregroundColor(.white)
+            .onAppear {
+                dailySleepTimeStore.getSleepTimeInMinute()
+                
+                self.activateTimer()
+            }
+            .onChange(of: scene) { newScene in
+                self.currentTime = .now
+                if isChangingFromInactiveScene(into: newScene) {
                     dailySleepTimeStore.getSleepTimeInMinute()
+                    self.activateTimer()
                 }
-                .onChange(of: scene) { newScene in
-                    self.currentTime = .now
-                    if isChangingFromInactiveScene(into: newScene) {
-                        dailySleepTimeStore.getSleepTimeInMinute()
-                    }
-                }
+            }
         }
     }
     
@@ -195,6 +217,12 @@ struct LofiAwakeView: View {
     private func isChangingFromInactiveScene(into newScene: ScenePhase) -> Bool {
         scene == .inactive && newScene == .active ||
         scene == .background && newScene == .active
+    }
+    
+    private func activateTimer() {
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+            self.isActiveSpringAnimation.toggle()
+        }
     }
 }
 

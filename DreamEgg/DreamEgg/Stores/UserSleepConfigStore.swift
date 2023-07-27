@@ -16,6 +16,7 @@ final class UserSleepConfigStore: ObservableObject {
     
     @Published public var targetSleepTime: Date = .now
     @Published public var notificationMessage: String = Constant.BASE_NOTIFICATION_MESSAGE
+    @Published public var hasSleepConfig: Bool = false
     
     public var existingUserSleepConfig: UserSleepConfiguration {
         if userSleepConfigDict.isEmpty {
@@ -38,10 +39,19 @@ final class UserSleepConfigStore: ObservableObject {
         self.coreDataStore = coreDataStore
         self.userSleepConfigDict = coreDataStore.userSleepConfig
         
+        checkIfUserIsStarter()
         assignInitProperties()
     }
     
     // MARK: Methods
+    private func checkIfUserIsStarter() {
+        if coreDataStore.userSleepConfig.isEmpty {
+            self.hasSleepConfig = false
+        } else {
+            self.hasSleepConfig = true
+        }
+    }
+    
     private func assignInitProperties() {
         self.targetSleepTime = existingUserSleepConfig.targetSleepTime!
         self.notificationMessage = existingUserSleepConfig.notificationMessage!

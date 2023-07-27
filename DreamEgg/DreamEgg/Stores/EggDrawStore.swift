@@ -15,7 +15,7 @@ class EggDrawStore: ObservableObject {
     let includeEllipsePath = Ellipse()
         .path(in: CGRect(x: UIScreen.main.bounds.width/2 - 280/2, y: UIScreen.main.bounds.height/2 - 360/2 - 40, width: 280, height: 360))
     let exceptEllipsePath = Ellipse()
-        .path(in: CGRect(x: UIScreen.main.bounds.width/2 - 150/2, y: UIScreen.main.bounds.height/2 - 220/2 - 40, width: 160, height: 230))
+        .path(in: CGRect(x: UIScreen.main.bounds.width/2 - 160/2, y: UIScreen.main.bounds.height/2 - 230/2 - 40, width: 160, height: 230))
     
     func gesture() -> some Gesture {
         DragGesture()

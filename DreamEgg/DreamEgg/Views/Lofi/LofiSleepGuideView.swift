@@ -22,6 +22,8 @@ struct LofiSleepGuideView: View {
     
     @State private var sleepGuideSteps: SleepGuideSteps = .start
     @State private var afterHold: Bool = false
+    @StateObject private var eggAnimation = EggAnimation()
+    @Binding var isSkippedFromInteractionView: Bool
     
     var body: some View {
 //        if afterHold {
@@ -48,18 +50,23 @@ struct LofiSleepGuideView: View {
                             .frame(maxHeight: 200)
                     } else if sleepGuideSteps == .darkening {
                         Text("")
-                            .frame(maxHeight: 200)
+                            .frame(maxHeight: 170)
                     }
-                    
-                    Image("FerretEgg")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 300, maxHeight: 300)
-                    // MARK: Position은 추후 수정 예정!
-                        .position(
-                            x: UIScreen.main.bounds.width / 2,
-                            y: UIScreen.main.bounds.height / 3.5
-                        )
+                    ZStack {
+                        Image("samplePillow")
+                            .offset(x:0,y:160)
+                        Image("\(dailySleepTimeStore.currentDailySleep?.eggName ?? Constant.Errors.NO_EGG)")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 300, height: 300)
+                            .rotationEffect(eggAnimation.rotationAngle, anchor: .bottom)
+                            .animation(Animation.easeInOut(duration: 1.0), value: eggAnimation.rotationAngle)
+                            .onAppear {
+                                eggAnimation.reset()
+                                eggAnimation.startPendulumAnimation()
+                            }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .opacity(sleepGuideSteps == .darkening ? 0.4 : 1.0)
                         .overlay(alignment: .topTrailing) {
                             if sleepGuideSteps == .darkening {
@@ -133,9 +140,18 @@ struct LofiSleepGuideView: View {
                 }
                 
             }
+            .onAppear {
+                if isSkippedFromInteractionView {
+                    sleepGuideSteps = .darkening
+                }
+            }
             .onChange(of: scenePhase) { newValue in
                 if isChangingFromInactiveScene(into: newValue) {
                     navigationManager.viewCycle = .awake
+                } else if newValue == .inactive {
+                    // 자러 갈 때 .sleeping 처리
+                    print("잘 자러갔니?")
+                    dailySleepTimeStore.updateDailySleepTimeToNow()
                 }
             }
     }
@@ -199,9 +215,6 @@ struct LofiSleepGuideView: View {
                 sleepGuideSteps = .darkening
             }
             
-            // MARK: 오늘자 새로운 수면 데이터를 생성!
-            dailySleepTimeStore.updateAndSaveNewDailySleepInfo()
-
         case .darkening:
             print()
         }
@@ -220,7 +233,13 @@ struct LofiSleepGuideView: View {
 
 struct LofiSleepGuideView_Previews: PreviewProvider {
     static var previews: some View {
-        LofiSleepGuideView()
+        LofiSleepGuideView(isSkippedFromInteractionView: .constant(true))
             .environmentObject(DailySleepTimeStore())
     }
 }
+
+//struct LofiSleepGuideView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LofiSleepGuideView(isSkippedFromInteractionView:.constant(true))
+//    }
+//}

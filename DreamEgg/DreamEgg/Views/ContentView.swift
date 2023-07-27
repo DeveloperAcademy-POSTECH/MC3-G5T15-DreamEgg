@@ -28,11 +28,11 @@ struct ContentView: View {
                         withAnimation {
                             if isSleepingProcessing() {
                                 navigationManager.viewCycle = .awake
-                            } else if userSleepConfigStore.targetSleepTime == Constant.BASE_TARGET_SLEEP_TIME {
-                                // 수면시간을 설정한 유저 == general
+                            } else if userSleepConfigStore.hasSleepConfig {
+                                // 수면시간이 있는 유저
                                 navigationManager.viewCycle = .general
                             } else {
-                                // 아직 아무 설정을 하지 않은 유저 == 스타터
+                                // 아무 설정을 하지 않은 유저 == 스타터
                                 navigationManager.viewCycle = .timeSetting
                             }
                         }
@@ -131,7 +131,9 @@ struct ContentView: View {
     
     private func isSleepingProcessing() -> Bool {
         if let processingSleep = dailySleepTimeStore.currentDailySleep,
-           processingSleep.processStatus == Constant.SLEEP_PROCESS_PROCESSING {
+           processingSleep.processStatus == Constant.SLEEP_PROCESS_PROCESSING
+            || processingSleep.processStatus == Constant.SLEEP_PROCESS_SLEEPING {
+            print(#function)
             return true
         } else {
             return false

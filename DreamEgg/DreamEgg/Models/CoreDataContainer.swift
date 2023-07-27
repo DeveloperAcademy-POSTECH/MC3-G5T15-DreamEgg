@@ -69,6 +69,7 @@ struct DailySleepInfo: CoreDataIdentifiable {
     enum SleepProcessStatus {
         case ready
         case processing
+        case sleeping
         case stopped
         case complete
         
@@ -78,6 +79,8 @@ struct DailySleepInfo: CoreDataIdentifiable {
                 return Constant.SLEEP_PROCESS_READY
             case .processing:
                 return Constant.SLEEP_PROCESS_PROCESSING
+            case .sleeping:
+                return Constant.SLEEP_PROCESS_SLEEPING
             case .complete:
                 return Constant.SLEEP_PROCESS_STOPPED
             case .stopped:

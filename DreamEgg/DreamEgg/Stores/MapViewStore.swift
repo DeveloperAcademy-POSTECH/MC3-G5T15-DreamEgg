@@ -8,34 +8,40 @@
 import Foundation
 import SwiftUI
 
-class MapViewStore : ObservableObject {
+final class MapViewStore : ObservableObject {
     let mapWidth = UIScreen.main.bounds.width * 0.8
     let mapHeight = UIScreen.main.bounds.height * 0.7
-    let objSize : CGFloat = 70
-    let timers = [Timer.publish(every: 1.5, on: .main, in: .common).autoconnect(), Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()]
-    var num  = 0
+    let objSize : CGFloat = 50
+    let timers = [
+        Timer.publish(every: 3.0, on: .main, in: .common).autoconnect(),
+        Timer.publish(every: 0.5, on: .main, in: .common).autoconnect(),
+    ]
+    var num : Int = 0
+    
     @Published var positions = [CGPoint]()
     @Published var names = [[String]]()
     
     init() {
-        self.num = getNumFromCoreData() // CoreData 구현 코드와 병합 후 구현 예정입니다.
-        getNamesFromCoreData() // CoreData 구현 코드와 병합 후 구현 예정입니다.
+//        getNamesFromCoreData()
         GeneratePosRandomly()
     }
     
-    func getNumFromCoreData() -> Int { // CoreData에서 객체들의 데이터를 받아와, 객체들의 갯수를 저장합니다.
-        return 5 // 시연을 위해 임의로 설정해두었습니다.
-    }
-    
-    func getNamesFromCoreData() { // 코어 데이터에서 객체들의 데이터를 받아와, 객체들의 이름을 저장합니다.
-        for _ in 0 ..< num { // 시연을 위해 임의로 객체들의 이름을 넣어두었습니다.
-            names.append(["beenzino","BreathIn"])
+    /// CoreData에서 객체들의 데이터를 받아와 객체들의 이름을 저장합니다.
+    public func getNamesFromCoreData(dailySleepArray: [DailySleep]) {
+        self.num = dailySleepArray.count
+        
+        for element in dailySleepArray {
+            if element.processStatus == Constant.SLEEP_PROCESS_COMPLETE,
+               element.sleepTimeInMinute >= 3 * 60 {
+                names.append([element.assetName ?? "" ,"_a"])
+            }
         }
     }
     
-    func GeneratePosRandomly() { // 객체들의 초기 위치를 지도 크기 내에서 객체들이 서로 겹치지 않게 랜덤하게 설정합니다.
+    /// 드림펫들의 초기 위치를 지도 크기 내에서 서로 겹치지 않게 랜덤하게 설정합니다.
+    func GeneratePosRandomly() {
         let xPosBoundary = mapWidth - objSize * 2
-        let yPosBoundary = mapHeight - objSize * 2
+        let yPosBoundary = mapHeight * 0.15 - objSize / 2
         var xPosTemp: CGFloat
         var yPosTemp: CGFloat
         var isDuplicated : Bool
@@ -46,7 +52,7 @@ class MapViewStore : ObservableObject {
                 isDuplicated = false
                 j = 0
                 xPosTemp = CGFloat(arc4random_uniform(UInt32(xPosBoundary))) + objSize
-                yPosTemp = CGFloat(arc4random_uniform(UInt32(yPosBoundary))) + objSize
+                yPosTemp = CGFloat(arc4random_uniform(UInt32(yPosBoundary))) + mapHeight * 0.85
 
                 while j < i {
                     if pow(self.positions[j].x - xPosTemp, 2) + pow(self.positions[j].y - yPosTemp, 2) <= pow(objSize,2) {
@@ -64,13 +70,17 @@ class MapViewStore : ObservableObject {
         }
     }
     
-    func changePosition() { // 객체들의 위치를 랜덤하게 변경합니다. 변경 시에도 지도 크기내에서 객체들이 서로 겹치지 않게 변경합니다.
+    
+    /// 드림펫들의 위치를 지도 크기 내에서 서로 겹치지 않도록 랜덤하게 변경합니다.
+    func changePosition() {
         var newXPos: CGFloat
         var newYPos: CGFloat
         var isDuplicated : Bool
         var j : Int
-
+        var n : Int
+        
         for i in 0 ..< num {
+            n = 0
             while true {
                 isDuplicated = false
                 j = 0
@@ -78,12 +88,13 @@ class MapViewStore : ObservableObject {
                 newYPos = positions[i].y + CGFloat(arc4random_uniform(UInt32(100))) - 50
 
                 // map boundary check
-                if newXPos < objSize / 2 || newYPos < objSize / 2 || newXPos > mapWidth - objSize / 2 || newYPos > mapHeight - objSize / 2 {
+                if newXPos < objSize || newYPos < mapHeight * 0.85 || newXPos > mapWidth - objSize || newYPos > mapHeight - objSize / 2 {
+                    n += 1
                     continue
                 }
                 
                 // object duplication check
-                while j < i {
+                while n < 100 && j < i {
                     if pow(newXPos - positions[j].x , 2) + pow(newYPos - positions[j].y , 2) <= pow(objSize,2) {
                         isDuplicated = true
                         break
@@ -100,13 +111,15 @@ class MapViewStore : ObservableObject {
         }
     }
     
-    func changeImage() { // 호흡 애니메이션 구현을 위해 이미지의 이름을 변경합니다.
+    
+    /// 이미지의 이름을 변경을 통해 드림펫들의 애니메이션을 구현합니다.
+    func changeImage() {
         for i in 0 ..< num {
-            if names[i][1] == "BreathIn" {
-                names[i][1] = "BreathOut"
+            if names[i][1] == "_a" {
+                names[i][1] = "_b"
             }
             else {
-                names[i][1] = "BreathIn"
+                names[i][1] = "_a"
             }
         }
     }

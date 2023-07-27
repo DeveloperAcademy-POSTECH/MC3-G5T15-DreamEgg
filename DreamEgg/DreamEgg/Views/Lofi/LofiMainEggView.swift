@@ -11,6 +11,7 @@ import SwiftUI
 struct LofiMainEggView: View {
     @EnvironmentObject var navigationManager: DENavigationManager
     @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
+    @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
     
     @State private var currentTime: Date = .now
     @State private var timer: Timer.TimerPublisher = Timer
@@ -32,28 +33,31 @@ struct LofiMainEggView: View {
                     .frame(maxWidth: .infinity)
                 
                 Spacer()
-                    .frame(maxHeight: 80)
+                    .frame(maxHeight: 40)
                 
                 NavigationLink {
-                    LofiSleepGuideView()
+                    LofiEggDrawView()
                         .navigationBarBackButtonHidden()
+                        .onAppear {
+                            dailySleepTimeStore.updateAndSaveNewDailySleepInfo()
+                            print("Hi", "\(dailySleepTimeStore.currentDailySleep!.animalName ?? "없어")")
+                            print("dreamEgg", "\(dailySleepTimeStore.currentDailySleep!.eggName ?? "알이가 없다")")
+                        }
                 } label: {
-                    Ellipse()
-                        .stroke(
-                            Color.white,
-                            style: StrokeStyle(
-                                lineWidth: 10,
-                                dash: [8],
-                                dashPhase: 6
-                            )
-                        )
-                        .frame(maxWidth: 200, maxHeight: 270)
+                    Image("emptyEgg")
                         .overlay {
                             Text("탭해서 \n알그리기")
                                 .font(.dosIyagiBold(.body))
                                 .foregroundColor(.white)
                         }
                 }
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded { _ in
+                            // MARK: Start Sleeping
+                            
+                        }
+                )
             } else {
                 failedSleepTimeView()
                     .multilineTextAlignment(.center)
@@ -143,5 +147,7 @@ struct LofiMainEggView: View {
 struct LofiMainEggView_Previews: PreviewProvider {
     static var previews: some View {
         LofiMainTabView()
+            .environmentObject(DENavigationManager())
+            .environmentObject(UserSleepConfigStore())
     }
 }

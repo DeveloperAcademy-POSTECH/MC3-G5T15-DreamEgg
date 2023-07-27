@@ -90,6 +90,8 @@ final class CoreDataStore: NSObject {
             self.dailySleep = Dictionary(
                 uniqueKeysWithValues: newDailySleep.map { ($0.id!, $0) }
             )
+            
+            print("FETCHED: ", self.dailySleep)
         } else {
             print("NO DailySleep in CORE DATA")
         }
@@ -104,6 +106,7 @@ final class CoreDataStore: NSObject {
             self.userSleepConfig = Dictionary(
                 uniqueKeysWithValues: newUserSleepConfig.map { ($0.id!, $0) }
             )
+            print("FETCHED: ", self.userSleepConfig.isEmpty)
         } else {
             print("NO UserSleepConfig >> Navigate To Starter")
         }
