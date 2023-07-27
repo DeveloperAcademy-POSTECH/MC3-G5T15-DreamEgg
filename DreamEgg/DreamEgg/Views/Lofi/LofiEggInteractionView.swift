@@ -9,7 +9,8 @@ import SwiftUI
 
 struct LofiEggInteractionView: View {
     @StateObject private var eggAnimation = EggAnimation()
-    @State private var interactionTitle = "알이 생겼어요!\n한 번 쓰다듬어볼까요?"
+    @State private var titleArray = ["알이 생겼어요!\n한 번 쓰다듬어볼까요?","알의 움직임이\n느껴지는 것 같아요..!","이제 곧 알을\n품어야 할 시간이에요.\n잠들 준비가 되셨나요?"]
+    @State private var titleCount = 0
     @State private var isShowButton = false
     @State private var isSkip = false
     
@@ -19,8 +20,7 @@ struct LofiEggInteractionView: View {
             VStack {
                 Spacer()
                     .frame(maxHeight: 72)
-                
-                Text(interactionTitle)
+                Text(titleArray[titleCount])
                     .multilineTextAlignment(.center)
                     .font(.dosIyagiBold(.title))
                     .foregroundColor(.white)
@@ -37,16 +37,19 @@ struct LofiEggInteractionView: View {
                         .frame(width: 300, height: 300)
                         .rotationEffect(eggAnimation.rotationAngle, anchor: .bottom)
                         .gesture(eggAnimation.dragGesture())
+                        .simultaneousGesture(TapGesture().onEnded {
+                            if titleCount < 2 {
+                                titleAnimation()
+                            }
+                        })
                         .animation(Animation.easeInOut(duration: 1.0), value: eggAnimation.rotationAngle)
                         .onAppear {
                             eggAnimation.startPendulumAnimation()
-                            titleAnimation()
                         }
                 }
                 Spacer()
-                
                 NavigationLink(destination: LofiSleepGuideView( isSkippedFromInteractionView:$isSkip).navigationBarBackButtonHidden(true)) {
-                    Text("저 좀 재워주세요!")
+                    Text("잠드는데 도움이 필요해요.")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
                         .foregroundColor(.primaryButtonBrown)
@@ -79,16 +82,9 @@ struct LofiEggInteractionView: View {
     }
     
     private func titleAnimation() {
-//        guard eggAnimation.isDrag else { return }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            withAnimation(Animation.easeInOut(duration: 0.8)) {
-                interactionTitle = "알의 움직임이\n느껴지는 것 같아요..!"
-            }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            withAnimation(Animation.easeInOut(duration: 0.8)) {
-                interactionTitle = "이제 곧 알을\n품어야 할 시간이에요.\n잠들 준비가 되셨나요?"
+        withAnimation(Animation.easeInOut(duration: 1.0)) {
+            titleCount += 1
+            if titleCount == 2 {
                 isShowButton = true
             }
         }
