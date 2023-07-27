@@ -52,7 +52,7 @@ struct LofiBirthView: View {
                                 Image("EggPillow")
                                     .resizable()
                                     .frame(maxWidth: 246, maxHeight: 246)
-                                    .offset(y:166)
+                                    .offset(y:162)
                                     .opacity(CheckStepIsBirthOrend(step: dreamPetBirthSteps))
                         )
                 }
