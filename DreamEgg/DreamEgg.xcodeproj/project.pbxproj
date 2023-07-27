@@ -69,6 +69,7 @@
 		93E97B392A6FA56B0000DB2B /* LofiBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E97B382A6FA56B0000DB2B /* LofiBirthView.swift */; };
 		AE05EE112A6E634A0006F40D /* LofiEggDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE05EE102A6E634A0006F40D /* LofiEggDrawView.swift */; };
 		AE05EE132A6E65D30006F40D /* LofiEggInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE05EE122A6E65D30006F40D /* LofiEggInteractionView.swift */; };
+		C28B7C892A724BC60009BECE /* LofiFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28B7C882A724BC60009BECE /* LofiFailedView.swift */; };
 		AEB342D42A7203690063DC14 /* DEButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB342D32A7203690063DC14 /* DEButton.swift */; };
 		AEB342D62A7258E30063DC14 /* DENavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB342D52A7258E30063DC14 /* DENavigationLink.swift */; };
 /* End PBXBuildFile section */
@@ -138,6 +139,7 @@
 		93E97B382A6FA56B0000DB2B /* LofiBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiBirthView.swift; sourceTree = "<group>"; };
 		AE05EE102A6E634A0006F40D /* LofiEggDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiEggDrawView.swift; sourceTree = "<group>"; };
 		AE05EE122A6E65D30006F40D /* LofiEggInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiEggInteractionView.swift; sourceTree = "<group>"; };
+		C28B7C882A724BC60009BECE /* LofiFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiFailedView.swift; sourceTree = "<group>"; };
 		AEB342D32A7203690063DC14 /* DEButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DEButton.swift; sourceTree = "<group>"; };
 		AEB342D52A7258E30063DC14 /* DENavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DENavigationLink.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -292,6 +294,7 @@
 				7EE701E52A6E4C7E00DEEFA6 /* LofiDreamWorldView.swift */,
 				7EE701E62A6E4C7E00DEEFA6 /* LofiMainEggView.swift */,
 				93E97B382A6FA56B0000DB2B /* LofiBirthView.swift */,
+				C28B7C882A724BC60009BECE /* LofiFailedView.swift */,
 				AE05EE102A6E634A0006F40D /* LofiEggDrawView.swift */,
 				AE05EE122A6E65D30006F40D /* LofiEggInteractionView.swift */,
 			);
@@ -429,6 +432,7 @@
 				7EE7022B2A6E4C7E00DEEFA6 /* TimePickerView.swift in Sources */,
 				7EE7021D2A6E4C7E00DEEFA6 /* LofiDreamWorldView.swift in Sources */,
 				7EE7022D2A6E4C7E00DEEFA6 /* DETitleHeader.swift in Sources */,
+				C28B7C892A724BC60009BECE /* LofiFailedView.swift in Sources */,
 				7EE702032A6E4C7E00DEEFA6 /* TimePickerStore.swift in Sources */,
 				7EE7022A2A6E4C7E00DEEFA6 /* DETimePicker.swift in Sources */,
 				7EE701FA2A6E4C7E00DEEFA6 /* EggAnimationStore.swift in Sources */,
