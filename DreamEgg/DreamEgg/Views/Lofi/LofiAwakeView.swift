@@ -163,7 +163,7 @@ struct LofiAwakeView: View {
                     Spacer()
 
                     NavigationLink {
-                        Text("실패")
+                        LofiFailedView()
 //                      Text("To Fail screen")
                     } label: {
                         Text("아직도 잠을 못잤어요.")
