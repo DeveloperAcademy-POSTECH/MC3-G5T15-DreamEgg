@@ -16,7 +16,7 @@ struct LofiFailedView: View {
     @State var dreamCreatureImage : String = "FerretEgg" // TODO: 현재 임의의 데이터를 넣어두었습니다.
     @State var isButtonsAppear = false
     @State var isEggDisappear = false
-    
+
     var body: some View {
         ZStack {
             GradientBackgroundView()
@@ -63,6 +63,7 @@ struct LofiFailedView: View {
                             .frame(maxHeight:50)
                         NavigationLink {
                             LofiAwakeView()
+                                .navigationBarBackButtonHidden(true)
                         } label: {
                             Text("내일 꼭 올게요.")
                                 .frame(maxWidth: .infinity)

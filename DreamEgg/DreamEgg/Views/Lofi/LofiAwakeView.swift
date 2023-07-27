@@ -12,6 +12,7 @@ struct LofiAwakeView: View {
     @State private var maskColor = Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8))
     @State private var isEggButtonTapped = false
     @State private var isActiveSpringAnimation = false
+    @State private var UTToggle = false
 
     private let hourFormatter = DateFormatter(
         dateFormat: "H",
@@ -36,7 +37,7 @@ struct LofiAwakeView: View {
                 .font(.dosIyagiBold(.largeTitle))
 
                 // 추후 수면시간 대비 분기처리를 위한 if 구조.
-                if currentTime != currentTime {
+                if UTToggle == true {
                     ZStack {
                         Button {
                             disableEggButtonToActiveConfetti()
@@ -184,6 +185,10 @@ struct LofiAwakeView: View {
                 .onAppear {
                     Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
                         self.isActiveSpringAnimation.toggle()
+                    }
+                    // TODO: Short UT를 위한 코드, awake 화면에서 15초 이상 머무르면 성공 화면으로 전환합니다.
+                    Timer.scheduledTimer(withTimeInterval: 15.0, repeats: false) {_ in
+                        UTToggle = true
                     }
                 }
         }
