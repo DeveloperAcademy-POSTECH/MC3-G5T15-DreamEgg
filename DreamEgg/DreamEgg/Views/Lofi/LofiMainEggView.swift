@@ -51,13 +51,6 @@ struct LofiMainEggView: View {
                                 .foregroundColor(.white)
                         }
                 }
-                .simultaneousGesture(
-                    TapGesture()
-                        .onEnded { _ in
-                            // MARK: Start Sleeping
-                            
-                        }
-                )
             } else {
                 failedSleepTimeView()
                     .multilineTextAlignment(.center)

@@ -161,10 +161,12 @@ struct LofiAwakeView: View {
 
                     Spacer()
 
-                    Button {
-                        dailySleepTimeStore.updateDailyInfoProcessToStop()
-                        
-                        navigationManager.viewCycle = .general
+                    NavigationLink {
+                        LofiFailedView()
+                            .onAppear {
+                                dailySleepTimeStore.updateDailyInfoProcessToStop()
+                            }
+//                      Text("To Fail screen")
                     } label: {
                         Text("아직도 잠을 못잤어요.")
 //                      Text("I don't feel like to sleep")
