@@ -8,50 +8,68 @@
 import SwiftUI
 
 enum DEButtonStyle {
-    case primaryButton
-    case subButton
+    case primaryButton(isDisabled: Bool)
+    case subButton(isDisabled: Bool)
 }
 
-enum DEButtonState {
-    case enabled
-    case disabled
+struct DEButton {
+    struct CustomButtonView<CustomLabelType: View>: View {
+        let style: DEButtonStyle
+        let action: () -> Void
+        let label: CustomLabelType?
+        
+        var body: some View {
+            switch style {
+            case .primaryButton(let isDisabled):
+                Button(action: action) {
+                    if let label {
+                        label
+                            .modifier(DEButtonStyleModifiers(style: style))
+                    }
+                }
+                .disabled(isDisabled)
+            case .subButton(let isDisabled):
+                Button(action: action) {
+                    if let label {
+                        label
+                            .modifier(DEButtonStyleModifiers(style: style))
+                    }
+                }
+                .disabled(isDisabled)
+            }
+        }
+        init(
+            style: DEButtonStyle,
+            action: @escaping () -> Void,
+            @ViewBuilder label: () -> CustomLabelType
+        ) {
+            self.style = style
+            self.action = action
+            self.label = label()
+        }
+    }
 }
 
 public struct DEButtonStyleModifiers: ViewModifier {
     let style: DEButtonStyle
-    let state: DEButtonState
-    
+
     public func body(content: Content) -> some View {
         switch style {
-        case .primaryButton:
-            switch state {
-            case .enabled:
-                content
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
-                    .foregroundColor(.primaryButtonBrown)
-                    .font(.dosIyagiBold(.body))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.primaryButtonBrown, lineWidth: 4)
-                    }
-                    .background { Color.primaryButtonYellow }
-            case .disabled:
-                content
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
-                    .foregroundColor(.primaryButtonBrown)
-                    .font(.dosIyagiBold(.body))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.primaryButtonBrown, lineWidth: 4)
-                    }
-                    .background { Color.primaryButtonYellow }
-                    .opacity(0.3)
-            }
-        case .subButton:
-            switch state {
-            case .enabled:
+        case let .primaryButton(isDisabled):
+            content
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
+                .foregroundColor(.primaryButtonBrown)
+                .font(.dosIyagiBold(.body))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.primaryButtonBrown, lineWidth: 4)
+                }
+                .background { Color.primaryButtonYellow }
+                .opacity(isDisabled ? 0.3 : 1.0)
+            
+            
+        case let .subButton(isDisabled):
                 content
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
@@ -59,44 +77,39 @@ public struct DEButtonStyleModifiers: ViewModifier {
                     .font(.dosIyagiBold(.body))
                     .background { Color.subButtonSky }
                     .cornerRadius(8)
-            case .disabled:
-                content
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
-                    .foregroundColor(.subButtonBlue)
-                    .font(.dosIyagiBold(.body))
-                    .background { Color.subButtonSky }
-                    .cornerRadius(8)
-                    .opacity(0.3)
-            }
+                    .opacity(isDisabled ? 0.3 : 1.0)
         }
     }
 }
 
 struct testView: View {
+    @State private var isDisabled = false
+    @State private var test = ""
+    
     var body: some View {
         VStack {
-            NavigationLink(destination: LofiEggDrawView()) {
-                Text("NavigationLink primaryButton enabled")
-                    .modifier(DEButtonStyleModifiers(style: .primaryButton, state: .enabled))
-            }
-            
-            Button {
+            TextField(text: $test) {
+                Text("testView 입니다.")
+            }.padding()
+            DEButton.CustomButtonView(
+                style: .primaryButton(isDisabled: test.isEmpty))
+            {
+                print()
             } label: {
-                Text("primaryButton disabled")
-                    .modifier(DEButtonStyleModifiers(style: .primaryButton, state: .disabled))
+                VStack {
+                   Text("로그인")
+                }
             }
-            Button {
+            DEButton.CustomButtonView(
+                style: .subButton(isDisabled: isDisabled))
+            {
+                print()
             } label: {
-                Text("subButton enabled")
-                    .modifier(DEButtonStyleModifiers(style: .subButton, state: .enabled))
-            }
-            Button {
-            } label: {
-                Text("subButton enabled")
-                    .modifier(DEButtonStyleModifiers(style: .subButton, state: .disabled))
-            }
-        }
+                VStack {
+                   Text("로그인")
+                }
+            }            
+        }.padding()
     }
 }
 
