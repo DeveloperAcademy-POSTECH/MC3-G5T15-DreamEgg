@@ -18,7 +18,7 @@ struct DreamEggApp: App {
         coreDataStore: .debugShared
     )
     
-    let testing = false
+    let testing = true
 
     var body: some Scene {
         WindowGroup {
@@ -27,7 +27,11 @@ struct DreamEggApp: App {
 //                FontTestView()
 //                SleepTimeSettingView()
 //                DECalendarTestView()
-                EggInteractionTestView()
+//                EggInteractionTestView()
+//                DETextField(style: .messageTextField, content: "")
+                LofiTextCustomView()
+//                LofiCreatureNamingView()
+                
             } else {
                 ContentView()
                     .environmentObject(navigationManager)

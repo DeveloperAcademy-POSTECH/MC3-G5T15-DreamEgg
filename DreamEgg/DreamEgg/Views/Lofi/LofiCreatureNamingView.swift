@@ -33,7 +33,7 @@ struct LofiCreatureNamingView: View {
                     Text("안녕,")
                     
                     // MARK: Design System으로 변경 예정
-                    DETextField(content: $name)
+                    DETextField(style: .nameTextField, content: $name, maxLength: 10)
                     
 //                    TextField(text: .constant("")) {
 //                        Text("Sammy")

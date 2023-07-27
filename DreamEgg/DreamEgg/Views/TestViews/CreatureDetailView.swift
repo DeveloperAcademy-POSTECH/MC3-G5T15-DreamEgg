@@ -84,8 +84,10 @@ struct CreatureDetailView: View {
                                 isEditedName
                                 ? Image(systemName: "checkmark")
                                     .foregroundColor(Color.subButtonBlue)
+                                    .imageScale(.large)
                                 : Image(systemName: "pencil.line")
                                     .foregroundColor(Color.secondary)
+                                    .imageScale(.large)
                             }
                         }
                         

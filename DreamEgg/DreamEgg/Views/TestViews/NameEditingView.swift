@@ -28,7 +28,7 @@ struct NameEditingView: View {
                 HStack {
                     Text("안녕,")
                     
-                    DETextField(content: $editedName)
+                    DETextField(style: .nameTextField , content: $editedName, maxLength: 10)
                     
                     Text("!")
                 }
