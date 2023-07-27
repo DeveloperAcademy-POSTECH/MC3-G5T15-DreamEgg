@@ -55,7 +55,6 @@ struct LofiEggInteractionView: View {
                         .foregroundColor(.white)
                         .opacity(isShowInfo ? 1.0 : 0)
                         .opacity(isRunInfoAnimation ? 1.0 : 0.3)
-                Spacer()
                 NavigationLink(destination: LofiSleepGuideView( isSkippedFromInteractionView:$isSkip).navigationBarBackButtonHidden(true)) {
                     Text("잠드는데 도움이 필요해요.")
                         .frame(maxWidth: .infinity)
