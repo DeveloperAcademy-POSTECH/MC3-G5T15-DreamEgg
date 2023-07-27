@@ -73,7 +73,7 @@ public struct DEButtonStyleModifiers: ViewModifier {
     }
 }
 
-struct textView: View {
+struct testView: View {
     var body: some View {
         VStack {
             NavigationLink(destination: LofiEggDrawView()) {
@@ -102,6 +102,6 @@ struct textView: View {
 
 struct DEButton_Previews: PreviewProvider {
     static var previews: some View {
-        textView()
+        testView()
     }
 }
