@@ -36,7 +36,7 @@ struct LofiAwakeView: View {
                 .font(.dosIyagiBold(.largeTitle))
 
                 // 추후 수면시간 대비 분기처리를 위한 if 구조.
-                if currentTime == currentTime {
+                if currentTime != currentTime {
                     ZStack {
                         Button {
                             disableEggButtonToActiveConfetti()
