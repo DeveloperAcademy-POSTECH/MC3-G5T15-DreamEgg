@@ -27,6 +27,14 @@ struct DETextField: View {
                 TextField(text: $content) {
                     Text(placeholder)
                 }
+                .onChange(of: content) {
+                     newValue in
+                    /// 글자 수가 maxLength를 초과하면 제한합니다.
+                    /// prefix는  maxLength까지의 글자까지만 보여줍니다.
+                    if content.count > maxLength {
+                        content = String(content.prefix(maxLength))
+                    }
+                }
                 .font(.dosIyagiBold(.body))
                 .padding(32)
                 .multilineTextAlignment(.leading)

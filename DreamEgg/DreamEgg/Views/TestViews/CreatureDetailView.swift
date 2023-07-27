@@ -14,6 +14,7 @@ struct CreatureDetailView: View {
     @State private var incubateTime = Date()
     @State private var isFixedDreamWorld: Bool = false
     @State private var isEditedName: Bool = false
+    var maxLength: Int = 10
     
     /// birthDate.year를 하면 Int값 2,023이 나와서 타입 바꿨습니다
     var getStrYear: String {
@@ -74,6 +75,14 @@ struct CreatureDetailView: View {
                                     .foregroundColor(Color.secondary)
                             } else if isEditedName == true {
                                 TextField("\(dreamPetName)", text: $dreamPetName)
+                                /// 드림펫 이름 글자 수를 10으로 제한해두었습니다.
+                                    .onChange(of: dreamPetName) {
+                                         newValue in
+                                        
+                                        if dreamPetName.count > maxLength {
+                                            dreamPetName = String(dreamPetName.prefix(maxLength))
+                                        }
+                                    }
                                     .multilineTextAlignment(.trailing)
                             }
                             
