@@ -13,27 +13,21 @@ struct LofiCreatureNamingView: View {
             GradientBackgroundView()
             
             VStack {
-                Spacer()
-                    .frame(maxHeight: 100)
-                
-                Text("드림펫의 이름을\n지어볼까요?")
+                Text("드림펫에게\n새로운 이름을 지어주세요.")
                     .font(.dosIyagiBold(.title))
                     .multilineTextAlignment(.center)
                     .padding()
-                
-                Text("이름은 언제든지\n다시 수정할 수 있어요.")
-                    .font(.dosIyagiBold(.body))
-                    .multilineTextAlignment(.center)
+                    .lineSpacing(10)
                 
                 Spacer()
-                    .frame(maxHeight: 125)
+                    .frame(maxHeight: 145)
                 
                 HStack {
                     Text("안녕,")
                     
                     // MARK: Design System으로 변경 예정
                     TextField(text: .constant("")) {
-                        Text("Sammy")
+                        Text("이름...")
                     }
                     .multilineTextAlignment(.center)
                     .frame(
@@ -51,12 +45,21 @@ struct LofiCreatureNamingView: View {
                 .font(.dosIyagiBold(.body))
                 
                 Spacer()
+                    .frame(maxHeight: 24)
+                
+                Text("이름은 언제든지\n다시 수정할 수 있어요.")
+                    .font(.dosIyagiBold(.body))
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+
+                Spacer()
+                    .frame(maxHeight: 276)
                 
                 VStack {
                     NavigationLink {
                         LofiNameConfirmView()
                     } label: {
-                        Text("이 이름이 좋겠다!")
+                        Text("이렇게 지을래요.")
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
                             .foregroundColor(.primaryButtonBrown)
@@ -70,13 +73,8 @@ struct LofiCreatureNamingView: View {
                     .cornerRadius(8)
                     .padding()
                 }
-                .frame(
-                    maxHeight: .infinity,
-                    alignment: .bottom
-                )
-                
             }
-            .frame(maxHeight: .infinity, alignment: .top)
+            .padding(.top,68)
         }
         
     }
