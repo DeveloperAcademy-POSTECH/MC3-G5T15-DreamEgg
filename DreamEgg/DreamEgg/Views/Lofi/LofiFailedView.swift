@@ -16,6 +16,7 @@ struct LofiFailedView: View {
     @State var dreamCreatureImage : String = "FerretEgg" // TODO: 현재 임의의 데이터를 넣어두었습니다.
     @State var isButtonsAppear = false
     @State var isEggDisappear = false
+    @Binding var utToggle: Bool
 
     var body: some View {
         ZStack {
@@ -62,7 +63,7 @@ struct LofiFailedView: View {
                         Spacer()
                             .frame(maxHeight:50)
                         NavigationLink {
-                            LofiAwakeView()
+                            LofiAwakeView(utToggle: true)
                                 .navigationBarBackButtonHidden(true)
                         } label: {
                             Text("내일 꼭 올게요.")
@@ -105,8 +106,8 @@ struct LofiFailedView: View {
     }
 }
 
-struct LofiFailedView_Previews: PreviewProvider {
-    static var previews: some View {
-        LofiFailedView()
-    }
-}
+//struct LofiFailedView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LofiFailedView()
+//    }
+//}

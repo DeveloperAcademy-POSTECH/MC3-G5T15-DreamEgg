@@ -24,7 +24,7 @@ struct LofiSleepGuideView: View {
     
     var body: some View {
         if afterHold {
-            LofiAwakeView()
+            LofiAwakeView(utToggle: false)
         } else {
             ZStack {
                 GradientBackgroundView()
