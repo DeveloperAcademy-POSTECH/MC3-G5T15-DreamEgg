@@ -12,11 +12,17 @@ struct LofiMainTabView: View {
     @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
     @State private var tabSelection: Int = 1
     
-    
     var body: some View {
         ZStack {
-            GradientBackgroundView()
-            
+            if tabSelection == 2 {
+                Image("DreamWorldMap")
+                    .resizable()
+                    .edgesIgnoringSafeArea(.all)
+            }
+            else {
+                GradientBackgroundView()
+            }
+
             TabView(selection: $tabSelection) {
                 DECalendarTestView()
                     .tag(0)

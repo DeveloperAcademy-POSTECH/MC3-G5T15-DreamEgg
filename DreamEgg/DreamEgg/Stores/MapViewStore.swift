@@ -9,8 +9,9 @@ import Foundation
 import SwiftUI
 
 final class MapViewStore : ObservableObject {
-    let mapWidth = UIScreen.main.bounds.width * 0.8
-    let mapHeight = UIScreen.main.bounds.height * 0.7
+    static let window = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first { $0.isKeyWindow }
+    let mapWidth = UIScreen.main.bounds.width
+    var mapHeight = UIScreen.main.bounds.height - window!.safeAreaInsets.top - window!.safeAreaInsets.bottom
     let objSize : CGFloat = 50
     let timers = [
         Timer.publish(every: 3.0, on: .main, in: .common).autoconnect(),
@@ -38,7 +39,7 @@ final class MapViewStore : ObservableObject {
     /// 드림펫들의 초기 위치를 지도 크기 내에서 서로 겹치지 않게 랜덤하게 설정합니다.
     func GeneratePosRandomly() {
         let xPosBoundary = mapWidth - objSize * 2
-        let yPosBoundary = mapHeight * 0.15 - objSize / 2
+        let yPosBoundary = mapHeight * 0.2 - objSize
         var xPosTemp: CGFloat
         var yPosTemp: CGFloat
         var isDuplicated : Bool
@@ -49,7 +50,7 @@ final class MapViewStore : ObservableObject {
                 isDuplicated = false
                 j = 0
                 xPosTemp = CGFloat(arc4random_uniform(UInt32(xPosBoundary))) + objSize
-                yPosTemp = CGFloat(arc4random_uniform(UInt32(yPosBoundary))) + mapHeight * 0.85
+                yPosTemp = CGFloat(arc4random_uniform(UInt32(yPosBoundary))) + mapHeight * 0.8 + objSize / 2
 
                 while j < i {
                     if pow(self.positions[j].x - xPosTemp, 2) + pow(self.positions[j].y - yPosTemp, 2) <= pow(objSize,2) {
@@ -85,7 +86,7 @@ final class MapViewStore : ObservableObject {
                 newYPos = positions[i].y + CGFloat(arc4random_uniform(UInt32(100))) - 50
 
                 // map boundary check
-                if newXPos < objSize || newYPos < mapHeight * 0.85 || newXPos > mapWidth - objSize || newYPos > mapHeight - objSize / 2 {
+                if newXPos < objSize || newYPos < mapHeight * 0.8 || newXPos > mapWidth - objSize || newYPos > mapHeight - objSize / 2 {
                     n += 1
                     continue
                 }
