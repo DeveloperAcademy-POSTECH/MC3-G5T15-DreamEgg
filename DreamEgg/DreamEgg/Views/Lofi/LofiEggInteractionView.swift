@@ -13,6 +13,8 @@ struct LofiEggInteractionView: View {
     @State private var titleCount = 0
     @State private var isShowButton = false
     @State private var isSkip = false
+    @State private var isShowInfo = false
+    @State private var isRunInfoAnimation = true
     
     var body: some View {
         ZStack {
@@ -48,6 +50,12 @@ struct LofiEggInteractionView: View {
                         }
                 }
                 Spacer()
+                    Text("알을 톡 치면 대화가 진행되어요.")
+                        .font(.dosIyagiBold(.callout))
+                        .foregroundColor(.white)
+                        .opacity(isShowInfo ? 1.0 : 0)
+                        .opacity(isRunInfoAnimation ? 1.0 : 0.3)
+                Spacer()
                 NavigationLink(destination: LofiSleepGuideView( isSkippedFromInteractionView:$isSkip).navigationBarBackButtonHidden(true)) {
                     Text("잠드는데 도움이 필요해요.")
                         .frame(maxWidth: .infinity)
@@ -79,6 +87,9 @@ struct LofiEggInteractionView: View {
                 .opacity(isShowButton ? 1.0 : 0)
             }
         }
+        .onAppear {
+            infoAnimation()
+        }
     }
     
     private func titleAnimation() {
@@ -86,6 +97,28 @@ struct LofiEggInteractionView: View {
             titleCount += 1
             if titleCount == 2 {
                 isShowButton = true
+            }
+        }
+    }
+    
+    private func infoAnimation() {
+        if !isShowInfo {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                withAnimation(Animation.easeInOut(duration: 0.8)) {
+                    isShowInfo = true
+                    infoAnimation()
+                }
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                withAnimation(Animation.easeInOut(duration: 1.0)) {
+                    if titleCount < 1 {
+                        isRunInfoAnimation.toggle()
+                        infoAnimation()
+                    } else {
+                        isShowInfo = false
+                    }
+                }
             }
         }
     }
