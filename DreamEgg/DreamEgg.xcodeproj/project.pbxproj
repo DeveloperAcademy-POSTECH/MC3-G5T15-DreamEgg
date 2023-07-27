@@ -70,6 +70,7 @@
 		AE05EE112A6E634A0006F40D /* LofiEggDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE05EE102A6E634A0006F40D /* LofiEggDrawView.swift */; };
 		AE05EE132A6E65D30006F40D /* LofiEggInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE05EE122A6E65D30006F40D /* LofiEggInteractionView.swift */; };
 		AEB342D42A7203690063DC14 /* DEButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB342D32A7203690063DC14 /* DEButton.swift */; };
+		AEB342D62A7258E30063DC14 /* DENavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB342D52A7258E30063DC14 /* DENavigationLink.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +139,7 @@
 		AE05EE102A6E634A0006F40D /* LofiEggDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiEggDrawView.swift; sourceTree = "<group>"; };
 		AE05EE122A6E65D30006F40D /* LofiEggInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiEggInteractionView.swift; sourceTree = "<group>"; };
 		AEB342D32A7203690063DC14 /* DEButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DEButton.swift; sourceTree = "<group>"; };
+		AEB342D52A7258E30063DC14 /* DENavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DENavigationLink.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +324,7 @@
 				7EE701F62A6E4C7E00DEEFA6 /* DECalendar.swift */,
 				7EE701F72A6E4C7E00DEEFA6 /* DETitleHeader.swift */,
 				AEB342D32A7203690063DC14 /* DEButton.swift */,
+				AEB342D52A7258E30063DC14 /* DENavigationLink.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				7EE701FC2A6E4C7E00DEEFA6 /* LocalNotificationStore.swift in Sources */,
 				7EE702002A6E4C7E00DEEFA6 /* MapViewStore.swift in Sources */,
 				7EE7021C2A6E4C7E00DEEFA6 /* LofiAwakeView.swift in Sources */,
+				AEB342D62A7258E30063DC14 /* DENavigationLink.swift in Sources */,
 				7EE702182A6E4C7E00DEEFA6 /* LofiNameConfirmView.swift in Sources */,
 				7EE702222A6E4C7E00DEEFA6 /* CoreDataTestView.swift in Sources */,
 				7EE7020D2A6E4C7E00DEEFA6 /* Calendar+Weekdays.swift in Sources */,
