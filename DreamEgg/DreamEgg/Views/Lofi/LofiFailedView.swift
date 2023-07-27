@@ -62,7 +62,7 @@ struct LofiFailedView: View {
                         Spacer()
                             .frame(maxHeight:50)
                         NavigationLink {
-                            LofiMainEggView()
+                            LofiMainTabView()
                         } label: {
                             Text("내일 꼭 올게요.")
                                 .frame(maxWidth: .infinity)
