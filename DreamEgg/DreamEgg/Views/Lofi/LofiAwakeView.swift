@@ -111,7 +111,7 @@ struct LofiAwakeView: View {
                         .padding(.horizontal)
                 } else {
                     Spacer()
-                    Image("FerretEgg")
+                    Image(dailySleepTimeStore.currentDailySleep?.eggName ?? "EGGNAME")
                         .resizable()
                         .frame(width: 160, height: 160)
                         .rotationEffect(.degrees(90))

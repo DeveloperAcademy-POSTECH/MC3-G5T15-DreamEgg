@@ -36,6 +36,7 @@ public enum Constant {
             [
                 "Quakka",
                 "Rabbit",
+                "Elephant",
             ]
         )
         
@@ -43,6 +44,7 @@ public enum Constant {
             [
                 "BinyEgg",
                 "FerretEgg",
+                "ElephantEgg",
             ]
         )
     }

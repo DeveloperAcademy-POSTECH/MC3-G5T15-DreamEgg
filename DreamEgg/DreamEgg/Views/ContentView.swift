@@ -27,6 +27,7 @@ struct ContentView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         withAnimation {
                             if isSleepingProcessing() {
+                                print(#function, "쉿 자는중", dailySleepTimeStore.currentDailySleep)
                                 navigationManager.viewCycle = .awake
                             } else if userSleepConfigStore.hasSleepConfig {
                                 // 수면시간이 있는 유저

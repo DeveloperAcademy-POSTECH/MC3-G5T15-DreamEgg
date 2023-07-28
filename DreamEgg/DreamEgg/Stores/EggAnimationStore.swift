@@ -13,6 +13,7 @@ class EggAnimation: ObservableObject {
     @Published private var dragOffset: CGSize = .zero
     @Published private var isLongPress = false
     @Published private var isAnimationRunning = false
+    @Published var amplitude: CGFloat = 0.0
     
     func dragGesture() -> some Gesture {
         DragGesture()
@@ -22,7 +23,7 @@ class EggAnimation: ObservableObject {
                     self.eggHeartBeat()
                 }
                 let dragAngle = Angle(radians: Double(value.translation.width) * 0.01)
-                let newRotationAngle = Angle.degrees(10.0) + dragAngle
+                let newRotationAngle = Angle.degrees(self.amplitude) + dragAngle
                 self.rotationAngle = self.clampRotationAngle(newRotationAngle)
             }
             .onEnded { value in
@@ -51,12 +52,12 @@ class EggAnimation: ObservableObject {
     }
     
     func startPendulumAnimation() {
-        self.rotationAngle = .degrees(10.0 * self.direction)
+        self.rotationAngle = .degrees(amplitude * self.direction)
         self.isAnimationRunning = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.direction = self.rotationAngle.degrees >= 0 ? -1 : 1
             if !self.isLongPress && self.isAnimationRunning {
-                self.rotationAngle = .degrees(10.0 * self.direction)
+                self.rotationAngle = .degrees(self.amplitude * self.direction)
                 self.startPendulumAnimation()
             } else {
                 self.isAnimationRunning = false

@@ -35,27 +35,30 @@ struct LofiTextCustomView: View {
                 
                 Spacer()
                 
-                HStack {
-                    Text("내일은")
+//                HStack {
+//                    Text("내일은")
                     
                     // MARK: Design System으로 변경 예정
-                    TextField(text: $notificationMessage) {
-                        Text("입력")
-                    }
-                    .multilineTextAlignment(.center)
-                    .frame(
-                        maxWidth: 125,
-                        maxHeight: 50
-                    )
-                    .background {
-                        Capsule()
-                            .fill(Color.subButtonSky)
-                    }
-                    .padding(8)
+                    DETextField(style: .messageTextField, content: $notificationMessage, maxLength: 30)
+                    .offset(y: -50)
                     
-                    Text("하는 날!")
-                }
-                .font(.dosIyagiBold(.body))
+//                    TextField(text: $notificationMessage) {
+//                        Text("입력")
+//                    }
+//                    .multilineTextAlignment(.center)
+//                    .frame(
+//                        maxWidth: 125,
+//                        maxHeight: 50
+//                    )
+//                    .background {
+//                        Capsule()
+//                            .fill(Color.subButtonSky)
+//                    }
+//                    .padding(8)
+//                    
+//                    Text("하는 날!")
+//                }
+//                .font(.dosIyagiBold(.body))
                 
                 Spacer()
                 
@@ -103,6 +106,10 @@ struct LofiTextCustomView: View {
                     selectedDate: userSleepConfigStore.targetSleepTime
                 )
             }
+        }
+        .ignoresSafeArea(.keyboard)
+        .onTapGesture {
+            self.endTextEditing()
         }
         .navigationBarBackButtonHidden()
     }

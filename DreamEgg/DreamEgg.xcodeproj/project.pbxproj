@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2049DF532A6F0F7000966DDA /* CreatureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049DF522A6F0F7000966DDA /* CreatureDetailView.swift */; };
+		20A9A5D92A6FA82E008513D7 /* DETextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5D82A6FA82E008513D7 /* DETextField.swift */; };
+		20A9A5DB2A6FC3A5008513D7 /* NameEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5DA2A6FC3A5008513D7 /* NameEditingView.swift */; };
 		7E6A4FBE2A716E460085F236 /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E6A4FBC2A716E460085F236 /* DreamEgg.xcdatamodeld */; };
 		7EA7EBF42A6FC29E00C518FF /* View+ActivateConfetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7EBF32A6FC29E00C518FF /* View+ActivateConfetti.swift */; };
 		7ED179652A72CF4D00EEB935 /* DateComponent+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED179642A72CF4D00EEB935 /* DateComponent+Utilities.swift */; };
@@ -74,6 +77,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2049DF522A6F0F7000966DDA /* CreatureDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureDetailView.swift; sourceTree = "<group>"; };
+		20A9A5D82A6FA82E008513D7 /* DETextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DETextField.swift; sourceTree = "<group>"; };
+		20A9A5DA2A6FC3A5008513D7 /* NameEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEditingView.swift; sourceTree = "<group>"; };
 		7E6A4FBD2A716E460085F236 /* DreamEgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamEgg.xcdatamodel; sourceTree = "<group>"; };
 		7EA7EBF32A6FC29E00C518FF /* View+ActivateConfetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ActivateConfetti.swift"; sourceTree = "<group>"; };
 		7EB70D1B2A6E4DCB003512ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -313,6 +319,8 @@
 				7EE701EF2A6E4C7E00DEEFA6 /* TimePickerTestView.swift */,
 				7EE701F02A6E4C7E00DEEFA6 /* HapticFeedbackTestView.swift */,
 				7EE701F12A6E4C7E00DEEFA6 /* LocalNotificationView.swift */,
+				2049DF522A6F0F7000966DDA /* CreatureDetailView.swift */,
+				20A9A5DA2A6FC3A5008513D7 /* NameEditingView.swift */,
 			);
 			path = TestViews;
 			sourceTree = "<group>";
@@ -325,6 +333,7 @@
 				7EE701F52A6E4C7E00DEEFA6 /* TimePickerView.swift */,
 				7EE701F62A6E4C7E00DEEFA6 /* DECalendar.swift */,
 				7EE701F72A6E4C7E00DEEFA6 /* DETitleHeader.swift */,
+				20A9A5D82A6FA82E008513D7 /* DETextField.swift */,
 				AEB342D32A7203690063DC14 /* DEButton.swift */,
 				AEB342D52A7258E30063DC14 /* DENavigationLink.swift */,
 			);
@@ -418,6 +427,7 @@
 				93E97B392A6FA56B0000DB2B /* LofiBirthView.swift in Sources */,
 				7EE701B82A6E4C7000DEEFA6 /* DreamEggApp.swift in Sources */,
 				7EE702102A6E4C7E00DEEFA6 /* Date+Utilities.swift in Sources */,
+				20A9A5DB2A6FC3A5008513D7 /* NameEditingView.swift in Sources */,
 				7EE7022C2A6E4C7E00DEEFA6 /* DECalendar.swift in Sources */,
 				7EE7022E2A6E4C7E00DEEFA6 /* ContentView.swift in Sources */,
 				7EE702292A6E4C7E00DEEFA6 /* GradientBackgroundView.swift in Sources */,
@@ -434,6 +444,7 @@
 				C28B7C892A724BC60009BECE /* LofiFailedView.swift in Sources */,
 				7EE702032A6E4C7E00DEEFA6 /* TimePickerStore.swift in Sources */,
 				7EE7022A2A6E4C7E00DEEFA6 /* DETimePicker.swift in Sources */,
+				2049DF532A6F0F7000966DDA /* CreatureDetailView.swift in Sources */,
 				7EE701FA2A6E4C7E00DEEFA6 /* EggAnimationStore.swift in Sources */,
 				7EE702112A6E4C7E00DEEFA6 /* Date+StartDates.swift in Sources */,
 				7EE702242A6E4C7E00DEEFA6 /* MapTestView.swift in Sources */,
@@ -443,6 +454,7 @@
 				7EE701FF2A6E4C7E00DEEFA6 /* UserSleepConfigStore.swift in Sources */,
 				7EE702132A6E4C7E00DEEFA6 /* DENavigationManager.swift in Sources */,
 				7EE702142A6E4C7E00DEEFA6 /* CoreDataContainer.swift in Sources */,
+				20A9A5D92A6FA82E008513D7 /* DETextField.swift in Sources */,
 				7EE702232A6E4C7E00DEEFA6 /* MainEggsView.swift in Sources */,
 				7EE702042A6E4C7E00DEEFA6 /* Constants.swift in Sources */,
 				7EA7EBF42A6FC29E00C518FF /* View+ActivateConfetti.swift in Sources */,

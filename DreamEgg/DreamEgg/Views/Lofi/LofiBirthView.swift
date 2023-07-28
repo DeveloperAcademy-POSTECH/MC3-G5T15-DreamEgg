@@ -25,14 +25,13 @@ struct LofiBirthView: View {
     @State var isButtonDisabled = false
     
     var body: some View {
-        ZStack {
-            GradientBackgroundView()
-            
-            VStack(spacing: 15) {
+        ZStack(alignment: .top) {            
+            VStack(spacing: 24) {
                 switchHeaderTextByStep()
                     .font(.dosIyagiBold(.title))
                     .multilineTextAlignment(.center)
-                    .frame(maxHeight: 150)
+                    .lineSpacing(10)
+                    .frame(minHeight: 116)
                 
                 if dreamPetBirthSteps == .start {
                     Text("알을 탭해주세요.")
@@ -40,42 +39,29 @@ struct LofiBirthView: View {
                         .opacity(0.5)
                 }
                 else {
-                    Spacer()
-                        .frame(maxHeight:10)
+                    Text(" ")
                 }
                 
-                ZStack {
-                    Image("samplePillow") // TODO: 베개 이미지가 아직 존재하지 않아 임의의 이미지를 넣어두었습니다.
-                        .offset(y: 130)
-//                        .resizable()
-//                        .frame(width: 200, height: 100)
-//                        .padding(.top,200)
-                    
-
-                    Button(action: {
-                        switchDreamPetBirthStep()
-                    }){
-                        if dreamPetBirthSteps == .birth ||
-                            dreamPetBirthSteps == .end {
-                            Image(dreamCreatureImageName ?? "")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: 250, maxHeight: 250)
-                                .offset(x: isVibrationStarted ? 0 : 5)
-                        } else {
-                            Image(dailySleepTimeStore.currentDailySleep?.eggName ?? "")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: 250, maxHeight: 250)
-                                .offset(x: isVibrationStarted ? 0 : 5)
-                        }
-                        
-                    }
-                    .disabled(isButtonDisabled)
+                Button(action: {
+                    switchDreamPetBirthStep()
+                }){
+                    Image(dreamCreatureImageName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: 301, maxHeight: 301)
+                        .offset(x: isVibrationStarted ? 0 : 5)
+                        .background(
+                                Image("EggPillow")
+                                    .resizable()
+                                    .frame(maxWidth: 246, maxHeight: 246)
+                                    .offset(y:162)
+                                    .opacity(CheckStepIsBirthOrend(step: dreamPetBirthSteps))
+                        )
                 }
+                .disabled(isButtonDisabled)
                 
                 if dreamPetBirthSteps == .end {
-                    VStack {
+                    VStack(spacing: 10) {
                         NavigationLink {
                             LofiCreatureNamingView()
                         } label: {
@@ -97,35 +83,43 @@ struct LofiBirthView: View {
                             LofiNameConfirmView()
                         } label: {
                             Text("건너뛰기")
-                                .foregroundColor(.subButtonSky)
-                                .font(.dosIyagiBold(.callout))
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 16)
+                                .foregroundColor(.subButtonBlue)
+                                .font(.dosIyagiBold(.body))
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.subButtonSky, lineWidth: 5)
+                                }
                         }
-                        .padding(.vertical, 32)
+                        .background { Color.subButtonSky }
+                        .cornerRadius(8)
                         .padding(.horizontal)
                     }
-                }
-                else {
-                    Spacer()
-                        .frame(maxHeight: 120)
-                        .opacity(0)
+                    .padding(.top, 65)
                 }
             }
-            .padding(.top, 5)
-            .frame(maxHeight: .infinity)
+            .padding(.top, 74)
 
             Rectangle()
                 .foregroundColor(.white.opacity(opacityForFadeOut))
                 .ignoresSafeArea()
+
+
         }
         .onAppear {
-            self.dreamCreatureImageName = dailySleepTimeStore.getAssetNameSafely()
+            self.dreamCreatureImageName = dailySleepTimeStore.currentDailySleep?.eggName ?? "NOEGG!!"
+//                .getAssetNameSafely()
         }
+        .navigationBarBackButtonHidden()
+        .background(
+            GradientBackgroundView()
+        )
         .onReceive(timer) { _ in
             if dreamPetBirthSteps == .birth || dreamPetBirthSteps == .end {
                 changeImage()
             }
         }
-        .navigationBarBackButtonHidden()
     }
     
     
@@ -175,6 +169,7 @@ struct LofiBirthView: View {
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 dreamCreatureImageName = "\(dreamCreatureImageName)_a" // TODO: 현재 임의의 데이터를 넣어두었습니다.
+                isButtonDisabled = true
                 dreamPetBirthSteps = .birth
                 withAnimation(.easeIn(duration: 1.0)) {
                     opacityForFadeOut = 0.0
@@ -184,7 +179,6 @@ struct LofiBirthView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                 withAnimation() {
                     dreamPetBirthSteps = .end
-                    isButtonDisabled = true
                 }
             }
             
@@ -206,10 +200,27 @@ struct LofiBirthView: View {
             dreamCreatureImageName.append("a")
         }
     }
+    
+    private func CheckStepIsBirthOrend(step: DreamPetBirthSteps) -> Double {
+        if step == .birth || step == .end {
+            return 0
+        }
+        else {
+            return 1
+        }
+    }
 }
 
 struct LofiBirthView_Previews: PreviewProvider {
     static var previews: some View {
         LofiBirthView()
+            .previewDevice(PreviewDevice(rawValue: "iPhone SE(3rd generation)"))
+            .previewDisplayName("iPhone SE(3rd generation)")
+        LofiBirthView()
+            .previewDevice(PreviewDevice(rawValue: "iPhone 14"))
+            .previewDisplayName("iPhone 14")
+        LofiBirthView()
+            .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro Max"))
+            .previewDisplayName("iPhone 14 Pro Max")
     }
 }
