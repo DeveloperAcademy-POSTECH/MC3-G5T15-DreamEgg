@@ -14,6 +14,25 @@ extension Date {
         lhs.day == rhs.day
     }
     
+    public static var timeComponents: Set<Calendar.Component> = [.hour, .minute, .second, ]
+    
+    public static func - (lhs: Date, rhs: Date) -> DateComponents {
+        return Calendar.getCurrentCalendar().dateComponents(timeComponents, from: rhs, to: lhs)
+    }
+    
+    public static func -(lhs: Date, rhs: DateComponents) -> Date {
+//        let year = rhs.year ?? 0
+//        let month = rhs.month ?? 0
+//        let day = rhs.day ?? 0
+        let hour = rhs.hour ?? 0
+        let minute = rhs.minute ?? 0
+//        let second = rhs.second ?? 0
+        
+        let negative = DateComponents(hour: -hour, minute: -minute)
+        return Calendar.getCurrentCalendar().date(byAdding: negative, to: lhs)! // yes force unwrap. sue me.
+    }
+    
+    
     public static var allComponents: Set<Calendar.Component> = [.era, .year, .month, .day, .hour, .minute, .second, .weekday, .weekdayOrdinal, .quarter, .weekOfMonth, .weekOfYear, .yearForWeekOfYear, .nanosecond, .calendar, .timeZone]
 
     public func allComponents(in calendar: Calendar) -> DateComponents {
