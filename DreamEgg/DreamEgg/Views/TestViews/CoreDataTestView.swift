@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct CoreDataTestView: View {
-    @ObservedObject private var dailySleepTimeStore = DailySleepTimeStore(
-        coreDataStore: .debugShared
-    )
+    @EnvironmentObject private var dailySleepTimeStore: DailySleepTimeStore
     
     @State private var animalName: String = ""
     @State private var sleepTime: String = ""
@@ -27,28 +25,42 @@ struct CoreDataTestView: View {
                 TextField("동물", text: $animalName)
                 DatePicker("", selection: $date)
                 TextField("수면시간", text: $sleepTime)
+                    .keyboardType(.numberPad)
                 
                 Button {
-                    dailySleepTimeStore.updateAndSave(
-                        with: DailySleepInfo(
-                            id: .init(),
-                            animalName: animalName,
-                            date: date,
-                            sleepTime: sleepTime
-                        )
-                    )
+                    dailySleepTimeStore.updateAndSaveNewDailySleepInfo()
                 } label: {
                     Text("Sleep Data 저장")
                 }
                 
-                ForEach(dailySleepTimeStore.dailySleepArr) { dailySleepInfo in
+                ForEach(dailySleepTimeStore.dailySleepArray) { dailySleepInfo in
                     NavigationLink(value: dailySleepInfo) {
                         Text("\(dailySleepInfo.date?.formatted() ?? "") 날짜 보러가기")
                     }
                 }
-                .navigationDestination(for: DailySleep.self) { dailySleepInfo in
-                    Text("그 날짜의 동물은 \(dailySleepInfo.animalName ?? "")")
+                .navigationDestination(for: DailySleep.self) { dailySleep in
+                    UpdateView(
+                        dailySleepManager: dailySleepTimeStore,
+                        dailySleepInfo: dailySleep
+                    )
                 }
+            }
+        }
+    }
+}
+
+struct UpdateView: View {
+    @ObservedObject var dailySleepManager: DailySleepTimeStore
+    @State var dailySleepInfo: DailySleep
+    
+    var body: some View {
+        VStack {
+            Text("그 날짜의 동물은 \(dailySleepInfo.animalName ?? "")")
+            
+            Button {
+                dailySleepManager.updateAndSaveNewDailySleepInfo()
+            } label: {
+                Text("바꿔보기")
             }
         }
     }

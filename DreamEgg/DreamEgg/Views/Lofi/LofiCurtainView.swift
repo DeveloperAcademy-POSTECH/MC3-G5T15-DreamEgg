@@ -65,7 +65,7 @@ struct LofiCurtainView: View {
                     .padding(.horizontal)
                     
                     NavigationLink {
-                        LofiNameConfirmView(confirmedName: .constant(""))
+                        LofiNameConfirmView()
                     } label: {
                         Text("건너뛰기")
                             .foregroundColor(.subButtonSky)

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LofiCreatureNamingView: View {
+    @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
     @State var name: String = ""
     
     var body: some View {
@@ -61,7 +62,7 @@ struct LofiCreatureNamingView: View {
                 
                 VStack {
                     NavigationLink {
-                        LofiNameConfirmView(confirmedName: $name)
+                        LofiNameConfirmView()
                     } label: {
                         Text("이렇게 지을래요.")
                             .frame(maxWidth: .infinity)
@@ -76,7 +77,14 @@ struct LofiCreatureNamingView: View {
                     .background { Color.primaryButtonYellow }
                     .cornerRadius(8)
                     .padding()
+                    .simultaneousGesture(
+                        TapGesture()
+                            .onEnded {
+                                
+                            }
+                    )
                 }
+                
             }
             .padding(.top,68)
         }

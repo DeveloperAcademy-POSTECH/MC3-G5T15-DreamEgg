@@ -16,7 +16,7 @@ struct DECalendar<DayLabel: View, Header: View, WeekSwitcher: View>: View {
     
     let style: DECalendarStyle
     private var calendar: Calendar
-    private let content: (Date) -> DayLabel
+    private let content: (Date, [Date]) -> DayLabel
     private let monthHeader: ([Date]) -> Header
     private let weekSwitcher: () -> WeekSwitcher
     @Binding var date: Date
@@ -39,7 +39,7 @@ struct DECalendar<DayLabel: View, Header: View, WeekSwitcher: View>: View {
                 
                 HStack(spacing: 6) {
                     ForEach(days, id: \.self) { eachDay in
-                        content(eachDay)
+                        content(eachDay, days)
                             .font(.dosIyagiBold(.body))
                             
                     }
@@ -59,7 +59,7 @@ struct DECalendar<DayLabel: View, Header: View, WeekSwitcher: View>: View {
         style: DECalendarStyle,
         calendar: Calendar,
         date: Binding<Date>,
-        @ViewBuilder content: @escaping (Date) -> DayLabel,
+        @ViewBuilder content: @escaping (Date, [Date]) -> DayLabel,
         @ViewBuilder monthHeader: @escaping ([Date]) -> Header,
         @ViewBuilder weekSwitcher: @escaping () -> WeekSwitcher
     ) {

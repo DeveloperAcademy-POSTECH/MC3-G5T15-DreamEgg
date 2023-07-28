@@ -17,15 +17,18 @@ struct LofiSleepGuideView: View {
     }
     
     @Environment(\.scenePhase) var scenePhase
+    @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
+    @EnvironmentObject var navigationManager: DENavigationManager
+    
     @State private var sleepGuideSteps: SleepGuideSteps = .start
     @State private var afterHold: Bool = false
     @StateObject private var eggAnimation = EggAnimation()
     @Binding var isSkippedFromInteractionView: Bool
     
     var body: some View {
-        if afterHold {
-            LofiAwakeView()
-        } else {
+//        if afterHold {
+//            LofiAwakeView()
+//        } else {
             ZStack {
                 GradientBackgroundView()
                     .overlay {
@@ -45,21 +48,24 @@ struct LofiSleepGuideView: View {
                             .foregroundColor(.primary)
                             .colorInvert()
                             .frame(maxHeight: 200)
-                    } else {
+                    } else if sleepGuideSteps == .darkening {
                         Text("")
                             .frame(maxHeight: 170)
                     }
                     ZStack {
                         Image("samplePillow")
                             .offset(x:0,y:160)
-                        Image("FerretEgg")
+
+                        Image("\(dailySleepTimeStore.currentDailySleep?.eggName ?? Constant.Errors.NO_EGG)")
+
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 300, height: 300)
                             .rotationEffect(eggAnimation.rotationAngle, anchor: .bottom)
+                            .gesture(eggAnimation.dragGesture())
                             .animation(Animation.easeInOut(duration: 1.0), value: eggAnimation.rotationAngle)
                             .onAppear {
-                                eggAnimation.reset()
+                                eggAnimation.amplitude = 5.0
                                 eggAnimation.startPendulumAnimation()
                             }
                     }
@@ -124,8 +130,7 @@ struct LofiSleepGuideView: View {
                             sleepGuideSteps = .start
                         }
                     } label: {
-//                        Text("다시 하기")
-                        Text("Repeat Again")
+                        Text("다시 하기")
                             .foregroundColor(.subButtonSky)
                             .font(.dosIyagiBold(.callout))
                     }
@@ -144,12 +149,14 @@ struct LofiSleepGuideView: View {
                 }
             }
             .onChange(of: scenePhase) { newValue in
-                print("Scene", newValue, afterHold)
-                if newValue == .background {
-                    afterHold = true
+                if isChangingFromInactiveScene(into: newValue) {
+                    navigationManager.viewCycle = .awake
+                } else if newValue == .inactive {
+                    // 자러 갈 때 .sleeping 처리
+                    print("잘 자러갔니?")
+                    dailySleepTimeStore.updateDailySleepTimeToNow()
                 }
             }
-        }
     }
     
     // MARK: Methods
@@ -162,10 +169,10 @@ struct LofiSleepGuideView: View {
             return Text("먼저,\n심호흡을 해보세요.")
 //            return Text("First, \nTake a deep breath.")
         case .release:
-            return Text("천천히, 그리고 오래동안\n온 몸에 힘을 빼세요.")
+            return Text("이제 알의 태동을 느껴보며\n온 몸에 힘을 빼보아요.")
 //            return Text("Slowly relax your whole body.")
         case .hug:
-            return Text("끝까지 몸을 이완시키는\n느낌에 집중하면서\n오늘의 알을 품어주세요.")
+            return Text("호흡에 집중하면서\n오늘 잠들 준비가 되셨나요?")
 //            return Text("Feel your body relaxing and focus.")
         case .darkening:
             return Text("홀드 버튼을 눌러서\n알이 잘 수 있도록 불을 꺼주세요.")
@@ -184,7 +191,7 @@ struct LofiSleepGuideView: View {
         case .release:
             return Text("...")
         case .hug:
-            return Text("알을 품자")
+            return Text("잘 준비가 된 것 같아요!")
 //            return Text("I'll go to sleep now.")
         case .darkening:
             return Text("베개 밑에 알을 품고\n아침에 살피러 와주세요.")
@@ -210,14 +217,27 @@ struct LofiSleepGuideView: View {
             withAnimation {
                 sleepGuideSteps = .darkening
             }
+            
         case .darkening:
             print()
         }
     }
+    
+    private func isChangingFromInactiveScene(into newScene: ScenePhase) -> Bool {
+        scenePhase == .inactive && newScene == .active ||
+        scenePhase == .background && newScene == .active
+    }
+    
+    private func isChangingFromActiveScene(into newScene: ScenePhase) -> Bool {
+        scenePhase == .active && newScene == .background ||
+        scenePhase == .active && newScene == .inactive
+    }
 }
 
-//struct LofiSleepGuideView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LofiSleepGuideView(isSkippedFromInteractionView:.constant(true))
-//    }
-//}
+struct LofiSleepGuideView_Previews: PreviewProvider {
+    static var previews: some View {
+        LofiSleepGuideView(isSkippedFromInteractionView: .constant(true))
+            .environmentObject(DailySleepTimeStore())
+    }
+}
+

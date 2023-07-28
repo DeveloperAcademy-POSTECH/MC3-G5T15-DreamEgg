@@ -11,12 +11,14 @@ import SwiftUI
 struct DreamEggApp: App {
     @StateObject private var navigationManager = DENavigationManager()
     @StateObject private var dailySleepTimeStore = DailySleepTimeStore(
-        coreDataStore: .debugShared
+        coreDataStore: .releaseShared
     )
     
     @StateObject private var userSleepConfigStore = UserSleepConfigStore(
-        coreDataStore: .debugShared
+        coreDataStore: .releaseShared
     )
+    
+    @StateObject private var localNotificationManager = LocalNotificationManager()
     
     let testing = false
 
@@ -28,6 +30,7 @@ struct DreamEggApp: App {
 //                SleepTimeSettingView()
 //                DECalendarTestView()
 //                EggInteractionTestView()
+                // LocalNotificationView()
 //                DETextField(style: .messageTextField, content: "")
 //                LofiTextCustomView()
                 LofiCreatureNamingView()
@@ -38,6 +41,7 @@ struct DreamEggApp: App {
                     .environmentObject(navigationManager)
                     .environmentObject(dailySleepTimeStore)
                     .environmentObject(userSleepConfigStore)
+                    .environmentObject(localNotificationManager)
             }
         }
     }

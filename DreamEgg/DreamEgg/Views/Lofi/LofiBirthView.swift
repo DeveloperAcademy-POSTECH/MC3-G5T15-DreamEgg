@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LofiBirthView: View {
+    @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
+    
     @frozen enum DreamPetBirthSteps {
         case start
         case exclamationMark
@@ -17,7 +19,7 @@ struct LofiBirthView: View {
     }
     let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
     @State private var dreamPetBirthSteps: DreamPetBirthSteps = .start
-    @State var dreamCreatureImage : String = "FerretEgg" // TODO: 현재 임의의 이미지를 넣어두었습니다.
+    @State var dreamCreatureImageName : String = "" // TODO: 현재 임의의 이미지를 넣어두었습니다.
     @State var opacityForFadeOut : Double = 0
     @State var isVibrationStarted = false
     @State var isButtonDisabled = false
@@ -44,7 +46,7 @@ struct LofiBirthView: View {
                 Button(action: {
                     switchDreamPetBirthStep()
                 }){
-                    Image(dreamCreatureImage)
+                    Image(dreamCreatureImageName)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: 301, maxHeight: 301)
@@ -108,6 +110,9 @@ struct LofiBirthView: View {
 
 
         }
+        .onAppear {
+            self.dreamCreatureImageName = dailySleepTimeStore.getAssetNameSafely()
+        }
         .navigationBarBackButtonHidden()
         .background(
             GradientBackgroundView()
@@ -165,7 +170,7 @@ struct LofiBirthView: View {
             }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                dreamCreatureImage = "Quakka_a" // TODO: 현재 임의의 데이터를 넣어두었습니다.
+                dreamCreatureImageName = "\(dreamCreatureImageName)_a" // TODO: 현재 임의의 데이터를 넣어두었습니다.
                 isButtonDisabled = true
                 dreamPetBirthSteps = .birth
                 withAnimation(.easeIn(duration: 1.0)) {
@@ -188,13 +193,13 @@ struct LofiBirthView: View {
     /// 드림펫이 탄생했을 때, 호흡 애니메이션을 구현하기 위한 함수입니다.
     /// - 기존의 MapViewStore에 존재하는 함수와 동일한 함수이기 때문에 여러 방법을 고민해봤지만, 마땅한 방법을 생각하지 못하고 현재 뷰에 추가해주었습니다.
     private func changeImage() {
-        if dreamCreatureImage[dreamCreatureImage.index(before: dreamCreatureImage.endIndex)] == "a" {
-            dreamCreatureImage.remove(at:dreamCreatureImage.index(before: dreamCreatureImage.endIndex))
-            dreamCreatureImage.append("b")
+        if dreamCreatureImageName[dreamCreatureImageName.index(before: dreamCreatureImageName.endIndex)] == "a" {
+            dreamCreatureImageName.remove(at:dreamCreatureImageName.index(before: dreamCreatureImageName.endIndex))
+            dreamCreatureImageName.append("b")
         }
         else {
-            dreamCreatureImage.remove(at:dreamCreatureImage.index(before: dreamCreatureImage.endIndex))
-            dreamCreatureImage.append("a")
+            dreamCreatureImageName.remove(at:dreamCreatureImageName.index(before: dreamCreatureImageName.endIndex))
+            dreamCreatureImageName.append("a")
         }
     }
     

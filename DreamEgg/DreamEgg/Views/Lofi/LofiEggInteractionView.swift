@@ -46,6 +46,7 @@ struct LofiEggInteractionView: View {
                         })
                         .animation(Animation.easeInOut(duration: 1.0), value: eggAnimation.rotationAngle)
                         .onAppear {
+                            eggAnimation.amplitude = 10.0
                             eggAnimation.startPendulumAnimation()
                         }
                 }
@@ -53,8 +54,8 @@ struct LofiEggInteractionView: View {
                     Text("알을 톡 치면 대화가 진행되어요.")
                         .font(.dosIyagiBold(.callout))
                         .foregroundColor(.white)
-                        .opacity(isShowInfo ? 1.0 : 0)
-                        .opacity(isRunInfoAnimation ? 1.0 : 0.3)
+                        .opacity(isShowInfo ? 0.8 : 0)
+                        .opacity(isRunInfoAnimation ? 0.8 : 0.3)
                 NavigationLink(destination: LofiSleepGuideView( isSkippedFromInteractionView:$isSkip).navigationBarBackButtonHidden(true)) {
                     Text("잠드는데 도움이 필요해요.")
                         .frame(maxWidth: .infinity)

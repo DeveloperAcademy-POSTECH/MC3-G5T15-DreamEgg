@@ -18,23 +18,26 @@ final class MapViewStore : ObservableObject {
         Timer.publish(every: 0.5, on: .main, in: .common).autoconnect(),
     ]
     var num : Int = 0
-    @ObservedObject var dailySleepTimeStore = DailySleepTimeStore()
+    
     @Published var positions = [CGPoint]()
     @Published var names = [[String]]()
     
     init() {
-        self.num = dailySleepTimeStore.dailySleepDict.count
-        getNamesFromCoreData()
+//        getNamesFromCoreData()
         GeneratePosRandomly()
     }
     
     /// CoreData에서 객체들의 데이터를 받아와 객체들의 이름을 저장합니다.
-    func getNamesFromCoreData() {
-        for element in dailySleepTimeStore.dailySleepDict {
-            names.append([element.value.animalName ?? "" ,"_a"])
+    public func getNamesFromCoreData(dailySleepArray: [DailySleep]) {
+        self.num = dailySleepArray.count
+        
+        for element in dailySleepArray {
+            if element.processStatus == Constant.SLEEP_PROCESS_COMPLETE,
+               element.sleepTimeInMinute >= 3 * 60 {
+                names.append([element.assetName ?? "" ,"_a"])
+            }
         }
     }
-    
     
     /// 드림펫들의 초기 위치를 지도 크기 내에서 서로 겹치지 않게 랜덤하게 설정합니다.
     func GeneratePosRandomly() {
