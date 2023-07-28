@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DECalendarTestView: View {
-    @Binding var confirmedName: String
+//    @Binding var confirmedName: String
     
     private var calendar: Calendar
     
@@ -153,51 +153,54 @@ struct DECalendarTestView: View {
                             )
                             .padding(16)
                     }
-                    NavigationLink {
-                        CreatureDetailView()
-                    } label: {
+
                         Section {
-                            HStack(alignment: .center) {
-                                Spacer()
-                                    .frame(maxWidth: 20)
-                                
-                                Image("Quokka_Face")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(maxWidth: 80, maxHeight: 80)
-                                    .background {
-                                        Circle()
-                                            .fill(Color.eggYellow)
-                                            .frame(maxWidth: 60, maxHeight: 60)
-                                    }
-                                    .background {
-                                        Circle()
-                                            .fill(Color.primaryButtonYellow)
-                                            .frame(maxWidth: 70, maxHeight: 70)
-                                    }
-                                
-                                VStack(
-                                    alignment: .leading,
-                                    spacing: 8
-                                ) {
-                                    Text("꿔까")
-                                        .font(.dosIyagiBold(.callout))
+                            NavigationLink {
+                                CreatureDetailView()
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                HStack(alignment: .center) {
+                                    Spacer()
+                                        .frame(maxWidth: 20)
                                     
-                                    Text("\(timeFormatter.string(from: Date.now)) 출생")
-                                        .font(.dosIyagiBold(.footnote))
+                                    Image("Quokka_Face")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(maxWidth: 80, maxHeight: 80)
+                                        .background {
+                                            Circle()
+                                                .fill(Color.eggYellow)
+                                                .frame(maxWidth: 60, maxHeight: 60)
+                                        }
+                                        .background {
+                                            Circle()
+                                                .fill(Color.primaryButtonYellow)
+                                                .frame(maxWidth: 70, maxHeight: 70)
+                                        }
+                                    
+                                    VStack(
+                                        alignment: .leading,
+                                        spacing: 8
+                                    ) {
+                                        Text("꿔까")
+                                            .font(.dosIyagiBold(.callout))
+                                        
+                                        Text("\(timeFormatter.string(from: Date.now)) 출생")
+                                            .font(.dosIyagiBold(.footnote))
+                                    }
+                                    
+                                    Spacer()
+                                        .frame(maxWidth: 30)
                                 }
-                                
-                                Spacer()
-                                    .frame(maxWidth: 30)
-                            }
-                            .frame(
-                                maxWidth: .infinity,
-                                alignment: .leading
-                            )
-                            .background {
-                                Capsule()
-                                    .fill(Color.subButtonSky)
-                                    .padding(.horizontal)
+                                .frame(
+                                    maxWidth: .infinity,
+                                    alignment: .leading
+                                )
+                                .background {
+                                    Capsule()
+                                        .fill(Color.subButtonSky)
+                                        .padding(.horizontal)
+                                }
                             }
                         } header: {
                             Text("This Week")
@@ -209,7 +212,6 @@ struct DECalendarTestView: View {
                                 )
                                 .padding(16)
                         }
-                    }
                     
                 }
             }
@@ -217,14 +219,15 @@ struct DECalendarTestView: View {
     }
     
     // MARK: LifeCycle
-    init(confirmedName: Binding<String>) {
+//    init(confirmedName: Binding<String>) {
+    init() {
         self.calendar = Calendar.getCurrentCalendar()
 
         self.monthDayFormatter = DateFormatter(dateFormat: "M", calendar: calendar)
         self.dayFormatter = DateFormatter(dateFormat: "d", calendar: calendar)
         self.weekDayFormatter = DateFormatter(dateFormat: "EEE", calendar: calendar)
         self.timeFormatter = DateFormatter(dateFormat: "H:mm", calendar: calendar)
-        self._confirmedName = confirmedName
+//        self._confirmedName = confirmedName
     }
     
     // MARK: Methods
@@ -250,7 +253,7 @@ struct DECalendarTestView_Previews: PreviewProvider {
         ZStack {
             GradientBackgroundView()
             
-            DECalendarTestView(confirmedName: .constant("Quokka"))
+//            DECalendarTestView(confirmedName: .constant("Quokka"))
         }
     }
 }

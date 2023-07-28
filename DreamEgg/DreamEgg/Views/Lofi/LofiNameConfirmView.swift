@@ -9,12 +9,10 @@ import SwiftUI
 
 struct LofiNameConfirmView: View {
     let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
-    @State var dreamPetName : String = "토순이" //TODO: CoreData 연결하기
+    @State var dreamPetName : String = "쿼카" //TODO: CoreData 연결하기
     @State var isTimePassed = false
     @State var dreamPetImage: String = "Quakka_a" //TODO: CoreData 연결하기
     @Binding var confirmedName: String
-
-    
     var body: some View {
         ZStack {
             GradientBackgroundView()

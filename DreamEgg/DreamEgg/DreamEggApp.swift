@@ -18,7 +18,7 @@ struct DreamEggApp: App {
         coreDataStore: .debugShared
     )
     
-    let testing = true
+    let testing = false
 
     var body: some Scene {
         WindowGroup {

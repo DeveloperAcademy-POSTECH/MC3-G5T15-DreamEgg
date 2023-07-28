@@ -52,7 +52,7 @@ struct LofiSleepGuideView: View {
                     ZStack {
                         Image("samplePillow")
                             .offset(x:0,y:160)
-                        Image("BinyEgg")
+                        Image("FerretEgg")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 300, height: 300)

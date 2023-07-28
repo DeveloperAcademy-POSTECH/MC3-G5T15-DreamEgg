@@ -16,7 +16,7 @@ struct EggInteractionTestView: View {
             GradientBackgroundView()
             if eggDrawStore.isDrawEgg {
                 VStack {
-                    Image("BinyEgg")
+                    Image("FerretEgg")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 300, height: 300)

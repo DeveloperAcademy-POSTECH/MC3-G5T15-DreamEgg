@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LofiCreatureNamingView: View {
     @State var name: String = ""
+    
     var body: some View {
         ZStack {
             GradientBackgroundView()
