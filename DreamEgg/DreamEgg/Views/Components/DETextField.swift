@@ -17,7 +17,7 @@ struct DETextField: View {
     
     @Binding var content: String
     @State var placeholder: String = "입력"
-    @State var ismessageTextField: Bool = false
+//    @State var isMessageTextField: Bool = false
     var maxLength: Int
     
     var body: some View {
