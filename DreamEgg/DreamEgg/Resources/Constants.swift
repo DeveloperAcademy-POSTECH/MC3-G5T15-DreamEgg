@@ -18,6 +18,14 @@ public enum Constant {
     static let SLEEP_PROCESS_COMPLETE: String = "COMPLETE"
     static let SLEEP_PROCESS_STOPPED: String = "STOPPED"
     
+    static let GOODNIGHT_PREPARE_MESSAGES: [String] = [
+        "잠들기 전,\n치카치카는 필수!",
+        "오늘도, 내일도\n빠짐없이 잘 자기",
+        "다음엔 만날\n드림펫은 누굴까?",
+        "이 행운의 편지는\n드림월드에서 시작되어...",
+        "기상천외한 드림펫도\n숨어있다고?👀",
+    ]
+    
     enum Errors {
         static let NO_EGG: String = "NoEgg"
         static let NO_DREAMPET: String = "NoDreampet"
