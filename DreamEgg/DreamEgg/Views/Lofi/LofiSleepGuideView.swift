@@ -19,6 +19,8 @@ struct LofiSleepGuideView: View {
     @Environment(\.scenePhase) var scenePhase
     @State private var sleepGuideSteps: SleepGuideSteps = .start
     @State private var afterHold: Bool = false
+    @StateObject private var eggAnimation = EggAnimation()
+    @Binding var isSkippedFromInteractionView: Bool
     
     var body: some View {
         if afterHold {
@@ -45,17 +47,23 @@ struct LofiSleepGuideView: View {
                             .frame(maxHeight: 200)
                     } else {
                         Text("")
-                            .frame(maxHeight: 200)
+                            .frame(maxHeight: 170)
                     }
-                    
-                    Image("FerretEgg")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 300, maxHeight: 300)
-                        .position(
-                            x: UIScreen.main.bounds.width / 2,
-                            y: UIScreen.main.bounds.height / 3.5
-                        )
+                    ZStack {
+                        Image("samplePillow")
+                            .offset(x:0,y:160)
+                        Image("BinyEgg")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 300, height: 300)
+                            .rotationEffect(eggAnimation.rotationAngle, anchor: .bottom)
+                            .animation(Animation.easeInOut(duration: 1.0), value: eggAnimation.rotationAngle)
+                            .onAppear {
+                                eggAnimation.reset()
+                                eggAnimation.startPendulumAnimation()
+                            }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .opacity(sleepGuideSteps == .darkening ? 0.4 : 1.0)
                         .overlay(alignment: .topTrailing) {
                             if sleepGuideSteps == .darkening {
@@ -130,6 +138,11 @@ struct LofiSleepGuideView: View {
                 }
                 
             }
+            .onAppear {
+                if isSkippedFromInteractionView {
+                    sleepGuideSteps = .darkening
+                }
+            }
             .onChange(of: scenePhase) { newValue in
                 print("Scene", newValue, afterHold)
                 if newValue == .background {
@@ -203,8 +216,8 @@ struct LofiSleepGuideView: View {
     }
 }
 
-struct LofiSleepGuideView_Previews: PreviewProvider {
-    static var previews: some View {
-        LofiSleepGuideView()
-    }
-}
+//struct LofiSleepGuideView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LofiSleepGuideView(isSkippedFromInteractionView:.constant(true))
+//    }
+//}

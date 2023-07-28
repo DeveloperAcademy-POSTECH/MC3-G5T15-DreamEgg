@@ -10,6 +10,7 @@
 		2049DF532A6F0F7000966DDA /* CreatureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049DF522A6F0F7000966DDA /* CreatureDetailView.swift */; };
 		20A9A5D92A6FA82E008513D7 /* DETextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5D82A6FA82E008513D7 /* DETextField.swift */; };
 		20A9A5DB2A6FC3A5008513D7 /* NameEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5DA2A6FC3A5008513D7 /* NameEditingView.swift */; };
+		7EA7EBF42A6FC29E00C518FF /* View+ActivateConfetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7EBF32A6FC29E00C518FF /* View+ActivateConfetti.swift */; };
 		7EE701A62A6E4C2200DEEFA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EE701A52A6E4C2200DEEFA6 /* Assets.xcassets */; };
 		7EE701A92A6E4C2200DEEFA6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EE701A82A6E4C2200DEEFA6 /* Preview Assets.xcassets */; };
 		7EE701B62A6E4C5400DEEFA6 /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701B42A6E4C5400DEEFA6 /* DreamEgg.xcdatamodeld */; };
@@ -68,12 +69,19 @@
 		7EE7022C2A6E4C7E00DEEFA6 /* DECalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701F62A6E4C7E00DEEFA6 /* DECalendar.swift */; };
 		7EE7022D2A6E4C7E00DEEFA6 /* DETitleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701F72A6E4C7E00DEEFA6 /* DETitleHeader.swift */; };
 		7EE7022E2A6E4C7E00DEEFA6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701F82A6E4C7E00DEEFA6 /* ContentView.swift */; };
+		93E97B392A6FA56B0000DB2B /* LofiBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E97B382A6FA56B0000DB2B /* LofiBirthView.swift */; };
+		AE05EE112A6E634A0006F40D /* LofiEggDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE05EE102A6E634A0006F40D /* LofiEggDrawView.swift */; };
+		AE05EE132A6E65D30006F40D /* LofiEggInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE05EE122A6E65D30006F40D /* LofiEggInteractionView.swift */; };
+		C28B7C892A724BC60009BECE /* LofiFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28B7C882A724BC60009BECE /* LofiFailedView.swift */; };
+		AEB342D42A7203690063DC14 /* DEButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB342D32A7203690063DC14 /* DEButton.swift */; };
+		AEB342D62A7258E30063DC14 /* DENavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB342D52A7258E30063DC14 /* DENavigationLink.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2049DF522A6F0F7000966DDA /* CreatureDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureDetailView.swift; sourceTree = "<group>"; };
 		20A9A5D82A6FA82E008513D7 /* DETextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DETextField.swift; sourceTree = "<group>"; };
 		20A9A5DA2A6FC3A5008513D7 /* NameEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEditingView.swift; sourceTree = "<group>"; };
+		7EA7EBF32A6FC29E00C518FF /* View+ActivateConfetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ActivateConfetti.swift"; sourceTree = "<group>"; };
 		7EB70D1B2A6E4DCB003512ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7EE7019E2A6E4C2100DEEFA6 /* DreamEgg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamEgg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE701A52A6E4C2200DEEFA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -134,6 +142,12 @@
 		7EE701F62A6E4C7E00DEEFA6 /* DECalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DECalendar.swift; sourceTree = "<group>"; };
 		7EE701F72A6E4C7E00DEEFA6 /* DETitleHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DETitleHeader.swift; sourceTree = "<group>"; };
 		7EE701F82A6E4C7E00DEEFA6 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		93E97B382A6FA56B0000DB2B /* LofiBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiBirthView.swift; sourceTree = "<group>"; };
+		AE05EE102A6E634A0006F40D /* LofiEggDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiEggDrawView.swift; sourceTree = "<group>"; };
+		AE05EE122A6E65D30006F40D /* LofiEggInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiEggInteractionView.swift; sourceTree = "<group>"; };
+		C28B7C882A724BC60009BECE /* LofiFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiFailedView.swift; sourceTree = "<group>"; };
+		AEB342D32A7203690063DC14 /* DEButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DEButton.swift; sourceTree = "<group>"; };
+		AEB342D52A7258E30063DC14 /* DENavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DENavigationLink.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +259,7 @@
 				7EE701D32A6E4C7E00DEEFA6 /* DateFormatter+init.swift */,
 				7EE701D42A6E4C7E00DEEFA6 /* Font+DosIyagi.swift */,
 				7EE701D52A6E4C7E00DEEFA6 /* Date+Utilities.swift */,
+				7EA7EBF32A6FC29E00C518FF /* View+ActivateConfetti.swift */,
 				7EE701D62A6E4C7E00DEEFA6 /* Date+StartDates.swift */,
 			);
 			path = Extensions;
@@ -284,6 +299,10 @@
 				7EE701E42A6E4C7E00DEEFA6 /* LofiAwakeView.swift */,
 				7EE701E52A6E4C7E00DEEFA6 /* LofiDreamWorldView.swift */,
 				7EE701E62A6E4C7E00DEEFA6 /* LofiMainEggView.swift */,
+				93E97B382A6FA56B0000DB2B /* LofiBirthView.swift */,
+				C28B7C882A724BC60009BECE /* LofiFailedView.swift */,
+				AE05EE102A6E634A0006F40D /* LofiEggDrawView.swift */,
+				AE05EE122A6E65D30006F40D /* LofiEggInteractionView.swift */,
 			);
 			path = Lofi;
 			sourceTree = "<group>";
@@ -316,6 +335,8 @@
 				7EE701F62A6E4C7E00DEEFA6 /* DECalendar.swift */,
 				7EE701F72A6E4C7E00DEEFA6 /* DETitleHeader.swift */,
 				20A9A5D82A6FA82E008513D7 /* DETextField.swift */,
+				AEB342D32A7203690063DC14 /* DEButton.swift */,
+				AEB342D52A7258E30063DC14 /* DENavigationLink.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -404,6 +425,7 @@
 				7EE702212A6E4C7E00DEEFA6 /* FontTestView.swift in Sources */,
 				7EE701B62A6E4C5400DEEFA6 /* DreamEgg.xcdatamodeld in Sources */,
 				7EE702252A6E4C7E00DEEFA6 /* EggInteractionTestView.swift in Sources */,
+				93E97B392A6FA56B0000DB2B /* LofiBirthView.swift in Sources */,
 				7EE701B82A6E4C7000DEEFA6 /* DreamEggApp.swift in Sources */,
 				7EE702102A6E4C7E00DEEFA6 /* Date+Utilities.swift in Sources */,
 				20A9A5DB2A6FC3A5008513D7 /* NameEditingView.swift in Sources */,
@@ -413,12 +435,14 @@
 				7EE701FC2A6E4C7E00DEEFA6 /* LocalNotificationStore.swift in Sources */,
 				7EE702002A6E4C7E00DEEFA6 /* MapViewStore.swift in Sources */,
 				7EE7021C2A6E4C7E00DEEFA6 /* LofiAwakeView.swift in Sources */,
+				AEB342D62A7258E30063DC14 /* DENavigationLink.swift in Sources */,
 				7EE702182A6E4C7E00DEEFA6 /* LofiNameConfirmView.swift in Sources */,
 				7EE702222A6E4C7E00DEEFA6 /* CoreDataTestView.swift in Sources */,
 				7EE7020D2A6E4C7E00DEEFA6 /* Calendar+Weekdays.swift in Sources */,
 				7EE7022B2A6E4C7E00DEEFA6 /* TimePickerView.swift in Sources */,
 				7EE7021D2A6E4C7E00DEEFA6 /* LofiDreamWorldView.swift in Sources */,
 				7EE7022D2A6E4C7E00DEEFA6 /* DETitleHeader.swift in Sources */,
+				C28B7C892A724BC60009BECE /* LofiFailedView.swift in Sources */,
 				7EE702032A6E4C7E00DEEFA6 /* TimePickerStore.swift in Sources */,
 				7EE7022A2A6E4C7E00DEEFA6 /* DETimePicker.swift in Sources */,
 				2049DF532A6F0F7000966DDA /* CreatureDetailView.swift in Sources */,
@@ -436,6 +460,7 @@
 				20A9A5D92A6FA82E008513D7 /* DETextField.swift in Sources */,
 				7EE702232A6E4C7E00DEEFA6 /* MainEggsView.swift in Sources */,
 				7EE702042A6E4C7E00DEEFA6 /* Constants.swift in Sources */,
+				7EA7EBF42A6FC29E00C518FF /* View+ActivateConfetti.swift in Sources */,
 				7EE702122A6E4C7E00DEEFA6 /* HapticManager.swift in Sources */,
 				7EE702272A6E4C7E00DEEFA6 /* HapticFeedbackTestView.swift in Sources */,
 				7EE702152A6E4C7E00DEEFA6 /* LofiCurtainView.swift in Sources */,
@@ -443,10 +468,13 @@
 				7EE7021B2A6E4C7E00DEEFA6 /* LofiSleepGuideView.swift in Sources */,
 				7EE702162A6E4C7E00DEEFA6 /* LofiMainTabView.swift in Sources */,
 				7EE701F92A6E4C7E00DEEFA6 /* EggDrawStore.swift in Sources */,
+				AE05EE112A6E634A0006F40D /* LofiEggDrawView.swift in Sources */,
 				7EE7021E2A6E4C7E00DEEFA6 /* LofiMainEggView.swift in Sources */,
 				7EE702172A6E4C7E00DEEFA6 /* LofiTextCustomView.swift in Sources */,
 				7EE702262A6E4C7E00DEEFA6 /* TimePickerTestView.swift in Sources */,
+				AE05EE132A6E65D30006F40D /* LofiEggInteractionView.swift in Sources */,
 				7EE701FB2A6E4C7E00DEEFA6 /* CoreDataRepresentable.swift in Sources */,
+				AEB342D42A7203690063DC14 /* DEButton.swift in Sources */,
 				7EE7020E2A6E4C7E00DEEFA6 /* DateFormatter+init.swift in Sources */,
 				7EE7020F2A6E4C7E00DEEFA6 /* Font+DosIyagi.swift in Sources */,
 				7EE702282A6E4C7E00DEEFA6 /* LocalNotificationView.swift in Sources */,
@@ -579,7 +607,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
-				DEVELOPMENT_TEAM = 67M6ZS7KS6;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DreamEgg/Info.plist;
@@ -611,7 +639,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
-				DEVELOPMENT_TEAM = 67M6ZS7KS6;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DreamEgg/Info.plist;

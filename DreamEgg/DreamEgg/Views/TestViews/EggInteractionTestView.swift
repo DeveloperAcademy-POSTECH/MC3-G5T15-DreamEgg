@@ -10,7 +10,7 @@ import SwiftUI
 struct EggInteractionTestView: View {
     @State var points: [CGPoint] = []
     @StateObject private var eggDrawStore = EggDrawStore()
-    @StateObject private var eggAnimation = EggAnimation.shared
+    @StateObject private var eggAnimation = EggAnimation()
     var body: some View {
         ZStack {
             GradientBackgroundView()
