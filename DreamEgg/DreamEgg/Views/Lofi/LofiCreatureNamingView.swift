@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct LofiCreatureNamingView: View {
+    @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
+    @State private var dreampetName: String = ""
+    
     var body: some View {
         ZStack {
             GradientBackgroundView()
@@ -32,7 +35,7 @@ struct LofiCreatureNamingView: View {
                     Text("안녕,")
                     
                     // MARK: Design System으로 변경 예정
-                    TextField(text: .constant("")) {
+                    TextField(text: $dreampetName) {
                         Text("Sammy")
                     }
                     .multilineTextAlignment(.center)
@@ -69,6 +72,12 @@ struct LofiCreatureNamingView: View {
                     .background { Color.primaryButtonYellow }
                     .cornerRadius(8)
                     .padding()
+                    .simultaneousGesture(
+                        TapGesture()
+                            .onEnded {
+                                dailySleepTimeStore.updateDreamPetName(to: dreampetName)
+                            }
+                    )
                 }
                 .frame(
                     maxHeight: .infinity,

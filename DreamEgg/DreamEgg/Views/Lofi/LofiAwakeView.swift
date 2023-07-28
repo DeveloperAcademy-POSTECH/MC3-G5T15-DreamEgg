@@ -35,8 +35,7 @@ struct LofiAwakeView: View {
                 Spacer()
 
                 Text("지금 시간은 \n\(currentTime.hour)시 \(currentTime.minute)분이에요.")
-//                Text("It's \(hourFormatter.string(from: currentTime)):\(minuteFormatter.string(from: currentTime)) now")
-                .font(.dosIyagiBold(.largeTitle))
+                    .font(.dosIyagiBold(.largeTitle))
 
                 if isUserSleepingMoreThanThreeHours() {
                     ZStack {
@@ -95,9 +94,6 @@ struct LofiAwakeView: View {
                 
                 NavigationLink {
                     LofiBirthView()
-                        .onAppear {
-                            dailySleepTimeStore.completeDailySleepTime()
-                        }
                 } label: {
                     Text("잘 잤어요!")
 //                    Text("I slept well!")
@@ -185,11 +181,11 @@ struct LofiAwakeView: View {
             .foregroundColor(.white)
             .onAppear {
                 dailySleepTimeStore.getSleepTimeInMinute()
-                
                 self.activateTimer()
             }
             .onChange(of: scene) { newScene in
                 self.currentTime = .now
+                
                 if isChangingFromInactiveScene(into: newScene) {
                     dailySleepTimeStore.getSleepTimeInMinute()
                     self.activateTimer()
@@ -209,16 +205,21 @@ struct LofiAwakeView: View {
     }
     
     private func isUserSleepingMoreThanThreeHours() -> Bool {
-        if let currentDailySleep = dailySleepTimeStore.currentDailySleep {
-            return currentTime.hour - 3 >= currentDailySleep.date!.hour
+        // MARK: 10분
+        // TODO: 10분을 60 * 3 으로 수정
+        if let currentDailySleep = dailySleepTimeStore.currentDailySleep  {
+            return dailySleepTimeStore.sleepingTimeInMinute >= 10
         } else {
             return false
         }
     }
     
     private func isChangingFromInactiveScene(into newScene: ScenePhase) -> Bool {
-        scene == .inactive && newScene == .active ||
+        
+        let activated = scene == .inactive && newScene == .active ||
         scene == .background && newScene == .active
+        print(#function, activated)
+        return activated
     }
     
     private func activateTimer() {

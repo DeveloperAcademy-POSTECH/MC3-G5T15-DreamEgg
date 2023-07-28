@@ -45,19 +45,31 @@ struct LofiBirthView: View {
                 }
                 
                 ZStack {
-                    Image("SamplePillow") // TODO: 베개 이미지가 아직 존재하지 않아 임의의 이미지를 넣어두었습니다.
-                        .resizable()
-                        .frame(width: 200, height: 100)
-                        .padding(.top,200)
+                    Image("samplePillow") // TODO: 베개 이미지가 아직 존재하지 않아 임의의 이미지를 넣어두었습니다.
+                        .offset(y: 130)
+//                        .resizable()
+//                        .frame(width: 200, height: 100)
+//                        .padding(.top,200)
+                    
 
                     Button(action: {
                         switchDreamPetBirthStep()
                     }){
-                        Image(dreamCreatureImageName)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(maxWidth: 250, maxHeight: 250)
-                            .offset(x: isVibrationStarted ? 0 : 5)
+                        if dreamPetBirthSteps == .birth ||
+                            dreamPetBirthSteps == .end {
+                            Image(dreamCreatureImageName ?? "")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(maxWidth: 250, maxHeight: 250)
+                                .offset(x: isVibrationStarted ? 0 : 5)
+                        } else {
+                            Image(dailySleepTimeStore.currentDailySleep?.eggName ?? "")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(maxWidth: 250, maxHeight: 250)
+                                .offset(x: isVibrationStarted ? 0 : 5)
+                        }
+                        
                     }
                     .disabled(isButtonDisabled)
                 }

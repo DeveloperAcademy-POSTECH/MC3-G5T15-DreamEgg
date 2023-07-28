@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct LofiNameConfirmView: View {
+    @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
+    @EnvironmentObject var navigationManager: DENavigationManager
+    
     var body: some View {
         ZStack {
             GradientBackgroundView()
@@ -16,18 +19,15 @@ struct LofiNameConfirmView: View {
                 Spacer()
                     .frame(maxHeight: 100)
                 
-                Text("토순이(가)\n드림월드로\n뛰어들어갔다!")
+                Text("\(dailySleepTimeStore.currentDailySleep?.animalName ?? "복실이")(가)\n드림월드로\n뛰어들어갔다!")
                     .font(.dosIyagiBold(.title))
                     .multilineTextAlignment(.center)
                     .padding()
                 
                 VStack {
-                    NavigationLink {
-                        ZStack {
-                            GradientBackgroundView()
-                            
-                            LofiDreamWorldView()
-                        }
+                    Button {
+                        dailySleepTimeStore.completeDailySleepTime()
+                        navigationManager.viewCycle = .general
                     } label: {
                         Text("드림월드 둘러보기")
                             .frame(maxWidth: .infinity)

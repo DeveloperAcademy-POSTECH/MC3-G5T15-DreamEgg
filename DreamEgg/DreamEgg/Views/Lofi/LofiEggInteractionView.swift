@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LofiEggInteractionView: View {
+    @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
     @StateObject private var eggAnimation = EggAnimation()
     @State private var interactionTitle = "알이 생겼어요!\n한 번 쓰다듬어볼까요?"
     @State private var isShowButton = false
@@ -31,7 +32,8 @@ struct LofiEggInteractionView: View {
                 ZStack {
                     Image("samplePillow")
                         .offset(x:0,y:160)
-                    Image("BinyEgg")
+                    
+                    Image(dailySleepTimeStore.currentDailySleep?.eggName ?? "NO_EGG")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 300, height: 300)

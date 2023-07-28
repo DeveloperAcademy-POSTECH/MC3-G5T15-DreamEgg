@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LofiEggDrawView: View {
+    @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
     @StateObject private var eggDrawStore = EggDrawStore()
     
     var body: some View {
@@ -17,6 +18,10 @@ struct LofiEggDrawView: View {
             if eggDrawStore.isDrawEgg {
                 LofiEggInteractionView()
                     .navigationBarBackButtonHidden()
+                    .onAppear {
+                        print("NEW EGG HAS APPEARED!")
+                        dailySleepTimeStore.updateAndSaveNewDailySleepInfo()
+                    }
             } else {
 //                VStack {
                     ZStack {

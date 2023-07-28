@@ -81,13 +81,15 @@ struct ContentView: View {
             }
             
         case .awake:
-            LofiAwakeView()
-                .transition(
-                    .asymmetric(
-                        insertion: .opacity,
-                        removal: .opacity
+            NavigationStack {
+                LofiAwakeView()
+                    .transition(
+                        .asymmetric(
+                            insertion: .opacity,
+                            removal: .opacity
+                        )
                     )
-                )
+            }
         }
     }
     
