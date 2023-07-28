@@ -29,7 +29,12 @@ struct DreamEggApp: App {
 //                FontTestView()
 //                SleepTimeSettingView()
 //                DECalendarTestView()
-                EggInteractionTestView()
+//                EggInteractionTestView()
+//                DETextField(style: .messageTextField, content: "")
+//                LofiTextCustomView()
+                LofiCreatureNamingView()
+//                CreatureDetailView()
+                
             } else {
                 ContentView()
                     .environmentObject(navigationManager)

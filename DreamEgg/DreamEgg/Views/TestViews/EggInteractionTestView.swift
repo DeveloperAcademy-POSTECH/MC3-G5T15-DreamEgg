@@ -10,7 +10,7 @@ import SwiftUI
 struct EggInteractionTestView: View {
     @State var points: [CGPoint] = []
     @StateObject private var eggDrawStore = EggDrawStore()
-    @StateObject private var eggAnimation = EggAnimation.shared
+    @StateObject private var eggAnimation = EggAnimation()
     var body: some View {
         ZStack {
             GradientBackgroundView()
@@ -24,6 +24,7 @@ struct EggInteractionTestView: View {
                         .gesture(eggAnimation.dragGesture())
                         .animation(Animation.easeInOut(duration: 1.0), value: eggAnimation.rotationAngle)
                         .onAppear {
+                            eggAnimation.amplitude = 10.0
                             eggAnimation.startPendulumAnimation()
                         }
                     Button("reset") {

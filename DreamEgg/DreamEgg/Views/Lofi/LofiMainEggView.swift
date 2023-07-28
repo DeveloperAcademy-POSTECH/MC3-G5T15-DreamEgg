@@ -32,22 +32,13 @@ struct LofiMainEggView: View {
                     .frame(maxWidth: .infinity)
                 
                 Spacer()
-                    .frame(maxHeight: 80)
+                    .frame(maxHeight: 40)
                 
                 NavigationLink {
-                    LofiSleepGuideView()
+                    LofiEggDrawView()
                         .navigationBarBackButtonHidden()
                 } label: {
-                    Ellipse()
-                        .stroke(
-                            Color.white,
-                            style: StrokeStyle(
-                                lineWidth: 10,
-                                dash: [8],
-                                dashPhase: 6
-                            )
-                        )
-                        .frame(maxWidth: 200, maxHeight: 270)
+                    Image("emptyEgg")
                         .overlay {
                             Text("탭해서 \n알그리기")
                                 .font(.dosIyagiBold(.body))
@@ -143,5 +134,7 @@ struct LofiMainEggView: View {
 struct LofiMainEggView_Previews: PreviewProvider {
     static var previews: some View {
         LofiMainTabView()
+            .environmentObject(DENavigationManager())
+            .environmentObject(UserSleepConfigStore())
     }
 }
