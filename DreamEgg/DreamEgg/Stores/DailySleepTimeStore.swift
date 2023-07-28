@@ -60,12 +60,17 @@ final class DailySleepTimeStore: ObservableObject, CoreDataRepresentable {
     }
     
     public func getSleepTimeInMinute() {
+        print(#function, currentDailySleep)
+        
         if let sleptTime = self.currentDailySleep?.date {
+            print("어떻게 이게 같을수가있어", sleptTime, Date.now)
             let sleptSecond = Int(sleptTime.distance(to: Date.now))
+            print(#function, "몇초가 지났음?", sleptSecond)
             self.sleepingTimeInMinute = sleptSecond / 60
             
             self.sleptHour = self.sleepingTimeInMinute / 60
             self.sleptMinute = self.sleepingTimeInMinute % 60
+            print(#function, sleepingTimeInMinute)
         }
     }
     
@@ -140,7 +145,7 @@ extension DailySleepTimeStore {
     
     /// 잠자기를 누른 후의 DailySleep을 찾고 self.currentDailySleep에 할당합니다.
     /// 이후, currentDailySleep을 바탕으로 앱 분기처리를 진행합니다.
-    /// 이 메소드는 앱이 완전히 꺼지고 suspend 되었다가 active될 때만 속성을 할당합니다.
+    /// 이 메소드는 앱이 꺼지고 suspend 되었다가 active될 때 속성을 할당합니다.
     private func assignDailySleepProcessing() {
         let processing = self.dailySleepArray.filter {
             $0.processStatus == DailySleepInfo.SleepProcessStatus.sleeping.description
@@ -160,23 +165,6 @@ extension DailySleepTimeStore {
         self.currentDailySleep = self.dailySleepArray.first
     }
     
-    
-    /// 기존의 currentDailySleep 데이터를 모두 DailySleepInfo 인스턴스에 덮어씁니다.
-    /// inout 처리로 리턴 없이 nil 분기를 처리합니다.
-    /// - Parameter model: currentDailySleep의 데이터를 덮어 쓸 DailySleepInfo 인스턴스
-    private func assignCurrentDailySleep(to model: inout DailySleepInfo) {
-        if let currentDailySleep {
-            model.id = currentDailySleep.id!
-            model.eggName = currentDailySleep.eggName!
-            model.sleepTimeInMinute = currentDailySleep.sleepTimeInMinute
-            model.animalName = currentDailySleep.animalName!
-            model.assetName = currentDailySleep.assetName!
-            model.date = currentDailySleep.date!
-        } else {
-            print(#function, "current가 없다?")
-        }
-    }
-    
     internal func assignProperties(
         to coreData: DailySleep,
         from appEntityModel: DailySleepInfo
@@ -193,30 +181,73 @@ extension DailySleepTimeStore {
 
 // MARK: COREDATA CRUD
 extension DailySleepTimeStore {
+    /// 기존의 currentDailySleep 데이터를 모두 DailySleepInfo 인스턴스에 덮어씁니다.
+    /// inout 처리로 리턴 없이 nil 분기를 처리합니다.
+    /// - Parameter model: currentDailySleep의 데이터를 덮어 쓸 DailySleepInfo 인스턴스
+    private func assignCurrentDailySleep(to model: inout DailySleepInfo) {
+        if let currentDailySleep {
+            model.id = currentDailySleep.id!
+            model.eggName = currentDailySleep.eggName!
+            model.sleepTimeInMinute = currentDailySleep.sleepTimeInMinute
+            model.animalName = currentDailySleep.animalName!
+            model.assetName = currentDailySleep.assetName!
+            model.date = currentDailySleep.date!
+        } else {
+            print(#function, "current가 없다?")
+        }
+    }
+    
     /**
      coreDataStore에 model을 전달하여 update, save를 진행합니다.
      잠을 자는 플로우가 시작되는 시점에 트리거되며
-     processStatus를 processing으로 수정할당합니다.
+     processStatus를 processing으로 수정 할당합니다.
+     만약 process 중에 앱이 꺼졌다면, processing 데이터를 찾아서 그대로 진행합니다.
      */
     public func updateAndSaveNewDailySleepInfo() {
-        var model = makeNewDailySleepInfo()
-        model.processStatus = .processing
+        let inProcessingArray = dailySleepArray.filter {
+            $0.processStatus == Constant.SLEEP_PROCESS_PROCESSING
+        }
+        
+        if inProcessingArray.count > 0 {
+            self.currentDailySleep = dailySleepArray.filter {
+                $0.processStatus == Constant.SLEEP_PROCESS_PROCESSING
+            }.first
+            
+        } else {
+            var model = makeNewDailySleepInfo()
+            model.processStatus = .processing
+            
+            updateCoreData(
+                with: model,
+                predicate: getNSPredicate(with: model)
+            )
+            
+            assignDailySleepInfoArray()
+        }
+    }
+    
+    public func updateDreamPetName(to name: String) {
+        var model = self.getProcessingDailySleepInfo()
+        assignCurrentDailySleep(to: &model)
+        model.animalName = name
         
         updateCoreData(
             with: model,
             predicate: getNSPredicate(with: model)
         )
-        
         assignDailySleepInfoArray()
     }
-    
     
     /// 자러갈 때의 시작 시간을 현재로 변경해주고 sleeping 상태로 수정합니다.
     public func updateDailySleepTimeToNow() {
         var model = self.getProcessingDailySleepInfo()
         assignCurrentDailySleep(to: &model)
-        model.processStatus = .sleeping
-        model.date = .now
+        
+        if model.processStatus == .processing {
+            model.processStatus = .sleeping
+            // 실제로 화면이 어두어지는 시점부터 카운트한다.
+            model.date = .now
+        }
         
         updateCoreData(with: model, predicate: getNSPredicate(with: model))
         assignDailySleepInfoArray()
@@ -260,8 +291,6 @@ extension DailySleepTimeStore {
 
         assignDailySleepInfoArray()
     }
-    
-    
     
     private func makeNewDailySleepInfo() -> DailySleepInfo {
         let dreampetName = getRandomDreampetName()
