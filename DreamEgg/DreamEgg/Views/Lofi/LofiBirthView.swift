@@ -83,7 +83,7 @@ struct LofiBirthView: View {
                         .navigationBarBackButtonHidden()
                         
                         NavigationLink {
-                            LofiNameConfirmView(confirmedName: $dreamPetName)
+                            LofiNameConfirmView()
                         } label: {
                             Text("건너뛰기")
                                 .frame(maxWidth: .infinity)

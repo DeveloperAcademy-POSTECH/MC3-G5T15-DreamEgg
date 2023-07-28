@@ -14,6 +14,8 @@ struct LofiNameConfirmView: View {
     
     @State var dreamCreatureImageName: String = "토순이" //TODO: CoreData 연결하기
     @State var isTimePassed = false
+    @State private var tabSelectionForMainEggView: Int = 1
+    @State private var tabSelectionForDreamWorldView: Int = 2
 //    @State var dreamPetImage: String = "Quakka_a" //TODO: CoreData 연결하기
 //    @Binding var confirmedName: String
 
@@ -42,7 +44,7 @@ struct LofiNameConfirmView: View {
                     VStack(spacing: 10) {
                         NavigationLink {
                             ZStack {
-                                LofiMainTabView() //TODO: MainTabView 내의 DreamWorldView와 연결하기
+                                LofiMainTabView(tabSelection: $tabSelectionForDreamWorldView)
                             }
                         } label: {
                             Text("네!")
@@ -61,7 +63,7 @@ struct LofiNameConfirmView: View {
                         
                         NavigationLink {
                             ZStack {
-                                LofiMainTabView()
+                                LofiMainTabView(tabSelection: $tabSelectionForMainEggView)
                             }
                         } label: {
                             Text("나중에 보러갈게요.")

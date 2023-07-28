@@ -137,10 +137,10 @@ struct LofiMainEggView: View {
     }
 }
 
-struct LofiMainEggView_Previews: PreviewProvider {
-    static var previews: some View {
-        LofiMainTabView()
-            .environmentObject(DENavigationManager())
-            .environmentObject(UserSleepConfigStore())
-    }
-}
+//struct LofiMainEggView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LofiMainTabView()
+//            .environmentObject(DENavigationManager())
+//            .environmentObject(UserSleepConfigStore())
+//    }
+//}

@@ -15,7 +15,9 @@ struct ContentView: View {
     @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
     
     @Environment(\.scenePhase) var scene
-        
+    
+    @State private var tabSelection: Int = 1
+    
     var body: some View {
         switch navigationManager.viewCycle {
         case .splash:
@@ -77,7 +79,7 @@ struct ContentView: View {
             
         case .general:
             NavigationStack {
-                LofiMainTabView()
+                LofiMainTabView(tabSelection: $tabSelection)
             }
             
         case .awake:

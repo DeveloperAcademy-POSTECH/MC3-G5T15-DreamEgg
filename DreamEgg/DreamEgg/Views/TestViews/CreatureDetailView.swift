@@ -21,6 +21,7 @@ struct CreatureDetailView: View {
     @State private var incubateTime = Date()
     @State private var isFixedDreamWorld: Bool = false
     @State private var isEditedName: Bool = false
+    @State private var tabSelection: Int = 2
     var maxLength: Int = 10
     
     /// birthDate.year를 하면 Int값 2,023이 나와서 타입 바꿨습니다
@@ -42,7 +43,8 @@ struct CreatureDetailView: View {
                     Spacer()
                     
                     NavigationLink {
-                        LofiDreamWorldView()
+//                        LofiDreamWorldView()
+                        LofiMainTabView(tabSelection: $tabSelection)
                     } label: {
                         Image("DreamWorldIcon")
                     }

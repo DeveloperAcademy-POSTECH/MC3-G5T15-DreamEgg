@@ -10,7 +10,6 @@ import SwiftUI
 struct DECalendarTestView: View {
 
     @EnvironmentObject var dailySleepInfoStore: DailySleepTimeStore
-    @Binding var confirmedName: String
     
     private var calendar: Calendar
     
