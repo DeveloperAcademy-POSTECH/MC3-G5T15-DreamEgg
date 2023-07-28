@@ -66,10 +66,70 @@ struct CoreDataContainer {
 }
 
 struct DailySleepInfo: CoreDataIdentifiable {
+    enum SleepProcessStatus {
+        case ready
+        case processing
+        case sleeping
+        case stopped
+        case complete
+        
+        public var description: String {
+            switch self {
+            case .ready:
+                return Constant.SLEEP_PROCESS_READY
+            case .processing:
+                return Constant.SLEEP_PROCESS_PROCESSING
+            case .sleeping:
+                return Constant.SLEEP_PROCESS_SLEEPING
+            case .complete:
+                return Constant.SLEEP_PROCESS_STOPPED
+            case .stopped:
+                return Constant.SLEEP_PROCESS_COMPLETE
+            }
+        }
+    }
+    
     var id: UUID
     var animalName: String
     var date: Date
-    var sleepTime: String
+    var sleepTimeInMinute: Int32
+    var eggName: String
+    var processStatus: SleepProcessStatus
+    var assetName: String
+    
+    private init() {
+        self.id = UUID()
+        self.animalName = ""
+//        Constant.DreamPets.DREAMPET_NAME_SET.randomElement()!
+        self.eggName = ""
+//        Constant.DreamPets.DREAMPET_EGGNAME_SET.randomElement()!
+        self.date = .now
+        self.sleepTimeInMinute = Int32()
+        self.processStatus = .ready
+        self.assetName = ""
+    }
+    
+    init(
+        id: UUID,
+        animalName: String,
+        eggName: String,
+        date: Date,
+        sleepTimeInMinute: Int32,
+        processStatus: SleepProcessStatus,
+        assetName: String
+    ) {
+        self.id = id
+        self.animalName = animalName
+        self.eggName = eggName
+        self.date = date
+        self.sleepTimeInMinute = sleepTimeInMinute
+        self.processStatus = processStatus
+        self.assetName = assetName
+    }
+    
+    static func getBlankDailySleepInfo() -> Self {
+        DailySleepInfo()
+    }
 }
 
 struct UserSleepConfigurationInfo: CoreDataIdentifiable {

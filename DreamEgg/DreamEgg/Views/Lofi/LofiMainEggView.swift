@@ -11,6 +11,7 @@ import SwiftUI
 struct LofiMainEggView: View {
     @EnvironmentObject var navigationManager: DENavigationManager
     @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
+    @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
     
     @State private var currentTime: Date = .now
     @State private var timer: Timer.TimerPublisher = Timer
@@ -37,6 +38,11 @@ struct LofiMainEggView: View {
                 NavigationLink {
                     LofiEggDrawView()
                         .navigationBarBackButtonHidden()
+                        .onAppear {
+                            dailySleepTimeStore.updateAndSaveNewDailySleepInfo()
+                            print("Hi", "\(dailySleepTimeStore.currentDailySleep!.animalName ?? "없어")")
+                            print("dreamEgg", "\(dailySleepTimeStore.currentDailySleep!.eggName ?? "알이가 없다")")
+                        }
                 } label: {
                     Image("emptyEgg")
                         .overlay {

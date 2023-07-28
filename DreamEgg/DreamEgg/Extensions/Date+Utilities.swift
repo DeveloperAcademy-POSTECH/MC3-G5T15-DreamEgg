@@ -8,6 +8,12 @@
 import Foundation
 
 extension Date {
+    public static func isSameDate(lhs: Date, rhs: Date) -> Bool {
+        lhs.year == rhs.year &&
+        lhs.month == rhs.month &&
+        lhs.day == rhs.day
+    }
+    
     public static var allComponents: Set<Calendar.Component> = [.era, .year, .month, .day, .hour, .minute, .second, .weekday, .weekdayOrdinal, .quarter, .weekOfMonth, .weekOfYear, .yearForWeekOfYear, .nanosecond, .calendar, .timeZone]
 
     public func allComponents(in calendar: Calendar) -> DateComponents {

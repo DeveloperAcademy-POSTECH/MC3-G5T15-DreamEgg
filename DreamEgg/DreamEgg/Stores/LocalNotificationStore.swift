@@ -51,7 +51,7 @@ final class LocalNotificationManager: NSObject, ObservableObject {
         
         notificationCenter.add(request)
         notificationCenter.getPendingNotificationRequests { messages in
-            print("Notification Schdule Complete: ", messages)
+            print("Notification Schdule Complete: ")
         }
     }
     
@@ -111,6 +111,6 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
         print("identifier:\(notification.request.identifier)")
-        completionHandler([.alert, .sound, .badge])
+        completionHandler([.banner, .sound, .badge])
     }
 }

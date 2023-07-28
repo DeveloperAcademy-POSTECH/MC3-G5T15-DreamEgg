@@ -8,14 +8,15 @@
 import SwiftUI
 
 final class UserSleepConfigStore: ObservableObject {
-    @Published private var coreDataStore: CoreDataStore = .debugShared
+//    internal var coreDataStore: CoreDataStore = .debugShared
+    internal var coreDataStore: CoreDataStore = .releaseShared
+    
+    private var userSleepConfigDict: Dictionary<UUID, UserSleepConfiguration> = [:]
+    private let standardMinute = -(12 * 60)
     
     @Published public var targetSleepTime: Date = .now
     @Published public var notificationMessage: String = Constant.BASE_NOTIFICATION_MESSAGE
-    
-    @Published private var userSleepConfigDict: Dictionary<UUID, UserSleepConfiguration> = [:]
-    
-    private let standardMinute = -(12 * 60)
+    @Published public var hasSleepConfig: Bool = false
     
     public var existingUserSleepConfig: UserSleepConfiguration {
         if userSleepConfigDict.isEmpty {
@@ -29,18 +30,28 @@ final class UserSleepConfigStore: ObservableObject {
             )
         }
         
-        return Array(userSleepConfigDict.values)[0]
+        return Array(userSleepConfigDict.values).first
+        ?? .init(context: coreDataStore.managedObjectContext)
     }
     
     // MARK: LIFECYCLE
-    init(coreDataStore: CoreDataStore = .debugShared) {
+    init(coreDataStore: CoreDataStore = .releaseShared) {
         self.coreDataStore = coreDataStore
         self.userSleepConfigDict = coreDataStore.userSleepConfig
         
+        checkIfUserIsStarter()
         assignInitProperties()
     }
     
     // MARK: Methods
+    private func checkIfUserIsStarter() {
+        if coreDataStore.userSleepConfig.isEmpty {
+            self.hasSleepConfig = false
+        } else {
+            self.hasSleepConfig = true
+        }
+    }
+    
     private func assignInitProperties() {
         self.targetSleepTime = existingUserSleepConfig.targetSleepTime!
         self.notificationMessage = existingUserSleepConfig.notificationMessage!
@@ -52,8 +63,11 @@ final class UserSleepConfigStore: ObservableObject {
     public func updateAndSaveUserSleepConfig(
         with userSleepConfig: UserSleepConfigurationInfo
     ) {
-        coreDataStore.updateUserSleepConfig(with: userSleepConfig)
-        print(#function, coreDataStore.userSleepConfig)
+        updateCoreData(
+            with: userSleepConfig,
+            predicate: getNSPredicate(with: userSleepConfig)
+        )
+//        print(#function, coreDataStore.userSleepConfig)
         assignUserSleepConfigDict()
         assignProperties(with: userSleepConfig)
     }
@@ -121,5 +135,16 @@ final class UserSleepConfigStore: ObservableObject {
             // 그외의 경우에는 못잠
             return false
         }
+    }
+}
+
+extension UserSleepConfigStore: CoreDataRepresentable {
+    func assignProperties(
+        to coreData: UserSleepConfiguration,
+        from appEntityModel: UserSleepConfigurationInfo
+    ) {
+        coreData.id = appEntityModel.id
+        coreData.targetSleepTime = appEntityModel.targetSleepTime
+        coreData.notificationMessage = appEntityModel.notificationMessage
     }
 }

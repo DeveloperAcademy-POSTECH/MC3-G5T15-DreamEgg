@@ -13,8 +13,8 @@ import SwiftUI
  CoreData에서 가져온 각종 데이터를 보관합니다.
  - Important: 해당 구조체는 단 하나의 인스턴스만을 갖도록 합니다.
  */
-final class CoreDataStore: NSObject, ObservableObject {
-    static public let debugShared = CoreDataStore(storeType: .debug)
+final class CoreDataStore: NSObject {
+//    static public let debugShared = CoreDataStore(storeType: .debug)
     static public let releaseShared = CoreDataStore(storeType: .release)
     
     private(set) var managedObjectContext: NSManagedObjectContext
@@ -22,12 +22,8 @@ final class CoreDataStore: NSObject, ObservableObject {
     private let dailySleepController: NSFetchedResultsController<DailySleep>
     private let userSleepConfigController: NSFetchedResultsController<UserSleepConfiguration>
     
-    @Published
     public var dailySleep: Dictionary<UUID, DailySleep> = [:]
-    
-    @Published
     public var userSleepConfig: Dictionary<UUID, UserSleepConfiguration> = [:]
-    
     
     // MARK: LIFECYCLE
     /**
@@ -85,13 +81,17 @@ final class CoreDataStore: NSObject, ObservableObject {
      fetch한 데이터는 dailySleep Dictionary에 저장됩니다.
      init시점의 데이터는 하위의 SleepTimeStore에 주입되며 App의 Lifecycle 동안 하위의 Store가 관리합니다.
      */
-    private func getDailySleepData(_ dailySleepController: NSFetchedResultsController<DailySleep>) {
+    private func getDailySleepData(
+        _ dailySleepController: NSFetchedResultsController<DailySleep>
+    ) {
         try? dailySleepController.performFetch()
         if let newDailySleep = dailySleepController.fetchedObjects {
             print(">>>>>> FETCHED DailySleep FROM COREDATA <<<<<<")
             self.dailySleep = Dictionary(
                 uniqueKeysWithValues: newDailySleep.map { ($0.id!, $0) }
             )
+            
+            print("FETCHED: ", self.dailySleep)
         } else {
             print("NO DailySleep in CORE DATA")
         }
@@ -106,39 +106,9 @@ final class CoreDataStore: NSObject, ObservableObject {
             self.userSleepConfig = Dictionary(
                 uniqueKeysWithValues: newUserSleepConfig.map { ($0.id!, $0) }
             )
+            print("FETCHED: ", self.userSleepConfig.isEmpty)
         } else {
             print("NO UserSleepConfig >> Navigate To Starter")
-        }
-        
-    }
-    
-    public func updateAndSaveDailySleep(
-        with model: DailySleepInfo
-    ) {
-        do {
-            let dailySleep = DailySleep(context: managedObjectContext)
-            dailySleep.sleepTime = model.sleepTime
-            dailySleep.date = model.date
-            dailySleep.animalName = model.animalName
-            dailySleep.id = .init()
-            try managedObjectContext.save()
-        } catch let error as NSError {
-            print(#function, #line, "\(error): CONTEXT SAVE FAILED.")
-        }
-    }
-    
-    // MARK: User Sleep Config
-    public func updateAndSaveUserSleepConfig(
-        with model: UserSleepConfigurationInfo
-    ) {
-        do {
-            let sleepConfig = UserSleepConfiguration(context: managedObjectContext)
-            sleepConfig.id = .init()
-            sleepConfig.notificationMessage = model.notificationMessage
-            sleepConfig.targetSleepTime = model.targetSleepTime
-            try managedObjectContext.save()
-        } catch let error as NSError {
-            print(#function, #line, "\(error): CONTEXT SAVE FAILED")
         }
     }
 }
@@ -155,4 +125,8 @@ extension CoreDataStore: NSFetchedResultsControllerDelegate {
             )
         }
     }
+}
+
+extension CoreDataStore: CoreDataManagable {
+    
 }

@@ -10,20 +10,18 @@
 		2049DF532A6F0F7000966DDA /* CreatureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049DF522A6F0F7000966DDA /* CreatureDetailView.swift */; };
 		20A9A5D92A6FA82E008513D7 /* DETextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5D82A6FA82E008513D7 /* DETextField.swift */; };
 		20A9A5DB2A6FC3A5008513D7 /* NameEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5DA2A6FC3A5008513D7 /* NameEditingView.swift */; };
+		7E6A4FBE2A716E460085F236 /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E6A4FBC2A716E460085F236 /* DreamEgg.xcdatamodeld */; };
 		7EA7EBF42A6FC29E00C518FF /* View+ActivateConfetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7EBF32A6FC29E00C518FF /* View+ActivateConfetti.swift */; };
 		7EE701A62A6E4C2200DEEFA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EE701A52A6E4C2200DEEFA6 /* Assets.xcassets */; };
 		7EE701A92A6E4C2200DEEFA6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EE701A82A6E4C2200DEEFA6 /* Preview Assets.xcassets */; };
-		7EE701B62A6E4C5400DEEFA6 /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701B42A6E4C5400DEEFA6 /* DreamEgg.xcdatamodeld */; };
 		7EE701B82A6E4C7000DEEFA6 /* DreamEggApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701B72A6E4C7000DEEFA6 /* DreamEggApp.swift */; };
 		7EE701F92A6E4C7E00DEEFA6 /* EggDrawStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701BA2A6E4C7E00DEEFA6 /* EggDrawStore.swift */; };
 		7EE701FA2A6E4C7E00DEEFA6 /* EggAnimationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701BB2A6E4C7E00DEEFA6 /* EggAnimationStore.swift */; };
 		7EE701FB2A6E4C7E00DEEFA6 /* CoreDataRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701BD2A6E4C7E00DEEFA6 /* CoreDataRepresentable.swift */; };
 		7EE701FC2A6E4C7E00DEEFA6 /* LocalNotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701BE2A6E4C7E00DEEFA6 /* LocalNotificationStore.swift */; };
 		7EE701FD2A6E4C7E00DEEFA6 /* DailySleepTimeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701BF2A6E4C7E00DEEFA6 /* DailySleepTimeStore.swift */; };
-		7EE701FE2A6E4C7E00DEEFA6 /* ContentViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701C02A6E4C7E00DEEFA6 /* ContentViewStore.swift */; };
 		7EE701FF2A6E4C7E00DEEFA6 /* UserSleepConfigStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701C12A6E4C7E00DEEFA6 /* UserSleepConfigStore.swift */; };
 		7EE702002A6E4C7E00DEEFA6 /* MapViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701C22A6E4C7E00DEEFA6 /* MapViewStore.swift */; };
-		7EE702012A6E4C7E00DEEFA6 /* CoreDataStore+CRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701C32A6E4C7E00DEEFA6 /* CoreDataStore+CRUD.swift */; };
 		7EE702022A6E4C7E00DEEFA6 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701C42A6E4C7E00DEEFA6 /* CoreDataStore.swift */; };
 		7EE702032A6E4C7E00DEEFA6 /* TimePickerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701C52A6E4C7E00DEEFA6 /* TimePickerStore.swift */; };
 		7EE702042A6E4C7E00DEEFA6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701C72A6E4C7E00DEEFA6 /* Constants.swift */; };
@@ -72,31 +70,29 @@
 		93E97B392A6FA56B0000DB2B /* LofiBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E97B382A6FA56B0000DB2B /* LofiBirthView.swift */; };
 		AE05EE112A6E634A0006F40D /* LofiEggDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE05EE102A6E634A0006F40D /* LofiEggDrawView.swift */; };
 		AE05EE132A6E65D30006F40D /* LofiEggInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE05EE122A6E65D30006F40D /* LofiEggInteractionView.swift */; };
-		C28B7C892A724BC60009BECE /* LofiFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28B7C882A724BC60009BECE /* LofiFailedView.swift */; };
 		AEB342D42A7203690063DC14 /* DEButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB342D32A7203690063DC14 /* DEButton.swift */; };
 		AEB342D62A7258E30063DC14 /* DENavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB342D52A7258E30063DC14 /* DENavigationLink.swift */; };
+		C28B7C892A724BC60009BECE /* LofiFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28B7C882A724BC60009BECE /* LofiFailedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2049DF522A6F0F7000966DDA /* CreatureDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureDetailView.swift; sourceTree = "<group>"; };
 		20A9A5D82A6FA82E008513D7 /* DETextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DETextField.swift; sourceTree = "<group>"; };
 		20A9A5DA2A6FC3A5008513D7 /* NameEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEditingView.swift; sourceTree = "<group>"; };
+		7E6A4FBD2A716E460085F236 /* DreamEgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamEgg.xcdatamodel; sourceTree = "<group>"; };
 		7EA7EBF32A6FC29E00C518FF /* View+ActivateConfetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ActivateConfetti.swift"; sourceTree = "<group>"; };
 		7EB70D1B2A6E4DCB003512ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7EE7019E2A6E4C2100DEEFA6 /* DreamEgg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamEgg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE701A52A6E4C2200DEEFA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7EE701A82A6E4C2200DEEFA6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7EE701B52A6E4C5400DEEFA6 /* DreamEgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamEgg.xcdatamodel; sourceTree = "<group>"; };
 		7EE701B72A6E4C7000DEEFA6 /* DreamEggApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DreamEggApp.swift; sourceTree = "<group>"; };
 		7EE701BA2A6E4C7E00DEEFA6 /* EggDrawStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EggDrawStore.swift; sourceTree = "<group>"; };
 		7EE701BB2A6E4C7E00DEEFA6 /* EggAnimationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EggAnimationStore.swift; sourceTree = "<group>"; };
 		7EE701BD2A6E4C7E00DEEFA6 /* CoreDataRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataRepresentable.swift; sourceTree = "<group>"; };
 		7EE701BE2A6E4C7E00DEEFA6 /* LocalNotificationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationStore.swift; sourceTree = "<group>"; };
 		7EE701BF2A6E4C7E00DEEFA6 /* DailySleepTimeStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailySleepTimeStore.swift; sourceTree = "<group>"; };
-		7EE701C02A6E4C7E00DEEFA6 /* ContentViewStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewStore.swift; sourceTree = "<group>"; };
 		7EE701C12A6E4C7E00DEEFA6 /* UserSleepConfigStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSleepConfigStore.swift; sourceTree = "<group>"; };
 		7EE701C22A6E4C7E00DEEFA6 /* MapViewStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewStore.swift; sourceTree = "<group>"; };
-		7EE701C32A6E4C7E00DEEFA6 /* CoreDataStore+CRUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreDataStore+CRUD.swift"; sourceTree = "<group>"; };
 		7EE701C42A6E4C7E00DEEFA6 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		7EE701C52A6E4C7E00DEEFA6 /* TimePickerStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePickerStore.swift; sourceTree = "<group>"; };
 		7EE701C72A6E4C7E00DEEFA6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -146,9 +142,9 @@
 		93E97B382A6FA56B0000DB2B /* LofiBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiBirthView.swift; sourceTree = "<group>"; };
 		AE05EE102A6E634A0006F40D /* LofiEggDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiEggDrawView.swift; sourceTree = "<group>"; };
 		AE05EE122A6E65D30006F40D /* LofiEggInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiEggInteractionView.swift; sourceTree = "<group>"; };
-		C28B7C882A724BC60009BECE /* LofiFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiFailedView.swift; sourceTree = "<group>"; };
 		AEB342D32A7203690063DC14 /* DEButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DEButton.swift; sourceTree = "<group>"; };
 		AEB342D52A7258E30063DC14 /* DENavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DENavigationLink.swift; sourceTree = "<group>"; };
+		C28B7C882A724BC60009BECE /* LofiFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiFailedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,7 +186,7 @@
 				7EE701B92A6E4C7E00DEEFA6 /* Stores */,
 				7EE701DB2A6E4C7E00DEEFA6 /* Views */,
 				7EE701A52A6E4C2200DEEFA6 /* Assets.xcassets */,
-				7EE701B42A6E4C5400DEEFA6 /* DreamEgg.xcdatamodeld */,
+				7E6A4FBC2A716E460085F236 /* DreamEgg.xcdatamodeld */,
 				7EE701A72A6E4C2200DEEFA6 /* Preview Content */,
 			);
 			path = DreamEgg;
@@ -212,10 +208,8 @@
 				7EE701BB2A6E4C7E00DEEFA6 /* EggAnimationStore.swift */,
 				7EE701BE2A6E4C7E00DEEFA6 /* LocalNotificationStore.swift */,
 				7EE701BF2A6E4C7E00DEEFA6 /* DailySleepTimeStore.swift */,
-				7EE701C02A6E4C7E00DEEFA6 /* ContentViewStore.swift */,
 				7EE701C12A6E4C7E00DEEFA6 /* UserSleepConfigStore.swift */,
 				7EE701C22A6E4C7E00DEEFA6 /* MapViewStore.swift */,
-				7EE701C32A6E4C7E00DEEFA6 /* CoreDataStore+CRUD.swift */,
 				7EE701C42A6E4C7E00DEEFA6 /* CoreDataStore.swift */,
 				7EE701C52A6E4C7E00DEEFA6 /* TimePickerStore.swift */,
 			);
@@ -425,7 +419,6 @@
 				7EE7021F2A6E4C7E00DEEFA6 /* SleepTimeSettingView.swift in Sources */,
 				7EE702192A6E4C7E00DEEFA6 /* LofiSleepTimeSettingView.swift in Sources */,
 				7EE702212A6E4C7E00DEEFA6 /* FontTestView.swift in Sources */,
-				7EE701B62A6E4C5400DEEFA6 /* DreamEgg.xcdatamodeld in Sources */,
 				7EE702252A6E4C7E00DEEFA6 /* EggInteractionTestView.swift in Sources */,
 				93E97B392A6FA56B0000DB2B /* LofiBirthView.swift in Sources */,
 				7EE701B82A6E4C7000DEEFA6 /* DreamEggApp.swift in Sources */,
@@ -451,13 +444,11 @@
 				7EE701FA2A6E4C7E00DEEFA6 /* EggAnimationStore.swift in Sources */,
 				7EE702112A6E4C7E00DEEFA6 /* Date+StartDates.swift in Sources */,
 				7EE702242A6E4C7E00DEEFA6 /* MapTestView.swift in Sources */,
-				7EE701FE2A6E4C7E00DEEFA6 /* ContentViewStore.swift in Sources */,
 				7EE702022A6E4C7E00DEEFA6 /* CoreDataStore.swift in Sources */,
 				7EE7020C2A6E4C7E00DEEFA6 /* Color+Palette.swift in Sources */,
 				7EE701FD2A6E4C7E00DEEFA6 /* DailySleepTimeStore.swift in Sources */,
 				7EE701FF2A6E4C7E00DEEFA6 /* UserSleepConfigStore.swift in Sources */,
 				7EE702132A6E4C7E00DEEFA6 /* DENavigationManager.swift in Sources */,
-				7EE702012A6E4C7E00DEEFA6 /* CoreDataStore+CRUD.swift in Sources */,
 				7EE702142A6E4C7E00DEEFA6 /* CoreDataContainer.swift in Sources */,
 				20A9A5D92A6FA82E008513D7 /* DETextField.swift in Sources */,
 				7EE702232A6E4C7E00DEEFA6 /* MainEggsView.swift in Sources */,
@@ -472,6 +463,7 @@
 				7EE701F92A6E4C7E00DEEFA6 /* EggDrawStore.swift in Sources */,
 				AE05EE112A6E634A0006F40D /* LofiEggDrawView.swift in Sources */,
 				7EE7021E2A6E4C7E00DEEFA6 /* LofiMainEggView.swift in Sources */,
+				7E6A4FBE2A716E460085F236 /* DreamEgg.xcdatamodeld in Sources */,
 				7EE702172A6E4C7E00DEEFA6 /* LofiTextCustomView.swift in Sources */,
 				7EE702262A6E4C7E00DEEFA6 /* TimePickerTestView.swift in Sources */,
 				AE05EE132A6E65D30006F40D /* LofiEggInteractionView.swift in Sources */,
@@ -610,7 +602,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
-				DEVELOPMENT_TEAM = 834B9VMHHG;
+				DEVELOPMENT_TEAM = 67M6ZS7KS6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DreamEgg/Info.plist;
@@ -643,7 +635,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
-				DEVELOPMENT_TEAM = 834B9VMHHG;
+				DEVELOPMENT_TEAM = 67M6ZS7KS6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DreamEgg/Info.plist;
@@ -689,14 +681,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		7EE701B42A6E4C5400DEEFA6 /* DreamEgg.xcdatamodeld */ = {
+		7E6A4FBC2A716E460085F236 /* DreamEgg.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				7EE701B52A6E4C5400DEEFA6 /* DreamEgg.xcdatamodel */,
+				7E6A4FBD2A716E460085F236 /* DreamEgg.xcdatamodel */,
 			);
-			currentVersion = 7EE701B52A6E4C5400DEEFA6 /* DreamEgg.xcdatamodel */;
-			name = DreamEgg.xcdatamodeld;
-			path = "../../../MC3-G5T15-DreamEgg/DreamEgg/DreamEgg/DreamEgg.xcdatamodeld";
+			currentVersion = 7E6A4FBD2A716E460085F236 /* DreamEgg.xcdatamodel */;
+			path = DreamEgg.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
