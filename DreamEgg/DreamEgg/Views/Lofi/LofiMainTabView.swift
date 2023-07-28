@@ -47,6 +47,7 @@ struct LofiMainTabView: View {
             .tabViewStyle(.page)
         }
         .navigationBarBackButtonHidden()
+        .background(Color.black)
     }
 }
 
