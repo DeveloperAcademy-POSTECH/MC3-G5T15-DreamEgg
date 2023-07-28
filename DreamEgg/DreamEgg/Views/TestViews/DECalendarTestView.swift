@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct DECalendarTestView: View {
+    @Binding var confirmedName: String
+    
     private var calendar: Calendar
+    
     private let monthDayFormatter: DateFormatter
     private let dayFormatter: DateFormatter
     private let weekDayFormatter: DateFormatter
     private let timeFormatter: DateFormatter
-    
+//
     @State private var selectedDate: Date = Date.now
     
     var body: some View {
@@ -150,59 +153,62 @@ struct DECalendarTestView: View {
                             )
                             .padding(16)
                     }
-                    
-                    Section {
-                        HStack(alignment: .center) {
-                            Spacer()
-                                .frame(maxWidth: 20)
-                            
-                            Image("Quokka_Face")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: 80, maxHeight: 80)
-                                .background {
-                                    Circle()
-                                        .fill(Color.eggYellow)
-                                        .frame(maxWidth: 60, maxHeight: 60)
-                                }
-                                .background {
-                                    Circle()
-                                        .fill(Color.primaryButtonYellow)
-                                        .frame(maxWidth: 70, maxHeight: 70)
-                                }
-                            
-                            VStack(
-                                alignment: .leading,
-                                spacing: 8
-                            ) {
-                                Text("꿔까")
-                                    .font(.dosIyagiBold(.callout))
+                    NavigationLink {
+                        CreatureDetailView()
+                    } label: {
+                        Section {
+                            HStack(alignment: .center) {
+                                Spacer()
+                                    .frame(maxWidth: 20)
                                 
-                                Text("\(timeFormatter.string(from: Date.now)) 출생")
-                                    .font(.dosIyagiBold(.footnote))
+                                Image("Quokka_Face")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxWidth: 80, maxHeight: 80)
+                                    .background {
+                                        Circle()
+                                            .fill(Color.eggYellow)
+                                            .frame(maxWidth: 60, maxHeight: 60)
+                                    }
+                                    .background {
+                                        Circle()
+                                            .fill(Color.primaryButtonYellow)
+                                            .frame(maxWidth: 70, maxHeight: 70)
+                                    }
+                                
+                                VStack(
+                                    alignment: .leading,
+                                    spacing: 8
+                                ) {
+                                    Text("꿔까")
+                                        .font(.dosIyagiBold(.callout))
+                                    
+                                    Text("\(timeFormatter.string(from: Date.now)) 출생")
+                                        .font(.dosIyagiBold(.footnote))
+                                }
+                                
+                                Spacer()
+                                    .frame(maxWidth: 30)
                             }
-                            
-                            Spacer()
-                                .frame(maxWidth: 30)
-                        }
-                        .frame(
-                            maxWidth: .infinity,
-                            alignment: .leading
-                        )
-                        .background {
-                            Capsule()
-                                .fill(Color.subButtonSky)
-                                .padding(.horizontal)
-                        }
-                    } header: {
-                        Text("This Week")
-                            .font(.dosIyagiBold(.title3))
-                            .foregroundColor(.white)
                             .frame(
                                 maxWidth: .infinity,
                                 alignment: .leading
                             )
-                            .padding(16)
+                            .background {
+                                Capsule()
+                                    .fill(Color.subButtonSky)
+                                    .padding(.horizontal)
+                            }
+                        } header: {
+                            Text("This Week")
+                                .font(.dosIyagiBold(.title3))
+                                .foregroundColor(.white)
+                                .frame(
+                                    maxWidth: .infinity,
+                                    alignment: .leading
+                                )
+                                .padding(16)
+                        }
                     }
                     
                 }
@@ -211,12 +217,14 @@ struct DECalendarTestView: View {
     }
     
     // MARK: LifeCycle
-    init() {
+    init(confirmedName: Binding<String>) {
         self.calendar = Calendar.getCurrentCalendar()
+
         self.monthDayFormatter = DateFormatter(dateFormat: "M", calendar: calendar)
         self.dayFormatter = DateFormatter(dateFormat: "d", calendar: calendar)
         self.weekDayFormatter = DateFormatter(dateFormat: "EEE", calendar: calendar)
         self.timeFormatter = DateFormatter(dateFormat: "H:mm", calendar: calendar)
+        self._confirmedName = confirmedName
     }
     
     // MARK: Methods
@@ -242,7 +250,7 @@ struct DECalendarTestView_Previews: PreviewProvider {
         ZStack {
             GradientBackgroundView()
             
-            DECalendarTestView()
+            DECalendarTestView(confirmedName: .constant("Quokka"))
         }
     }
 }

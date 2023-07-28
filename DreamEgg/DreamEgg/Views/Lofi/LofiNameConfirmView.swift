@@ -12,6 +12,8 @@ struct LofiNameConfirmView: View {
     @State var dreamPetName : String = "토순이" //TODO: CoreData 연결하기
     @State var isTimePassed = false
     @State var dreamPetImage: String = "Quakka_a" //TODO: CoreData 연결하기
+    @Binding var confirmedName: String
+
     
     var body: some View {
         ZStack {
@@ -118,6 +120,6 @@ struct LofiNameConfirmView: View {
 
 struct LofiNameConfirmView_Previews: PreviewProvider {
     static var previews: some View {
-        LofiNameConfirmView()
+        LofiNameConfirmView(confirmedName: .constant(""))
     }
 }
