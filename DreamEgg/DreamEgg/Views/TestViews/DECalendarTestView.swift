@@ -9,13 +9,15 @@ import SwiftUI
 
 struct DECalendarTestView: View {
     @EnvironmentObject var dailySleepInfoStore: DailySleepTimeStore
+    @Binding var confirmedName: String
     
     private var calendar: Calendar
+    
     private let monthDayFormatter: DateFormatter
     private let dayFormatter: DateFormatter
     private let weekDayFormatter: DateFormatter
     private let timeFormatter: DateFormatter
-    
+//
     @State private var selectedDate: Date = Date.now
     @State private var selectedWeek: [Date] = []
     
@@ -139,12 +141,14 @@ struct DECalendarTestView: View {
     }
     
     // MARK: LifeCycle
-    init() {
+    init(confirmedName: Binding<String>) {
         self.calendar = Calendar.getCurrentCalendar()
+
         self.monthDayFormatter = DateFormatter(dateFormat: "M", calendar: calendar)
         self.dayFormatter = DateFormatter(dateFormat: "d", calendar: calendar)
         self.weekDayFormatter = DateFormatter(dateFormat: "EEE", calendar: calendar)
         self.timeFormatter = DateFormatter(dateFormat: "H:mm", calendar: calendar)
+        self._confirmedName = confirmedName
     }
     
     // MARK: ViewBuilders
@@ -227,48 +231,53 @@ struct DECalendarTestView: View {
     private func dailySleepCardCell(
         by dailySleep: DailySleep
     ) -> some View {
-        HStack(alignment: .center) {
-            Spacer()
-                .frame(maxWidth: 20)
-            
-            Image("\(dailySleep.assetName!)"+"_Face")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: 80, maxHeight: 80)
-                .background {
-                    Circle()
-                        .fill(Color.eggYellow)
-                        .frame(maxWidth: 60, maxHeight: 60)
-                }
-                .background {
-                    Circle()
-                        .fill(Color.primaryButtonYellow)
-                        .frame(maxWidth: 70, maxHeight: 70)
-                }
-            
-            VStack(
-                alignment: .leading,
-                spacing: 8
-            ) {
-                Text("\(dailySleep.animalName!)")
-                    .font(.dosIyagiBold(.callout))
+        NavigationLink {
+            CreatureDetailView()
+        } label: {
+            HStack(alignment: .center) {
+                Spacer()
+                    .frame(maxWidth: 20)
                 
-                Text("\(dailySleep.date!.formatted()) 출생")
-                    .font(.dosIyagiBold(.footnote))
+                Image("\(dailySleep.assetName!)"+"_Face")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 80, maxHeight: 80)
+                    .background {
+                        Circle()
+                            .fill(Color.eggYellow)
+                            .frame(maxWidth: 60, maxHeight: 60)
+                    }
+                    .background {
+                        Circle()
+                            .fill(Color.primaryButtonYellow)
+                            .frame(maxWidth: 70, maxHeight: 70)
+                    }
+                
+                VStack(
+                    alignment: .leading,
+                    spacing: 8
+                ) {
+                    Text("\(dailySleep.animalName!)")
+                        .font(.dosIyagiBold(.callout))
+                    
+                    Text("\(dailySleep.date!.formatted()) 출생")
+                        .font(.dosIyagiBold(.footnote))
+                }
+                
+                Spacer()
+                    .frame(maxWidth: 30)
             }
-            
-            Spacer()
-                .frame(maxWidth: 30)
+            .frame(
+                maxWidth: .infinity,
+                alignment: .leading
+            )
+            .background {
+                Capsule()
+                    .fill(Color.subButtonSky)
+                    .padding(.horizontal)
+            }
         }
-        .frame(
-            maxWidth: .infinity,
-            alignment: .leading
-        )
-        .background {
-            Capsule()
-                .fill(Color.subButtonSky)
-                .padding(.horizontal)
-        }
+        
     }
     
     // MARK: Methods
@@ -326,7 +335,7 @@ struct DECalendarTestView_Previews: PreviewProvider {
         ZStack {
             GradientBackgroundView()
             
-            DECalendarTestView()
+            DECalendarTestView(confirmedName: .constant("Quokka"))
         }
         .environmentObject(DailySleepTimeStore())
     }
