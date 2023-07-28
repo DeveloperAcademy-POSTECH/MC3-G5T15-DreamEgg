@@ -24,6 +24,7 @@ struct EggInteractionTestView: View {
                         .gesture(eggAnimation.dragGesture())
                         .animation(Animation.easeInOut(duration: 1.0), value: eggAnimation.rotationAngle)
                         .onAppear {
+                            eggAnimation.amplitude = 10.0
                             eggAnimation.startPendulumAnimation()
                         }
                     Button("reset") {
