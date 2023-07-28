@@ -47,9 +47,9 @@ struct LofiAwakeView: View {
                                 .frame(width: 160, height: 160)
                                 .padding(.top, 170)
                                 .overlay {
-                                Image("FerretEgg")
-                                    .resizable()
-                                    .frame(width: 160, height: 160)
+                                    Image(dailySleepTimeStore.currentDailySleep?.eggName ?? "NO_EGG")
+                                        .resizable()
+                                        .frame(width: 160, height: 160)
                                 }
                                 .overlay {
                                 Image("ShinyMiddle")
