@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct DECalendarTestView: View {
-
+    
     @EnvironmentObject var dailySleepInfoStore: DailySleepTimeStore
-    @Binding var confirmedName: String
+    //    @Binding var confirmedName: String
     
     private var calendar: Calendar
     
@@ -18,7 +18,6 @@ struct DECalendarTestView: View {
     private let dayFormatter: DateFormatter
     private let weekDayFormatter: DateFormatter
     private let timeFormatter: DateFormatter
-//
     @State private var selectedDate: Date = Date.now
     @State private var selectedWeek: [Date] = []
     
@@ -68,12 +67,12 @@ struct DECalendarTestView: View {
                 
                 VStack(alignment: .leading, spacing: 5) {
                     Text("\(monthDayFormatter.string(from: selectedDate))월")
-
+                    
                         .font(.dosIyagiBold(.title))
                     
                     HStack(spacing: -4) {
                         Text("\(selectedDate.weekOfMonth(using: calendar))주차")
-
+                        
                         Text(" (\(monthDayFormatter.string(from: selectedDate)).\(dayFormatter.string(from: firstDayInWeek)).")
                             .kerning(-0.75)
                         
@@ -136,7 +135,7 @@ struct DECalendarTestView: View {
                     Section {
                         HStack {
                             Text("이 날은")
-
+                            
                             Text("드림펫")
                                 .foregroundColor(.subButtonBlue)
                             
@@ -160,65 +159,65 @@ struct DECalendarTestView: View {
                             )
                             .padding(16)
                     }
-
-                        Section {
-                            NavigationLink {
-                                CreatureDetailView()
-                                    .navigationBarBackButtonHidden()
-                            } label: {
-                                HStack(alignment: .center) {
-                                    Spacer()
-                                        .frame(maxWidth: 20)
-                                    
-                                    Image("Quokka_Face")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(maxWidth: 80, maxHeight: 80)
-                                        .background {
-                                            Circle()
-                                                .fill(Color.eggYellow)
-                                                .frame(maxWidth: 60, maxHeight: 60)
-                                        }
-                                        .background {
-                                            Circle()
-                                                .fill(Color.primaryButtonYellow)
-                                                .frame(maxWidth: 70, maxHeight: 70)
-                                        }
-                                    
-                                    VStack(
-                                        alignment: .leading,
-                                        spacing: 8
-                                    ) {
-                                        Text("꿔까")
-                                            .font(.dosIyagiBold(.callout))
-                                        
-                                        Text("\(timeFormatter.string(from: Date.now)) 출생")
-                                            .font(.dosIyagiBold(.footnote))
-                                    }
-                                    
-                                    Spacer()
-                                        .frame(maxWidth: 30)
-                                }
-                                .frame(
-                                    maxWidth: .infinity,
-                                    alignment: .leading
-                                )
-                                .background {
-                                    Capsule()
-                                        .fill(Color.subButtonSky)
-                                        .padding(.horizontal)
-                                }
-                            }
-                        } header: {
-                            Text("This Week")
-                                .font(.dosIyagiBold(.title3))
-                                .foregroundColor(.white)
-                                .frame(
-                                    maxWidth: .infinity,
-                                    alignment: .leading
-                                )
-                                .padding(16)
-                        }
+                    
+//                    Section {
+//                        NavigationLink {
+//                            CreatureDetailView()
+//                                .navigationBarBackButtonHidden()
+//                        } label: {
+//                            HStack(alignment: .center) {
+//                                Spacer()
+//                                    .frame(maxWidth: 20)
+//
+//                                Image("Quokka_Face")
+//                                    .resizable()
+//                                    .aspectRatio(contentMode: .fit)
+//                                    .frame(maxWidth: 80, maxHeight: 80)
+//                                    .background {
+//                                        Circle()
+//                                            .fill(Color.eggYellow)
+//                                            .frame(maxWidth: 60, maxHeight: 60)
+//                                    }
+//                                    .background {
+//                                        Circle()
+//                                            .fill(Color.primaryButtonYellow)
+//                                            .frame(maxWidth: 70, maxHeight: 70)
+//                                    }
+//
+//                                VStack(
+//                                    alignment: .leading,
+//                                    spacing: 8
+//                                ) {
+//                                    Text("꿔까")
+//                                        .font(.dosIyagiBold(.callout))
+//
+//                                    Text("\(timeFormatter.string(from: Date.now)) 출생")
+//                                        .font(.dosIyagiBold(.footnote))
+//                                }
+//
+//                                Spacer()
+//                                    .frame(maxWidth: 30)
+//                            }
+//                            .frame(
+//                                maxWidth: .infinity,
+//                                alignment: .leading
+//                            )
+//                            .background {
+//                                Capsule()
+//                                    .fill(Color.subButtonSky)
+//                                    .padding(.horizontal)
+//                            }
+//                        }
+//                    } header: {
+//                        Text("This Week")
+//                            .font(.dosIyagiBold(.title3))
+//                            .foregroundColor(.white)
+//                            .frame(
+//                                maxWidth: .infinity,
+//                                alignment: .leading
+//                            )
+//                            .padding(16)
+//                    }
                     
                     selectedWeekSleepInfoSection()
                 }
@@ -227,15 +226,15 @@ struct DECalendarTestView: View {
     }
     
     // MARK: LifeCycle
-//    init(confirmedName: Binding<String>) {
+    //    init(confirmedName: Binding<String>) {
     init() {
         self.calendar = Calendar.getCurrentCalendar()
-
+        
         self.monthDayFormatter = DateFormatter(dateFormat: "M", calendar: calendar)
         self.dayFormatter = DateFormatter(dateFormat: "d", calendar: calendar)
         self.weekDayFormatter = DateFormatter(dateFormat: "EEE", calendar: calendar)
         self.timeFormatter = DateFormatter(dateFormat: "H:mm", calendar: calendar)
-//        self._confirmedName = confirmedName
+        //        self._confirmedName = confirmedName
     }
     
     // MARK: ViewBuilders
@@ -249,7 +248,7 @@ struct DECalendarTestView: View {
                 } else {
                     HStack {
                         Text("이 날은")
-
+                        
                         Text("드림펫")
                             .foregroundColor(.subButtonBlue)
                         
@@ -283,7 +282,7 @@ struct DECalendarTestView: View {
             if wellSleptArray.isEmpty {
                 HStack {
                     Text("이 주엔")
-
+                    
                     Text("드림펫")
                         .foregroundColor(.subButtonBlue)
                     
@@ -386,8 +385,8 @@ struct DECalendarTestView: View {
     
     private func eachDayForegroundColor(_ eachDay: Date) -> Color {
         dailySleepInfoStore.hasWellSleptDailySleep(in: eachDay)
-            ? .eggYellow
-            : .gray
+        ? .eggYellow
+        : .gray
     }
     
     private func eachWeeksWellSleptArrayBuilder() -> [DailySleep] {
@@ -422,7 +421,7 @@ struct DECalendarTestView_Previews: PreviewProvider {
         ZStack {
             GradientBackgroundView()
             
-//            DECalendarTestView(confirmedName: .constant("Quokka"))
+            //            DECalendarTestView(confirmedName: .constant("Quokka"))
         }
         .environmentObject(DailySleepTimeStore())
     }

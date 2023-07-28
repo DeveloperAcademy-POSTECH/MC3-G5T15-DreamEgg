@@ -85,7 +85,7 @@ struct LofiNameConfirmView: View {
             .frame(maxHeight: .infinity, alignment: .top)
         }
         .onAppear {
-            self.dreamCreatureImageName = dailySleepTimeStore.getAssetNameSafely()
+            self.dreamCreatureImageName = dailySleepTimeStore.getAssetNameSafely() + "_a"
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 withAnimation() {
