@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LofiNameConfirmView: View {
+    @Binding var confirmedName: String
+    
     var body: some View {
         ZStack {
             GradientBackgroundView()
@@ -16,7 +18,7 @@ struct LofiNameConfirmView: View {
                 Spacer()
                     .frame(maxHeight: 100)
                 
-                Text("토순이(가)\n드림월드로\n뛰어들어갔다!")
+                Text("\(confirmedName)가(이)\n드림월드로\n뛰어들어갔다!")
                     .font(.dosIyagiBold(.title))
                     .multilineTextAlignment(.center)
                     .padding()
@@ -55,6 +57,6 @@ struct LofiNameConfirmView: View {
 
 struct LofiNameConfirmView_Previews: PreviewProvider {
     static var previews: some View {
-        LofiNameConfirmView()
+        LofiNameConfirmView(confirmedName: .constant(""))
     }
 }

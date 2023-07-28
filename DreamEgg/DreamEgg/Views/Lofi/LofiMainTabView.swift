@@ -18,11 +18,11 @@ struct LofiMainTabView: View {
             GradientBackgroundView()
             
             TabView(selection: $tabSelection) {
-                DECalendarTestView()
-                    .tag(0)
-                    .tabItem {
-                        Image("CalendarTabIcon")
-                    }
+//                DECalendarTestView()
+//                    .tag(0)
+//                    .tabItem {
+//                        Image("CalendarTabIcon")
+//                    }
                 
                 // MARK: Main Egg
                 LofiMainEggView()

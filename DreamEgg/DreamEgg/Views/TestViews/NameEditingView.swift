@@ -1,14 +1,14 @@
 //
-//  LofiCreatureNamingView.swift
+//  NameEditingView.swift
 //  DreamEgg
 //
-//  Created by Celan on 2023/07/20.
+//  Created by apple_grace_goeun on 2023/07/25.
 //
 
 import SwiftUI
 
-struct LofiCreatureNamingView: View {
-    @State var name: String = ""
+struct NameEditingView: View {
+    @State var editedName: String = ""
     var body: some View {
         ZStack {
             GradientBackgroundView()
@@ -17,14 +17,10 @@ struct LofiCreatureNamingView: View {
                 Spacer()
                     .frame(maxHeight: 100)
                 
-                Text("드림펫의 이름을\n지어볼까요?")
+                Text("드림펫의 이름을 \n바꾸시겠어요?")
                     .font(.dosIyagiBold(.title))
                     .multilineTextAlignment(.center)
                     .padding()
-                
-                Text("이름은 언제든지\n다시 수정할 수 있어요.")
-                    .font(.dosIyagiBold(.body))
-                    .multilineTextAlignment(.center)
                 
                 Spacer()
                     .frame(maxHeight: 125)
@@ -32,22 +28,7 @@ struct LofiCreatureNamingView: View {
                 HStack {
                     Text("안녕,")
                     
-                    // MARK: Design System으로 변경 예정
-                    DETextField(style: .nameTextField, content: $name, maxLength: 10)
-                    
-//                    TextField(text: .constant("")) {
-//                        Text("Sammy")
-//                    }
-//                    .multilineTextAlignment(.center)
-//                    .frame(
-//                        maxWidth: 125,
-//                        maxHeight: 50
-//                    )
-//                    .background {
-//                        Capsule()
-//                            .fill(Color.subButtonSky)
-//                    }
-//                    .padding(8)
+                    DETextField(style: .nameTextField , content: $editedName, maxLength: 10)
                     
                     Text("!")
                 }
@@ -57,9 +38,9 @@ struct LofiCreatureNamingView: View {
                 
                 VStack {
                     NavigationLink {
-                        LofiNameConfirmView(confirmedName: $name)
+                        CreatureDetailView()
                     } label: {
-                        Text("이 이름이 좋겠다!")
+                        Text("이렇게 바꿀게요.")
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
                             .foregroundColor(.primaryButtonBrown)
@@ -77,19 +58,16 @@ struct LofiCreatureNamingView: View {
                     maxHeight: .infinity,
                     alignment: .bottom
                 )
-                
+
             }
-            .frame(maxHeight: .infinity, alignment: .top)
         }
-        .onTapGesture {
-            self.endTextEditing()
-        }
-        .ignoresSafeArea(.keyboard)
     }
 }
 
-struct LofiCreatureNamingView_Previews: PreviewProvider {
+struct NameEditingView_Previews: PreviewProvider {
     static var previews: some View {
-        LofiCreatureNamingView()
+        NameEditingView()
     }
 }
+
+// UX적으로 depth가 커지는 뷰 추가문제로 해당 뷰는 사용하지 않습니다.
