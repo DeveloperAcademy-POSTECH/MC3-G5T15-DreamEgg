@@ -29,8 +29,9 @@ struct DreamEggApp: App {
 //                DECalendarTestView()
 //                EggInteractionTestView()
 //                DETextField(style: .messageTextField, content: "")
-                LofiTextCustomView()
-//                LofiCreatureNamingView()
+//                LofiTextCustomView()
+                LofiCreatureNamingView()
+//                CreatureDetailView()
                 
             } else {
                 ContentView()

@@ -81,7 +81,10 @@ struct LofiCreatureNamingView: View {
             }
             .frame(maxHeight: .infinity, alignment: .top)
         }
-        
+        .onTapGesture {
+            self.endTextEditing()
+        }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

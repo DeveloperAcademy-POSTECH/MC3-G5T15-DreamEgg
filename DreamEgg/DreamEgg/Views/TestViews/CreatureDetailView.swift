@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+/// 빈 View를 탭하면 키보드가 내려갑니다.
+extension View {
+    func endTextEditing() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
 struct CreatureDetailView: View {
     @State private var dreamPetName: String = "꼬까"
     @State private var animalSpecies: String = "쿼카"
@@ -60,6 +67,7 @@ struct CreatureDetailView: View {
                             .fill(Color.primaryButtonYellow)
                             .frame(maxWidth: 250, maxHeight: 250)
                     }
+                    .offset(y: -10)
                 
                 Spacer()
                 
@@ -68,7 +76,7 @@ struct CreatureDetailView: View {
                         Text("이름")
                         
                         Spacer()
-                        
+                        /// 이름값과 아이콘입니다.
                         HStack {
                             if isEditedName == false {
                                 Text(dreamPetName)
@@ -127,7 +135,7 @@ struct CreatureDetailView: View {
                         //                        }
                         
                     }
-                    .padding(.vertical)
+                    .padding(.vertical, 20)
                     
                     HStack {
                         Text("분류")
@@ -137,7 +145,7 @@ struct CreatureDetailView: View {
                         Text("\(animalSpecies)")
                             .foregroundColor(Color.secondary)
                     }
-                    .padding(.vertical)
+                    .padding(.vertical, 20)
                     
                     HStack {
                         Text("태어난 날")
@@ -147,7 +155,7 @@ struct CreatureDetailView: View {
                         Text("\(getStrYear)년 \(birthDate.month)월 \(birthDate.day)일")
                             .foregroundColor(Color.secondary)
                     }
-                    .padding(.vertical)
+                    .padding(.vertical, 20)
                     
                     HStack {
                         Text("품어진 시간")
@@ -157,14 +165,14 @@ struct CreatureDetailView: View {
                         Text("\(incubateTime.hour)시간 \(incubateTime.minute)분")
                             .foregroundColor(Color.secondary)
                     }
-                    .padding(.vertical)
+                    .padding(.vertical, 20)
                 }
                 .font(.dosIyagiBold(.title3))
                 .frame(width: 294, height: 204)
                 .background {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color.subButtonSky)
-                        .frame(width: 342, height: 258)
+                        .frame(width: 342, height: 290)
                 }
                 .padding()
                 
@@ -188,6 +196,10 @@ struct CreatureDetailView: View {
                         .padding()
                 }
             }
+        }
+        .ignoresSafeArea(.keyboard)
+        .onTapGesture {
+            self.endTextEditing()
         }
     }
 }
