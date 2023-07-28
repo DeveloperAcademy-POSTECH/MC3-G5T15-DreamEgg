@@ -30,7 +30,7 @@ struct LocalNotificationView: View {
                 .padding()
 
             Button("Schedule Notification") {
-                localNotificationManager.sleepNotification(userNotificationMessage: userNotificationMessage, currentDate: currentDate)
+                localNotificationManager.scheduleSleepNotification(userNotificationMessage: userNotificationMessage, selectedDate: currentDate)
             }
         }
     }

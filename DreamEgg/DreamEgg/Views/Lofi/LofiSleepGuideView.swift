@@ -125,8 +125,8 @@ struct LofiSleepGuideView: View {
                             sleepGuideSteps = .start
                         }
                     } label: {
-//                        Text("다시 하기")
-                        Text("Repeat Again")
+                        Text("다시 하기")
+//                        Text("Repeat Again")
                             .foregroundColor(.subButtonSky)
                             .font(.dosIyagiBold(.callout))
                     }

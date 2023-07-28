@@ -5,38 +5,112 @@
 //  Created by Sebin Kwon on 2023/07/12.
 //
 
+import Combine
 import SwiftUI
 import UserNotifications
 
-class LocalNotificationManager: ObservableObject {
+final class LocalNotificationManager: NSObject, ObservableObject {
+    @Published var hasNotificationStatusAuthorized: UNAuthorizationStatus? = nil
     
-    let notificationContent = UNMutableNotificationContent()
-    let notificationCenter = UNUserNotificationCenter.current()
+    private let notificationContent = UNMutableNotificationContent()
+    private let notificationCenter = UNUserNotificationCenter.current()
+    private let calendar = Calendar.getCurrentCalendar()
     
-    func requestNotificationPermission() {
-        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-            if success {
-                print("All set!")
-            } else if let error {
+    // MARK: Methods
+    public func requestNotificationPermission() {
+        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { allowed, error in
+            if allowed {
+                // MARK: Notification Request
+                self.getNotificationstatus()
+            }
+            else if !allowed {
+                self.getNotificationstatus()
+            }
+            else if let error {
                 print(error.localizedDescription)
             }
         }
     }
     
-    func sleepNotification(userNotificationMessage: String, currentDate: Date) {
+    public func getNotificationstatus() {
+        notificationCenter.getNotificationSettings { settings in
+            DispatchQueue.main.async {
+                self.hasNotificationStatusAuthorized = settings.authorizationStatus
+            }
+        }
+    }
+    
+    public func scheduleSleepNotification(
+        userNotificationMessage: String,
+        selectedDate: Date
+    ) {
+        initNotificationCenter()
+        makeNotificationContent(with: userNotificationMessage)
+        let notificationDate = configNotificationDate(with: selectedDate)
+        let request = makeScheduledNotificationRequest(with: notificationDate)
+        
+        notificationCenter.add(request)
+        notificationCenter.getPendingNotificationRequests { messages in
+            print("Notification Schdule Complete: ", messages)
+        }
+    }
+    
+    private func initNotificationCenter() {
+        // MARK: 기존 알람을 모두 지워야 함
+        notificationCenter.removeAllPendingNotificationRequests()
+        notificationCenter.delegate = self
+        
+    }
+    
+    private func makeNotificationContent(with message: String) {
         notificationContent.title = "Dream Egg"
-        notificationContent.subtitle = userNotificationMessage
+        notificationContent.subtitle = message
         notificationContent.sound = UNNotificationSound.default
+    }
+    
+    private func configNotificationDate(with selectedDate: Date) -> Date {
+        let notificationDate = calendar.date(
+            // 선택한 날짜가 현재시간 이전이라면
+            bySettingHour: selectedDate.hour - 1,
+            minute: selectedDate.minute,
+            second: 0,
+            of: calendar.startOfDay(for: selectedDate)
+        )
         
-        let calendar = Calendar.current
-        let selectedDate = calendar.date(bySettingHour: calendar.component(.hour, from: currentDate), minute: calendar.component(.minute, from: currentDate), second: 0, of: calendar.startOfDay(for: currentDate))
-        
+        if let notificationDate { return notificationDate }
+        else { return .now }
+    }
+    
+    private func makeScheduledNotificationRequest(with date: Date) -> UNNotificationRequest {
         let trigger = UNCalendarNotificationTrigger(
-            dateMatching: calendar.dateComponents([.hour, .minute], from: selectedDate!),
+            dateMatching: calendar.dateComponents(
+                [.hour, .minute],
+                from: date
+            ),
             repeats: true
         )
+        
+        let request = UNNotificationRequest(
+            identifier: Constant.DREAMEGG_NOTIFICATION_ID,
+            content: notificationContent,
+            trigger: trigger
+        )
+        
+        return request
+    }
+}
 
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: notificationContent, trigger: trigger)
-        notificationCenter.add(request)
+// MARK: - UNUserNotificationCenterDelegate
+
+/// Foreground Notification
+/// in case, navigate to DEMainEggView
+extension LocalNotificationManager: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
+        print("identifier:\(notification.request.identifier)")
+        completionHandler([.alert, .sound, .badge])
     }
 }

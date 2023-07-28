@@ -142,6 +142,7 @@
 		7EE701F62A6E4C7E00DEEFA6 /* DECalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DECalendar.swift; sourceTree = "<group>"; };
 		7EE701F72A6E4C7E00DEEFA6 /* DETitleHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DETitleHeader.swift; sourceTree = "<group>"; };
 		7EE701F82A6E4C7E00DEEFA6 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7EF4BB732A6F7C4C00264ECE /* DreamEgg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DreamEgg.entitlements; sourceTree = "<group>"; };
 		93E97B382A6FA56B0000DB2B /* LofiBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiBirthView.swift; sourceTree = "<group>"; };
 		AE05EE102A6E634A0006F40D /* LofiEggDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiEggDrawView.swift; sourceTree = "<group>"; };
 		AE05EE122A6E65D30006F40D /* LofiEggInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LofiEggInteractionView.swift; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 		7EE701A02A6E4C2100DEEFA6 /* DreamEgg */ = {
 			isa = PBXGroup;
 			children = (
+				7EF4BB732A6F7C4C00264ECE /* DreamEgg.entitlements */,
 				7EB70D1B2A6E4DCB003512ED /* Info.plist */,
 				7EE701B72A6E4C7000DEEFA6 /* DreamEggApp.swift */,
 				7EE701D02A6E4C7E00DEEFA6 /* Extensions */,
@@ -604,6 +606,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = DreamEgg/DreamEgg.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";
@@ -636,6 +639,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = DreamEgg/DreamEgg.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DreamEgg/Preview Content\"";

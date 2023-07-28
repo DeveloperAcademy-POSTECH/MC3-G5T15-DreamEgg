@@ -14,9 +14,9 @@ struct LofiMainEggView: View {
     
     @State private var currentTime: Date = .now
     @State private var timer: Timer.TimerPublisher = Timer
-        .publish(every: 60, on: .main, in: .common)
+        .publish(every: 15, on: .main, in: .common)
     @State private var cancellable: Cancellable?
-    
+        
     var body: some View {
         VStack {
             Spacer()
@@ -27,15 +27,7 @@ struct LofiMainEggView: View {
             Spacer()
                 .frame(maxHeight: 36)
             
-            if userSleepConfigStore.hasUserEnoughTimeToProcess() {
-                failedSleepTimeView()
-                    .multilineTextAlignment(.center)
-                    .frame(
-                        maxWidth: .infinity,
-                        maxHeight: .infinity,
-                        alignment: .center
-                    )
-            } else {
+            if userSleepConfigStore.hasUserEnoughTimeToProcess(currentTime: currentTime) {
                 sleepPreparingView()
                     .frame(maxWidth: .infinity)
                 
@@ -53,13 +45,21 @@ struct LofiMainEggView: View {
                                 .foregroundColor(.white)
                         }
                 }
+            } else {
+                failedSleepTimeView()
+                    .multilineTextAlignment(.center)
+                    .frame(
+                        maxWidth: .infinity,
+                        maxHeight: .infinity,
+                        alignment: .center
+                    )   
             }
         }
         .onAppear {
             cancellable = self.timer.connect()
         }
         .onReceive(timer) { _ in
-            // 1분마다 currentTime 갱신
+            // 15초마다 currentTime 갱신
             withAnimation {
                 currentTime = Date.now
             }
@@ -80,7 +80,10 @@ struct LofiMainEggView: View {
                 .frame(maxHeight: 50)
             
             Button {
-                navigationManager.viewCycle = .timeSetting
+                withAnimation {
+                    navigationManager.isFromMainTab = true
+                    navigationManager.viewCycle = .timeSetting
+                }
             } label: {
                 Text("수면 시간 수정하기")
                     .font(.dosIyagiBold(.body))
@@ -100,7 +103,7 @@ struct LofiMainEggView: View {
     
     private func sleepPreparingView() -> some View {
         VStack {
-            Text("잠들기까지\n\(userSleepConfigStore.formattedDateHourAndMinute())\n남았어요.")
+            Text("잠들기까지\n\(userSleepConfigStore.hourAndMinuteString(currentTime: currentTime))\n남았어요.")
                 .font(.dosIyagiBold(.title))
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
@@ -108,9 +111,7 @@ struct LofiMainEggView: View {
             
             Button {
                 withAnimation {
-                    navigationManager.starterPath.removeLast()
-                    
-                    navigationManager.repeatStarterProcess()
+                    navigationManager.viewCycle = .timeSetting
                 }
             } label: {
                 Text("시간 및 알림 수정하기")
