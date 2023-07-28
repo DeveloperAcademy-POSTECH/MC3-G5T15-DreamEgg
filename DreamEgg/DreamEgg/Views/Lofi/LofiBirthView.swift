@@ -23,6 +23,7 @@ struct LofiBirthView: View {
     @State var opacityForFadeOut : Double = 0
     @State var isVibrationStarted = false
     @State var isButtonDisabled = false
+    @State var dreamPetName = "토끼"
     
     var body: some View {
         ZStack(alignment: .top) {            
@@ -64,6 +65,7 @@ struct LofiBirthView: View {
                     VStack(spacing: 10) {
                         NavigationLink {
                             LofiCreatureNamingView()
+                                .navigationBarBackButtonHidden()
                         } label: {
                             Text("이름을 지어주자")
                                 .frame(maxWidth: .infinity)
@@ -78,9 +80,10 @@ struct LofiBirthView: View {
                         .background { Color.primaryButtonYellow }
                         .cornerRadius(8)
                         .padding(.horizontal)
+                        .navigationBarBackButtonHidden()
                         
                         NavigationLink {
-                            LofiNameConfirmView()
+                            LofiNameConfirmView(confirmedName: $dreamPetName)
                         } label: {
                             Text("건너뛰기")
                                 .frame(maxWidth: .infinity)
