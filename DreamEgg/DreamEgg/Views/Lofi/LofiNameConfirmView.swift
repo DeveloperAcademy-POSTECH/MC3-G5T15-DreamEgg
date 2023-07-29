@@ -17,7 +17,6 @@ struct LofiNameConfirmView: View {
 //    @State var dreamPetImage: String = "Quakka_a" //TODO: CoreData 연결하기
 //    @Binding var confirmedName: String
 
-    
     var body: some View {
         ZStack {
             GradientBackgroundView()

@@ -34,8 +34,9 @@ struct LofiEggInteractionView: View {
                 ZStack {
                     Image("samplePillow")
                         .offset(x:0,y:160)
-                    
-                    Image(dailySleepTimeStore.currentDailySleep?.eggName ?? "NO_EGG")
+                    // TODO: CoreData 연결
+//                    Image(dailySleepTimeStore.currentDailySleep?.eggName ?? "NO_EGG")
+                    Image("FerretEgg")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 300, height: 300)

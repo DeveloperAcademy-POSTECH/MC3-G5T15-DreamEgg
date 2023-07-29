@@ -55,7 +55,9 @@ struct LofiSleepGuideView: View {
                     ZStack {
                         Image("samplePillow")
                             .offset(x:0,y:160)
+
                         Image("\(dailySleepTimeStore.currentDailySleep?.eggName ?? Constant.Errors.NO_EGG)")
+
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 300, height: 300)
