@@ -65,7 +65,8 @@ struct LofiCreatureNamingView: View {
                     .simultaneousGesture(
                         TapGesture()
                             .onEnded {
-                                dailySleepTimeStore.updateDreamPetName(to: dreampetName)
+                                // TODO: dreampetName 바꾸는 로직 고민
+//                                dailySleepTimeStore.updateDreamPetName(to: dreampetName)
                             }
                     )
                 }
