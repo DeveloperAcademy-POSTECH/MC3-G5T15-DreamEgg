@@ -7,24 +7,21 @@
 
 import SwiftUI
 
-/// 빈 View를 탭하면 키보드가 내려갑니다.
-extension View {
-    func endTextEditing() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-
 struct CreatureDetailView: View {
-    @State private var dreamPetName: String = "꼬까"
-    @State private var animalSpecies: String = "쿼카"
+    @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
+    
+    @State private var dreamPetName: String = ""
+    @State private var animalSpecies: String = ""
     @State private var birthDate = Date()
-    @State private var incubateTime = Date()
+    @State private var incubateTime: Int = 0
+    
     @State private var isFixedDreamWorld: Bool = false
     @State private var isEditedName: Bool = false
-    var maxLength: Int = 10
+    
+    private let maxLength: Int = 10
     
     /// birthDate.year를 하면 Int값 2,023이 나와서 타입 바꿨습니다
-    var getStrYear: String {
+    private var getStrYear: String {
         let year = String(birthDate.year)
         return year
     }
@@ -34,26 +31,9 @@ struct CreatureDetailView: View {
             GradientBackgroundView()
             
             VStack {
-                HStack {
-                    Text("Dream Pet Info")
-                        .font(.dosIyagiBold(.largeTitle))
-                        .foregroundColor(.white)
-                    
-                    Spacer()
-                    
-                    NavigationLink {
-                        LofiDreamWorldView()
-                    } label: {
-                        Image("DreamWorldIcon")
-                    }
-                    .overlay {
-                        Image(isFixedDreamWorld ? "" : "BadgeDot")
-                            .position(x: 40, y: 10)
-                    }
-                }
-                .padding()
+                DETitleHeader(title: "Dream Pet Info")
                 
-                Image("Quakka_Face")
+                Image("\(animalSpecies)_Face")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: 300, maxHeight: 300)
@@ -74,96 +54,85 @@ struct CreatureDetailView: View {
                 VStack {
                     HStack {
                         Text("이름")
+                            .foregroundColor(.black)
                         
                         Spacer()
                         /// 이름값과 아이콘입니다.
                         HStack {
                             if isEditedName == false {
                                 Text(dreamPetName)
-                                    .foregroundColor(Color.secondary)
+                                    .foregroundColor(.black)
+                                
                             } else if isEditedName == true {
                                 TextField("\(dreamPetName)", text: $dreamPetName)
-                                /// 드림펫 이름 글자 수를 10으로 제한해두었습니다.
-                                    .onChange(of: dreamPetName) {
-                                         newValue in
-                                        
+                                    .onChange(of: dreamPetName) { newValue in
                                         if dreamPetName.count > maxLength {
                                             dreamPetName = String(dreamPetName.prefix(maxLength))
                                         }
                                     }
                                     .multilineTextAlignment(.trailing)
+                                    .foregroundColor(.black)
                             }
                             
                             /// true, false에 따라 수정 버튼이 바뀝니다.
                             Button {
-                                isEditedName.toggle()
+                                if isEditedName {
+                                    isEditedName.toggle()
+                                    print("Editing Name", dreamPetName)
+                                    dailySleepTimeStore.updateDreamPetName(
+                                        by: dreamPetName,
+                                        isSelected: true
+                                    )
+                                    
+                                    if let dreampetName = dailySleepTimeStore.selectedDailySleep?.animalName {
+                                        self.dreamPetName = dreampetName
+                                    }
+                                } else {
+                                    isEditedName.toggle()
+                                }
                             } label: {
                                 isEditedName
                                 ? Image(systemName: "checkmark")
                                     .foregroundColor(Color.subButtonBlue)
                                     .imageScale(.large)
                                 : Image(systemName: "pencil.line")
-                                    .foregroundColor(Color.secondary)
+                                    .foregroundColor(.black.opacity(0.6))
                                     .imageScale(.large)
                             }
                         }
-                        
-                        //                        if isEditedName == false {
-                        
-                        //
-                        //                        } else if isEditedName == true {
-                        //                            HStack {
-                        ////                                DETextField(content: $editedName, placeholder: editedName)
-                        //                                TextField(text: $editedName) {
-                        //                                    Text(editedName)
-                        //                                }
-                        //                                .multilineTextAlignment(.trailing)
-                        //                                .frame(maxWidth: 100, maxHeight: 42)
-                        //                                .border(.red)
-                        //                                .background {
-                        //                                    Rectangle()
-                        //                                        .fill(Color.blue)
-                        //                                }
-                        //                            }
-                        //                        }
-                        //                        Button {
-                        //                            isEditedName.toggle()
-                        //                        } label: {
-                        //                            Image(systemName: isEditedName ? "check" : "checkmark")
-                        //                                .resizable()
-                        //                                .frame(maxWidth: 44, maxHeight: 44)
-                        //                        }
-                        
                     }
                     .padding(.vertical, 20)
                     
                     HStack {
                         Text("분류")
+                            .foregroundColor(.black)
                         
                         Spacer()
                         
                         Text("\(animalSpecies)")
-                            .foregroundColor(Color.secondary)
+                            .foregroundColor(.black.opacity(0.6))
                     }
                     .padding(.vertical, 20)
                     
                     HStack {
                         Text("태어난 날")
+                            .foregroundColor(.black)
                         
                         Spacer()
                         
                         Text("\(getStrYear)년 \(birthDate.month)월 \(birthDate.day)일")
-                            .foregroundColor(Color.secondary)
+                            .foregroundColor(.black.opacity(0.6))
                     }
                     .padding(.vertical, 20)
                     
                     HStack {
                         Text("품어진 시간")
+                            .foregroundColor(.black)
                         
                         Spacer()
                         
-                        Text("\(incubateTime.hour)시간 \(incubateTime.minute)분")
-                            .foregroundColor(Color.secondary)
+                        Text("\(incubateTime / 60)시간 \(incubateTime % 60)분")
+                            .foregroundColor(.black.opacity(0.6))
                     }
                     .padding(.vertical, 20)
                 }
@@ -198,6 +167,13 @@ struct CreatureDetailView: View {
             }
         }
         .ignoresSafeArea(.keyboard)
+        .onAppear {
+            self.animalSpecies = dailySleepTimeStore.getAssetNameSafely(isSelected: true)
+            self.dreamPetName = dailySleepTimeStore.getAnimalNameSafely(isSelected: true)
+            self.birthDate = dailySleepTimeStore.getDreampetBirthdaySafely(isSelected: true)
+            self.incubateTime = dailySleepTimeStore.getDreampetIncubateTimeSafely(isSelected: true)
+            print(animalSpecies, dreamPetName, birthDate, incubateTime)
+        }
         .onTapGesture {
             self.endTextEditing()
         }
