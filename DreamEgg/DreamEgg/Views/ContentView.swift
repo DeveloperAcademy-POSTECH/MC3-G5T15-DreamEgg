@@ -27,7 +27,6 @@ struct ContentView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         withAnimation {
                             if isSleepingProcessing() {
-                                print(#function, "쉿 자는중", dailySleepTimeStore.currentDailySleep)
                                 navigationManager.viewCycle = .awake
                             } else if userSleepConfigStore.hasSleepConfig {
                                 // 수면시간이 있는 유저
@@ -44,11 +43,11 @@ struct ContentView: View {
             LofiSleepTimeSettingView()
                 .frame(maxWidth: .infinity)
                 .onAppear {
-                    localNotificationManager.getNotificationstatus()
+                    localNotificationManager.getNotificationStatus()
                 }
                 .onChange(of: self.scene) { newScene in
                     if isChangingFromInactiveScene(into: newScene) {
-                        localNotificationManager.getNotificationstatus()
+                        localNotificationManager.getNotificationStatus()
                     }
                 }
                 .transition(
@@ -134,9 +133,7 @@ struct ContentView: View {
     
     private func isSleepingProcessing() -> Bool {
         if let processingSleep = dailySleepTimeStore.currentDailySleep,
-           processingSleep.processStatus == Constant.SLEEP_PROCESS_PROCESSING
-            || processingSleep.processStatus == Constant.SLEEP_PROCESS_SLEEPING {
-            print(#function)
+           processingSleep.processStatus == Constant.SLEEP_PROCESS_SLEEPING {
             return true
         } else {
             return false
