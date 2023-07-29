@@ -30,9 +30,8 @@ struct LofiMainEggView: View {
             Spacer()
                 .frame(maxHeight: 36)
             
-            
             sleepPreparingView()
-            .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity)
             
             Spacer()
                 .frame(maxHeight: 40)
@@ -108,9 +107,7 @@ struct LofiMainEggView: View {
                 .lineSpacing(12)
             
             Button {
-                withAnimation {
-                    navigationManager.viewCycle = .timeSetting
-                }
+                navigationManager.viewCycle = .timeSetting
             } label: {
                 Text("시간 및 알림 수정하기")
                     .font(.dosIyagiBold(.body))

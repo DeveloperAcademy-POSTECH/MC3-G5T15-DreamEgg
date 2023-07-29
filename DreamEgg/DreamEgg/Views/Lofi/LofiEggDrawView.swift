@@ -19,8 +19,7 @@ struct LofiEggDrawView: View {
                 LofiEggInteractionView()
                     .navigationBarBackButtonHidden()
                     .onAppear {
-                        print("NEW EGG HAS APPEARED!")
-                        dailySleepTimeStore.updateAndSaveNewDailySleepInfo()
+                        dailySleepTimeStore.makeNewDailySleepToStartDailySleep()
                     }
             } else {
 //                VStack {

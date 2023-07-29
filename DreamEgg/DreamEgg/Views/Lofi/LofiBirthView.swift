@@ -5,6 +5,7 @@
 //  Created by 차차 on 2023/07/25.
 //
 
+import Combine
 import SwiftUI
 
 struct LofiBirthView: View {
@@ -17,16 +18,21 @@ struct LofiBirthView: View {
         case birth
         case end
     }
-    let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
+    
+    @State private var timer = Timer.publish(every: 0.5, on: .main, in: .common)
+    @State private var timerCancellable: Cancellable?
+    
     @State private var dreamPetBirthSteps: DreamPetBirthSteps = .start
-    @State var dreamCreatureImageName : String = "" // TODO: 현재 임의의 이미지를 넣어두었습니다.
+    @State var dreampetEggName: String = ""
+    @State var dreampetAssetName: String = "" // TODO: 현재 임의의 이미지를 넣어두었습니다.
     @State var opacityForFadeOut : Double = 0
     @State var isVibrationStarted = false
     @State var isButtonDisabled = false
-    @State var dreamPetName = "토끼"
     
     var body: some View {
-        ZStack(alignment: .top) {            
+        ZStack(alignment: .top) {
+            GradientBackgroundView()
+            
             VStack(spacing: 24) {
                 switchHeaderTextByStep()
                     .font(.dosIyagiBold(.title))
@@ -43,10 +49,10 @@ struct LofiBirthView: View {
                     Text(" ")
                 }
                 
-                Button(action: {
+                Button {
                     switchDreamPetBirthStep()
-                }){
-                    Image(dreamCreatureImageName)
+                } label: {
+                    Image(getDreampetImageName())
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: 301, maxHeight: 301)
@@ -83,7 +89,7 @@ struct LofiBirthView: View {
                         .navigationBarBackButtonHidden()
                         
                         NavigationLink {
-                            LofiNameConfirmView(confirmedName: $dreamPetName)
+                            LofiNameConfirmView()
                         } label: {
                             Text("건너뛰기")
                                 .frame(maxWidth: .infinity)
@@ -110,19 +116,20 @@ struct LofiBirthView: View {
 
 
         }
-        .onAppear {
-            self.dreamCreatureImageName = dailySleepTimeStore.currentDailySleep?.eggName ?? "NOEGG!!"
-//                .getAssetNameSafely()
-        }
-        .navigationBarBackButtonHidden()
-        .background(
-            GradientBackgroundView()
-        )
         .onReceive(timer) { _ in
             if dreamPetBirthSteps == .birth || dreamPetBirthSteps == .end {
                 changeImage()
             }
         }
+        .onAppear {
+            self.dreampetEggName = dailySleepTimeStore.currentDailySleep?.eggName ?? "NOEGG!!"
+            self.dreampetAssetName = dailySleepTimeStore.getAssetNameSafely()
+            self.timerCancellable = self.timer.connect()
+        }
+        .onDisappear {
+            self.timerCancellable?.cancel()
+        }
+        .navigationBarBackButtonHidden()
     }
     
     
@@ -142,7 +149,6 @@ struct LofiBirthView: View {
             return Text("태어난 드림펫은\n드림월드에서\n볼 수 있어요!")
         }
     }
-    
     
     /// 사용자의 버튼 액션에 따라 DreamPetBirthView의 순서를 변경해주는 함수입니다.
     private func switchDreamPetBirthStep() {
@@ -171,7 +177,7 @@ struct LofiBirthView: View {
             }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                dreamCreatureImageName = "\(dreamCreatureImageName)_a" // TODO: 현재 임의의 데이터를 넣어두었습니다.
+                dreampetAssetName = "\(dreampetAssetName)_a" // TODO: 현재 임의의 데이터를 넣어두었습니다.
                 isButtonDisabled = true
                 dreamPetBirthSteps = .birth
                 withAnimation(.easeIn(duration: 1.0)) {
@@ -194,13 +200,13 @@ struct LofiBirthView: View {
     /// 드림펫이 탄생했을 때, 호흡 애니메이션을 구현하기 위한 함수입니다.
     /// - 기존의 MapViewStore에 존재하는 함수와 동일한 함수이기 때문에 여러 방법을 고민해봤지만, 마땅한 방법을 생각하지 못하고 현재 뷰에 추가해주었습니다.
     private func changeImage() {
-        if dreamCreatureImageName[dreamCreatureImageName.index(before: dreamCreatureImageName.endIndex)] == "a" {
-            dreamCreatureImageName.remove(at:dreamCreatureImageName.index(before: dreamCreatureImageName.endIndex))
-            dreamCreatureImageName.append("b")
-        }
-        else {
-            dreamCreatureImageName.remove(at:dreamCreatureImageName.index(before: dreamCreatureImageName.endIndex))
-            dreamCreatureImageName.append("a")
+        print(#function, dreampetAssetName)
+        if dreampetAssetName[dreampetAssetName.index(before: dreampetAssetName.endIndex)] == "a" {
+            dreampetAssetName.remove(at:dreampetAssetName.index(before: dreampetAssetName.endIndex))
+            dreampetAssetName.append("b")
+        } else {
+            dreampetAssetName.remove(at:dreampetAssetName.index(before: dreampetAssetName.endIndex))
+            dreampetAssetName.append("a")
         }
     }
     
@@ -211,6 +217,12 @@ struct LofiBirthView: View {
         else {
             return 1
         }
+    }
+    
+    private func getDreampetImageName() -> String {
+        dreamPetBirthSteps == .birth || dreamPetBirthSteps == .end
+            ? dreampetAssetName
+            : dreampetEggName
     }
 }
 
