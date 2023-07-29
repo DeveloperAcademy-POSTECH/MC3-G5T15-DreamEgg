@@ -41,7 +41,7 @@ final class DailySleepTimeStore: ObservableObject, CoreDataRepresentable {
                 print("SELECTED DAILY SLEEP Status :", selectedDailySleep.processStatus ?? "아직없음")
                 print("SELECTED DAILY SLEEP Date :", selectedDailySleep.date?.formatted() ?? "날짜없음")
                 print("SELECTED DAILY SLEEP EggName :", selectedDailySleep.eggName ?? "알이없음")
-                print("SELECTED DAILY SLEEP EggName :", selectedDailySleep.animalName ?? "이름없음")
+                print("SELECTED DAILY SLEEP animalName :", selectedDailySleep.animalName ?? "이름없음")
                 print("---------------------------------------------------------------------------")
                 print("---------------------------------------------------------------------------")
             }
@@ -210,16 +210,17 @@ extension DailySleepTimeStore {
     
     // CoreData의 [DailySleep] 배열을 가져옵니다.
     private func assignDailySleepInfoArray() {
-        print(#function)
         self.dailySleepArray = Array(coreDataStore.dailySleep.values)
             .sorted(by: { lhs, rhs in
                 lhs.date! > rhs.date!
             })
+        
+        print(#function, self.dailySleepArray)
     }
     
     // currentDailySleep에 최신 DailySleep을 할당합니다.
     private func assignCurrentDailySleepFromArray() {
-        print(#function)
+        print(#function, dailySleepArray.first)
         self.currentDailySleep = self.dailySleepArray.first
     }
 }
@@ -232,7 +233,7 @@ extension DailySleepTimeStore {
         to coreData: DailySleep,
         from appEntityModel: DailySleepInfo
     ) {
-        print(#function)
+        print(#function, appEntityModel)
         coreData.id = appEntityModel.id
         coreData.animalName = appEntityModel.animalName
         coreData.eggName = appEntityModel.eggName
@@ -353,6 +354,7 @@ extension DailySleepTimeStore {
                 processStatus: .complete,
                 sleepingTimeInMinute: Int(selectedDailySleep.sleepTimeInMinute)
             )
+            
             model.animalName = name
             updateCoreData(with: model, predicate: getNSPredicate(with: model))
             assignDailySleepInfoArray()
@@ -368,7 +370,7 @@ extension DailySleepTimeStore {
     /// dailySleepInfo를 complete하고 시간을 할당합니다.
     /// @Published 되어 있는 self.currentDailySleepInfo를 참조합니다.
     public func completeDailySleepTime() {
-        print(#function)
+        print(#function, self.currentDailySleep)
         var model = self.getDailySleepInfo(in: .sleeping)
         model.processStatus = .complete
         model.sleepTimeInMinute = Int32(sleepingTimeInMinute)

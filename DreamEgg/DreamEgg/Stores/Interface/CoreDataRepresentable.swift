@@ -133,6 +133,7 @@ extension CoreDataRepresentable {
 
     func saveChangesToContext() -> Void {
         if coreDataStore.managedObjectContext.hasChanges {
+            print(#function, coreDataStore.managedObjectContext)
             do {
                 try coreDataStore.managedObjectContext.save()
             } catch let error as NSError {
