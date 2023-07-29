@@ -19,7 +19,7 @@ struct LofiBirthView: View {
     }
     let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
     @State private var dreamPetBirthSteps: DreamPetBirthSteps = .start
-    @State var dreamCreatureImageName : String = "" // TODO: 현재 임의의 이미지를 넣어두었습니다.
+    @State var dreamCreatureImageName : String = ""
     @State var opacityForFadeOut : Double = 0
     @State var isVibrationStarted = false
     @State var isButtonDisabled = false
@@ -83,7 +83,7 @@ struct LofiBirthView: View {
                         .navigationBarBackButtonHidden()
                         
                         NavigationLink {
-                            LofiNameConfirmView(confirmedName: $dreamPetName)
+                            LofiNameConfirmView()
                         } label: {
                             Text("건너뛰기")
                                 .frame(maxWidth: .infinity)
@@ -111,7 +111,8 @@ struct LofiBirthView: View {
 
         }
         .onAppear {
-            self.dreamCreatureImageName = dailySleepTimeStore.getAssetNameSafely()
+            self.dreamCreatureImageName = dailySleepTimeStore.currentDailySleep?.eggName ?? Constant.Errors.NO_EGG
+//            self.dreamCreatureImageName = dailySleepTimeStore.getAssetNameSafely()
         }
         .navigationBarBackButtonHidden()
         .background(
@@ -170,7 +171,8 @@ struct LofiBirthView: View {
             }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                dreamCreatureImageName = "\(dreamCreatureImageName)_a" // TODO: 현재 임의의 데이터를 넣어두었습니다.
+                dreamCreatureImageName = "\(dailySleepTimeStore.getAssetNameSafely())_a"
+//                dreamCreatureImageName = "\(dreamCreatureImageName)_a"
                 isButtonDisabled = true
                 dreamPetBirthSteps = .birth
                 withAnimation(.easeIn(duration: 1.0)) {
