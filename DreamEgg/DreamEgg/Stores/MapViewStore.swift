@@ -10,6 +10,7 @@ import SwiftUI
 
 final class MapViewStore : ObservableObject {
     static let window = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first { $0.isKeyWindow }
+    
     let mapWidth = UIScreen.main.bounds.width
     var mapHeight = UIScreen.main.bounds.height - window!.safeAreaInsets.top - window!.safeAreaInsets.bottom
     let objSize : CGFloat = 50
@@ -33,7 +34,8 @@ final class MapViewStore : ObservableObject {
         
         for element in dailySleepArray {
             if element.processStatus == Constant.SLEEP_PROCESS_COMPLETE,
-               element.sleepTimeInMinute >= 3 * 60 {
+               element.sleepTimeInMinute >= 1 {
+//               element.sleepTimeInMinute >= 3 * 60 {
                 names.append([element.assetName ?? "" ,"_a"])
             }
         }

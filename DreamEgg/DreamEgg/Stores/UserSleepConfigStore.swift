@@ -63,13 +63,12 @@ final class UserSleepConfigStore: ObservableObject {
     public func updateAndSaveUserSleepConfig(
         with userSleepConfig: UserSleepConfigurationInfo
     ) {
+        assignProperties(with: userSleepConfig)
         updateCoreData(
             with: userSleepConfig,
             predicate: getNSPredicate(with: userSleepConfig)
         )
-//        print(#function, coreDataStore.userSleepConfig)
         assignUserSleepConfigDict()
-        assignProperties(with: userSleepConfig)
     }
     
     private func assignUserSleepConfigDict() {
@@ -169,7 +168,7 @@ final class UserSleepConfigStore: ObservableObject {
 }
 
 extension UserSleepConfigStore: CoreDataRepresentable {
-    func assignProperties(
+    internal func assignProperties(
         to coreData: UserSleepConfiguration,
         from appEntityModel: UserSleepConfigurationInfo
     ) {
