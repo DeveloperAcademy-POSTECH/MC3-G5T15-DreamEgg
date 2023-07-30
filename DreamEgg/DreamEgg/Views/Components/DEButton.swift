@@ -63,9 +63,10 @@ public struct DEButtonStyleModifiers: ViewModifier {
                 .font(.dosIyagiBold(.body))
                 .overlay {
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.primaryButtonBrown, lineWidth: 2.5)
+                        .stroke(Color.primaryButtonBrown, lineWidth: 4)
                 }
                 .background { Color.primaryButtonYellow }
+                .cornerRadius(8)
                 .opacity(isDisabled ? 0.3 : 1.0)
             
             
