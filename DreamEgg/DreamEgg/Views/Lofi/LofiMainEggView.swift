@@ -46,9 +46,11 @@ struct LofiMainEggView: View {
                 } label: {
                     Image("emptyEgg")
                         .overlay {
-                            Text("탭해서 \n알그리기")
+                            Text("탭해서\n드림에그를 그려보세요!")
                                 .font(.dosIyagiBold(.body))
                                 .foregroundColor(.white)
+                                .lineSpacing(8)
+                                .tracking(-2)
                         }
                 }
             } else {
@@ -75,15 +77,15 @@ struct LofiMainEggView: View {
     // MARK: - ViewBuilder
     private func failedSleepTimeView() -> some View {
         VStack {
-            Text("정말 바쁜 하루였네요.\n오늘은 제가 대신\n알을 품어드릴게요.")
+//            Spacer()
+//                .frame(maxHeight: 24)
+            
+            Text("새로운 드림에그를\n만날 수 있게\n취침시간까지 기다려주세요.")
                 .font(.dosIyagiBold(.title))
-                .padding()
-            
-            Text("내일은 꼭 직접 알을 품어주세요!")
-                .font(.dosIyagiBold(.body))
-            
-            Spacer()
-                .frame(maxHeight: 50)
+                .foregroundColor(.white)
+                .lineSpacing(16)
+                .tracking(-3)
+                .padding(.top, 4)
             
             Button {
                 withAnimation {
@@ -93,27 +95,58 @@ struct LofiMainEggView: View {
             } label: {
                 Text("수면 시간 수정하기")
                     .font(.dosIyagiBold(.body))
-                    .foregroundColor(.white)
+                    .tracking(-2)
+                    .foregroundColor(.white.opacity(0.6))
                     .overlay {
                         VStack {
                             Divider()
                                 .frame(minHeight: 2)
-                                .overlay(Color.white)
+                                .overlay(Color.white.opacity(0.6))
                                 .offset(y: 12)
                         }
                     }
-                    .padding()
+                    .padding(.top, 22)
             }
+            
+            Button {} label: {
+                Image("emptyEggDisabled")
+                    .overlay {
+                        Text("1시간 전부터\n드림에그를 그릴 수 있어요!")
+                            .font(.dosIyagiBold(.body))
+                            .foregroundColor(.white)
+                            .lineSpacing(8)
+                            .tracking(-2)
+                    }
+            }
+            .disabled(true)
+            .frame(maxHeight: .infinity)
+            
+//            Text("내일은 꼭 직접 알을 품어주세요!")
+//                .font(.dosIyagiBold(.body))
+            
+            Spacer()
+                .frame(maxHeight: 94)
+            
+
         }
     }
     
     private func sleepPreparingView() -> some View {
         VStack {
-            Text("잠들기까지\n\(userSleepConfigStore.hourAndMinuteString(currentTime: currentTime))\n남았어요.")
-                .font(.dosIyagiBold(.title))
-                .foregroundColor(.white)
-                .multilineTextAlignment(.center)
-                .lineSpacing(12)
+            VStack(spacing: 16) {
+                Text("잠들기까지")
+                     
+                Text("\(userSleepConfigStore.hourAndMinuteString(currentTime: currentTime))")
+                    .font(.dosIyagiBold(.largeTitle))
+                    .tracking(-2)
+                
+                Text("남았어요.")
+            }
+            .font(.dosIyagiBold(.title))
+            .foregroundColor(.white)
+            .multilineTextAlignment(.center)
+//            .lineSpacing(12)
+            .tracking(-3)
             
             Button {
                 withAnimation {
@@ -122,12 +155,14 @@ struct LofiMainEggView: View {
             } label: {
                 Text("시간 및 알림 수정하기")
                     .font(.dosIyagiBold(.body))
-                    .foregroundColor(.white)
+                    .foregroundColor(.white.opacity(0.6))
+                    .lineSpacing(16)
+                    .tracking(-2)
                     .overlay {
                         VStack {
                             Divider()
                                 .frame(minHeight: 2)
-                                .overlay(Color.white)
+                                .overlay(Color.white.opacity(0.6))
                                 .offset(y: 12)
                         }
                     }
