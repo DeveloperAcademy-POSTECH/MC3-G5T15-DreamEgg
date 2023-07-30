@@ -44,10 +44,16 @@ struct LofiTextCustomView: View {
                     
                     // MARK: Design System으로 변경 예정
                 
-                VStack(spacing: 48) {
+                VStack {
+                    Spacer()
+                        .frame(maxHeight: 88)
+                    
                     DETextField(style: .messageTextField, content: $notificationMessage, maxLength: 30)
 //                        .offset(y: -50)
                     
+                    Spacer()
+                        .frame(maxHeight: 80)
+                
                     Text("적어주신 문장으로\n취침 1시간 전에 알림을 드릴게요!")
                         .font(.dosIyagiBold(.body))
                         .foregroundColor(.white.opacity(0.6))
@@ -94,7 +100,7 @@ struct LofiTextCustomView: View {
                 }
                 .background { Color.primaryButtonYellow }
                 .cornerRadius(8)
-                .padding()
+                .padding(.horizontal)
                 .disabled(notificationMessage.isEmpty)
                 .simultaneousGesture(
                     TapGesture()
@@ -111,8 +117,10 @@ struct LofiTextCustomView: View {
                     }
                 } label: {
                     Text("건너뛰기")
-                        .foregroundColor(.subButtonSky)
+                        .foregroundColor(.white.opacity(0.6))
+                        .underline(true)
                         .font(.dosIyagiBold(.callout))
+                        .padding(.vertical, 16)
                 }
             }
             .onDisappear {

@@ -34,9 +34,12 @@ struct LofiSleepTimeSettingView: View {
                     .tracking(-3)
                     .bold()
                 
-                VStack(spacing: 48) {
+                VStack {
                     TimePickerView(timePickerStore: timePickerStore)
                         .foregroundColor(.dreamPurple)
+                    
+                    Spacer()
+                        .frame(maxHeight: 64)
                     
                     Text(isNotificationAuthorized ? "이후에도 시간을 수정할 수 있어요." : "알림을 허용하지 않아서\n일부 화면만 볼 수 있어요.\n이대로 진행할까요?")
                         .multilineTextAlignment(.center)
