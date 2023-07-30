@@ -44,12 +44,19 @@ struct LofiMainEggView: View {
                             print("dreamEgg", "\(dailySleepTimeStore.currentDailySleep!.eggName ?? "알이가 없다")")
                         }
                 } label: {
-                    Image("emptyEgg")
-                        .overlay {
-                            Text("탭해서 \n알그리기")
-                                .font(.dosIyagiBold(.body))
-                                .foregroundColor(.white)
-                        }
+                    ZStack {
+                        Image("EggPillow")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 250, height: 250)
+                            .offset(x:0,y:160)
+                        Image("emptyEgg")
+                            .overlay {
+                                Text("탭해서 \n알그리기")
+                                    .font(.dosIyagiBold(.body))
+                                    .foregroundColor(.white)
+                            }
+                    }
                 }
             } else {
                 failedSleepTimeView()
