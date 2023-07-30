@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LofiEggDrawView: View {
     @StateObject private var eggDrawStore = EggDrawStore()
-    
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ZStack {
             GradientBackgroundView()
@@ -18,16 +18,8 @@ struct LofiEggDrawView: View {
                 LofiEggInteractionView()
                     .navigationBarBackButtonHidden()
             } else {
-//                VStack {
                     ZStack {
                         Image("emptyEgg")
-//                        eggDrawStore.includeEllipsePath
-//                            .foregroundColor(.green)
-//                            .opacity(0.5)
-//                        
-//                        eggDrawStore.exceptEllipsePath
-//                            .foregroundColor(.red)
-//                            .opacity(0.5)
                         
                         DrawShape(points: eggDrawStore.points)
                             .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round))
@@ -50,12 +42,19 @@ struct LofiEggDrawView: View {
                             alignment: .top
                         )
                     }
-//                }   
             }
         }
         .animation(eggDrawStore.isDrawEgg ? Animation.easeInOut : nil)
         .gesture(eggDrawStore.gesture())
+        .simultaneousGesture(DragGesture().onEnded(onSwipeBack))
     }
+    
+    private func onSwipeBack(gesture: DragGesture.Value) {
+            if gesture.translation.width > 100 && !eggDrawStore.isDrawEgg {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
+    
 }
 
 struct LofiEggDrawView_Previews: PreviewProvider {
