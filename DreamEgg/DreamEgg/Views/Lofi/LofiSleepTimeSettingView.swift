@@ -24,20 +24,25 @@ struct LofiSleepTimeSettingView: View {
             
             VStack {
                 Spacer()
-                    .frame(maxHeight: 40)
+                    .frame(maxHeight: 100)
                 
-                Text(isNotificationAuthorized ? "잠들고 싶은\n희망 시간을 정해주세요." : "알림을 허용하면\n앱을 더 효과적으로\n이용할 수 있어요!")
+                Text(isNotificationAuthorized ? "잠들고 싶은\n희망 시간을 정해주세요." : "알림을 허용해야\n취침습관 관리를\n도와드릴 수 있어요!")
                     .font(.dosIyagiBold(.title))
+                    .foregroundColor(.white)
                     .multilineTextAlignment(.center)
-                    .lineSpacing(12)
+                    .lineSpacing(16)
+                    .tracking(-3)
                     .bold()
-                    .padding()
                 
-                VStack(spacing: 24) {
+                VStack(spacing: 48) {
                     TimePickerView(timePickerStore: timePickerStore)
                         .foregroundColor(.dreamPurple)
                     
-                    Text("이후에도 시간을 수정할 수 있어요.")
+                    Text(isNotificationAuthorized ? "이후에도 시간을 수정할 수 있어요." : "알림을 허용하지 않아서\n일부 화면만 볼 수 있어요.\n이대로 진행할까요?")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.white.opacity(0.6))
+                        .lineSpacing(8)
+                        .tracking(-2)
                         
                 }
                 .frame(maxHeight: .infinity)
@@ -55,7 +60,7 @@ struct LofiSleepTimeSettingView: View {
                             navigationManager.viewCycle = .general
                             navigationManager.isFromMainTab = false
                         } label: {
-                            Text("이렇게 수정할게요.")
+                            Text("이렇게 바꿀래요.")
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
@@ -69,6 +74,7 @@ struct LofiSleepTimeSettingView: View {
                         .cornerRadius(8)
                         .padding()
                         
+                        
                     } else {
                         Button {
                             if let targetSleepTime = userSleepConfigStore.existingUserSleepConfig.targetSleepTime {
@@ -79,7 +85,7 @@ struct LofiSleepTimeSettingView: View {
                                 navigationManager.viewCycle = .notificationMessageSetting
                             }
                         } label: {
-                            Text("이 시간에 잠에 들래요")
+                            Text("이 시간에 잘래요.")
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
@@ -99,7 +105,7 @@ struct LofiSleepTimeSettingView: View {
                         Button {
                             isAllowButtonTapped = true
                         } label: {
-                            Text("허용할게요.")
+                            Text("알림을 허용할게요.")
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
@@ -124,7 +130,7 @@ struct LofiSleepTimeSettingView: View {
                                 navigationManager.viewCycle = .general
                             }
                         } label: {
-                            Text("알림 없이 사용할게요.")
+                            Text("네.")
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 16)
                                 .foregroundColor(.subButtonBlue)

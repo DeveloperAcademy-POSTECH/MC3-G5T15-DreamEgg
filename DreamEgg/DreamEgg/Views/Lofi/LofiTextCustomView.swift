@@ -19,28 +19,43 @@ struct LofiTextCustomView: View {
             
             VStack {
                 Spacer()
-                    .frame(maxHeight: 75)
+                    .frame(maxHeight: 100)
                 
-                VStack {
-                    Text("내일 나에게 할 말을 \n적어주세요")
-                        .font(.dosIyagiBold(.title))
-                        .lineSpacing(12)
-                        .padding()
-                    
-                    Text("기존 알림 대신에 적어주신 문장으로 알림을 드릴게요!")
-                        .font(.dosIyagiBold(.body))
-                }
-                .multilineTextAlignment(.center)
-                .foregroundColor(.white)
+//                VStack {
+                Text("내일 나에게 할 말을 \n적어주세요.")
+                    .font(.dosIyagiBold(.title))
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(16)
+                    .tracking(-3)
                 
-                Spacer()
+//                        .padding()
+//
+//                    Text("기존 알림 대신에 적어주신 문장으로 알림을 드릴게요!")
+//                        .font(.dosIyagiBold(.body))
+//                }
+//                .multilineTextAlignment(.center)
+//                .foregroundColor(.white)
+//
+//                Spacer()
                 
 //                HStack {
 //                    Text("내일은")
                     
                     // MARK: Design System으로 변경 예정
+                
+                VStack(spacing: 48) {
                     DETextField(style: .messageTextField, content: $notificationMessage, maxLength: 30)
-                    .offset(y: -50)
+//                        .offset(y: -50)
+                    
+                    Text("적어주신 문장으로\n취침 1시간 전에 알림을 드릴게요!")
+                        .font(.dosIyagiBold(.body))
+                        .foregroundColor(.white.opacity(0.6))
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(8)
+                        .tracking(-2)
+                }
+                .frame(maxHeight: .infinity)
                     
 //                    TextField(text: $notificationMessage) {
 //                        Text("입력")
@@ -67,7 +82,7 @@ struct LofiTextCustomView: View {
                         navigationManager.authenticateUserIntoGeneralState()
                     }
                 } label: {
-                    Text("이렇게 알림을 보내주세요")
+                    Text("이렇게 알림을 보내주세요.")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
                         .foregroundColor(.primaryButtonBrown)
