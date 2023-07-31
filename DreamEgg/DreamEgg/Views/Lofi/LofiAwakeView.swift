@@ -34,6 +34,7 @@ struct LofiAwakeView: View {
             
             VStack {
                 Spacer()
+                    .frame(maxHeight: 100)
                 
                 DEFontStyle(style: .largeTitle, text: "지금 시간은 \n\(currentTime.hour)시 \(currentTime.minute)분이에요.")
                 
@@ -161,7 +162,7 @@ struct LofiAwakeView: View {
                             }
                         //                      Text("To Fail screen")
                     } label: {
-                        Text("아직도 잠을 못잤어요.")
+                        Text("잠이 안와서 내일 할게요.")
                         //                      Text("I don't feel like to sleep")
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)

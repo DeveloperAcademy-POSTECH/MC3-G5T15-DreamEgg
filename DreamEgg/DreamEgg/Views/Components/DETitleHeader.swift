@@ -16,6 +16,7 @@ struct DETitleHeader: View {
             
             DEFontStyle(style: .title2, text: "-<( \(title) )>-")
                 .bold()
+                .foregroundColor(.white)
 //            Text("-<( \(title) )>-")
 //                .font(.dosIyagiBold(.title2))
 //                .bold()
