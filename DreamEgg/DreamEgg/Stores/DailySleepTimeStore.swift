@@ -361,8 +361,8 @@ extension DailySleepTimeStore {
             self.selectedDailySleep = coreDataStore.dailySleep[selectedDailySleep.id!]
         } else {
             print(#function, isSelected)
-            // TODO: 이거 sleeping이 맞는지 complete가 맞는지 확인 필요
-            var model = self.getDailySleepInfo(in: .sleeping)
+            // TODO: Complete가 맞네요~ ㅎ;
+            var model = self.getDailySleepInfo(in: .complete)
             model.animalName = name
             updateAndAssignToCurrent(by: model)
         }
@@ -370,6 +370,7 @@ extension DailySleepTimeStore {
     
     /// dailySleepInfo를 complete하고 시간을 할당합니다.
     /// @Published 되어 있는 self.currentDailySleepInfo를 참조합니다.
+    /// DailySleepTime 은 각 entity의 id당 단 한번만 호출됩니다.
     public func completeDailySleepTime() {
         print(#function, self.currentDailySleep)
         var model = self.getDailySleepInfo(in: .sleeping)
