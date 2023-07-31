@@ -46,11 +46,8 @@ struct LofiMainEggView: View {
                 } label: {
                     Image("emptyEgg")
                         .overlay {
-                            Text("탭해서\n드림에그를 그려보세요!")
-                                .font(.dosIyagiBold(.body))
+                            DEFontStyle(style: .body, text: "탭해서\n드림에그를 그려보세요!")
                                 .foregroundColor(.white)
-                                .lineSpacing(8)
-                                .tracking(-2)
                         }
                 }
             } else {
@@ -79,12 +76,8 @@ struct LofiMainEggView: View {
         VStack {
 //            Spacer()
 //                .frame(maxHeight: 24)
-            
-            Text("새로운 드림에그를\n만날 수 있게\n취침시간까지 기다려주세요.")
-                .font(.dosIyagiBold(.title))
+            DEFontStyle(style: .title, text: "새로운 드림에그를\n만날 수 있게\n취침시간까지 기다려주세요.")
                 .foregroundColor(.white)
-                .lineSpacing(16)
-                .tracking(-3)
                 .padding(.top, 4)
             
             Button {
@@ -93,9 +86,7 @@ struct LofiMainEggView: View {
                     navigationManager.viewCycle = .timeSetting
                 }
             } label: {
-                Text("수면 시간 수정하기")
-                    .font(.dosIyagiBold(.body))
-                    .tracking(-2)
+                DEFontStyle(style: .body, text: "취침 시간 수정하기")
                     .foregroundColor(.white.opacity(0.6))
                     .overlay {
                         VStack {
@@ -111,11 +102,8 @@ struct LofiMainEggView: View {
             Button {} label: {
                 Image("emptyEggDisabled")
                     .overlay {
-                        Text("1시간 전부터\n드림에그를 그릴 수 있어요!")
-                            .font(.dosIyagiBold(.body))
+                        DEFontStyle(style: .body, text: "1시간 전부터\n드림에그를 그릴 수 있어요!")
                             .foregroundColor(.white)
-                            .lineSpacing(8)
-                            .tracking(-2)
                     }
             }
             .disabled(true)
@@ -134,30 +122,22 @@ struct LofiMainEggView: View {
     private func sleepPreparingView() -> some View {
         VStack {
             VStack(spacing: 16) {
-                Text("잠들기까지")
-                     
-                Text("\(userSleepConfigStore.hourAndMinuteString(currentTime: currentTime))")
-                    .font(.dosIyagiBold(.largeTitle))
-                    .tracking(-2)
+                DEFontStyle(style: .title, text: "잠들기까지")
                 
-                Text("남았어요.")
+                DEFontStyle(style: .largeTitle, text: "\(userSleepConfigStore.hourAndMinuteString(currentTime: currentTime))")
+                
+                DEFontStyle(style: .title, text: "남았어요.")
             }
-            .font(.dosIyagiBold(.title))
             .foregroundColor(.white)
             .multilineTextAlignment(.center)
-//            .lineSpacing(12)
-            .tracking(-3)
             
             Button {
                 withAnimation {
                     navigationManager.viewCycle = .timeSetting
                 }
             } label: {
-                Text("시간 및 알림 수정하기")
-                    .font(.dosIyagiBold(.body))
+                DEFontStyle(style: .body, text: "시간 및 알림 수정하기")
                     .foregroundColor(.white.opacity(0.6))
-                    .lineSpacing(16)
-                    .tracking(-2)
                     .overlay {
                         VStack {
                             Divider()

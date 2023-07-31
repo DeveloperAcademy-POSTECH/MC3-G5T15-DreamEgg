@@ -53,12 +53,11 @@ struct LofiEggInteractionView: View {
                         }
                 }
                 Spacer()
-                    Text("다음 단계는 탭해서 진행해주세요.")
-                        .font(.dosIyagiBold(.callout))
-                        .tracking(-2)
-                        .foregroundColor(.white)
-                        .opacity(isShowInfo ? 0.8 : 0)
-                        .opacity(isRunInfoAnimation ? 0.8 : 0.3)
+                DEFontStyle(style: .callout, text: "다음 단계는 탭해서 진행해주세요.")
+                    .foregroundColor(.white)
+                    .opacity(isShowInfo ? 0.8 : 0)
+                    .opacity(isRunInfoAnimation ? 0.8 : 0.3)
+                
                 NavigationLink(destination: LofiSleepGuideView( isSkippedFromInteractionView:$isSkip).navigationBarBackButtonHidden(true)) {
                     Text("네, 도움이 필요해요.")
                         .frame(maxWidth: .infinity)

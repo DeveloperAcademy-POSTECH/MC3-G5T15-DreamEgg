@@ -26,31 +26,36 @@ struct LofiSleepTimeSettingView: View {
                 Spacer()
                     .frame(maxHeight: 100)
                 
-                Text(isNotificationAuthorized ? "잠들고 싶은\n희망 시간을 정해주세요." : "알림을 허용해야\n취침습관 관리를\n도와드릴 수 있어요!")
-                    .font(.dosIyagiBold(.title))
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(16)
-                    .tracking(-3)
-                    .bold()
+                VStack {
+                    if isNotificationAuthorized == true {
+                        DEFontStyle(style: .title, text: "잠들고 싶은\n희망 시간을 정해주세요.")
+                    } else {
+                        DEFontStyle(style: .title, text: "알림을 허용해야\n취침습관 관리를\n도와드릴 수 있어요!")
+                    }
+                }
+                .multilineTextAlignment(.center)
+                .foregroundColor(.white)
+                .bold()
                 
                 VStack {
                     TimePickerView(timePickerStore: timePickerStore)
                         .foregroundColor(.dreamPurple)
+                        .font(.dosIyagiBold(.body))
                     
                     Spacer()
                         .frame(maxHeight: 64)
                     
-                    Text(isNotificationAuthorized ? "이후에도 시간을 수정할 수 있어요." : "알림을 허용하지 않아서\n일부 화면만 볼 수 있어요.\n이대로 진행할까요?")
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(.white.opacity(0.6))
-                        .lineSpacing(8)
-                        .tracking(-2)
-                        
+                    VStack {
+                        if isNotificationAuthorized == true {
+                            DEFontStyle(style: .body, text: "이후에도 시간을 수정할 수 있어요.")
+                        } else {
+                            DEFontStyle(style: .body, text: "알림을 허용하지 않아서\n일부 화면만 볼 수 있어요.\n이대로 진행할까요?")
+                        }
+                    }
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.white.opacity(0.6))
                 }
                 .frame(maxHeight: .infinity)
-                .font(.dosIyagiBold(.body))
-                
                 
                 if isNotificationAuthorized {
                     if navigationManager.viewCycle == .timeSetting,
@@ -68,6 +73,7 @@ struct LofiSleepTimeSettingView: View {
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
                                 .font(.dosIyagiBold(.body))
+                                .tracking(-2)
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -93,6 +99,7 @@ struct LofiSleepTimeSettingView: View {
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
                                 .font(.dosIyagiBold(.body))
+                                .tracking(-2)
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -113,6 +120,7 @@ struct LofiSleepTimeSettingView: View {
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
                                 .font(.dosIyagiBold(.body))
+                                .tracking(-2)
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -138,6 +146,7 @@ struct LofiSleepTimeSettingView: View {
                                 .padding(.vertical, 16)
                                 .foregroundColor(.subButtonBlue)
                                 .font(.dosIyagiBold(.body))
+                                .tracking(-2)
                         }
                         .background { Color.subButtonSky }
                         .cornerRadius(8)

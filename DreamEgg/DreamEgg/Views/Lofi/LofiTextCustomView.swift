@@ -22,12 +22,16 @@ struct LofiTextCustomView: View {
                     .frame(maxHeight: 100)
                 
                 //                VStack {
-                Text("내일 나에게 할 말을 \n적어주세요.")
-                    .font(.dosIyagiBold(.title))
+                DEFontStyle(style: .title, text: "내일 나에게 할 말을 \n적어주세요.")
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
-                    .lineSpacing(16)
-                    .tracking(-3)
+//
+//                Text("내일 나에게 할 말을 \n적어주세요.")
+//                    .font(.dosIyagiBold(.title))
+//                    .foregroundColor(.white)
+//                    .multilineTextAlignment(.center)
+//                    .lineSpacing(16)
+//                    .tracking(-3)
                 
                 //                        .padding()
                 //
@@ -54,12 +58,15 @@ struct LofiTextCustomView: View {
                     Spacer()
                         .frame(maxHeight: 80)
                     
-                    Text("적어주신 문장으로\n취침 1시간 전에 알림을 드릴게요!")
-                        .font(.dosIyagiBold(.body))
+                    DEFontStyle(style: .body, text: "적어주신 문장으로\n취침 1시간 전에 알림을 드릴게요!")
                         .foregroundColor(.white.opacity(0.6))
                         .multilineTextAlignment(.center)
-                        .lineSpacing(8)
-                        .tracking(-2)
+//                    Text("적어주신 문장으로\n취침 1시간 전에 알림을 드릴게요!")
+//                        .font(.dosIyagiBold(.body))
+//                        .foregroundColor(.white.opacity(0.6))
+//                        .multilineTextAlignment(.center)
+//                        .lineSpacing(8)
+//                        .tracking(-2)
                 }
                 .frame(maxHeight: .infinity)
                 
@@ -90,9 +97,10 @@ struct LofiTextCustomView: View {
                         {
                             print()
                         } label: {
-                            VStack {
-                                Text("이렇게 알림을 보내주세요.")
-                            }
+                                DEFontStyle(style: .body, text: "이렇게 알림을 보내주세요.")
+//                            VStack {
+//                                Text("이렇게 알림을 보내주세요.")
+//                            }
                         }
                         .padding(.horizontal)
                     } else if !notificationMessage.isEmpty {
@@ -103,9 +111,7 @@ struct LofiTextCustomView: View {
                                 navigationManager.authenticateUserIntoGeneralState()
                             }
                         } label: {
-                            VStack {
-                                Text("이렇게 알림을 보내주세요.")
-                            }
+                            DEFontStyle(style: .body, text: "이렇게 알림을 보내주세요.")
                         }
                         .padding(.horizontal)
                         .simultaneousGesture(
@@ -142,11 +148,15 @@ struct LofiTextCustomView: View {
                             navigationManager.authenticateUserIntoGeneralState()
                         }
                     } label: {
-                        Text("건너뛰기")
+                        DEFontStyle(style: .callout, text: "건너뛰기")
                             .foregroundColor(.white.opacity(0.6))
                             .underline(true)
-                            .font(.dosIyagiBold(.callout))
                             .padding(.vertical, 16)
+//                        Text("건너뛰기")
+//                            .foregroundColor(.white.opacity(0.6))
+//                            .underline(true)
+//                            .font(.dosIyagiBold(.callout))
+//                            .padding(.vertical, 16)
                     }
                 }
             }
