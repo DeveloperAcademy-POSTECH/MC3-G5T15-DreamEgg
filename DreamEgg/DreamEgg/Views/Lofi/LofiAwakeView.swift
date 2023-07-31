@@ -180,7 +180,6 @@ struct LofiAwakeView: View {
                         .cornerRadius(8)
                         .padding(.horizontal)
                     }
-                    
                 }
                 .multilineTextAlignment(.center)
                 .foregroundColor(.white)
@@ -198,6 +197,7 @@ struct LofiAwakeView: View {
                 }
             }
         }
+    }
     }
     
     /// egg를 탭하면 eggtab의 값이 toggle되어 confetti가 적용 된 sparkle 이미지가 나타나고,

@@ -15,6 +15,9 @@ struct LofiNameConfirmView: View {
     @State var dreampetAnimalName: String = ""
     @State var dreampetAssetName: String = ""
     @State var isTimePassed = false
+//     @State private var tabSelectionForMainEggView: Int = 1
+//     @State private var tabSelectionForDreamWorldView: Int = 2
+
 
     var body: some View {
         ZStack {
@@ -39,6 +42,10 @@ struct LofiNameConfirmView: View {
                 
                 if isTimePassed {
                     VStack(spacing: 10) {
+//                         NavigationLink {
+//                             ZStack {
+//                                 LofiMainTabView(tabSelection: $tabSelectionForDreamWorldView)
+//                             }
                         Button {
                             dailySleepTimeStore.completeDailySleepTime()
                             navigationManager.viewCycle = .general
@@ -57,6 +64,10 @@ struct LofiNameConfirmView: View {
                         .cornerRadius(8)
                         .padding(.horizontal)
                         
+//                         NavigationLink {
+//                             ZStack {
+//                                 LofiMainTabView(tabSelection: $tabSelectionForMainEggView)
+//                             }
                         Button {
                             dailySleepTimeStore.completeDailySleepTime()
                             navigationManager.viewCycle = .general
