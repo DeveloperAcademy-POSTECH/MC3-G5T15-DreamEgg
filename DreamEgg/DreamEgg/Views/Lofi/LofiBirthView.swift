@@ -193,7 +193,7 @@ struct LofiBirthView: View {
             }
             
         default:
-            print("")
+            print("BIRTH_VIEW_DEFAULT")
         }
     }
     
@@ -201,7 +201,6 @@ struct LofiBirthView: View {
     /// 드림펫이 탄생했을 때, 호흡 애니메이션을 구현하기 위한 함수입니다.
     /// - 기존의 MapViewStore에 존재하는 함수와 동일한 함수이기 때문에 여러 방법을 고민해봤지만, 마땅한 방법을 생각하지 못하고 현재 뷰에 추가해주었습니다.
     private func changeImage() {
-        print(#function, dreampetAssetName)
         if dreampetAssetName[dreampetAssetName.index(before: dreampetAssetName.endIndex)] == "a" {
             dreampetAssetName.remove(at:dreampetAssetName.index(before: dreampetAssetName.endIndex))
             dreampetAssetName.append("b")

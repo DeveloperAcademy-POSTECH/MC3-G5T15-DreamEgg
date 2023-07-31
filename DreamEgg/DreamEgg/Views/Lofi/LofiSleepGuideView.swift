@@ -228,7 +228,7 @@ struct LofiSleepGuideView: View {
             }
             
         case .darkening:
-            print()
+            print("SLEEP GUIDE VIEW > LOCK SCREEN")
         }
         repeatLabelChanging()
     }
