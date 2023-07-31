@@ -76,9 +76,13 @@ struct ContentView: View {
                 )
             
         case .general:
-            NavigationStack {
-                LofiMainTabView()
-            }
+            LofiMainTabView()
+                .transition(
+                    .asymmetric(
+                        insertion: .opacity,
+                        removal: .opacity
+                    )
+                )
             
         case .awake:
             LofiAwakeView()
@@ -88,6 +92,16 @@ struct ContentView: View {
                         removal: .opacity
                     )
                 )
+        case .drawEgg:
+            NavigationStack {
+                LofiEggDrawView()
+            }
+            .transition(
+                .asymmetric(
+                    insertion: .opacity,
+                    removal: .opacity
+                )
+            )
         }
     }
     

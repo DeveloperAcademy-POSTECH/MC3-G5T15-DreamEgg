@@ -35,14 +35,10 @@ struct LofiMainEggView: View {
                 Spacer()
                     .frame(maxHeight: 40)
                 
-                NavigationLink {
-                    LofiEggDrawView()
-                        .navigationBarBackButtonHidden()
-                        .onAppear {
-                            dailySleepTimeStore.updateAndSaveNewDailySleepInfo()
-                            print("Hi", "\(dailySleepTimeStore.currentDailySleep!.animalName ?? "없어")")
-                            print("dreamEgg", "\(dailySleepTimeStore.currentDailySleep!.eggName ?? "알이가 없다")")
-                        }
+                Button {
+                    withAnimation {
+                        navigationManager.viewCycle = .drawEgg
+                    }
                 } label: {
                     ZStack {
                         Image("EggPillow")
@@ -57,6 +53,11 @@ struct LofiMainEggView: View {
                                     .foregroundColor(.white)
                             }
                     }
+                }
+                .onAppear {
+                    dailySleepTimeStore.updateAndSaveNewDailySleepInfo()
+                    print("Hi", "\(dailySleepTimeStore.currentDailySleep!.animalName ?? "없어")")
+                    print("dreamEgg", "\(dailySleepTimeStore.currentDailySleep!.eggName ?? "알이가 없다")")
                 }
             } else {
                 failedSleepTimeView()

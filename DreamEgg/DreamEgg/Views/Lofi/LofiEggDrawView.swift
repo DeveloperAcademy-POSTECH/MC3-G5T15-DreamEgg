@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct LofiEggDrawView: View {
+    @EnvironmentObject var navigationManager: DENavigationManager
     @StateObject private var eggDrawStore = EggDrawStore()
-    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ZStack {
             GradientBackgroundView()
             
             if eggDrawStore.isDrawEgg {
-                LofiEggInteractionView()
-                    .navigationBarBackButtonHidden()
+                    LofiEggInteractionView()
+                        .navigationBarBackButtonHidden()
             } else {
                     ZStack {
                         Image("emptyEgg")
@@ -44,6 +44,7 @@ struct LofiEggDrawView: View {
                     }
             }
         }
+        .navigationBarBackButtonHidden()
         .animation(eggDrawStore.isDrawEgg ? Animation.easeInOut : nil)
         .gesture(eggDrawStore.gesture())
         .simultaneousGesture(DragGesture().onChanged(onSwipeBack))
@@ -51,7 +52,9 @@ struct LofiEggDrawView: View {
     
     private func onSwipeBack(gesture: DragGesture.Value) {
             if gesture.location.x < 130 && gesture.translation.width > 80 && !eggDrawStore.isDrawEgg {
-                presentationMode.wrappedValue.dismiss()
+                withAnimation {
+                    navigationManager.viewCycle = .general
+                }
             }
         }
     
