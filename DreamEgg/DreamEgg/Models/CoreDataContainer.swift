@@ -82,9 +82,9 @@ struct DailySleepInfo: CoreDataIdentifiable {
             case .sleeping:
                 return Constant.SLEEP_PROCESS_SLEEPING
             case .complete:
-                return Constant.SLEEP_PROCESS_STOPPED
-            case .stopped:
                 return Constant.SLEEP_PROCESS_COMPLETE
+            case .stopped:
+                return Constant.SLEEP_PROCESS_STOPPED
             }
         }
     }
@@ -125,6 +125,21 @@ struct DailySleepInfo: CoreDataIdentifiable {
         self.sleepTimeInMinute = sleepTimeInMinute
         self.processStatus = processStatus
         self.assetName = assetName
+        print(#function, id, processStatus)
+    }
+    
+    init(
+        from currentDailySleep: DailySleep,
+        processStatus: SleepProcessStatus,
+        sleepingTimeInMinute: Int
+    ) {
+        self.id = currentDailySleep.id!
+        self.animalName = currentDailySleep.animalName!
+        self.eggName = currentDailySleep.eggName!
+        self.date = currentDailySleep.date!
+        self.sleepTimeInMinute = Int32(sleepingTimeInMinute)
+        self.processStatus = processStatus
+        self.assetName = currentDailySleep.assetName!
     }
     
     static func getBlankDailySleepInfo() -> Self {

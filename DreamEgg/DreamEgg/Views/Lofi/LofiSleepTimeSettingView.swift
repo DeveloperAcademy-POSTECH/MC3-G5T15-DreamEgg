@@ -173,7 +173,7 @@ struct LofiSleepTimeSettingView: View {
             with: UserSleepConfigurationInfo(
                 id: userSleepConfigStore.existingUserSleepConfig.id ?? .init(),
                 targetSleepTime: Calendar.getCurrentCalendar().date(from: comps)!,
-                notificationMessage: Constant.BASE_NOTIFICATION_MESSAGE
+                notificationMessage: userSleepConfigStore.notificationMessage
             )
         )
         
