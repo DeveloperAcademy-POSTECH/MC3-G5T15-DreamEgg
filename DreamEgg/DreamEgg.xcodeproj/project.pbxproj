@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2016FF792A76AB1600B6BA6D /* DEFontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2016FF782A76AB1600B6BA6D /* DEFontStyle.swift */; };
 		2049DF532A6F0F7000966DDA /* CreatureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049DF522A6F0F7000966DDA /* CreatureDetailView.swift */; };
 		20A9A5D92A6FA82E008513D7 /* DETextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5D82A6FA82E008513D7 /* DETextField.swift */; };
 		20A9A5DB2A6FC3A5008513D7 /* NameEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5DA2A6FC3A5008513D7 /* NameEditingView.swift */; };
@@ -76,6 +77,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2016FF782A76AB1600B6BA6D /* DEFontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DEFontStyle.swift; sourceTree = "<group>"; };
 		2049DF522A6F0F7000966DDA /* CreatureDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureDetailView.swift; sourceTree = "<group>"; };
 		20A9A5D82A6FA82E008513D7 /* DETextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DETextField.swift; sourceTree = "<group>"; };
 		20A9A5DA2A6FC3A5008513D7 /* NameEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEditingView.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				20A9A5D82A6FA82E008513D7 /* DETextField.swift */,
 				AEB342D32A7203690063DC14 /* DEButton.swift */,
 				AEB342D52A7258E30063DC14 /* DENavigationLink.swift */,
+				2016FF782A76AB1600B6BA6D /* DEFontStyle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				7EE701B82A6E4C7000DEEFA6 /* DreamEggApp.swift in Sources */,
 				7EE702102A6E4C7E00DEEFA6 /* Date+Utilities.swift in Sources */,
 				20A9A5DB2A6FC3A5008513D7 /* NameEditingView.swift in Sources */,
+				2016FF792A76AB1600B6BA6D /* DEFontStyle.swift in Sources */,
 				7EE7022C2A6E4C7E00DEEFA6 /* DECalendar.swift in Sources */,
 				7EE7022E2A6E4C7E00DEEFA6 /* ContentView.swift in Sources */,
 				7EE702292A6E4C7E00DEEFA6 /* GradientBackgroundView.swift in Sources */,
