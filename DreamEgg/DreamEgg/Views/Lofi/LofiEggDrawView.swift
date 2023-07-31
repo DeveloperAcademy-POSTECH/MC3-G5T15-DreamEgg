@@ -46,11 +46,11 @@ struct LofiEggDrawView: View {
         }
         .animation(eggDrawStore.isDrawEgg ? Animation.easeInOut : nil)
         .gesture(eggDrawStore.gesture())
-        .simultaneousGesture(DragGesture().onEnded(onSwipeBack))
+        .simultaneousGesture(DragGesture().onChanged(onSwipeBack))
     }
     
     private func onSwipeBack(gesture: DragGesture.Value) {
-            if gesture.translation.width > 100 && !eggDrawStore.isDrawEgg {
+            if gesture.location.x < 130 && gesture.translation.width > 80 && !eggDrawStore.isDrawEgg {
                 presentationMode.wrappedValue.dismiss()
             }
         }
