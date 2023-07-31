@@ -73,6 +73,11 @@ struct LofiTextCustomView: View {
                         .font(.dosIyagiBold(.callout))
                 }
             }
+            .onAppear {
+                if let message = userSleepConfigStore.existingUserSleepConfig.notificationMessage {
+                    self.notificationMessage = message
+                }
+            }
             .onDisappear {
                 localNotificationManager.scheduleSleepNotification(
                     userNotificationMessage: userSleepConfigStore.notificationMessage,
