@@ -35,9 +35,7 @@ struct LofiAwakeView: View {
             VStack {
                 Spacer()
                 
-                Text("지금 시간은 \n\(currentTime.hour)시 \(currentTime.minute)분이에요.")
-                //                Text("It's \(hourFormatter.string(from: currentTime)):\(minuteFormatter.string(from: currentTime)) now")
-                    .font(.dosIyagiBold(.largeTitle))
+                DEFontStyle(style: .largeTitle, text: "지금 시간은 \n\(currentTime.hour)시 \(currentTime.minute)분이에요.")
                 
                 if isUserSleepingMoreThanThreeHours() {
                     ZStack {
@@ -81,14 +79,10 @@ struct LofiAwakeView: View {
                     }
                     
                     // 추후 currentTime 대신에 수면 시작 시간으로부터 누적 된 값이 들어가야 함.
-                    Text("\(dailySleepTimeStore.sleptHour)시간 \(dailySleepTimeStore.sleptMinute)분 동안 알을 품었네요.\n잠은 충분히 주무셨나요?")
-                    //                Text("You incubate the egg for \(hourFormatter.string(from: currentTime)):\(minuteFormatter.string(from: currentTime))")
-                        .font(.dosIyagiBold(.title3))
+                    DEFontStyle(style: .title3, text: "\(dailySleepTimeStore.sleptHour)시간 \(dailySleepTimeStore.sleptMinute)분 동안 알을 품었네요.\n잠은 충분히 주무셨나요?")
                         .padding()
                     
-                    Text("이제 알의 변화를 살필 수 있어요.")
-                    //                Text("If you lock the screen again\nYou can incubte the egg more.")
-                        .font(.dosIyagiBold(.body))
+                    DEFontStyle(style: .body, text: "이제 알의 변화를 살필 수 있어요.")
                         .foregroundColor(.secondary)
                         .colorInvert()
                     
@@ -106,6 +100,7 @@ struct LofiAwakeView: View {
                             .padding(.vertical, 16)
                             .foregroundColor(.primaryButtonBrown)
                             .font(.dosIyagiBold(.body))
+                            .tracking(-2)
                             .overlay {
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -142,8 +137,7 @@ struct LofiAwakeView: View {
                                 .frame(width: 300, height: 300)
                         }
                         .overlay {
-                            Text("Zzz...")
-                                .font(.dosIyagiBold(.callout))
+                            DEFontStyle(style: .callout, text: "Zzz...")
                                 .padding(.top, 70)
                                 .padding(.leading, 110)
                         }
@@ -151,12 +145,10 @@ struct LofiAwakeView: View {
                     Spacer()
                     
                     // 추후 currentTime 대신에 수면 시작 시간으로부터 누적 된 값이 들어가야 함.
-                    Text("\(dailySleepTimeStore.sleptHour)시간 \(dailySleepTimeStore.sleptMinute)분 동안 알을 품었네요.\n좀 더 주무셔야겠어요.")
-                        .font(.dosIyagiBold(.title3))
+                    DEFontStyle(style: .title3, text: "\(dailySleepTimeStore.sleptHour)시간 \(dailySleepTimeStore.sleptMinute)분 동안 알을 품었네요.\n좀 더 주무셔야겠어요.")
                         .padding()
                     
-                    Text("화면을 다시 잠그면\n알을 더 오래 품을 수 있어요.")
-                        .font(.dosIyagiBold(.body))
+                    DEFontStyle(style: .body, text: "화면을 다시 잠그면\n알을 더 오래 품을 수 있어요.")
                         .foregroundColor(.secondary)
                         .colorInvert()
                     
@@ -175,6 +167,7 @@ struct LofiAwakeView: View {
                             .padding(.vertical, 16)
                             .foregroundColor(.subButtonBlue)
                             .font(.dosIyagiBold(.body))
+                            .tracking(-2)
                     }
                     .background { Color.subButtonSky }
                     .cornerRadius(8)

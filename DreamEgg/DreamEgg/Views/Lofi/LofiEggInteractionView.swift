@@ -64,6 +64,7 @@ struct LofiEggInteractionView: View {
                         .padding(.vertical, 16)
                         .foregroundColor(.primaryButtonBrown)
                         .font(.dosIyagiBold(.body))
+                        .tracking(-2)
                         .overlay {
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -79,6 +80,7 @@ struct LofiEggInteractionView: View {
                         .padding(.vertical, 16)
                         .foregroundColor(.subButtonBlue)
                         .font(.dosIyagiBold(.body))
+                        .tracking(-2)
                 }
                 .simultaneousGesture(TapGesture().onEnded{
                     isSkip = true
