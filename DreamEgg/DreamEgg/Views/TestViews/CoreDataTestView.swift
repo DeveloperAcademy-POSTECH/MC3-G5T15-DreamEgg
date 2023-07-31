@@ -28,7 +28,7 @@ struct CoreDataTestView: View {
                     .keyboardType(.numberPad)
                 
                 Button {
-                    dailySleepTimeStore.updateAndSaveNewDailySleepInfo()
+                    dailySleepTimeStore.makeNewDailySleepToStartDailySleep()
                 } label: {
                     Text("Sleep Data 저장")
                 }
@@ -58,7 +58,7 @@ struct UpdateView: View {
             Text("그 날짜의 동물은 \(dailySleepInfo.animalName ?? "")")
             
             Button {
-                dailySleepManager.updateAndSaveNewDailySleepInfo()
+                dailySleepManager.makeNewDailySleepToStartDailySleep()
             } label: {
                 Text("바꿔보기")
             }

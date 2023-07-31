@@ -150,10 +150,9 @@ struct LofiSleepGuideView: View {
             }
             .onChange(of: scenePhase) { newValue in
                 if isChangingFromInactiveScene(into: newValue) {
+                    dailySleepTimeStore.assignSleepingDailySleep()
                     navigationManager.viewCycle = .awake
-                } else if newValue == .inactive {
-                    // 자러 갈 때 .sleeping 처리
-                    print("잘 자러갔니?")
+                } else if newValue == .background {
                     dailySleepTimeStore.updateDailySleepTimeToNow()
                 }
             }

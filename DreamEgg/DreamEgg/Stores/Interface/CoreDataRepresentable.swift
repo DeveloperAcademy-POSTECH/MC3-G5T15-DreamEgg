@@ -114,11 +114,13 @@ extension CoreDataRepresentable {
         switch result {
         case let .success(fetchedCoreDataObject):
             if let fetchedCoreDataObject = fetchedCoreDataObject?.first {
+                print("HAS FETCHED FROM COREDATA!: ", fetchedCoreDataObject.description)
                 assignProperties(to: fetchedCoreDataObject, from: appEntityModel)
             } else {
                 let managedCoreDataObject = CoreDataObject(
                     context: coreDataStore.managedObjectContext
                 )
+                print("HAS FETCHED FROM COREDATA!: ", managedCoreDataObject.description)
                 assignProperties(to: managedCoreDataObject, from: appEntityModel)
             }
         case let .failure(error):
@@ -131,6 +133,7 @@ extension CoreDataRepresentable {
 
     func saveChangesToContext() -> Void {
         if coreDataStore.managedObjectContext.hasChanges {
+            print(#function, coreDataStore.managedObjectContext)
             do {
                 try coreDataStore.managedObjectContext.save()
             } catch let error as NSError {
