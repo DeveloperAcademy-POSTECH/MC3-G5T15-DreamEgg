@@ -87,4 +87,16 @@ class TimePickerStore: ObservableObject {
             return ""
         }
     }
+    
+    public func timePickerElementInit(targetSleepTime: Date) {
+        self.timePickerElements.hours.at = targetSleepTime.hour + 12 * (iterationNum / 2)
+        self.timePickerElements.minutes.at = targetSleepTime.minute + 60 * (iterationNum / 2)
+        
+        if targetSleepTime.hour >= 12 {
+            self.timePickerElements.ampm.is = 1
+        } else {
+            self.timePickerElements.ampm.is = 0
+        }
+        
+    }
 }

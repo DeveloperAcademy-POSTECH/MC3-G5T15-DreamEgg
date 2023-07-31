@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TimePickerView: View {
+    @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
     @ObservedObject var timePickerStore: TimePickerStore
     
     var body: some View {
