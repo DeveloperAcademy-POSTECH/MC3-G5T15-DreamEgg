@@ -111,8 +111,10 @@ struct LofiBirthView: View {
 
         }
         .onAppear {
-            self.dreamCreatureImageName = dailySleepTimeStore.currentDailySleep?.eggName ?? Constant.Errors.NO_EGG
-//            self.dreamCreatureImageName = dailySleepTimeStore.getAssetNameSafely()
+            if dreamPetBirthSteps == .start {
+                self.dreamCreatureImageName = dailySleepTimeStore.currentDailySleep?.eggName ?? Constant.Errors.NO_EGG
+                //            self.dreamCreatureImageName = dailySleepTimeStore.getAssetNameSafely()
+            }
         }
         .navigationBarBackButtonHidden()
         .background(
