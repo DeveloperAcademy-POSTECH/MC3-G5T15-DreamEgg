@@ -24,7 +24,8 @@ struct LofiBirthView: View {
     
     @State private var dreamPetBirthSteps: DreamPetBirthSteps = .start
     @State var dreampetEggName: String = ""
-    @State var dreampetAssetName: String = "" // TODO: 현재 임의의 이미지를 넣어두었습니다.
+    @State var dreampetAssetName: String = ""
+    
     @State var opacityForFadeOut : Double = 0
     @State var isVibrationStarted = false
     @State var isButtonDisabled = false
@@ -177,7 +178,7 @@ struct LofiBirthView: View {
             }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                dreampetAssetName = "\(dreampetAssetName)_a" // TODO: 현재 임의의 데이터를 넣어두었습니다.
+                dreampetAssetName = "\(dreampetAssetName)_a"
                 isButtonDisabled = true
                 dreamPetBirthSteps = .birth
                 withAnimation(.easeIn(duration: 1.0)) {

@@ -361,6 +361,7 @@ extension DailySleepTimeStore {
             self.selectedDailySleep = coreDataStore.dailySleep[selectedDailySleep.id!]
         } else {
             print(#function, isSelected)
+            // TODO: 이거 sleeping이 맞는지 complete가 맞는지 확인 필요
             var model = self.getDailySleepInfo(in: .sleeping)
             model.animalName = name
             updateAndAssignToCurrent(by: model)
