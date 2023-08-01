@@ -10,7 +10,7 @@ import Combine
 
 struct LofiMainTabView: View {
     @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
-//    @State private var tabSelection: Int = 1
+    @State private var isSettingMenuDisplayed: Bool = false
     @Binding var tabSelection: Int
     
     var body: some View {
@@ -19,11 +19,17 @@ struct LofiMainTabView: View {
                 Image("DreamWorldMap")
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
-            }
-            else {
+            } else {
                 GradientBackgroundView()
+                    .onTapGesture {
+                        withAnimation {
+                            if isSettingMenuDisplayed {
+                                isSettingMenuDisplayed = false
+                            }
+                        }
+                    }
             }
-
+            
             TabView(selection: $tabSelection) {
                 DECalendarTestView()
                     .tag(0)
@@ -32,7 +38,7 @@ struct LofiMainTabView: View {
                     }
                 
                 // MARK: Main Egg
-                LofiMainEggView()
+                LofiMainEggView(isSettingMenuDisplayed: $isSettingMenuDisplayed)
                     .frame(maxHeight: .infinity, alignment: .top)
                     .tag(1)
                     .tabItem {

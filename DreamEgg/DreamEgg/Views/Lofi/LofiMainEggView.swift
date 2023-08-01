@@ -13,6 +13,9 @@ struct LofiMainEggView: View {
     @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
     @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
     
+    @State private var mainHeaderString: String = ""
+    @Binding var isSettingMenuDisplayed: Bool
+    
     @State private var currentTime: Date = .now
     @State private var timer: Publishers.Autoconnect<Timer.TimerPublisher> = Timer
         .publish(every: 15, on: .main, in: .common)
@@ -22,19 +25,34 @@ struct LofiMainEggView: View {
     
     var body: some View {
         VStack {
-            Spacer()
-                .frame(maxHeight: 36)
-            
             DETitleHeader(title: "Dream Egg")
+                .padding()
+                .frame(maxWidth: .infinity)
+                .overlay(alignment: .trailing) {
+                    Button {
+                        withAnimation {
+                            if isSettingMenuDisplayed {
+                                isSettingMenuDisplayed = false
+                            } else if !isSettingMenuDisplayed {
+                                isSettingMenuDisplayed = true
+                            }
+                        }
+                        print("BUTTON TAPPED",isSettingMenuDisplayed)
+                    } label: {
+                        Image("SettingsIcon")
+                            .padding()
+                    }
+                    .opacity(isSettingMenuDisplayed ? 0.7 : 1.0)
+                }
             
             Spacer()
-                .frame(maxHeight: 36)
+                .frame(maxHeight: 24)
             
             sleepPreparingView()
                 .frame(maxWidth: .infinity)
             
             Spacer()
-                .frame(maxHeight: 40)
+                .frame(maxHeight: 100)
             
             NavigationLink {
                 LofiEggDrawView()
@@ -49,10 +67,25 @@ struct LofiMainEggView: View {
             }
             .disabled(!userSleepConfigStore.hasUserEnoughTimeToProcess(currentTime: currentTime))
         }
+        .overlay(alignment: .topTrailing) {
+            if isSettingMenuDisplayed {
+                settingMenu()
+                    .overlay(alignment: .center) {
+                       customizedMenu()
+                        .foregroundColor(.black)
+                    }
+                    .padding(.horizontal, 8)
+                    .padding(.top, 48)
+            }
+        }
+        .onAppear {
+            self.mainHeaderString = getSleepPreparingViewString()
+        }
         .onReceive(timer) { _ in
-            if userSleepConfigStore.hasUserEnoughTimeToProcess(
-                currentTime: currentTime
-            ) {
+            if userSleepConfigStore.hasUserEnoughTimeToProcess(currentTime: currentTime) {
+                if !Constant.GOODNIGHT_PREPARE_MESSAGES.contains(self.mainHeaderString) {
+                    self.mainHeaderString = getSleepPreparingViewString()
+                }
                 withAnimation {
                     currentTime = Date.now
                 }
@@ -100,48 +133,78 @@ struct LofiMainEggView: View {
     
     private func sleepPreparingView() -> some View {
         VStack {
-            Text(getSleepPreparingViewString())
+            Text(mainHeaderString)
                 .font(.dosIyagiBold(.title))
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
                 .lineSpacing(12)
             
+        }
+    }
+    
+    private func settingMenu() -> some View {
+        RoundedRectangle(cornerRadius: 30)
+            .fill(Color.subButtonSky)
+            .frame(width: 200, height: 100)
+            .transition(
+                .asymmetric(
+                    insertion: .opacity,
+                    removal: .opacity
+                )
+            )
+            .animation(
+                .easeInOut(duration: 0.2),
+                value: isSettingMenuDisplayed
+            )
+    }
+    
+    private func customizedMenu() -> some View {
+        VStack(alignment: .leading, spacing: 16) {
             Button {
-                navigationManager.viewCycle = .timeSetting
+                withAnimation {
+                    navigationManager.viewCycle = .timeReset
+                }
+                
             } label: {
-                Text("시간 및 알림 수정하기")
-                    .font(.dosIyagiBold(.body))
-                    .foregroundColor(.white)
-                    .overlay {
-                        VStack {
-                            Divider()
-                                .frame(minHeight: 2)
-                                .overlay(Color.white)
-                                .offset(y: 12)
-                        }
-                    }
-                    .padding()
+                Text("수면 시간 수정")
+                    .font(.dosIyagiBold(.title3))
+            }
+            
+
+            Button {
+                withAnimation {
+                    navigationManager.viewCycle = .notificationMessageSetting
+                }
+                
+            } label: {
+                Text("알림 메시지 수정")
+                    .font(.dosIyagiBold(.title3))
             }
         }
     }
     
     private func getSleepPreparingViewString() -> String {
         userSleepConfigStore.hasUserEnoughTimeToProcess(currentTime: currentTime)
-        ? "잠들기까지\n\(userSleepConfigStore.hourAndMinuteString(currentTime: currentTime))\n남았어요."
+        ? "오늘의 취침 시간은\n\(userSleepConfigStore.targetSleepTime.hour)시 \(userSleepConfigStore.targetSleepTime.minute)분이에요!"
         : Constant.GOODNIGHT_PREPARE_MESSAGES.randomElement()!
     }
     
     private func getEggString() -> String {
         userSleepConfigStore.hasUserEnoughTimeToProcess(currentTime: currentTime)
-        ? "탭해서\n알그리기"
+        ? "탭해서\n드림에그를 그려보세요!"
         : "잠들기 1시간 전부터\n알을 그릴 수 있어요!"
     }
 }
 
-//struct LofiMainEggView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LofiMainTabView()
-//            .environmentObject(DENavigationManager())
-//            .environmentObject(UserSleepConfigStore())
-//    }
-//}
+struct LofiMainEggView_Previews: PreviewProvider {
+    static var previews: some View {
+        ZStack {
+            GradientBackgroundView()
+            
+            LofiMainEggView(isSettingMenuDisplayed: .constant(false))
+                .environmentObject(DENavigationManager())
+                .environmentObject(UserSleepConfigStore())
+                .environmentObject(DailySleepTimeStore())
+        }
+    }
+}

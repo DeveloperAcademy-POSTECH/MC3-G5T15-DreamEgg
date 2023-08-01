@@ -36,6 +36,9 @@ struct LofiSleepTimeSettingView: View {
                 VStack(spacing: 24) {
                     TimePickerView(timePickerStore: timePickerStore)
                         .foregroundColor(.dreamPurple)
+                        .onAppear {
+                            timePickerStore.timePickerElementInit(targetSleepTime: userSleepConfigStore.targetSleepTime)
+                        }
                     
                     Text("이후에도 시간을 수정할 수 있어요.")
                         
@@ -76,7 +79,11 @@ struct LofiSleepTimeSettingView: View {
                             }
                             
                             withAnimation {
-                                navigationManager.viewCycle = .notificationMessageSetting
+                                if navigationManager.viewCycle != .timeReset {
+                                    navigationManager.viewCycle = .notificationMessageSetting
+                                } else {
+                                    navigationManager.viewCycle = .general
+                                }
                             }
                         } label: {
                             Text("이 시간에 잠에 들래요")
