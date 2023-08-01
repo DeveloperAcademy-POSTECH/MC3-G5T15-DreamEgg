@@ -99,6 +99,7 @@ struct ContentView: View {
             NavigationStack {
                 LofiMainTabView(tabSelection: $tabSelection)
             }
+            .transition(.opacity)
             
         case .awake:
             NavigationStack {
@@ -110,6 +111,16 @@ struct ContentView: View {
                         )
                     )
             }
+//        case .drawEgg:
+//            NavigationStack {
+//                LofiEggDrawView()
+//            }
+//            .transition(
+//                .asymmetric(
+//                    insertion: .opacity,
+//                    removal: .opacity
+//                )
+//            )
         }
     }
     

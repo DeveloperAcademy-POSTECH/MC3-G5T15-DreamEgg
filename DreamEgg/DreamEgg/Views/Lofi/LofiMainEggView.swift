@@ -58,14 +58,21 @@ struct LofiMainEggView: View {
                 LofiEggDrawView()
                     .navigationBarBackButtonHidden()
             } label: {
-                Image("emptyEgg")
-                    .overlay {
-                        Text(getEggString())
-                            .font(.dosIyagiBold(.body))
-                            .foregroundColor(.white)
+                ZStack {
+                    Image("EggPillow")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 250, height: 250)
+                            .offset(x:0,y:160)
+                        Image("emptyEgg")
+                            .overlay {
+                                Text("탭해서 \n알그리기")
+                                    .font(.dosIyagiBold(.body))
+                                    .foregroundColor(.white)
+                            }
                     }
-            }
-            .disabled(!userSleepConfigStore.hasUserEnoughTimeToProcess(currentTime: currentTime))
+                }
+                .disabled(!userSleepConfigStore.hasUserEnoughTimeToProcess(currentTime: currentTime))
         }
         .overlay(alignment: .topTrailing) {
             if isSettingMenuDisplayed {
@@ -102,13 +109,10 @@ struct LofiMainEggView: View {
             Text("정말 바쁜 하루였네요.\n오늘은 제가 대신\n알을 품어드릴게요.")
                 .font(.dosIyagiBold(.title))
                 .padding()
-            
             Text("내일은 꼭 직접 알을 품어주세요!")
                 .font(.dosIyagiBold(.body))
-            
             Spacer()
                 .frame(maxHeight: 50)
-            
             Button {
                 withAnimation {
                     navigationManager.isFromMainTab = true
