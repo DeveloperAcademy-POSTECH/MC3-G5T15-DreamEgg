@@ -117,16 +117,6 @@ struct LofiBirthView: View {
 
 
         }
-        .onAppear {
-            if dreamPetBirthSteps == .start {
-                self.dreampetEggName = dailySleepTimeStore.currentDailySleep?.eggName ?? Constant.Errors.NO_EGG
-                //            self.dreamCreatureImageName = dailySleepTimeStore.getAssetNameSafely()
-            }
-        }
-        .navigationBarBackButtonHidden()
-        .background(
-            GradientBackgroundView()
-        )
         .onReceive(timer) { _ in
             if dreamPetBirthSteps == .birth || dreamPetBirthSteps == .end {
                 changeImage()
