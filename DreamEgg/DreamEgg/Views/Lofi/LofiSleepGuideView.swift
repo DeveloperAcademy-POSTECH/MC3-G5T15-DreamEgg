@@ -48,7 +48,7 @@ struct LofiSleepGuideView: View {
                             .font(.dosIyagiBold(.title))
                             .multilineTextAlignment(.center)
                             .lineSpacing(16)
-                            .tracking(-3)
+                            .tracking(-1)
                             .foregroundColor(.primary)
                             .colorInvert()
                             .frame(maxHeight: 120, alignment: .top)
@@ -146,7 +146,7 @@ struct LofiSleepGuideView: View {
                             .foregroundColor(.white.opacity(0.6))
                             .font(.dosIyagiBold(.callout))
                             .underline(true)
-                            .tracking(-2)
+                            .tracking(-1)
                     }
                     .frame(
                         maxHeight: .infinity,

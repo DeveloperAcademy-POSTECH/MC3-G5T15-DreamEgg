@@ -97,10 +97,11 @@ struct LofiTextCustomView: View {
                         {
                             print()
                         } label: {
-                                DEFontStyle(style: .body, text: "이렇게 알림을 보내주세요.")
-//                            VStack {
-//                                Text("이렇게 알림을 보내주세요.")
-//                            }
+                            VStack {
+                                Text("이렇게 알림을 보내주세요.")
+                                    .font(.dosIyagiBold(.body))
+                                    .tracking(-1)
+                            }
                         }
                         .padding(.horizontal)
                     } else if !notificationMessage.isEmpty {
@@ -111,7 +112,11 @@ struct LofiTextCustomView: View {
                                 navigationManager.authenticateUserIntoGeneralState()
                             }
                         } label: {
-                            DEFontStyle(style: .body, text: "이렇게 알림을 보내주세요.")
+                            VStack {
+                                Text("이렇게 알림을 보내주세요.")
+                                    .font(.dosIyagiBold(.body))
+                                    .tracking(-1)
+                            }
                         }
                         .padding(.horizontal)
                         .simultaneousGesture(
@@ -148,15 +153,12 @@ struct LofiTextCustomView: View {
                             navigationManager.authenticateUserIntoGeneralState()
                         }
                     } label: {
-                        DEFontStyle(style: .callout, text: "건너뛰기")
+                        Text("건너뛰기")
                             .foregroundColor(.white.opacity(0.6))
                             .underline(true)
+                            .font(.dosIyagiBold(.callout))
+                            .tracking(-1)
                             .padding(.vertical, 16)
-//                        Text("건너뛰기")
-//                            .foregroundColor(.white.opacity(0.6))
-//                            .underline(true)
-//                            .font(.dosIyagiBold(.callout))
-//                            .padding(.vertical, 16)
                     }
                 }
             }

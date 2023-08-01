@@ -15,7 +15,7 @@ struct DEFontStyle: View {
         case title3
         case body
         case callout
-//        case footnote
+        case footnote
 //        case caption
 //        case caption2
     }
@@ -30,54 +30,61 @@ struct DEFontStyle: View {
             Text(text)
                 .font(.dosIyagiBold(.largeTitle))
                 .lineSpacing(20)
-                .tracking(-2)
+                .tracking(-1)
             
         case .title:
             Text(text)
                 .font(.dosIyagiBold(.title))
                 .lineSpacing(16)
-                .tracking(-3)
+                .tracking(-1)
             
         case .title2:
             Text(text)
                 .font(.dosIyagiBold(.title2))
-                .lineSpacing(16)
-                .tracking(-2)
+                .lineSpacing(12)
+                .tracking(-1)
             
         case .title3:
             Text(text)
                 .font(.dosIyagiBold(.title3))
-                .lineSpacing(16)
-                .tracking(-2)
+                .lineSpacing(12)
+                .tracking(-1)
             
         case .body:
             Text(text)
                 .font(.dosIyagiBold(.body))
                 .lineSpacing(8)
-                .tracking(-2)
+                .tracking(-1)
             
         case .callout:
             Text(text)
                 .font(.dosIyagiBold(.callout))
                 .lineSpacing(8)
-                .tracking(-2)
+                .tracking(-1)
+            
+        case .footnote:
+            Text(text)
+                .font(.dosIyagiBold(.footnote))
+                .lineSpacing(8)
+                .tracking(-1)
         }
     }
 }
 
 struct fontTestView: View {
     var body: some View {
-        VStack(alignment: .leading, spacing: 80) {
-            DEFontStyle(style: .largeTitle, text: "large Title 텍스트 크기\n자간과 행간, 어때요?!\n24:32/59")
+        VStack(alignment: .center, spacing: 40) {
+            DEFontStyle(style: .largeTitle, text: "라지타이틀입니다.\n목표한 수면시간은\n12시 30분이네요.")
             
-            DEFontStyle(style: .title, text: "title 텍스트 크기\n자간과 행간, 어때요?!\n24:32/59")
+            DEFontStyle(style: .title, text: "타이틀입니다.\n목표한 수면시간은\n12시 30분이네요.")
             
-            DEFontStyle(style: .title3, text: "title3 텍스트 크기\n자간과 행간, 어때요?!\n24:32/59")
+            DEFontStyle(style: .title2, text: "타이틀2입니다.\n목표한 수면시간은\n12시 30분이네요.")
             
-            DEFontStyle(style: .body, text: "body discription 텍스트 크기\n자간과 행간, 어때요?!\n24:32/59")
+            DEFontStyle(style: .footnote, text: "바디입니다.\n알을 탭해서\n그려주세요.\n건너뛰기")
             
-            DEFontStyle(style: .callout, text: "callout 텍스트 크기\n자간과 행간, 어때요?!\n24:32/59")
+            DEFontStyle(style: .callout, text: "콜아웃입니다.\n8월 15일 출생\n건너뛰기")
         }
+        .multilineTextAlignment(.center)
     }
 }
 

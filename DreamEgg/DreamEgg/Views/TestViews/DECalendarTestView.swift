@@ -69,6 +69,7 @@ struct DECalendarTestView: View {
                     Text("\(monthDayFormatter.string(from: selectedDate))월")
                     
                         .font(.dosIyagiBold(.title))
+                        .tracking(-1)
                     
                     HStack(spacing: -4) {
                         Text("\(selectedDate.weekOfMonth(using: calendar))주차")
@@ -84,6 +85,7 @@ struct DECalendarTestView: View {
                             .kerning(-0.75)
                     }
                     .font(.dosIyagiBold(.callout))
+                    .tracking(-1)
                 }
                 .frame(
                     maxWidth: .infinity,
@@ -142,6 +144,7 @@ struct DECalendarTestView: View {
                             + Text("이 태어나지 않았어요.")
                         }
                         .font(.dosIyagiBold(.footnote))
+                        .tracking(-1)
                         .frame(maxWidth: .infinity)
                         .padding(20)
                         .background {
@@ -152,6 +155,7 @@ struct DECalendarTestView: View {
                     } header: {
                         Text("Selected Day")
                             .font(.dosIyagiBold(.title3))
+                            .tracking(-1)
                             .foregroundColor(.white)
                             .frame(
                                 maxWidth: .infinity,
@@ -255,6 +259,7 @@ struct DECalendarTestView: View {
                         + Text("이 태어나지 않았어요.")
                     }
                     .font(.dosIyagiBold(.footnote))
+                    .tracking(-1)
                     .frame(maxWidth: .infinity)
                     .padding(20)
                     .background {
@@ -267,6 +272,7 @@ struct DECalendarTestView: View {
         } header: {
             Text("선택한 날")
                 .font(.dosIyagiBold(.title3))
+                .tracking(-1)
                 .foregroundColor(.white)
                 .frame(
                     maxWidth: .infinity,
@@ -289,6 +295,7 @@ struct DECalendarTestView: View {
                     + Text("이 태어나지 않았어요.")
                 }
                 .font(.dosIyagiBold(.footnote))
+                .tracking(-1)
                 .frame(maxWidth: .infinity)
                 .padding(20)
                 .background {
@@ -305,6 +312,7 @@ struct DECalendarTestView: View {
         } header: {
             Text("이번 주")
                 .font(.dosIyagiBold(.title3))
+                .tracking(-1)
                 .foregroundColor(.white)
                 .frame(
                     maxWidth: .infinity,
@@ -345,9 +353,11 @@ struct DECalendarTestView: View {
                 ) {
                     Text("\(dailySleep.animalName!)")
                         .font(.dosIyagiBold(.callout))
+                        .tracking(-1)
                     
                     Text("\(dailySleep.date!.formatted()) 출생")
                         .font(.dosIyagiBold(.footnote))
+                        .tracking(-1)
                 }
                 
                 Spacer()

@@ -84,7 +84,7 @@ struct LofiAwakeView: View {
                         .padding()
                     
                     DEFontStyle(style: .body, text: "이제 알의 변화를 살필 수 있어요.")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.white.opacity(0.6))
                         .colorInvert()
                     
                     Spacer()
@@ -101,7 +101,7 @@ struct LofiAwakeView: View {
                             .padding(.vertical, 16)
                             .foregroundColor(.primaryButtonBrown)
                             .font(.dosIyagiBold(.body))
-                            .tracking(-2)
+                            .tracking(-1)
                             .overlay {
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -150,7 +150,7 @@ struct LofiAwakeView: View {
                         .padding()
                     
                     DEFontStyle(style: .body, text: "화면을 다시 잠그면\n알을 더 오래 품을 수 있어요.")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.white.opacity(0.6))
                         .colorInvert()
                     
                     Spacer()
@@ -168,7 +168,7 @@ struct LofiAwakeView: View {
                             .padding(.vertical, 16)
                             .foregroundColor(.subButtonBlue)
                             .font(.dosIyagiBold(.body))
-                            .tracking(-2)
+                            .tracking(-1)
                     }
                     .background { Color.subButtonSky }
                     .cornerRadius(8)

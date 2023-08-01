@@ -24,9 +24,10 @@ struct LofiFailedView: View {
             VStack(spacing: 96) {
                 switchHeaderTextByStep()
                     .font(.dosIyagiBold(.title))
+                    .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .lineSpacing(16)
-                    .tracking(-3)
+                    .tracking(-1)
                     .frame(height: 120, alignment: .top)
 
                 Image(dreamCreatureImage)
@@ -67,11 +68,11 @@ struct LofiFailedView: View {
                             LofiMainTabView()
                         } label: {
                             Text("네!")
+                                .font(.dosIyagiBold(.body))
+                                .tracking(-1)
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
-                                .font(.dosIyagiBold(.body))
-                                .tracking(-2)
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -84,7 +85,7 @@ struct LofiFailedView: View {
                 }
                 else {
                     Spacer()
-                        .frame(maxHeight: 120)
+                        .frame(maxHeight: 99)
                         .opacity(0)
                 }
             }

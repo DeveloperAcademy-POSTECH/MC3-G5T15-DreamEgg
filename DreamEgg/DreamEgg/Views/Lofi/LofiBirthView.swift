@@ -31,13 +31,16 @@ struct LofiBirthView: View {
                 switchHeaderTextByStep()
                     .font(.dosIyagiBold(.title))
                     .multilineTextAlignment(.center)
-                    .lineSpacing(10)
+                    .lineSpacing(16)
+                    .tracking(-1)
                     .frame(minHeight: 116)
+                    .foregroundColor(.white)
                 
                 if dreamPetBirthSteps == .start {
-                    Text("알을 탭해주세요.")
-                        .font(.dosIyagiBold(.body))
-                        .opacity(0.5)
+                    DEFontStyle(style: .body, text: "알을 탭해주세요.")
+//                    Text("알을 탭해주세요.")
+//                        .font(.dosIyagiBold(.body))
+                    foregroundColor(.white.opacity(0.6))
                 }
                 else {
                     Text(" ")
@@ -67,11 +70,12 @@ struct LofiBirthView: View {
                             LofiCreatureNamingView()
                                 .navigationBarBackButtonHidden()
                         } label: {
-                            Text("이름을 지어주자")
+                            Text("이름을 지어줄래요.")
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
                                 .font(.dosIyagiBold(.body))
+                                .tracking(-1)
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -90,6 +94,7 @@ struct LofiBirthView: View {
                                 .padding(.vertical, 16)
                                 .foregroundColor(.subButtonBlue)
                                 .font(.dosIyagiBold(.body))
+                                .tracking(-1)
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.subButtonSky, lineWidth: 5)
@@ -131,15 +136,15 @@ struct LofiBirthView: View {
     private func switchHeaderTextByStep() -> some View {
         switch dreamPetBirthSteps {
         case .start:
-            return Text("지난 밤 동안\n알에 변화가 생겼어요.\n한번 살펴볼까요?")
+            return Text("밤 동안 드림에그에\n변화가 생겼어요.\n한번 살펴볼까요?")
         case .exclamationMark:
             return Text("..!")
         case .justBeforeBirth:
-            return Text("알이 부화하려하나봐요..!")
+            return Text("알이 부화하려고해요..!")
         case .birth:
             return Text("알에서\n드림펫이 태어났어요!")
         case .end:
-            return Text("태어난 드림펫은\n드림월드에서\n볼 수 있어요!")
+            return Text("드림펫의 이름을\n지어줄 수 있어요.")
         }
     }
     

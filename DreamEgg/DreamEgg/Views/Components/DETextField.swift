@@ -36,7 +36,7 @@ struct DETextField: View {
                     }
                 }
                 .font(.dosIyagiBold(.body))
-                .tracking(-2)
+                .tracking(-1)
                 .padding(32)
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: 150, maxHeight: 54)

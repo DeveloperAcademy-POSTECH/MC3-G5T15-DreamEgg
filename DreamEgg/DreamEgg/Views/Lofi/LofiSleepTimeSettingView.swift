@@ -99,7 +99,7 @@ struct LofiSleepTimeSettingView: View {
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
                                 .font(.dosIyagiBold(.body))
-                                .tracking(-2)
+                                .tracking(-1)
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -120,7 +120,7 @@ struct LofiSleepTimeSettingView: View {
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
                                 .font(.dosIyagiBold(.body))
-                                .tracking(-2)
+                                .tracking(-1)
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -146,7 +146,7 @@ struct LofiSleepTimeSettingView: View {
                                 .padding(.vertical, 16)
                                 .foregroundColor(.subButtonBlue)
                                 .font(.dosIyagiBold(.body))
-                                .tracking(-2)
+                                .tracking(-1)
                         }
                         .background { Color.subButtonSky }
                         .cornerRadius(8)
