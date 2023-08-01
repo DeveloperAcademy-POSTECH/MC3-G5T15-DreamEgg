@@ -14,6 +14,7 @@ struct LofiMainEggView: View {
     @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
     
     @State private var mainHeaderString: String = ""
+    @State private var eggString: String = ""
     @Binding var isSettingMenuDisplayed: Bool
     
     @State private var currentTime: Date = .now
@@ -66,7 +67,7 @@ struct LofiMainEggView: View {
                             .offset(x:0,y:160)
                         Image("emptyEgg")
                             .overlay {
-                                Text("탭해서 \n알그리기")
+                                Text(eggString)
                                     .font(.dosIyagiBold(.body))
                                     .foregroundColor(.white)
                             }
@@ -87,6 +88,7 @@ struct LofiMainEggView: View {
         }
         .onAppear {
             self.mainHeaderString = getSleepPreparingViewString()
+            self.eggString = getEggString()
         }
         .onReceive(timer) { _ in
             if userSleepConfigStore.hasUserEnoughTimeToProcess(currentTime: currentTime) {

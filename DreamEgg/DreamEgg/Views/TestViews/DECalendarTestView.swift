@@ -312,7 +312,8 @@ struct DECalendarTestView: View {
             for eachDay in selectedWeek {
                 res = eachDailySleep.sleepTimeInMinute >= 1 &&
 //                res = eachDailySleep.sleepTimeInMinute >= 3 * 60 &&
-                Date.isSameDate(lhs: eachDay, rhs: eachDailySleep.date!)
+                Date.isSameDate(lhs: eachDay, rhs: eachDailySleep.date!) &&
+                eachDailySleep.processStatus == Constant.SLEEP_PROCESS_COMPLETE
                 if res { break }
             }
             return res
@@ -327,7 +328,8 @@ struct DECalendarTestView: View {
     ) -> Bool {
         if selectedDailySleep.sleepTimeInMinute >= 1,
 //        if selectedDailySleep.sleepTimeInMinute >= 3 * 60,
-           Date.isSameDate(lhs: selectedDate, rhs: selectedDailySleep.date!) {
+           Date.isSameDate(lhs: selectedDate, rhs: selectedDailySleep.date!),
+           selectedDailySleep.processStatus == Constant.SLEEP_PROCESS_COMPLETE {
             return true
         } else {
             return false

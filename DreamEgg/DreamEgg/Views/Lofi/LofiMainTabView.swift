@@ -12,6 +12,7 @@ struct LofiMainTabView: View {
     @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
     @State private var isSettingMenuDisplayed: Bool = false
     @Binding var tabSelection: Int
+    @State private var isWorldMap: Bool = false
     
     var body: some View {
         ZStack {
@@ -46,6 +47,16 @@ struct LofiMainTabView: View {
                     }
                 
                 LofiDreamWorldView()
+                    .onAppear {
+                        withAnimation(.linear(duration: 0.4)) {
+                            self.isWorldMap = true
+                        }
+                    }
+                    .onDisappear {
+                        withAnimation(.linear(duration: 0.4)) {
+                            self.isWorldMap = true
+                        }
+                    }
                     .tag(2)
                     .tabItem {
                         Image("DreamWorldTabIcon")

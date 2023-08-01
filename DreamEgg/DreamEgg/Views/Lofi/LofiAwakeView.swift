@@ -5,6 +5,7 @@
 //  Created by Celan on 2023/07/19.
 //
 
+import Combine
 import SwiftUI
 
 struct LofiAwakeView: View {
@@ -15,6 +16,10 @@ struct LofiAwakeView: View {
     @State private var maskColor = Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8))
     @State private var isEggButtonTapped = false
     @State private var isActiveSpringAnimation = false
+    @State private var timer: Timer.TimerPublisher = Timer
+        .publish(every: 15, on: .main, in: .common)
+        
+    @State private var cancellable: Cancellable?
     
     private let hourFormatter = DateFormatter(
         dateFormat: "H",
@@ -185,15 +190,18 @@ struct LofiAwakeView: View {
                 .foregroundColor(.white)
                 .onAppear {
                     dailySleepTimeStore.getSleepTimeInMinute()
-                    self.activateTimer()
+                    self.isActiveSpringAnimation.toggle()
                 }
                 .onChange(of: scene) { newScene in
                     self.currentTime = .now
                     
                     if isChangingFromInactiveScene(into: newScene) {
                         dailySleepTimeStore.getSleepTimeInMinute()
-                        self.activateTimer()
+                        self.cancellable = timer.connect()
                     }
+                }
+                .onDisappear {
+                    self.cancellable?.cancel()
                 }
             }
         }
@@ -223,14 +231,9 @@ struct LofiAwakeView: View {
         
         let activated = scene == .inactive && newScene == .active ||
         scene == .background && newScene == .active
+        
         print(#function, activated)
         return activated
-    }
-    
-    private func activateTimer() {
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
-            self.isActiveSpringAnimation.toggle()
-        }
     }
 }
 
