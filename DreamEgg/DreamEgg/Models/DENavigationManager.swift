@@ -15,7 +15,7 @@ final class DENavigationManager: ObservableObject {
         case timeReset
         case general
         case awake
-        case drawEgg
+//        case drawEgg
     }
     
     @Published var starterPath = [Date]()

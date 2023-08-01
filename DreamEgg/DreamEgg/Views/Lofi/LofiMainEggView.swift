@@ -54,13 +54,12 @@ struct LofiMainEggView: View {
             Spacer()
                 .frame(maxHeight: 100)
             
-            Button {
-                    withAnimation {
-                        navigationManager.viewCycle = .drawEgg
-                    }
-                } label: {
-                    ZStack {
-                        Image("EggPillow")
+            NavigationLink {
+                LofiEggDrawView()
+                    .navigationBarBackButtonHidden()
+            } label: {
+                ZStack {
+                    Image("EggPillow")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 250, height: 250)
