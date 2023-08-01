@@ -10,7 +10,8 @@ import Combine
 
 struct LofiMainTabView: View {
     @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
-    @State private var tabSelection: Int = 1
+//    @State private var tabSelection: Int = 1
+    @Binding var tabSelection: Int
     
     var body: some View {
         ZStack {
@@ -51,10 +52,10 @@ struct LofiMainTabView: View {
     }
 }
 
-struct LofiMainTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            LofiMainTabView()
-        }
-    }
-}
+//struct LofiMainTabView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationStack {
+//            LofiMainTabView()
+//        }
+//    }
+//}

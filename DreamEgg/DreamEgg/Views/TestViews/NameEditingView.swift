@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NameEditingView: View {
     @State var editedName: String = ""
+    
     var body: some View {
         ZStack {
             GradientBackgroundView()
@@ -38,7 +39,7 @@ struct NameEditingView: View {
                 
                 VStack {
                     NavigationLink {
-                        CreatureDetailView()
+//                        CreatureDetailView()
                     } label: {
                         Text("이렇게 바꿀게요.")
                             .frame(maxWidth: .infinity)

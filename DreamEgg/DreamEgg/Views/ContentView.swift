@@ -15,7 +15,9 @@ struct ContentView: View {
     @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
     
     @Environment(\.scenePhase) var scene
-        
+    
+    @State private var tabSelection: Int = 1
+    
     var body: some View {
         switch navigationManager.viewCycle {
         case .splash:
@@ -43,11 +45,11 @@ struct ContentView: View {
             LofiSleepTimeSettingView()
                 .frame(maxWidth: .infinity)
                 .onAppear {
-                    localNotificationManager.getNotificationstatus()
+                    localNotificationManager.getNotificationStatus()
                 }
                 .onChange(of: self.scene) { newScene in
                     if isChangingFromInactiveScene(into: newScene) {
-                        localNotificationManager.getNotificationstatus()
+                        localNotificationManager.getNotificationStatus()
                     }
                 }
                 .transition(
@@ -76,7 +78,7 @@ struct ContentView: View {
                 )
             
         case .general:
-            LofiMainTabView()
+            LofiMainTabView(tabSelection: $tabSelection)
                 .transition(
                     .asymmetric(
                         insertion: .opacity,
@@ -85,13 +87,15 @@ struct ContentView: View {
                 )
             
         case .awake:
-            LofiAwakeView()
-                .transition(
-                    .asymmetric(
-                        insertion: .opacity,
-                        removal: .opacity
+            NavigationStack {
+                LofiAwakeView()
+                    .transition(
+                        .asymmetric(
+                            insertion: .opacity,
+                            removal: .opacity
+                        )
                     )
-                )
+            }
         case .drawEgg:
             NavigationStack {
                 LofiEggDrawView()
@@ -145,9 +149,7 @@ struct ContentView: View {
     
     private func isSleepingProcessing() -> Bool {
         if let processingSleep = dailySleepTimeStore.currentDailySleep,
-           processingSleep.processStatus == Constant.SLEEP_PROCESS_PROCESSING
-            || processingSleep.processStatus == Constant.SLEEP_PROCESS_SLEEPING {
-            print(#function)
+           processingSleep.processStatus == Constant.SLEEP_PROCESS_SLEEPING {
             return true
         } else {
             return false

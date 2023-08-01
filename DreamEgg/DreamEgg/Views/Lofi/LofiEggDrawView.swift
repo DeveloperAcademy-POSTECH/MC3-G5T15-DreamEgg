@@ -9,14 +9,18 @@ import SwiftUI
 
 struct LofiEggDrawView: View {
     @EnvironmentObject var navigationManager: DENavigationManager
+    @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
     @StateObject private var eggDrawStore = EggDrawStore()
     var body: some View {
         ZStack {
             GradientBackgroundView()
             
             if eggDrawStore.isDrawEgg {
-                    LofiEggInteractionView()
-                        .navigationBarBackButtonHidden()
+                LofiEggInteractionView()
+                    .navigationBarBackButtonHidden()
+                    .onAppear {
+                        dailySleepTimeStore.makeNewDailySleepToStartDailySleep()
+                    }
             } else {
                     ZStack {
                         Image("emptyEgg")
@@ -43,6 +47,11 @@ struct LofiEggDrawView: View {
                         )
                     }
             }
+        }
+        .onAppear {
+            dailySleepTimeStore.makeNewDailySleepToStartDailySleep()
+            print("Hi", "\(dailySleepTimeStore.currentDailySleep!.animalName ?? "없어")")
+            print("dreamEgg", "\(dailySleepTimeStore.currentDailySleep!.eggName ?? "알이가 없다")")
         }
         .navigationBarBackButtonHidden()
         .animation(eggDrawStore.isDrawEgg ? Animation.easeInOut : nil)
