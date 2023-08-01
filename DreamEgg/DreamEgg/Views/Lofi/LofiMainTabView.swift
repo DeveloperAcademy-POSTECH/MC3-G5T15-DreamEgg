@@ -12,17 +12,21 @@ struct LofiMainTabView: View {
     @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
 //    @State private var tabSelection: Int = 1
     @Binding var tabSelection: Int
+    @State private var isWorldMap: Bool = false
     
     var body: some View {
         ZStack {
-            if tabSelection == 2 {
-                Image("DreamWorldMap")
-                    .resizable()
-                    .edgesIgnoringSafeArea(.all)
-            }
-            else {
-                GradientBackgroundView()
-            }
+            Image("DreamWorldMap")
+                .resizable()
+                .edgesIgnoringSafeArea(.all)
+                .overlay {
+                    if isWorldMap {
+                        LofiDreamWorldView()
+                    }
+                }
+            
+            GradientBackgroundView()
+                .opacity(isWorldMap ? 0.0 : 1.0)
 
             TabView(selection: $tabSelection) {
                 DECalendarTestView()
@@ -40,6 +44,16 @@ struct LofiMainTabView: View {
                     }
                 
                 LofiDreamWorldView()
+                    .onAppear {
+                        withAnimation(.linear(duration: 0.4)) {
+                            self.isWorldMap = true
+                        }
+                    }
+                    .onDisappear {
+                        withAnimation(.linear(duration: 0.4)) {
+                            self.isWorldMap = true
+                        }
+                    }
                     .tag(2)
                     .tabItem {
                         Image("DreamWorldTabIcon")
