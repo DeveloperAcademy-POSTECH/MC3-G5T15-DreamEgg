@@ -19,6 +19,7 @@ final class DENavigationManager: ObservableObject {
     @Published var starterPath = [Date]()
     @Published var isFromMainTab: Bool = false
     @Published var viewCycle: DEViewCycle = .splash
+    @Published var isToDreamWorld: Bool = false
     
     // MARK: Methods    
     public func authenticateUserIntoGeneralState() {

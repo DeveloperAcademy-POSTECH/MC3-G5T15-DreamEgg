@@ -49,6 +49,7 @@ struct LofiNameConfirmView: View {
                         Button {
                             dailySleepTimeStore.completeDailySleepTime()
                             navigationManager.viewCycle = .general
+                            navigationManager.isToDreamWorld = true
                         } label: {
                             Text("네!")
                                 .frame(maxWidth: .infinity)
