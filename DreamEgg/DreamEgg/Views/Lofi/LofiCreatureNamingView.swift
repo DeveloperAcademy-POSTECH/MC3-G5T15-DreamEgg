@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LofiCreatureNamingView: View {
     @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
+    @Environment(\.presentationMode) var presentationMode
     @State private var dreampetName: String = ""
     
     var body: some View {
@@ -76,7 +77,15 @@ struct LofiCreatureNamingView: View {
         .onTapGesture {
             self.endTextEditing()
         }
+        .gesture(DragGesture().onChanged(onSwipeBack))
         .ignoresSafeArea(.keyboard)
+    }
+    
+    // 뒤로 스와이프 하는 함수
+    private func onSwipeBack(gesture: DragGesture.Value) {
+        if gesture.location.x < 130 && gesture.translation.width > 80 {
+            presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 

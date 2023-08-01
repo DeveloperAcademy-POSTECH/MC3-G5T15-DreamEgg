@@ -345,10 +345,14 @@ extension DailySleepTimeStore {
     /// 자러갈 때의 시작 시간을 현재로 변경해주고 sleeping 상태로 수정합니다.
     public func updateDailySleepTimeToNow() {
         print(#function)
-        var model = self.getDailySleepInfo(in: .processing)
-        model.processStatus = .sleeping
-        model.date = .now
-        updateAndAssignToCurrent(by: model)
+        if let currentDailySleep,
+           currentDailySleep.processStatus == Constant.SLEEP_PROCESS_SLEEPING { return }
+        else {
+            var model = self.getDailySleepInfo(in: .processing)
+            model.processStatus = .sleeping
+            model.date = .now
+            updateAndAssignToCurrent(by: model)
+        }
     }
     
     /// dreampet의 이름을 변경합니다.

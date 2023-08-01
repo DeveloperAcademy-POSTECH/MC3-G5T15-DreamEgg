@@ -162,7 +162,8 @@ struct LofiSleepGuideView: View {
                         navigationManager.viewCycle = .awake
                     }
                     
-                } else if newValue == .background {
+                } else if newValue == .background,
+                          navigationManager.viewCycle != .awake {
                     dailySleepTimeStore.updateDailySleepTimeToNow()
                 }
             }

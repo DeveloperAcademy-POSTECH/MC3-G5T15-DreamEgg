@@ -231,6 +231,7 @@ struct LofiAwakeView: View {
         
         let activated = scene == .inactive && newScene == .active ||
         scene == .background && newScene == .active
+        
         print(#function, activated)
         return activated
     }
