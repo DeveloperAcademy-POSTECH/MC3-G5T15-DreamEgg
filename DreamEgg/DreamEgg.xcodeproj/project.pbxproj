@@ -12,7 +12,9 @@
 		20A9A5D92A6FA82E008513D7 /* DETextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5D82A6FA82E008513D7 /* DETextField.swift */; };
 		20A9A5DB2A6FC3A5008513D7 /* NameEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9A5DA2A6FC3A5008513D7 /* NameEditingView.swift */; };
 		7E6A4FBE2A716E460085F236 /* DreamEgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E6A4FBC2A716E460085F236 /* DreamEgg.xcdatamodeld */; };
+		7E9249E72A75454B00A19780 /* View+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9249E62A75454B00A19780 /* View+Keyboard.swift */; };
 		7EA7EBF42A6FC29E00C518FF /* View+ActivateConfetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7EBF32A6FC29E00C518FF /* View+ActivateConfetti.swift */; };
+		7ED179652A72CF4D00EEB935 /* DateComponent+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED179642A72CF4D00EEB935 /* DateComponent+Utilities.swift */; };
 		7EE701A62A6E4C2200DEEFA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EE701A52A6E4C2200DEEFA6 /* Assets.xcassets */; };
 		7EE701A92A6E4C2200DEEFA6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EE701A82A6E4C2200DEEFA6 /* Preview Assets.xcassets */; };
 		7EE701B82A6E4C7000DEEFA6 /* DreamEggApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE701B72A6E4C7000DEEFA6 /* DreamEggApp.swift */; };
@@ -82,8 +84,10 @@
 		20A9A5D82A6FA82E008513D7 /* DETextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DETextField.swift; sourceTree = "<group>"; };
 		20A9A5DA2A6FC3A5008513D7 /* NameEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEditingView.swift; sourceTree = "<group>"; };
 		7E6A4FBD2A716E460085F236 /* DreamEgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamEgg.xcdatamodel; sourceTree = "<group>"; };
+		7E9249E62A75454B00A19780 /* View+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Keyboard.swift"; sourceTree = "<group>"; };
 		7EA7EBF32A6FC29E00C518FF /* View+ActivateConfetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ActivateConfetti.swift"; sourceTree = "<group>"; };
 		7EB70D1B2A6E4DCB003512ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7ED179642A72CF4D00EEB935 /* DateComponent+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponent+Utilities.swift"; sourceTree = "<group>"; };
 		7EE7019E2A6E4C2100DEEFA6 /* DreamEgg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamEgg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE701A52A6E4C2200DEEFA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7EE701A82A6E4C2200DEEFA6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -257,7 +261,9 @@
 				7EE701D32A6E4C7E00DEEFA6 /* DateFormatter+init.swift */,
 				7EE701D42A6E4C7E00DEEFA6 /* Font+DosIyagi.swift */,
 				7EE701D52A6E4C7E00DEEFA6 /* Date+Utilities.swift */,
+				7ED179642A72CF4D00EEB935 /* DateComponent+Utilities.swift */,
 				7EA7EBF32A6FC29E00C518FF /* View+ActivateConfetti.swift */,
+				7E9249E62A75454B00A19780 /* View+Keyboard.swift */,
 				7EE701D62A6E4C7E00DEEFA6 /* Date+StartDates.swift */,
 			);
 			path = Extensions;
@@ -423,6 +429,7 @@
 				7EE702192A6E4C7E00DEEFA6 /* LofiSleepTimeSettingView.swift in Sources */,
 				7EE702212A6E4C7E00DEEFA6 /* FontTestView.swift in Sources */,
 				7EE702252A6E4C7E00DEEFA6 /* EggInteractionTestView.swift in Sources */,
+				7ED179652A72CF4D00EEB935 /* DateComponent+Utilities.swift in Sources */,
 				93E97B392A6FA56B0000DB2B /* LofiBirthView.swift in Sources */,
 				7EE701B82A6E4C7000DEEFA6 /* DreamEggApp.swift in Sources */,
 				7EE702102A6E4C7E00DEEFA6 /* Date+Utilities.swift in Sources */,
@@ -470,6 +477,7 @@
 				7E6A4FBE2A716E460085F236 /* DreamEgg.xcdatamodeld in Sources */,
 				7EE702172A6E4C7E00DEEFA6 /* LofiTextCustomView.swift in Sources */,
 				7EE702262A6E4C7E00DEEFA6 /* TimePickerTestView.swift in Sources */,
+				7E9249E72A75454B00A19780 /* View+Keyboard.swift in Sources */,
 				AE05EE132A6E65D30006F40D /* LofiEggInteractionView.swift in Sources */,
 				7EE701FB2A6E4C7E00DEEFA6 /* CoreDataRepresentable.swift in Sources */,
 				AEB342D42A7203690063DC14 /* DEButton.swift in Sources */,

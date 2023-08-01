@@ -22,6 +22,7 @@ struct LofiSleepGuideView: View {
     
     @State private var sleepGuideSteps: SleepGuideSteps = .start
     @State private var afterHold: Bool = false
+    @State private var labelDelayTime: Double = 2.0
     @StateObject private var eggAnimation = EggAnimation()
     @Binding var isSkippedFromInteractionView: Bool
     
@@ -110,7 +111,7 @@ struct LofiSleepGuideView: View {
                     Spacer()
                         .frame(maxHeight: 58)
                     
-                    if sleepGuideSteps != .darkening {
+                    if sleepGuideSteps == .hug {
                         Button {
                             sleepStepSwitcher()
                         } label: {
@@ -130,9 +131,12 @@ struct LofiSleepGuideView: View {
                         .padding(.vertical, 32)
                         .padding(.horizontal)
                     } else if sleepGuideSteps == .darkening {
-                        // - !!!: 상단의 알 Position이 차지할 수 있는 available Space를 제한하기 위한 Spacer
                         Spacer()
-                            .frame(maxHeight: 75)
+                            .frame(maxHeight: 80)
+                    }
+                    else {
+                        Spacer()
+                            .frame(maxHeight: 115)
                     }
                 }
                 
@@ -140,6 +144,8 @@ struct LofiSleepGuideView: View {
                     Button {
                         withAnimation {
                             sleepGuideSteps = .start
+                            labelDelayTime = 2.0
+                            repeatLabelChanging()
                         }
                     } label: {
                         Text("다시하기")
@@ -161,13 +167,13 @@ struct LofiSleepGuideView: View {
                 if isSkippedFromInteractionView {
                     sleepGuideSteps = .darkening
                 }
+                repeatLabelChanging()
             }
             .onChange(of: scenePhase) { newValue in
                 if isChangingFromInactiveScene(into: newValue) {
+                    dailySleepTimeStore.assignSleepingDailySleep()
                     navigationManager.viewCycle = .awake
-                } else if newValue == .inactive {
-                    // 자러 갈 때 .sleeping 처리
-                    print("잘 자러갔니?")
+                } else if newValue == .background {
                     dailySleepTimeStore.updateDailySleepTimeToNow()
                 }
             }
@@ -218,14 +224,17 @@ struct LofiSleepGuideView: View {
         case .start:
             withAnimation {
                 sleepGuideSteps = .breath
+                labelDelayTime = 4.0
             }
         case .breath:
             withAnimation {
                 sleepGuideSteps = .release
+                labelDelayTime = 5.0
             }
         case .release:
             withAnimation {
                 sleepGuideSteps = .hug
+                labelDelayTime = 5.0
             }
         case .hug:
             withAnimation {
@@ -234,6 +243,20 @@ struct LofiSleepGuideView: View {
             
         case .darkening:
             print()
+        }
+        repeatLabelChanging()
+    }
+    
+    private func repeatLabelChanging() {
+        
+        switch sleepGuideSteps
+        {
+        case .hug:
+            return
+        default:
+            DispatchQueue.main.asyncAfter(deadline: .now() + labelDelayTime) {
+                sleepStepSwitcher()
+            }
         }
     }
     

@@ -3,26 +3,28 @@
 //  DreamEgg
 //
 //  Created by Celan on 2023/07/20.
-//
+// COREDATA 연결 완료
 
 import SwiftUI
 
 struct LofiNameConfirmView: View {
-    let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
-
     @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
+    @EnvironmentObject var navigationManager: DENavigationManager
+    let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
     
-    @State var dreamCreatureImageName: String = "토순이" //TODO: CoreData 연결하기
+    @State var dreampetAnimalName: String = ""
+    @State var dreampetAssetName: String = ""
     @State var isTimePassed = false
-//    @State var dreamPetImage: String = "Quakka_a" //TODO: CoreData 연결하기
-//    @Binding var confirmedName: String
+//     @State private var tabSelectionForMainEggView: Int = 1
+//     @State private var tabSelectionForDreamWorldView: Int = 2
+
 
     var body: some View {
         ZStack {
             GradientBackgroundView()
             
             VStack {
-                switchHeaderText(isTimePassed: isTimePassed)
+                switchHeaderText()
                     .font(.dosIyagiBold(.title))
                     .lineSpacing(16)
                     .tracking(-1)
@@ -33,7 +35,7 @@ struct LofiNameConfirmView: View {
                 Spacer()
                     .frame(maxHeight: 84)
                 
-                Image(dreamCreatureImageName)
+                Image(dreampetAssetName)
                     .resizable()
                     .frame(width:250, height: 250)
                 
@@ -42,10 +44,13 @@ struct LofiNameConfirmView: View {
                 
                 if isTimePassed {
                     VStack(spacing: 10) {
-                        NavigationLink {
-                            ZStack {
-                                LofiMainTabView() //TODO: MainTabView 내의 DreamWorldView와 연결하기
-                            }
+//                         NavigationLink {
+//                             ZStack {
+//                                 LofiMainTabView(tabSelection: $tabSelectionForDreamWorldView)
+//                             }
+                        Button {
+                            dailySleepTimeStore.completeDailySleepTime()
+                            navigationManager.viewCycle = .general
                         } label: {
                             Text("네!")
                                 .frame(maxWidth: .infinity)
@@ -62,10 +67,13 @@ struct LofiNameConfirmView: View {
                         .cornerRadius(8)
                         .padding(.horizontal)
                         
-                        NavigationLink {
-                            ZStack {
-                                LofiMainTabView()
-                            }
+//                         NavigationLink {
+//                             ZStack {
+//                                 LofiMainTabView(tabSelection: $tabSelectionForMainEggView)
+//                             }
+                        Button {
+                            dailySleepTimeStore.completeDailySleepTime()
+                            navigationManager.viewCycle = .general
                         } label: {
                             Text("취침 시간을 보러갈래요.")
                                 .frame(maxWidth: .infinity)
@@ -89,7 +97,8 @@ struct LofiNameConfirmView: View {
             .frame(maxHeight: .infinity, alignment: .top)
         }
         .onAppear {
-            self.dreamCreatureImageName = dailySleepTimeStore.getAssetNameSafely() + "_a"
+            self.dreampetAnimalName = dailySleepTimeStore.getAnimalNameSafely()
+            self.dreampetAssetName = "\(dailySleepTimeStore.getAssetNameSafely())_a"
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 withAnimation() {
@@ -100,10 +109,13 @@ struct LofiNameConfirmView: View {
         .onReceive(timer) { _ in
             changeImage()
         }
+        .onDisappear {
+            timer.upstream.connect().cancel()
+        }
     }
     
     /// 일정 시간 이후 HeaderText를 변경하는 함수입니다.
-    private func switchHeaderText(isTimePassed: Bool) -> some View {
+    private func switchHeaderText() -> some View {
         if isTimePassed {
             return Text("\"\(dailySleepTimeStore.currentDailySleep?.animalName ?? "복실이")\"(을)를\n보러 가볼까요?")
         }
@@ -115,13 +127,13 @@ struct LofiNameConfirmView: View {
     /// 드림펫의 호흡 애니메이션을 구현하기 위한 함수입니다.
     ///  - 총 세 개의 View에서 사용하고 있어서 이를 통합할 수 있는 방법이 있는지 고민해보고 추후에 진행하겠습니다. 
     private func changeImage() {
-        if dreamCreatureImageName[dreamCreatureImageName.index(before: dreamCreatureImageName.endIndex)] == "a" {
-            dreamCreatureImageName.remove(at:dreamCreatureImageName.index(before: dreamCreatureImageName.endIndex))
-            dreamCreatureImageName.append("b")
-        }
-        else {
-            dreamCreatureImageName.remove(at:dreamCreatureImageName.index(before: dreamCreatureImageName.endIndex))
-            dreamCreatureImageName.append("a")
+        print(#function, dreampetAssetName)
+        if dreampetAssetName[dreampetAssetName.index(before: dreampetAssetName.endIndex)] == "a" {
+            dreampetAssetName.remove(at:dreampetAssetName.index(before: dreampetAssetName.endIndex))
+            dreampetAssetName.append("b")
+        } else {
+            dreampetAssetName.remove(at:dreampetAssetName.index(before: dreampetAssetName.endIndex))
+            dreampetAssetName.append("a")
         }
     }
 }

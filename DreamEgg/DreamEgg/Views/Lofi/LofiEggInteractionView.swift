@@ -33,8 +33,11 @@ struct LofiEggInteractionView: View {
                 Spacer()
                     .frame(maxHeight: 40)
                 ZStack {
-                    Image("samplePillow")
-                        .offset(x:0,y:160)
+                    Image("EggPillow")
+                        .resizable()
+                        .frame(width: 246, height: 246)
+                        .offset(y:158)
+
                     Image("\(dailySleepTimeStore.currentDailySleep?.eggName ?? Constant.Errors.NO_EGG)")
                         .resizable()
                         .aspectRatio(contentMode: .fit)

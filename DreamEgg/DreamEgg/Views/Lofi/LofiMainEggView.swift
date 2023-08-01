@@ -14,10 +14,12 @@ struct LofiMainEggView: View {
     @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
     
     @State private var currentTime: Date = .now
-    @State private var timer: Timer.TimerPublisher = Timer
+    @State private var timer: Publishers.Autoconnect<Timer.TimerPublisher> = Timer
         .publish(every: 15, on: .main, in: .common)
+        .autoconnect()
+    
     @State private var cancellable: Cancellable?
-        
+    
     var body: some View {
         VStack {
             Spacer()
@@ -28,46 +30,38 @@ struct LofiMainEggView: View {
             Spacer()
                 .frame(maxHeight: 36)
             
-            if userSleepConfigStore.hasUserEnoughTimeToProcess(currentTime: currentTime) {
-                sleepPreparingView()
-                    .frame(maxWidth: .infinity)
-                
-                Spacer()
-                    .frame(maxHeight: 40)
-                
-                NavigationLink {
-                    LofiEggDrawView()
-                        .navigationBarBackButtonHidden()
-                        .onAppear {
-                            dailySleepTimeStore.updateAndSaveNewDailySleepInfo()
-                            print("Hi", "\(dailySleepTimeStore.currentDailySleep!.animalName ?? "없어")")
-                            print("dreamEgg", "\(dailySleepTimeStore.currentDailySleep!.eggName ?? "알이가 없다")")
-                        }
-                } label: {
-                    Image("emptyEgg")
-                        .overlay {
-                            DEFontStyle(style: .body, text: "탭해서\n드림에그를 그려보세요!")
-                                .foregroundColor(.white)
-                        }
-                }
-            } else {
-                failedSleepTimeView()
-                    .multilineTextAlignment(.center)
-                    .frame(
-                        maxWidth: .infinity,
-                        maxHeight: .infinity,
-                        alignment: .center
-                    )   
+            sleepPreparingView()
+                .frame(maxWidth: .infinity)
+            
+            Spacer()
+                .frame(maxHeight: 40)
+            
+            NavigationLink {
+                LofiEggDrawView()
+                    .navigationBarBackButtonHidden()
+            } label: {
+                Image("emptyEgg")
+                    .overlay {
+                        Text(getEggString())
+                            .font(.dosIyagiBold(.body))
+                            .foregroundColor(.white)
+                            .lineSpacing(8)
+                            .tracking(-1)
+                    }
             }
-        }
-        .onAppear {
-            cancellable = self.timer.connect()
+            .disabled(!userSleepConfigStore.hasUserEnoughTimeToProcess(currentTime: currentTime))
         }
         .onReceive(timer) { _ in
-            // 15초마다 currentTime 갱신
-            withAnimation {
-                currentTime = Date.now
+            if userSleepConfigStore.hasUserEnoughTimeToProcess(
+                currentTime: currentTime
+            ) {
+                withAnimation {
+                    currentTime = Date.now
+                }
             }
+        }
+        .onDisappear {
+            timer.upstream.connect().cancel()
         }
     }
     
@@ -121,20 +115,14 @@ struct LofiMainEggView: View {
     
     private func sleepPreparingView() -> some View {
         VStack {
-            VStack(spacing: 16) {
-                DEFontStyle(style: .title, text: "잠들기까지")
-                
-                DEFontStyle(style: .largeTitle, text: "\(userSleepConfigStore.hourAndMinuteString(currentTime: currentTime))")
-                
-                DEFontStyle(style: .title, text: "남았어요.")
-            }
-            .foregroundColor(.white)
-            .multilineTextAlignment(.center)
-            
+            Text(getSleepPreparingViewString())
+                .font(.dosIyagiBold(.title))
+                .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+                .lineSpacing(16)
+                .tracking(-1)
             Button {
-                withAnimation {
-                    navigationManager.viewCycle = .timeSetting
-                }
+                navigationManager.viewCycle = .timeSetting
             } label: {
                 DEFontStyle(style: .body, text: "시간 및 알림 수정하기")
                     .foregroundColor(.white.opacity(0.6))
@@ -150,12 +138,23 @@ struct LofiMainEggView: View {
             }
         }
     }
-}
-
-struct LofiMainEggView_Previews: PreviewProvider {
-    static var previews: some View {
-        LofiMainTabView()
-            .environmentObject(DENavigationManager())
-            .environmentObject(UserSleepConfigStore())
+    private func getSleepPreparingViewString() -> String {
+        userSleepConfigStore.hasUserEnoughTimeToProcess(currentTime: currentTime)
+        ? "잠들기까지\n\(userSleepConfigStore.hourAndMinuteString(currentTime: currentTime))\n남았어요."
+        : Constant.GOODNIGHT_PREPARE_MESSAGES.randomElement()!
+    }
+    
+    private func getEggString() -> String {
+        userSleepConfigStore.hasUserEnoughTimeToProcess(currentTime: currentTime)
+        ? "탭해서\n알그리기"
+        : "잠들기 1시간 전부터\n알을 그릴 수 있어요!"
     }
 }
+
+//struct LofiMainEggView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LofiMainTabView()
+//            .environmentObject(DENavigationManager())
+//            .environmentObject(UserSleepConfigStore())
+//    }
+//}

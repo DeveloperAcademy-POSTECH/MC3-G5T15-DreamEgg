@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LofiCreatureNamingView: View {
     @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
-    @State var name: String = ""
+    @State private var dreampetName: String = ""
     
     var body: some View {
         ZStack {
@@ -28,7 +28,7 @@ struct LofiCreatureNamingView: View {
                     DEFontStyle(style: .body, text: "안녕,")
                     
                     // MARK: Design System으로 변경 예정
-                    DETextField(style: .nameTextField, content: $name, maxLength: 10)
+                    DETextField(style: .nameTextField, content: $dreampetName, maxLength: 10)
                     
                     DEFontStyle(style: .body, text: "!")
                 }
@@ -65,7 +65,7 @@ struct LofiCreatureNamingView: View {
                     .simultaneousGesture(
                         TapGesture()
                             .onEnded {
-                                
+                                dailySleepTimeStore.updateDreamPetName(by: dreampetName)
                             }
                     )
                 }
