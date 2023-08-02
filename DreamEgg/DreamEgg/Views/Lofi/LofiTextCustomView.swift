@@ -22,13 +22,11 @@ struct LofiTextCustomView: View {
                     .frame(maxHeight: 75)
                 
                 VStack {
-                    Text("내일 나에게 할 말을 \n적어주세요")
+                    Text("내일 나에게 할 말을 \n적어주세요.")
+                        .foregroundColor(.white)
                         .font(.dosIyagiBold(.title))
-                        .lineSpacing(12)
+                        .lineSpacing(16)
                         .padding()
-                    
-                    Text("기존 알림 대신에 적어주신 문장으로 알림을 드릴게요!")
-                        .font(.dosIyagiBold(.body))
                 }
                 .multilineTextAlignment(.center)
                 .foregroundColor(.white)
@@ -42,13 +40,19 @@ struct LofiTextCustomView: View {
                     )
                     .offset(y: -50)
                 
+                Text("적어주신 문장으로\n취침 1시간 전에 알림을 드릴게요!")
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.white.opacity(0.6))
+                    .lineSpacing(8)
+                    .font(.dosIyagiBold(.body))
+                
                 Spacer()
                 
                 Button {
                     navigationManager.authenticateUserIntoGeneralState()
                     updateNotificationMessage()
                 } label: {
-                    Text("이렇게 알림을 보내주세요")
+                    Text("이렇게 알림을 보내주세요.")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
                         .foregroundColor(.primaryButtonBrown)
@@ -69,7 +73,8 @@ struct LofiTextCustomView: View {
                     }
                 } label: {
                     Text("건너뛰기")
-                        .foregroundColor(.subButtonSky)
+                        .foregroundColor(.white.opacity(0.6))
+                        .underline(true)
                         .font(.dosIyagiBold(.callout))
                 }
             }
