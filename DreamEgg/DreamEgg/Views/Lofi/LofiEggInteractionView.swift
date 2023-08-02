@@ -10,7 +10,7 @@ import SwiftUI
 struct LofiEggInteractionView: View {
     @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
     @StateObject private var eggAnimation = EggAnimation()
-    @State private var titleArray = ["알이 생겼어요!\n한 번 쓰다듬어볼까요?","알의 움직임이\n느껴지는 것 같아요..!","이제 곧 알을\n품어야 할 시간이에요.\n잠들 준비가 되셨나요?"]
+    @State private var titleArray = ["알이 생겼어요!\n한번 쓰다듬어보세요.","안에서 움직이는 것 같아요!\n자기 전에 오늘 품을 알을\n맘껏 쓰다듬어주세요.","이제 알을 품기 위해\n잘 시간이군요.\n오늘 수면을 도와드릴까요?"]
     @State private var titleCount = 0
     @State private var isShowButton = false
     @State private var isSkip = false
@@ -27,7 +27,7 @@ struct LofiEggInteractionView: View {
                     .multilineTextAlignment(.center)
                     .font(.dosIyagiBold(.title))
                     .foregroundColor(.white)
-                    .lineSpacing(12)
+                    .lineSpacing(16)
                     .frame(maxHeight: 120)
                 Spacer()
                     .frame(maxHeight: 65)
@@ -55,13 +55,13 @@ struct LofiEggInteractionView: View {
                         }
                 }
                 Spacer()
-                    Text("알을 톡 치면 대화가 진행되어요.")
+                    Text("알을 탭해서 다음으로 진행해주세요.")
                         .font(.dosIyagiBold(.callout))
-                        .foregroundColor(.white)
+                        .foregroundColor(.white.opacity(0.6))
                         .opacity(isShowInfo ? 0.8 : 0)
                         .opacity(isRunInfoAnimation ? 0.8 : 0.3)
                 NavigationLink(destination: LofiSleepGuideView( isSkippedFromInteractionView:$isSkip).navigationBarBackButtonHidden(true)) {
-                    Text("잠드는데 도움이 필요해요.")
+                    Text("네, 도움이 필요해요.")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
                         .foregroundColor(.primaryButtonBrown)
@@ -76,7 +76,7 @@ struct LofiEggInteractionView: View {
                 .padding(.horizontal)
                 .opacity(isShowButton ? 1.0 : 0)
                 NavigationLink(destination: LofiSleepGuideView( isSkippedFromInteractionView:$isSkip).navigationBarBackButtonHidden(true)) {
-                    Text("네, 바로 잘래요.")
+                    Text("아니요, 바로 잘래요.")
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
                         .foregroundColor(.subButtonBlue)

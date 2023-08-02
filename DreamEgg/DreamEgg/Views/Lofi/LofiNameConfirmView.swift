@@ -76,7 +76,7 @@ struct LofiNameConfirmView: View {
                             }
                             
                         } label: {
-                            Text("나중에 보러갈게요.")
+                            Text("나중에 보러갈래요.")
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 16)
                                 .foregroundColor(.subButtonBlue)
@@ -117,9 +117,9 @@ struct LofiNameConfirmView: View {
     /// 일정 시간 이후 HeaderText를 변경하는 함수입니다.
     private func switchHeaderText() -> some View {
         if isTimePassed {
-            return Text("\"\(dreampetAnimalName)\"를\n보러 가볼까요?")
+            return Text("\"\(dreampetAnimalName)\"(을)를\n보러 가볼까요?")
         } else {
-            return Text("드림펫에게\n\"\(dreampetAnimalName)\"라는\n이름이 생겼어요!")
+            return Text("드림펫에게\n\"\(dreampetAnimalName)\"(이)라는\n이름이 생겼어요!")
         }
     }
     

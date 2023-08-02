@@ -21,7 +21,7 @@ struct LofiCreatureNamingView: View {
                     .font(.dosIyagiBold(.title))
                     .multilineTextAlignment(.center)
                     .padding()
-                    .lineSpacing(10)
+                    .lineSpacing(16)
                 
                 Spacer()
                     .frame(maxHeight: 145)

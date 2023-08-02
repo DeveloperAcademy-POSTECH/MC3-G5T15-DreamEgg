@@ -24,12 +24,14 @@ struct LofiSleepTimeSettingView: View {
             
             VStack {
                 Spacer()
-                    .frame(maxHeight: 40)
+                    .frame(maxHeight: 100)
                 
-                Text(isNotificationAuthorized ? "잠들고 싶은\n희망 시간을 정해주세요." : "알림을 허용하면\n앱을 더 효과적으로\n이용할 수 있어요!")
+                Text(isNotificationAuthorized ? "잠들고 싶은\n희망 시간을 정해주세요." : "알림을 허용해야\n취침습관 관리를\n도와드릴 수 있어요!")
                     .font(.dosIyagiBold(.title))
+                    .tracking(-1)
+                    .foregroundColor(.white)
                     .multilineTextAlignment(.center)
-                    .lineSpacing(12)
+                    .lineSpacing(16)
                     .bold()
                     .padding()
                 
@@ -41,6 +43,8 @@ struct LofiSleepTimeSettingView: View {
                         }
                     
                     Text("이후에도 시간을 수정할 수 있어요.")
+                        .foregroundColor(.white.opacity(0.6))
+                        .tracking(-1)
                         
                 }
                 .frame(maxHeight: .infinity)
@@ -63,6 +67,7 @@ struct LofiSleepTimeSettingView: View {
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
                                 .font(.dosIyagiBold(.body))
+                                .tracking(-1)
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -86,11 +91,12 @@ struct LofiSleepTimeSettingView: View {
                                 }
                             }
                         } label: {
-                            Text("이 시간에 잠에 들래요")
+                            Text("이 시간에 잘래요.")
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
                                 .font(.dosIyagiBold(.body))
+                                .tracking(-1)
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -106,11 +112,12 @@ struct LofiSleepTimeSettingView: View {
                         Button {
                             isAllowButtonTapped = true
                         } label: {
-                            Text("허용할게요.")
+                            Text("알림을 허용할게요.")
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
                                 .font(.dosIyagiBold(.body))
+                                .tracking(-1)
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -131,11 +138,12 @@ struct LofiSleepTimeSettingView: View {
                                 navigationManager.viewCycle = .general
                             }
                         } label: {
-                            Text("알림 없이 사용할게요.")
+                            Text("알림없이 사용할게요.")
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 16)
                                 .foregroundColor(.subButtonBlue)
                                 .font(.dosIyagiBold(.body))
+                                .tracking(-1)
                         }
                         .background { Color.subButtonSky }
                         .cornerRadius(8)

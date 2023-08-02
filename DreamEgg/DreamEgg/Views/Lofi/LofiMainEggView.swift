@@ -69,6 +69,7 @@ struct LofiMainEggView: View {
                             .overlay {
                                 Text(eggString)
                                     .font(.dosIyagiBold(.body))
+                                    .lineSpacing(8)
                                     .foregroundColor(.white)
                             }
                     }
@@ -108,8 +109,10 @@ struct LofiMainEggView: View {
     // MARK: - ViewBuilder
     private func failedSleepTimeView() -> some View {
         VStack {
-            Text("정말 바쁜 하루였네요.\n오늘은 제가 대신\n알을 품어드릴게요.")
+            Text("새로운 드림에그를.\n만날 수 있게\n취침시간까지 기다려주세요.")
                 .font(.dosIyagiBold(.title))
+                .foregroundColor(.white)
+                .lineSpacing(16)
                 .padding()
             Text("내일은 꼭 직접 알을 품어주세요!")
                 .font(.dosIyagiBold(.body))
@@ -123,12 +126,12 @@ struct LofiMainEggView: View {
             } label: {
                 Text("수면 시간 수정하기")
                     .font(.dosIyagiBold(.body))
-                    .foregroundColor(.white)
+                    .foregroundColor(.white.opacity(0.6))
                     .overlay {
                         VStack {
                             Divider()
                                 .frame(minHeight: 2)
-                                .overlay(Color.white)
+                                .overlay(Color.white.opacity(0.6))
                                 .offset(y: 12)
                         }
                     }
@@ -198,7 +201,7 @@ struct LofiMainEggView: View {
     private func getEggString() -> String {
         userSleepConfigStore.hasUserEnoughTimeToProcess(currentTime: currentTime)
         ? "탭해서\n드림에그를 그려보세요!"
-        : "잠들기 1시간 전부터\n알을 그릴 수 있어요!"
+        : "잠들기 1시간 전부터\n드림에그를\n그릴 수 있어요!"
     }
 }
 
