@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LofiFailedView: View {
+    @EnvironmentObject var navigationManager: DENavigationManager
+    
     @frozen enum DreamPetFailedSteps {
         case start
         case end
@@ -62,8 +64,11 @@ struct LofiFailedView: View {
                             .opacity(0.5)
                         Spacer()
                             .frame(maxHeight:50)
-                        NavigationLink {
-                            LofiMainTabView()
+                        
+                        Button {
+                            withAnimation {
+                                navigationManager.viewCycle = .general
+                            }
                         } label: {
                             Text("내일 꼭 올게요.")
                                 .frame(maxWidth: .infinity)

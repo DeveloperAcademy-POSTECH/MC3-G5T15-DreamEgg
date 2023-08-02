@@ -8,10 +8,6 @@
 import SwiftUI
 import Combine
 
-@frozen enum TabViewSteps {
-    case calendar, egg, world
-}
-
 struct LofiMainTabView: View {
     @frozen private enum TabViewSteps: Hashable {
         case calendar, egg, world
@@ -20,6 +16,7 @@ struct LofiMainTabView: View {
     @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
     @EnvironmentObject var navigationManager: DENavigationManager
     @State var tabSelection: Int = 1
+    @State private var isSettingMenuDisplayed: Bool = false
     @State private var isWorldMap: Bool = false
     @State private var tabViewSteps: TabViewSteps = .egg
     
@@ -36,6 +33,13 @@ struct LofiMainTabView: View {
 
             GradientBackgroundView()
                 .opacity(isWorldMap ? 0.0 : 1.0)
+                .onTapGesture {
+                    withAnimation {
+                        if isSettingMenuDisplayed {
+                            isSettingMenuDisplayed = false
+                        }
+                    }
+                }
 
             TabView(selection: $tabViewSteps) {
                 DECalendarTestView()
@@ -46,7 +50,7 @@ struct LofiMainTabView: View {
 
                 
                 // MARK: Main Egg
-                LofiMainEggView()
+                LofiMainEggView(isSettingMenuDisplayed: $isSettingMenuDisplayed)
                     .frame(maxHeight: .infinity, alignment: .top)
                     .tag(TabViewSteps.egg)
                     .tabItem {
@@ -65,7 +69,7 @@ struct LofiMainTabView: View {
         .background(Color.black)
         .onAppear {
             if navigationManager.isToDreamWorld {
-                tabSelection = 2
+                tabViewSteps = .world
                 navigationManager.isToDreamWorld = false
             }
         }

@@ -54,7 +54,7 @@ struct ContentView: View {
                     .asymmetric(
                         insertion: .move(
                             edge:
-                                isUserNotificationAuthorized()
+                            isUserNotificationAuthorized()
                             ? .trailing
                             : .bottom
                         )
@@ -63,6 +63,24 @@ struct ContentView: View {
                             edge: .leading
                         )
                         .animation(.easeInOut(duration: 1))
+                    )
+                )
+            
+        case .timeReset:
+            LofiSleepTimeSettingView()
+                .frame(maxWidth: .infinity)
+                .onAppear {
+                    localNotificationManager.getNotificationStatus()
+                }
+                .onChange(of: self.scene) { newScene in
+                    if isChangingFromInactiveScene(into: newScene) {
+                        localNotificationManager.getNotificationStatus()
+                    }
+                }
+                .transition(
+                    .asymmetric(
+                        insertion: .push(from: .bottom).animation(.linear(duration: 0.4)),
+                        removal: .opacity.animation(.easeInOut(duration: 1))
                     )
                 )
             
@@ -79,6 +97,7 @@ struct ContentView: View {
             NavigationStack {
                 LofiMainTabView()
             }
+            .transition(.opacity)
             
         case .awake:
             NavigationStack {
@@ -90,6 +109,16 @@ struct ContentView: View {
                         )
                     )
             }
+//        case .drawEgg:
+//            NavigationStack {
+//                LofiEggDrawView()
+//            }
+//            .transition(
+//                .asymmetric(
+//                    insertion: .opacity,
+//                    removal: .opacity
+//                )
+//            )
         }
     }
     

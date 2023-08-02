@@ -37,6 +37,7 @@ public enum Constant {
                 "Quakka",
                 "Rabbit",
                 "Elephant",
+                "Dragon",
             ]
         )
         
@@ -45,6 +46,8 @@ public enum Constant {
                 "BinyEgg",
                 "FerretEgg",
                 "ElephantEgg",
+                "BubbleEgg",
+                "DefaultEgg",
             ]
         )
     }

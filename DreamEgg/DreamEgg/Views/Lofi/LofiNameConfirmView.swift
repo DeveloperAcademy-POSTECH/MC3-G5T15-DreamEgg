@@ -47,9 +47,10 @@ struct LofiNameConfirmView: View {
 //                                 LofiMainTabView(tabSelection: $tabSelectionForDreamWorldView)
 //                             }
                         Button {
-                            dailySleepTimeStore.completeDailySleepTime()
-                            navigationManager.viewCycle = .general
                             navigationManager.isToDreamWorld = true
+                            withAnimation {
+                                navigationManager.viewCycle = .general
+                            }
                         } label: {
                             Text("네!")
                                 .frame(maxWidth: .infinity)
@@ -70,8 +71,10 @@ struct LofiNameConfirmView: View {
 //                                 LofiMainTabView(tabSelection: $tabSelectionForMainEggView)
 //                             }
                         Button {
-                            dailySleepTimeStore.completeDailySleepTime()
-                            navigationManager.viewCycle = .general
+                            withAnimation {
+                                navigationManager.viewCycle = .general
+                            }
+                            
                         } label: {
                             Text("나중에 보러갈게요.")
                                 .frame(maxWidth: .infinity)
@@ -123,7 +126,6 @@ struct LofiNameConfirmView: View {
     /// 드림펫의 호흡 애니메이션을 구현하기 위한 함수입니다.
     ///  - 총 세 개의 View에서 사용하고 있어서 이를 통합할 수 있는 방법이 있는지 고민해보고 추후에 진행하겠습니다. 
     private func changeImage() {
-        print(#function, dreampetAssetName)
         if dreampetAssetName[dreampetAssetName.index(before: dreampetAssetName.endIndex)] == "a" {
             dreampetAssetName.remove(at:dreampetAssetName.index(before: dreampetAssetName.endIndex))
             dreampetAssetName.append("b")

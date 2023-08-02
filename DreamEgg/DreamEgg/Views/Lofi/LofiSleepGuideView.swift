@@ -158,8 +158,12 @@ struct LofiSleepGuideView: View {
             .onChange(of: scenePhase) { newValue in
                 if isChangingFromInactiveScene(into: newValue) {
                     dailySleepTimeStore.assignSleepingDailySleep()
-                    navigationManager.viewCycle = .awake
-                } else if newValue == .background {
+                    withAnimation {
+                        navigationManager.viewCycle = .awake
+                    }
+                    
+                } else if newValue == .background,
+                          navigationManager.viewCycle != .awake {
                     dailySleepTimeStore.updateDailySleepTimeToNow()
                 }
             }
@@ -228,16 +232,14 @@ struct LofiSleepGuideView: View {
             }
             
         case .darkening:
-            print()
+            print("SLEEP GUIDE VIEW > LOCK SCREEN")
         }
         repeatLabelChanging()
     }
     
     private func repeatLabelChanging() {
-        
-        switch sleepGuideSteps
-        {
-        case .hug:
+        switch sleepGuideSteps {
+        case .hug, .darkening:
             return
         default:
             DispatchQueue.main.asyncAfter(deadline: .now() + labelDelayTime) {
