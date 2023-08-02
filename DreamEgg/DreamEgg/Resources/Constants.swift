@@ -38,6 +38,7 @@ public enum Constant {
                 "Rabbit",
                 "Elephant",
                 "Dragon",
+                "Piskel",
             ]
         )
         

@@ -11,6 +11,7 @@ struct LofiEggDrawView: View {
     @EnvironmentObject var navigationManager: DENavigationManager
     @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
     @StateObject private var eggDrawStore = EggDrawStore()
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ZStack {
             GradientBackgroundView()
@@ -55,9 +56,7 @@ struct LofiEggDrawView: View {
     
     private func onSwipeBack(gesture: DragGesture.Value) {
             if gesture.location.x < 130 && gesture.translation.width > 80 && !eggDrawStore.isDrawEgg {
-                withAnimation {
-                    navigationManager.viewCycle = .general
-                }
+                presentationMode.wrappedValue.dismiss()
             }
         }
     
