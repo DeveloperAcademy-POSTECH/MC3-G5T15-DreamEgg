@@ -9,26 +9,27 @@ import SwiftUI
 
 struct LofiDreamWorldView: View {
     @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
-    @ObservedObject var mapViewStore = MapViewStore()
+    @StateObject var mapViewStore = MapViewStore()
 
     var body: some View {
-        ZStack(alignment: .bottom) {
-            ForEach((0 ..< mapViewStore.num), id: \.self) { i in
-                Image("\(mapViewStore.names[i][0])"+"\(mapViewStore.names[i][1])")
-                    .position(mapViewStore.positions[i])
+            ZStack(alignment: .bottom) {
+                ForEach((0 ..< mapViewStore.num), id: \.self) { i in
+                    Image("\(mapViewStore.names[i][0])"+"\(mapViewStore.names[i][1])")
+                        .position(mapViewStore.positions[i])
+                }
+            }
+            .onReceive(mapViewStore.timers[0]) { _ in
+                withAnimation {
+                    mapViewStore.changePosition()
+                }
+            }
+            .onReceive(mapViewStore.timers[1]) { _ in
+                mapViewStore.changeImage()
             }
             .onAppear {
                 mapViewStore.getNamesFromCoreData(dailySleepArray: dailySleepTimeStore.dailySleepArray)
+                mapViewStore.GeneratePosRandomly()
             }
-        }
-        .onReceive(mapViewStore.timers[0]) { _ in
-            withAnimation {
-                mapViewStore.changePosition()
-            }
-        }
-        .onReceive(mapViewStore.timers[1]) { _ in
-            mapViewStore.changeImage()
-        }
     }
 }
 

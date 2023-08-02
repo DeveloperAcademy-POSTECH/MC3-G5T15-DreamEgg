@@ -32,7 +32,6 @@ struct LofiAwakeView: View {
     )
     
     var body: some View {
-        NavigationStack {
             ZStack {
                 Color.black
                     .ignoresSafeArea()
@@ -204,7 +203,6 @@ struct LofiAwakeView: View {
                     self.cancellable?.cancel()
                 }
             }
-        }
     }
     
     /// egg를 탭하면 eggtab의 값이 toggle되어 confetti가 적용 된 sparkle 이미지가 나타나고,

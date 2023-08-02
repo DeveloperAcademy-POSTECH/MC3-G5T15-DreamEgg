@@ -47,6 +47,7 @@ struct LofiNameConfirmView: View {
 //                                 LofiMainTabView(tabSelection: $tabSelectionForDreamWorldView)
 //                             }
                         Button {
+                            navigationManager.isToDreamWorld = true
                             withAnimation {
                                 navigationManager.viewCycle = .general
                             }

@@ -64,6 +64,7 @@ struct LofiFailedView: View {
                             .opacity(0.5)
                         Spacer()
                             .frame(maxHeight:50)
+                        
                         Button {
                             withAnimation {
                                 navigationManager.viewCycle = .general

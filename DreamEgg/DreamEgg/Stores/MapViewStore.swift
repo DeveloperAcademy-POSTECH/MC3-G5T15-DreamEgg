@@ -23,10 +23,9 @@ final class MapViewStore : ObservableObject {
     @Published var positions = [CGPoint]()
     @Published var names = [[String]]()
     
-    init() {
-//        getNamesFromCoreData()
-        GeneratePosRandomly()
-    }
+//    init() {
+//        GeneratePosRandomly()
+//    }
     
     /// CoreData에서 객체들의 데이터를 받아와 객체들의 이름을 저장합니다.
     public func getNamesFromCoreData(dailySleepArray: [DailySleep]) {
@@ -39,10 +38,12 @@ final class MapViewStore : ObservableObject {
                 names.append([element.assetName ?? "" ,"_a"])
             }
         }
+        
+//        GeneratePosRandomly()
     }
     
     /// 드림펫들의 초기 위치를 지도 크기 내에서 서로 겹치지 않게 랜덤하게 설정합니다.
-    func GeneratePosRandomly() {
+    public func GeneratePosRandomly() {
         let xPosBoundary = mapWidth - objSize * 2
         let yPosBoundary = mapHeight * 0.2 - objSize
         var xPosTemp: CGFloat

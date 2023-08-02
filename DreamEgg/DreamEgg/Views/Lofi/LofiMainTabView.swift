@@ -9,55 +9,56 @@ import SwiftUI
 import Combine
 
 struct LofiMainTabView: View {
+    @frozen private enum TabViewSteps: Hashable {
+        case calendar, egg, world
+    }
+    
     @EnvironmentObject var userSleepConfigStore: UserSleepConfigStore
+    @EnvironmentObject var navigationManager: DENavigationManager
+    @State var tabSelection: Int = 1
     @State private var isSettingMenuDisplayed: Bool = false
-    @Binding var tabSelection: Int
     @State private var isWorldMap: Bool = false
+    @State private var tabViewSteps: TabViewSteps = .egg
     
     var body: some View {
         ZStack {
-            if tabSelection == 2 {
-                Image("DreamWorldMap")
-                    .resizable()
-                    .edgesIgnoringSafeArea(.all)
-            } else {
-                GradientBackgroundView()
-                    .onTapGesture {
-                        withAnimation {
-                            if isSettingMenuDisplayed {
-                                isSettingMenuDisplayed = false
-                            }
+            Image("DreamWorldMap")
+                .resizable()
+                .edgesIgnoringSafeArea(.all)
+                .overlay {
+                    if isWorldMap {
+                        LofiDreamWorldView()
+                    }
+                }
+
+            GradientBackgroundView()
+                .opacity(isWorldMap ? 0.0 : 1.0)
+                .onTapGesture {
+                    withAnimation {
+                        if isSettingMenuDisplayed {
+                            isSettingMenuDisplayed = false
                         }
                     }
-            }
-            
-            TabView(selection: $tabSelection) {
+                }
+
+            TabView(selection: $tabViewSteps) {
                 DECalendarTestView()
-                    .tag(0)
+                    .tag(TabViewSteps.calendar)
                     .tabItem {
                         Image("CalendarTabIcon")
                     }
+
                 
                 // MARK: Main Egg
                 LofiMainEggView(isSettingMenuDisplayed: $isSettingMenuDisplayed)
                     .frame(maxHeight: .infinity, alignment: .top)
-                    .tag(1)
+                    .tag(TabViewSteps.egg)
                     .tabItem {
                         Image("DreamEggTabIcon")
                     }
-                
-                LofiDreamWorldView()
-                    .onAppear {
-                        withAnimation(.linear(duration: 0.4)) {
-                            self.isWorldMap = true
-                        }
-                    }
-                    .onDisappear {
-                        withAnimation(.linear(duration: 0.4)) {
-                            self.isWorldMap = true
-                        }
-                    }
-                    .tag(2)
+
+                Text("")
+                    .tag(TabViewSteps.world)
                     .tabItem {
                         Image("DreamWorldTabIcon")
                     }
@@ -66,6 +67,24 @@ struct LofiMainTabView: View {
         }
         .navigationBarBackButtonHidden()
         .background(Color.black)
+        .onAppear {
+            if navigationManager.isToDreamWorld {
+                tabViewSteps = .world
+                navigationManager.isToDreamWorld = false
+            }
+        }
+        .onChange(of: tabViewSteps) { tabViewSteps in
+            if tabViewSteps == .world {
+                withAnimation(.linear(duration: 0.4)) {
+                    self.isWorldMap = true
+                }
+            }
+            else if tabViewSteps == .egg {
+                withAnimation(.linear(duration: 0.2)) {
+                        self.isWorldMap = false
+                }
+            }
+        }
     }
 }
 
