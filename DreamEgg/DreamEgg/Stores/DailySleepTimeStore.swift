@@ -137,9 +137,14 @@ extension DailySleepTimeStore {
         in date: Date
     ) -> Bool {
         for dailySleepInfo in dailySleepArray {
-            return Date.isSameDate(lhs: dailySleepInfo.date!, rhs: date) &&
+            if Date.isSameDate(lhs: dailySleepInfo.date!, rhs: date) &&
             // 이 버전에선 1분
-            dailySleepInfo.sleepTimeInMinute >= 1
+            dailySleepInfo.sleepTimeInMinute >= 1 &&
+                dailySleepInfo.processStatus == Constant.SLEEP_PROCESS_COMPLETE {
+                return true
+            } else {
+                continue
+            }
         }
         
         return false
@@ -187,7 +192,8 @@ extension DailySleepTimeStore {
     /// - Parameter selectedDate: 찾고자하는 날짜를 전달합니다.
     public func assignDailySleep(at selectedDate: Date) {
         for dailySleepInfo in dailySleepArray {
-            if Date.isSameDate(lhs: dailySleepInfo.date!, rhs: selectedDate) {
+            if Date.isSameDate(lhs: dailySleepInfo.date!, rhs: selectedDate),
+               dailySleepInfo.processStatus == Constant.SLEEP_PROCESS_COMPLETE {
                 self.selectedDailySleep = dailySleepInfo
                 break
             }
@@ -204,7 +210,10 @@ extension DailySleepTimeStore {
         }
         
         if let currentDailySleep = processing.first {
+            print("DURING SLEEPING")
             self.currentDailySleep = currentDailySleep
+        } else {
+            print("NO SLEEPING")
         }
     }
     
@@ -257,6 +266,11 @@ extension DailySleepTimeStore {
                     return self.getDailySleepInfo(in: .processing)
                 } else if currentDailySleep.processStatus == Constant.SLEEP_PROCESS_SLEEPING {
                     return self.getDailySleepInfo(in: .sleeping)
+                } else if currentDailySleep.processStatus == Constant.SLEEP_PROCESS_COMPLETE ||
+                            currentDailySleep.processStatus == Constant.SLEEP_PROCESS_STOPPED ||
+                            currentDailySleep.processStatus == Constant.SLEEP_PROCESS_READY {
+                    let newDailySleepInfo = makeNewDailySleepInfo()
+                    return newDailySleepInfo
                 }
             } else {
                 let newDailySleepInfo = makeNewDailySleepInfo()
@@ -331,10 +345,14 @@ extension DailySleepTimeStore {
     /// 자러갈 때의 시작 시간을 현재로 변경해주고 sleeping 상태로 수정합니다.
     public func updateDailySleepTimeToNow() {
         print(#function)
-        var model = self.getDailySleepInfo(in: .processing)
-        model.processStatus = .sleeping
-        model.date = .now
-        updateAndAssignToCurrent(by: model)
+        if let currentDailySleep,
+           currentDailySleep.processStatus == Constant.SLEEP_PROCESS_SLEEPING { return }
+        else {
+            var model = self.getDailySleepInfo(in: .processing)
+            model.processStatus = .sleeping
+            model.date = .now
+            updateAndAssignToCurrent(by: model)
+        }
     }
     
     /// dreampet의 이름을 변경합니다.
@@ -361,8 +379,8 @@ extension DailySleepTimeStore {
             self.selectedDailySleep = coreDataStore.dailySleep[selectedDailySleep.id!]
         } else {
             print(#function, isSelected)
-            // TODO: 이거 sleeping이 맞는지 complete가 맞는지 확인 필요
-            var model = self.getDailySleepInfo(in: .sleeping)
+            // TODO: Complete가 맞네요~ ㅎ;
+            var model = self.getDailySleepInfo(in: .complete)
             model.animalName = name
             updateAndAssignToCurrent(by: model)
         }
@@ -370,6 +388,7 @@ extension DailySleepTimeStore {
     
     /// dailySleepInfo를 complete하고 시간을 할당합니다.
     /// @Published 되어 있는 self.currentDailySleepInfo를 참조합니다.
+    /// DailySleepTime 은 각 entity의 id당 단 한번만 호출됩니다.
     public func completeDailySleepTime() {
         print(#function, self.currentDailySleep)
         var model = self.getDailySleepInfo(in: .sleeping)
@@ -398,8 +417,7 @@ extension DailySleepTimeStore {
     
     private func makeNewDailySleepInfo() -> DailySleepInfo {
         let dreampetName = getRandomDreampetName()
-        
-        return DailySleepInfo(
+        let newDailySleepInfo = DailySleepInfo(
             id: .init(),
             animalName: dreampetName,
             eggName: getRandomEggName(),
@@ -409,6 +427,9 @@ extension DailySleepTimeStore {
             processStatus: .ready,
             assetName: dreampetName
         )
+        print(#function, newDailySleepInfo)
+        
+        return newDailySleepInfo
     }
     
     /// CoreData 에 저정할 dailySleepInfo를 받아서 업데이트 합니다.

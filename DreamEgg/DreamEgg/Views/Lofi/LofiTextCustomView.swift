@@ -168,8 +168,9 @@ struct LofiTextCustomView: View {
                 }
             }
             .onDisappear {
+                // notification 자체는 placeholder의 것으로 진행하되, UserSleepConfig가 notification 메세지를 보관하도록 함
                 localNotificationManager.scheduleSleepNotification(
-                    userNotificationMessage: userSleepConfigStore.notificationMessage,
+                    userNotificationMessage: notificationMessage,
                     selectedDate: userSleepConfigStore.targetSleepTime
                 )
             }
