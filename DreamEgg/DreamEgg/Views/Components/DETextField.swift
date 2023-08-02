@@ -79,7 +79,7 @@ struct DETextField: View {
                         Button(action: {
                             content = ""
                         }) {
-                            Image("ClearButton")
+                            Image(systemName: "xmark")
                                 .foregroundColor(Color.secondary)
                                 .frame(width: 22, height: 22)
                         }
