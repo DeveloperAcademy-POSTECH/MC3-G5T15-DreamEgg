@@ -33,12 +33,9 @@ struct LofiEggDrawView: View {
                         VStack {
                             Spacer()
                                 .frame(maxHeight: 98)
-                            
-                            Text("오늘의 내가 꿀 꿈을\n 생각하며 알을 그려주세요.")
+                            DEFontStyle(style: .title, text: "오늘 내가 꿀 꿈을 생각하며\n드림에그를 그려주세요.")
                                 .multilineTextAlignment(.center)
-                                .font(.dosIyagiBold(.title))
                                 .foregroundColor(.white)
-                                .lineSpacing(12)
                         }
                         .frame(
                             maxHeight: .infinity,

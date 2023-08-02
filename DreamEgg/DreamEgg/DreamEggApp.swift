@@ -33,8 +33,9 @@ struct DreamEggApp: App {
                 // LocalNotificationView()
 //                DETextField(style: .messageTextField, content: "")
 //                LofiTextCustomView()
-                LofiCreatureNamingView()
+//                LofiCreatureNamingView()
 //                CreatureDetailView()
+                LofiAwakeView()
                 
             } else {
                 ContentView()

@@ -137,6 +137,7 @@ struct CreatureDetailView: View {
                     .padding(.vertical, 20)
                 }
                 .font(.dosIyagiBold(.title3))
+                .tracking(-1)
                 .frame(width: 294, height: 204)
                 .background {
                     RoundedRectangle(cornerRadius: 8)
@@ -156,6 +157,7 @@ struct CreatureDetailView: View {
                         .padding(.vertical, 16)
                         .foregroundColor(isFixedDreamWorld ? .primaryButtonBrown : .subButtonBlue)
                         .font(.dosIyagiBold(.body))
+                        .tracking(-1)
                         .overlay {
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(isFixedDreamWorld ? Color.primaryButtonBrown : Color.subButtonBlue, lineWidth: 5)

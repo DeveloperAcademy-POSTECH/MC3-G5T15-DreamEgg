@@ -66,6 +66,7 @@ public struct DEButtonStyleModifiers: ViewModifier {
                         .stroke(Color.primaryButtonBrown, lineWidth: 4)
                 }
                 .background { Color.primaryButtonYellow }
+                .cornerRadius(8)
                 .opacity(isDisabled ? 0.3 : 1.0)
             
             

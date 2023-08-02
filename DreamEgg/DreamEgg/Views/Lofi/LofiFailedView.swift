@@ -27,8 +27,11 @@ struct LofiFailedView: View {
             VStack(spacing: 96) {
                 switchHeaderTextByStep()
                     .font(.dosIyagiBold(.title))
+                    .foregroundColor(.white)
                     .multilineTextAlignment(.center)
-                    .lineSpacing(10)
+                    .lineSpacing(16)
+                    .tracking(-1)
+                    .frame(height: 120, alignment: .top)
 
                 Image(dreamCreatureImage)
                     .resizable()
@@ -59,9 +62,9 @@ struct LofiFailedView: View {
                 
                 if dreamPetFailedSteps == .end {
                     VStack {
-                        Text("꼭 오래 품어주세요!")
-                            .font(.dosIyagiBold(.body))
-                            .opacity(0.5)
+//                        Text("꼭 오래 품어주세요!")
+//                            .font(.dosIyagiBold(.body))
+//                            .opacity(0.5)
                         Spacer()
                             .frame(maxHeight:50)
                         Button {
@@ -69,11 +72,12 @@ struct LofiFailedView: View {
                                 navigationManager.viewCycle = .general
                             }
                         } label: {
-                            Text("내일 꼭 올게요.")
+                            Text("네!")
+                                .font(.dosIyagiBold(.body))
+                                .tracking(-1)
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
-                                .font(.dosIyagiBold(.body))
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -86,7 +90,7 @@ struct LofiFailedView: View {
                 }
                 else {
                     Spacer()
-                        .frame(maxHeight: 120)
+                        .frame(maxHeight: 99)
                         .opacity(0)
                 }
             }
@@ -102,9 +106,9 @@ struct LofiFailedView: View {
     private func switchHeaderTextByStep() -> some View {
         switch dreamPetFailedSteps {
         case .start:
-            return Text("충분히 품지 못해서\n알이 성장을 멈췄어요...")
+            return Text("오늘같이\n잠들기 힘든 날도 있죠.")
         case .end:
-            return Text("잠들기 힘든 밤이죠?\n다음에 다시 도전해봐요.")
+            return Text("드림에그는 언제나\n기다리고 있어요.\n내일은 꼭 만나러 와주세요!")
         }
     }
 }

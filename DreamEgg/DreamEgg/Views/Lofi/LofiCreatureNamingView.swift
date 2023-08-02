@@ -17,30 +17,29 @@ struct LofiCreatureNamingView: View {
             GradientBackgroundView()
             
             VStack {
-                Text("드림펫에게\n새로운 이름을 지어주세요.")
-                    .font(.dosIyagiBold(.title))
+                DEFontStyle(style: .title, text: "드림펫에게\n새로운 이름을 지어주세요.")
                     .multilineTextAlignment(.center)
+                    .foregroundColor(.white)
                     .padding()
-                    .lineSpacing(10)
                 
                 Spacer()
                     .frame(maxHeight: 145)
                 
                 HStack {
-                    Text("안녕,")
+                    DEFontStyle(style: .body, text: "안녕,")
                     
+                    // MARK: Design System으로 변경 예정
                     DETextField(style: .nameTextField, content: $dreampetName, maxLength: 10)
                     
-                    Text("!")
+                    DEFontStyle(style: .body, text: "!")
                 }
-                .font(.dosIyagiBold(.body))
+//                .font(.dosIyagiBold(.body))
                 
                 Spacer()
                     .frame(maxHeight: 24)
                 
-                Text("이름은 언제든지\n다시 수정할 수 있어요.")
-                    .font(.dosIyagiBold(.body))
-                    .foregroundColor(.secondary)
+                DEFontStyle(style: .body, text: "이름은 언제든지\n다시 수정할 수 있어요.")
+                    .foregroundColor(.white.opacity(0.6))
                     .multilineTextAlignment(.center)
 
                 Spacer()
@@ -55,6 +54,7 @@ struct LofiCreatureNamingView: View {
                             .padding(.vertical, 16)
                             .foregroundColor(.primaryButtonBrown)
                             .font(.dosIyagiBold(.body))
+                            .tracking(-1)
                             .overlay {
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(Color.primaryButtonBrown, lineWidth: 5)

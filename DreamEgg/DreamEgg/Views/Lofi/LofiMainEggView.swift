@@ -70,6 +70,8 @@ struct LofiMainEggView: View {
                                 Text(eggString)
                                     .font(.dosIyagiBold(.body))
                                     .foregroundColor(.white)
+                                    .lineSpacing(8)
+                                    .tracking(-1)
                             }
                     }
                 }
@@ -108,32 +110,48 @@ struct LofiMainEggView: View {
     // MARK: - ViewBuilder
     private func failedSleepTimeView() -> some View {
         VStack {
-            Text("정말 바쁜 하루였네요.\n오늘은 제가 대신\n알을 품어드릴게요.")
-                .font(.dosIyagiBold(.title))
-                .padding()
-            Text("내일은 꼭 직접 알을 품어주세요!")
-                .font(.dosIyagiBold(.body))
-            Spacer()
-                .frame(maxHeight: 50)
+//            Spacer()
+//                .frame(maxHeight: 24)
+            DEFontStyle(style: .title, text: "새로운 드림에그를\n만날 수 있게\n취침시간까지 기다려주세요.")
+                .foregroundColor(.white)
+                .padding(.top, 4)
+            
             Button {
                 withAnimation {
                     navigationManager.isFromMainTab = true
                     navigationManager.viewCycle = .timeSetting
                 }
             } label: {
-                Text("수면 시간 수정하기")
-                    .font(.dosIyagiBold(.body))
-                    .foregroundColor(.white)
+                DEFontStyle(style: .body, text: "취침 시간 수정하기")
+                    .foregroundColor(.white.opacity(0.6))
                     .overlay {
                         VStack {
                             Divider()
                                 .frame(minHeight: 2)
-                                .overlay(Color.white)
+                                .overlay(Color.white.opacity(0.6))
                                 .offset(y: 12)
                         }
                     }
-                    .padding()
+                    .padding(.top, 22)
             }
+            
+            Button {} label: {
+                Image("emptyEggDisabled")
+                    .overlay {
+                        DEFontStyle(style: .body, text: "1시간 전부터\n드림에그를 그릴 수 있어요!")
+                            .foregroundColor(.white)
+                    }
+            }
+            .disabled(true)
+            .frame(maxHeight: .infinity)
+            
+//            Text("내일은 꼭 직접 알을 품어주세요!")
+//                .font(.dosIyagiBold(.body))
+            
+            Spacer()
+                .frame(maxHeight: 94)
+            
+
         }
     }
     
@@ -143,8 +161,8 @@ struct LofiMainEggView: View {
                 .font(.dosIyagiBold(.title))
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
-                .lineSpacing(12)
-            
+                .lineSpacing(16)
+                .tracking(-1)
         }
     }
     
@@ -188,7 +206,6 @@ struct LofiMainEggView: View {
             }
         }
     }
-    
     private func getSleepPreparingViewString() -> String {
         userSleepConfigStore.hasUserEnoughTimeToProcess(currentTime: currentTime)
         ? "오늘의 취침 시간은\n\(userSleepConfigStore.targetSleepTime.hour)시 \(userSleepConfigStore.targetSleepTime.minute)분이에요!"

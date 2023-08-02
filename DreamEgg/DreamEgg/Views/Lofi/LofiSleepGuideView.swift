@@ -41,17 +41,21 @@ struct LofiSleepGuideView: View {
                     }
                 
                 VStack {
+                    Spacer()
+                        .frame(maxHeight: 100)
+                    
                     if sleepGuideSteps != .darkening {
                         guideHeaderText()
                             .font(.dosIyagiBold(.title))
                             .multilineTextAlignment(.center)
-                            .lineSpacing(12)
+                            .lineSpacing(16)
+                            .tracking(-1)
                             .foregroundColor(.primary)
                             .colorInvert()
-                            .frame(maxHeight: 200)
+                            .frame(maxHeight: 120, alignment: .top)
                     } else if sleepGuideSteps == .darkening {
                         Text("")
-                            .frame(maxHeight: 170)
+                            .frame(maxHeight: 80)
                     }
                     ZStack {
                         Image("samplePillow")
@@ -79,6 +83,8 @@ struct LofiSleepGuideView: View {
                                         .foregroundColor(.primary)
                                         .colorInvert()
                                         .font(.dosIyagiBold(.body))
+                                        .lineSpacing(8)
+                                        .tracking(-2)
                                         .multilineTextAlignment(.trailing)
                                     
                                     RoundedRectangle(cornerRadius: 10)
@@ -86,6 +92,7 @@ struct LofiSleepGuideView: View {
                                         .frame(width: 8, height: 88)
                                         .padding(.trailing, 4)
                                 }
+                                .offset(y: -20)
                             }
                         }
                         .overlay(alignment: .bottom) {
@@ -94,11 +101,15 @@ struct LofiSleepGuideView: View {
                                     .foregroundColor(.primary)
                                     .colorInvert()
                                     .font(.dosIyagiBold(.body))
+                                    .lineSpacing(8)
+                                    .tracking(-2)
                                     .multilineTextAlignment(.center)
+                                    .offset(y: 50)
                             }
                         }
                     
                     Spacer()
+                        .frame(maxHeight: 58)
                     
                     if sleepGuideSteps == .hug {
                         Button {
@@ -109,6 +120,7 @@ struct LofiSleepGuideView: View {
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
                                 .font(.dosIyagiBold(.body))
+                                .tracking(-2)
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -136,9 +148,11 @@ struct LofiSleepGuideView: View {
                             repeatLabelChanging()
                         }
                     } label: {
-                        Text("다시 하기")
-                            .foregroundColor(.subButtonSky)
+                        Text("다시하기")
+                            .foregroundColor(.white.opacity(0.6))
                             .font(.dosIyagiBold(.callout))
+                            .underline(true)
+                            .tracking(-1)
                     }
                     .frame(
                         maxHeight: .infinity,
@@ -173,19 +187,19 @@ struct LofiSleepGuideView: View {
     private func guideHeaderText() -> some View {
         switch sleepGuideSteps {
         case .start:
-            return Text("저희가 오늘 수면을 도와드릴게요.")
+            return Text("드림에그가 같이\n수면을 도와줄거예요.")
 //            return Text("We will help you fall asleep.")
         case .breath:
-            return Text("먼저,\n심호흡을 해보세요.")
+            return Text("먼저, 알을 쓰다듬으며\n심호흡을 해보세요.")
 //            return Text("First, \nTake a deep breath.")
         case .release:
-            return Text("이제 알의 태동을 느껴보며\n온 몸에 힘을 빼보아요.")
+            return Text("태동과 함께\n숨을 고르는 것에\n집중해보세요.")
 //            return Text("Slowly relax your whole body.")
         case .hug:
-            return Text("호흡에 집중하면서\n오늘 잠들 준비가 되셨나요?")
+            return Text("잠들기 편한 상태가 되면\n알려주세요.")
 //            return Text("Feel your body relaxing and focus.")
         case .darkening:
-            return Text("잠금 버튼을 눌러서\n알이 잘 수 있도록 불을 꺼주세요.")
+            return Text("1. 잠금 버튼을 눌러서\n알이 잘 수 있도록 불을 꺼주세요.")
 //            return Text("Push the Lock button\nTo incubate the egg.")
         }
     }
@@ -201,10 +215,10 @@ struct LofiSleepGuideView: View {
         case .release:
             return Text("...")
         case .hug:
-            return Text("잘 준비가 된 것 같아요!")
+            return Text("이제 잘 준비가 됐어요!")
 //            return Text("I'll go to sleep now.")
         case .darkening:
-            return Text("베개 밑에 알을 품고\n아침에 살피러 와주세요.")
+            return Text("2. 베개 밑에 알을 품고\n아침에 살피러 와주세요.")
 //            return Text("Incubate the egg below the Pillow\nAnd comeback tomorrow morning.")
         }
     }

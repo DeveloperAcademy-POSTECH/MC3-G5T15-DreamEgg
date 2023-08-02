@@ -26,7 +26,9 @@ struct LofiNameConfirmView: View {
             VStack {
                 switchHeaderText()
                     .font(.dosIyagiBold(.title))
-                    .lineSpacing(10)
+                    .lineSpacing(16)
+                    .tracking(-1)
+                    .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .frame(minHeight: 116)
                 
@@ -56,6 +58,7 @@ struct LofiNameConfirmView: View {
                                 .padding(.vertical, 16)
                                 .foregroundColor(.primaryButtonBrown)
                                 .font(.dosIyagiBold(.body))
+                                .tracking(-1)
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.primaryButtonBrown, lineWidth: 5)
@@ -75,11 +78,12 @@ struct LofiNameConfirmView: View {
                             }
                             
                         } label: {
-                            Text("나중에 보러갈게요.")
+                            Text("취침 시간을 보러갈래요.")
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 16)
                                 .foregroundColor(.subButtonBlue)
                                 .font(.dosIyagiBold(.body))
+                                .tracking(-1)
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.subButtonBlue, lineWidth: 0)
@@ -116,9 +120,10 @@ struct LofiNameConfirmView: View {
     /// 일정 시간 이후 HeaderText를 변경하는 함수입니다.
     private func switchHeaderText() -> some View {
         if isTimePassed {
-            return Text("\"\(dreampetAnimalName)\"를\n보러 가볼까요?")
-        } else {
-            return Text("드림펫에게\n\"\(dreampetAnimalName)\"라는\n이름이 생겼어요!")
+            return Text("\"\(dailySleepTimeStore.currentDailySleep?.animalName ?? "복실이")\"(을)를\n보러 가볼까요?")
+        }
+        else {
+            return Text("드림펫에게\n\"\(dailySleepTimeStore.currentDailySleep?.animalName ?? "")\"(이)라는\n이름이 생겼어요!")
         }
     }
     
