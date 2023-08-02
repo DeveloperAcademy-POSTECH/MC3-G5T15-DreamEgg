@@ -162,6 +162,11 @@ struct LofiTextCustomView: View {
                     }
                 }
             }
+            .onAppear {
+                if let message = userSleepConfigStore.existingUserSleepConfig.notificationMessage {
+                    self.notificationMessage = message
+                }
+            }
             .onDisappear {
                 localNotificationManager.scheduleSleepNotification(
                     userNotificationMessage: userSleepConfigStore.notificationMessage,

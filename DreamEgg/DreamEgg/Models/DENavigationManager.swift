@@ -12,8 +12,10 @@ final class DENavigationManager: ObservableObject {
         case splash
         case notificationMessageSetting
         case timeSetting
+        case timeReset
         case general
         case awake
+//        case drawEgg
     }
     
     @Published var starterPath = [Date]()

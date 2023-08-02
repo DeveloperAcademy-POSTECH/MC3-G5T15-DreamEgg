@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct LofiEggDrawView: View {
+    @EnvironmentObject var navigationManager: DENavigationManager
     @EnvironmentObject var dailySleepTimeStore: DailySleepTimeStore
     @StateObject private var eggDrawStore = EggDrawStore()
-    
     var body: some View {
         ZStack {
             GradientBackgroundView()
-            
             if eggDrawStore.isDrawEgg {
                 LofiEggInteractionView()
                     .navigationBarBackButtonHidden()
@@ -22,16 +21,8 @@ struct LofiEggDrawView: View {
                         dailySleepTimeStore.makeNewDailySleepToStartDailySleep()
                     }
             } else {
-//                VStack {
                     ZStack {
                         Image("emptyEgg")
-//                        eggDrawStore.includeEllipsePath
-//                            .foregroundColor(.green)
-//                            .opacity(0.5)
-//                        
-//                        eggDrawStore.exceptEllipsePath
-//                            .foregroundColor(.red)
-//                            .opacity(0.5)
                         
                         DrawShape(points: eggDrawStore.points)
                             .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round))
@@ -51,12 +42,22 @@ struct LofiEggDrawView: View {
                             alignment: .top
                         )
                     }
-//                }   
             }
         }
+        .navigationBarBackButtonHidden()
         .animation(eggDrawStore.isDrawEgg ? Animation.easeInOut : nil)
         .gesture(eggDrawStore.gesture())
+        .simultaneousGesture(DragGesture().onChanged(onSwipeBack))
     }
+    
+    private func onSwipeBack(gesture: DragGesture.Value) {
+            if gesture.location.x < 130 && gesture.translation.width > 80 && !eggDrawStore.isDrawEgg {
+                withAnimation {
+                    navigationManager.viewCycle = .general
+                }
+            }
+        }
+    
 }
 
 struct LofiEggDrawView_Previews: PreviewProvider {
