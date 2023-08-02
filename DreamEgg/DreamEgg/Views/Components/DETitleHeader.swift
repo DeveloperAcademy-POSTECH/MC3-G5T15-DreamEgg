@@ -14,8 +14,8 @@ struct DETitleHeader: View {
         HStack {
             Spacer()
             
-            Text("-<( \(title) )>-")
-                .font(.dosIyagiBold(.title2))
+            DEFontStyle(style: .title2, text: "-<( \(title) )>-")
+                .foregroundColor(.white)
                 .bold()
             
             Spacer()

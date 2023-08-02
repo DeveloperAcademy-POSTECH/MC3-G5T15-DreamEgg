@@ -36,6 +36,7 @@ struct DETextField: View {
                     }
                 }
                 .font(.dosIyagiBold(.body))
+                .tracking(-1)
                 .padding(32)
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: 150, maxHeight: 54)
@@ -61,6 +62,7 @@ struct DETextField: View {
                     }
                 }
                 .font(.dosIyagiBold(.body))
+                .tracking(-1)
                 .padding(32)
                 /// 클리어 버튼과 text 입력 영역이 겹치지 않도록 추가 패딩값을 줬습니다.
                 .padding(.trailing, 18)
